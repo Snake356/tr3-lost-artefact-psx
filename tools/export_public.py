@@ -17,7 +17,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 PRJ = os.path.normpath(os.path.join(HERE, ".."))
 sys.path.insert(0, os.path.join(HERE, "builder"))
 
-INCLUDE = ["readme.md", ".github/*", "split_info.txt", ".gitattributes", "tools/*", "bin/patch.sh",
+INCLUDE = ["readme.md", "LICENSE", ".github/*", "split_info.txt", ".gitattributes", "tools/*", "bin/patch.sh",
            "bin/patches/*", "bin/modules.txt", "disc/*.xml", "disc/files/system/*", "levels/convert.sh",
            "levels/geom/*", "levels/japan/*", "levels/sfx/empty.wav", "guides/*", "docs/*",
            "tombpsx/convert.sh"]

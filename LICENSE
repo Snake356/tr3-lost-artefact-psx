@@ -1,0 +1,33 @@
+Tomb Raider III: The Lost Artefact for the PlayStation (tr3-lost-artefact-psx)
+
+Copyright (c) 2026 XeNoN3560. All rights reserved.
+
+This covers the parts made in this continuation of the project: the disc
+builder (tools/builder), the Python tools in tools/, the patches and level
+changes added since, the disc layouts as changed here, the documentation, the
+screenshots, the covers and the icon. The parts that come from b122251's
+original project and from FindingTheLost's work remain theirs.
+
+You may:
+  - read the files and learn from them,
+  - download the disc builder and build disc images for your own use,
+  - fork this repository on GitHub to suggest changes here, as an issue or a
+    pull request.
+
+Without written permission you may not:
+  - publish modified versions of the project or of the disc builder,
+  - redistribute the project or parts of it elsewhere,
+  - release it, or a project based on it, as your own.
+
+Parts under their own licences:
+  - b122251's tools in tools/src (trmod, tr3pcpsx, texmod, troi, tr3mesh,
+    trsfx, tric, applyips and the others): the GNU General Public License as
+    stated in their sources.
+  - mkpsxiso by Lameguy64 (tools/src/mkpsxiso): GNU General Public License
+    version 2 (tools/src/mkpsxiso/LICENSE.md).
+
+b122251's original project: https://gitlab.com/b122251/tr3gpsx
+
+Tomb Raider III and The Lost Artefact (c) Core Design / Eidos Interactive; the
+rights are now held by Crystal Dynamics. This is a non-commercial fan project,
+not affiliated with or endorsed by them. No game data is included.

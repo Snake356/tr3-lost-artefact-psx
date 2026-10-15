@@ -60,6 +60,12 @@ The builder also puts a cover next to the disc image for emulator frontends, des
 
 Found a problem? Use **Report a problem** in the builder or [open an issue](https://github.com/Snake356/tr3-lost-artefact-psx/issues).
 
+## One project, one place
+
+This repository is the one place for this project. Please report bugs and suggest improvements here – as an issue, or as a pull request from your fork – instead of releasing your own versions. b122251 asked for the same when he handed the project on: "Don't spin off into a million forks. Try to organise around one repo."
+
+What is allowed is written in [LICENSE](LICENSE): you may use the disc builder for your own discs and fork the repository to contribute here, but not publish modified versions or release the project as your own. b122251's tools in `tools/src` and mkpsxiso keep their GPL licences.
+
 ## History and credits
 
 - **b122251** made the PS1 port and published the whole project at https://gitlab.com/b122251/tr3gpsx with the request to finish it (his original readme and farewell are there). The end credits close with the farewell message he left for the Tomb Raider community.
