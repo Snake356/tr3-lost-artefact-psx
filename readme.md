@@ -8,6 +8,27 @@
 
 The Lost Artefact on the PlayStation: all six levels (Sleeping with the Fishes in two parts), running on the original Tomb Raider III PS1 engine, for every release of the PS1 game - USA, Europe, Germany, France, Italy, Spain, Japan and Asia, Rev 0 to Rev 2, Disc 1 and 2. The port is finished and playable from start to end.
 
+## Screenshots
+
+<table align="center">
+  <tr>
+    <td align="center"><img src="docs/screenshots/01_highland_fling.jpg" alt="Highland Fling" width="380"><br>Highland Fling</td>
+    <td align="center"><img src="docs/screenshots/02_willards_lair.jpg" alt="Willard's Lair" width="380"><br>Willard's Lair</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/screenshots/03_shakespeare_cliff.jpg" alt="Shakespeare Cliff" width="380"><br>Shakespeare Cliff</td>
+    <td align="center"><img src="docs/screenshots/04_sleeping_with_the_fishes.jpg" alt="Sleeping with the Fishes" width="380"><br>Sleeping with the Fishes</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/screenshots/05_sleeping_with_the_fishes_crystal.jpg" alt="Sleeping with the Fishes: a save crystal" width="380"><br>Sleeping with the Fishes: a save crystal</td>
+    <td align="center"><img src="docs/screenshots/06_its_a_madhouse.jpg" alt="It's a Madhouse!" width="380"><br>It's a Madhouse!</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/screenshots/07_reunion_acid.jpg" alt="Reunion: the green acid" width="380"><br>Reunion: the green acid</td>
+    <td align="center"><img src="docs/screenshots/08_reunion_temple.jpg" alt="Reunion" width="380"><br>Reunion</td>
+  </tr>
+</table>
+
 ## Playing it
 
 Download the **disc builder** from the [Releases](https://github.com/Snake356/tr3-lost-artefact-psx/releases) page (Windows 10/11). It makes the PS1 disc image from your own copies of both games:
