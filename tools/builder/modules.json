@@ -1,0 +1,6690 @@
+{
+ "us": {
+  "0": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 458765,
+   "length": 1248,
+   "crc32": "f84762b5",
+   "name": "b1_bird"
+  },
+  "1": {
+   "file": "DATA/JUNGLE.PSX",
+   "offset": 456664,
+   "length": 1300,
+   "crc32": "a5b75af2",
+   "name": "b1_tiger"
+  },
+  "2": {
+   "file": "DATA/TONYBOSS.PSX",
+   "offset": 464380,
+   "length": 13308,
+   "crc32": "fd9d3b60",
+   "name": "b1_tony"
+  },
+  "3": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 460616,
+   "length": 15648,
+   "crc32": "2df60496",
+   "name": "b1_willard"
+  },
+  "4": {
+   "file": "DATA/TRIBOSS.PSX",
+   "offset": 483976,
+   "length": 20564,
+   "crc32": "1e04c76d",
+   "name": "b1_puna"
+  },
+  "5": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 486653,
+   "length": 2112,
+   "crc32": "73d38aad",
+   "name": "b1_winston"
+  },
+  "6": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464768,
+   "length": 22516,
+   "crc32": "6cd8f981",
+   "name": "b1_sophia"
+  },
+  "7": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 494712,
+   "length": 2484,
+   "crc32": "c2f0fc34",
+   "name": "b1_dog"
+  },
+  "8": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 513488,
+   "length": 2588,
+   "crc32": "f090ece5",
+   "name": "b1_diver"
+  },
+  "9": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 499320,
+   "length": 2996,
+   "crc32": "258d84ae",
+   "name": "b1_trex"
+  },
+  "10": {
+   "file": "DATA/MINES.PSX",
+   "offset": 504724,
+   "length": 4008,
+   "crc32": "5bff3c82",
+   "name": "b1_burnt_mutant"
+  },
+  "11": {
+   "file": "DATA/TEMPLE.PSX",
+   "offset": 474948,
+   "length": 5292,
+   "crc32": "9d26e103",
+   "name": "b1_shiva"
+  },
+  "12": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 488765,
+   "length": 1552,
+   "crc32": "ee9fb3f3",
+   "name": "b2_targets"
+  },
+  "13": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 476264,
+   "length": 3032,
+   "crc32": "c837e1b6",
+   "name": "b2_white_soldier"
+  },
+  "14": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 502316,
+   "length": 3412,
+   "crc32": "4fb5c651",
+   "name": "b2_compy"
+  },
+  "15": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 506416,
+   "length": 4292,
+   "crc32": "215c1302",
+   "name": "b2_security_guard"
+  },
+  "16": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 513612,
+   "length": 4656,
+   "crc32": "09c9265b",
+   "name": "b2_lizard_man"
+  },
+  "17": {
+   "file": "DATA/DEMO3.PSX",
+   "offset": 502053,
+   "length": 4976,
+   "crc32": "709415f7",
+   "name": "b2_civvie"
+  },
+  "18": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 491961,
+   "length": 5004,
+   "crc32": "961e119f",
+   "name": "b2_mp1"
+  },
+  "19": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 460013,
+   "length": 6568,
+   "crc32": "4789039f",
+   "name": "b2_monkey"
+  },
+  "20": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 466581,
+   "length": 1340,
+   "crc32": "785305b8",
+   "name": "b3_cobra"
+  },
+  "21": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 468464,
+   "length": 2560,
+   "crc32": "6c9db2e2",
+   "name": "b3_tribeaxe"
+  },
+  "22": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 505728,
+   "length": 3020,
+   "crc32": "40812a7b",
+   "name": "b3_raptor"
+  },
+  "23": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 497200,
+   "length": 4212,
+   "crc32": "84b23807",
+   "name": "b3_oilred"
+  },
+  "24": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 506036,
+   "length": 4272,
+   "crc32": "f652d78e",
+   "name": "b3_punk"
+  },
+  "25": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 496965,
+   "length": 4416,
+   "crc32": "2dc738d7",
+   "name": "b3_bob"
+  },
+  "26": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 510708,
+   "length": 4763,
+   "crc32": "4306dfb2",
+   "name": "b3_london_mercenary"
+  },
+  "27": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 479296,
+   "length": 5352,
+   "crc32": "343d40d6",
+   "name": "b3_flamethrower"
+  },
+  "28": {
+   "file": "DATA/CITY.PSX",
+   "offset": 499612,
+   "length": 5752,
+   "crc32": "78fd4a81",
+   "name": "b3_mutant2"
+  },
+  "29": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 501412,
+   "length": 1876,
+   "crc32": "ec00f6da",
+   "name": "b4_boo_mutant"
+  },
+  "30": {
+   "file": "DATA/CITY.PSX",
+   "offset": 505364,
+   "length": 2096,
+   "crc32": "3a689936",
+   "name": "b4_mutant1"
+  },
+  "31": {
+   "file": "DATA/MINES.PSX",
+   "offset": 514088,
+   "length": 2136,
+   "crc32": "c6884dc7",
+   "name": "b4_mutant3"
+  },
+  "32": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 508748,
+   "length": 3080,
+   "crc32": "4ff3a7f2",
+   "name": "b4_sthpac_mercenary"
+  },
+  "33": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 471024,
+   "length": 3380,
+   "crc32": "4501f192",
+   "name": "b4_blowpipe"
+  },
+  "34": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 501381,
+   "length": 4616,
+   "crc32": "f1ab0c6f",
+   "name": "b4_mp2"
+  },
+  "35": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 510308,
+   "length": 896,
+   "crc32": "47c90267",
+   "name": "b4_rat"
+  },
+  "36": {
+   "file": "DATA/CITY.PSX",
+   "offset": 507460,
+   "length": 1210,
+   "crc32": "a02f8fc5",
+   "name": "b5_flying_mutant_emitter"
+  },
+  "37": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 511204,
+   "length": 1460,
+   "crc32": "1e733124",
+   "name": "b5_train"
+  },
+  "38": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 505997,
+   "length": 2140,
+   "crc32": "2dd16d65",
+   "name": "b5_electric"
+  },
+  "39": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 518276,
+   "length": 728,
+   "crc32": "3facaa87",
+   "name": "b5_croc"
+  },
+  "40": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 508137,
+   "length": 3340,
+   "crc32": "74310eef",
+   "name": "b6_swat_gun"
+  },
+  "41": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 511477,
+   "length": 1416,
+   "crc32": "901792ca",
+   "name": "b7_robot_gun"
+  },
+  "42": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 512893,
+   "length": 1104,
+   "crc32": "5102666a",
+   "name": "b8_whale"
+  },
+  "43": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 511840,
+   "length": 1118,
+   "crc32": "fdd8bb37",
+   "name": "b8_raptor_emitter"
+  },
+  "44": {
+   "file": "DATA/CITY.PSX",
+   "offset": 497644,
+   "length": 1952,
+   "crc32": "f06ee2b3",
+   "name": "e1_firehead"
+  },
+  "45": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 492468,
+   "length": 2236,
+   "crc32": "4fd265c7",
+   "name": "e1_gas"
+  },
+  "46": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 480800,
+   "length": 3721,
+   "crc32": "2d8923f1",
+   "name": "e1_missile"
+  },
+  "47": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 484521,
+   "length": 3688,
+   "crc32": "3521a8d7",
+   "name": "e2_laser"
+  },
+  "48": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 488209,
+   "length": 1268,
+   "crc32": "74dad94e",
+   "name": "e3_51laser"
+  },
+  "49": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464192,
+   "length": 576,
+   "crc32": "0abbb2be",
+   "change": {
+    "360": 7
+   },
+   "name": "e3_fusebox"
+  },
+  "50": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 493512,
+   "length": 14244,
+   "crc32": "64b9a02f",
+   "name": "alt1_v_upv"
+  },
+  "51": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 437804,
+   "length": 15049,
+   "crc32": "5c3ba331",
+   "name": "alt1_v_quad"
+  },
+  "52": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 470028,
+   "length": 16288,
+   "crc32": "c7c0b79e",
+   "name": "v_boat"
+  },
+  "53": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 488332,
+   "length": 17312,
+   "crc32": "b19821ef",
+   "name": "v_kayak"
+  },
+  "54": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 495668,
+   "length": 3636,
+   "crc32": "7be3756a",
+   "name": "v_biggun"
+  },
+  "55": {
+   "file": "DATA/MINES.PSX",
+   "offset": 494020,
+   "length": 8456,
+   "crc32": "17a0bb76",
+   "name": "v_minecart"
+  },
+  "56": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 497816,
+   "length": 5720,
+   "crc32": "9915afbc",
+   "name": "w_specl"
+  },
+  "57": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 452853,
+   "length": 5900,
+   "crc32": "51459776",
+   "name": "w_rain"
+  },
+  "58": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 486316,
+   "length": 6152,
+   "crc32": "1a07d905",
+   "name": "w_snow"
+  }
+ },
+ "ukrev": {
+  "0": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 458765,
+   "length": 1248,
+   "crc32": "7449a778",
+   "name": "b1_bird"
+  },
+  "1": {
+   "file": "DATA/JUNGLE.PSX",
+   "offset": 456664,
+   "length": 1300,
+   "crc32": "681f00c7",
+   "name": "b1_tiger"
+  },
+  "2": {
+   "file": "DATA/TONYBOSS.PSX",
+   "offset": 464380,
+   "length": 13308,
+   "crc32": "4db66d60",
+   "name": "b1_tony"
+  },
+  "3": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 460616,
+   "length": 15648,
+   "crc32": "a6e0d753",
+   "name": "b1_willard"
+  },
+  "4": {
+   "file": "DATA/TRIBOSS.PSX",
+   "offset": 483976,
+   "length": 20564,
+   "crc32": "b66c3474",
+   "name": "b1_puna"
+  },
+  "5": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 486653,
+   "length": 2112,
+   "crc32": "75c6bf3b",
+   "name": "b1_winston"
+  },
+  "6": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464768,
+   "length": 22516,
+   "crc32": "edf70aed",
+   "name": "b1_sophia"
+  },
+  "7": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 494712,
+   "length": 2484,
+   "crc32": "1fd163ed",
+   "name": "b1_dog"
+  },
+  "8": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 513488,
+   "length": 2588,
+   "crc32": "f6cca325",
+   "name": "b1_diver"
+  },
+  "9": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 499320,
+   "length": 2996,
+   "crc32": "3d56b5b3",
+   "name": "b1_trex"
+  },
+  "10": {
+   "file": "DATA/MINES.PSX",
+   "offset": 504724,
+   "length": 4008,
+   "crc32": "1b82a2e8",
+   "name": "b1_burnt_mutant"
+  },
+  "11": {
+   "file": "DATA/TEMPLE.PSX",
+   "offset": 474948,
+   "length": 5292,
+   "crc32": "d000e598",
+   "name": "b1_shiva"
+  },
+  "12": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 488765,
+   "length": 1552,
+   "crc32": "37ece693",
+   "name": "b2_targets"
+  },
+  "13": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 476264,
+   "length": 3032,
+   "crc32": "dbc47d3f",
+   "name": "b2_white_soldier"
+  },
+  "14": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 502316,
+   "length": 3412,
+   "crc32": "d4627378",
+   "name": "b2_compy"
+  },
+  "15": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 506416,
+   "length": 4292,
+   "crc32": "12576928",
+   "name": "b2_security_guard"
+  },
+  "16": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 513612,
+   "length": 4656,
+   "crc32": "c8003750",
+   "name": "b2_lizard_man"
+  },
+  "17": {
+   "file": "DATA/DEMO3.PSX",
+   "offset": 502053,
+   "length": 4976,
+   "crc32": "82a10469",
+   "name": "b2_civvie"
+  },
+  "18": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 491961,
+   "length": 5004,
+   "crc32": "a89c47ae",
+   "name": "b2_mp1"
+  },
+  "19": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 460013,
+   "length": 6568,
+   "crc32": "c56d97db",
+   "name": "b2_monkey"
+  },
+  "20": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 466581,
+   "length": 1340,
+   "crc32": "dcc03b60",
+   "name": "b3_cobra"
+  },
+  "21": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 468464,
+   "length": 2560,
+   "crc32": "93ae748d",
+   "name": "b3_tribeaxe"
+  },
+  "22": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 505728,
+   "length": 3020,
+   "crc32": "b6886e07",
+   "name": "b3_raptor"
+  },
+  "23": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 497200,
+   "length": 4212,
+   "crc32": "a0cfeb7c",
+   "name": "b3_oilred"
+  },
+  "24": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 506036,
+   "length": 4272,
+   "crc32": "c5c6187c",
+   "name": "b3_punk"
+  },
+  "25": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 496965,
+   "length": 4416,
+   "crc32": "99cec82a",
+   "name": "b3_bob"
+  },
+  "26": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 510708,
+   "length": 4763,
+   "crc32": "bf54d947",
+   "name": "b3_london_mercenary"
+  },
+  "27": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 479296,
+   "length": 5352,
+   "crc32": "6d3b1bfd",
+   "name": "b3_flamethrower"
+  },
+  "28": {
+   "file": "DATA/CITY.PSX",
+   "offset": 499612,
+   "length": 5752,
+   "crc32": "8b69d942",
+   "name": "b3_mutant2"
+  },
+  "29": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 501412,
+   "length": 1876,
+   "crc32": "0b3128bb",
+   "name": "b4_boo_mutant"
+  },
+  "30": {
+   "file": "DATA/CITY.PSX",
+   "offset": 505364,
+   "length": 2096,
+   "crc32": "d4abe5b8",
+   "name": "b4_mutant1"
+  },
+  "31": {
+   "file": "DATA/MINES.PSX",
+   "offset": 514088,
+   "length": 2136,
+   "crc32": "fac673e6",
+   "name": "b4_mutant3"
+  },
+  "32": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 508748,
+   "length": 3080,
+   "crc32": "a1b35655",
+   "name": "b4_sthpac_mercenary"
+  },
+  "33": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 471024,
+   "length": 3380,
+   "crc32": "43dcb0e5",
+   "name": "b4_blowpipe"
+  },
+  "34": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 501381,
+   "length": 4616,
+   "crc32": "56040390",
+   "name": "b4_mp2"
+  },
+  "35": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 510308,
+   "length": 896,
+   "crc32": "cf088364",
+   "name": "b4_rat"
+  },
+  "36": {
+   "file": "DATA/CITY.PSX",
+   "offset": 507460,
+   "length": 1210,
+   "crc32": "39cee054",
+   "name": "b5_flying_mutant_emitter"
+  },
+  "37": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 511204,
+   "length": 1460,
+   "crc32": "032bf11f",
+   "name": "b5_train"
+  },
+  "38": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 505997,
+   "length": 2140,
+   "crc32": "d4d1ba45",
+   "name": "b5_electric"
+  },
+  "39": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 518276,
+   "length": 728,
+   "crc32": "07196eae",
+   "name": "b5_croc"
+  },
+  "40": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 508137,
+   "length": 3340,
+   "crc32": "59888885",
+   "name": "b6_swat_gun"
+  },
+  "41": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 511477,
+   "length": 1416,
+   "crc32": "22d27c80",
+   "name": "b7_robot_gun"
+  },
+  "42": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 512893,
+   "length": 1104,
+   "crc32": "9599d096",
+   "name": "b8_whale"
+  },
+  "43": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 511840,
+   "length": 1118,
+   "crc32": "f8ea60d9",
+   "name": "b8_raptor_emitter"
+  },
+  "44": {
+   "file": "DATA/CITY.PSX",
+   "offset": 497644,
+   "length": 1952,
+   "crc32": "026cac68",
+   "name": "e1_firehead"
+  },
+  "45": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 492468,
+   "length": 2236,
+   "crc32": "78f72e1d",
+   "name": "e1_gas"
+  },
+  "46": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 480800,
+   "length": 3721,
+   "crc32": "c9d41e4f",
+   "name": "e1_missile"
+  },
+  "47": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 484521,
+   "length": 3688,
+   "crc32": "1a4e5a5a",
+   "name": "e2_laser"
+  },
+  "48": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 488209,
+   "length": 1268,
+   "crc32": "65615c22",
+   "name": "e3_51laser"
+  },
+  "49": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464192,
+   "length": 576,
+   "crc32": "91b95978",
+   "change": {
+    "360": 7
+   },
+   "name": "e3_fusebox"
+  },
+  "50": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 493512,
+   "length": 14244,
+   "crc32": "04bf273c",
+   "name": "alt1_v_upv"
+  },
+  "51": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 437804,
+   "length": 15049,
+   "crc32": "26c0fc4f",
+   "name": "alt1_v_quad"
+  },
+  "52": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 470028,
+   "length": 16288,
+   "crc32": "ca15d058",
+   "name": "v_boat"
+  },
+  "53": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 488332,
+   "length": 17312,
+   "crc32": "7e4f9124",
+   "name": "v_kayak"
+  },
+  "54": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 495668,
+   "length": 3636,
+   "crc32": "aba182ff",
+   "name": "v_biggun"
+  },
+  "55": {
+   "file": "DATA/MINES.PSX",
+   "offset": 494020,
+   "length": 8456,
+   "crc32": "b0c74847",
+   "name": "v_minecart"
+  },
+  "56": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 497816,
+   "length": 5720,
+   "crc32": "734abcb6",
+   "name": "w_specl"
+  },
+  "57": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 452853,
+   "length": 5900,
+   "crc32": "97a4551e",
+   "name": "w_rain"
+  },
+  "58": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 486316,
+   "length": 6152,
+   "crc32": "f6da531c",
+   "name": "w_snow"
+  }
+ },
+ "derev": {
+  "0": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 458765,
+   "length": 1248,
+   "crc32": "7449a778",
+   "name": "b1_bird"
+  },
+  "1": {
+   "file": "DATA/JUNGLE.PSX",
+   "offset": 456664,
+   "length": 1300,
+   "crc32": "681f00c7",
+   "name": "b1_tiger"
+  },
+  "2": {
+   "file": "DATA/TONYBOSS.PSX",
+   "offset": 464380,
+   "length": 13308,
+   "crc32": "4db66d60",
+   "name": "b1_tony"
+  },
+  "3": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 460616,
+   "length": 15648,
+   "crc32": "a6e0d753",
+   "name": "b1_willard"
+  },
+  "4": {
+   "file": "DATA/TRIBOSS.PSX",
+   "offset": 483976,
+   "length": 20564,
+   "crc32": "b66c3474",
+   "name": "b1_puna"
+  },
+  "5": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 486653,
+   "length": 2112,
+   "crc32": "75c6bf3b",
+   "name": "b1_winston"
+  },
+  "6": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464768,
+   "length": 22516,
+   "crc32": "edf70aed",
+   "name": "b1_sophia"
+  },
+  "7": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 494712,
+   "length": 2484,
+   "crc32": "1fd163ed",
+   "name": "b1_dog"
+  },
+  "8": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 513488,
+   "length": 2588,
+   "crc32": "f6cca325",
+   "name": "b1_diver"
+  },
+  "9": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 499320,
+   "length": 2996,
+   "crc32": "3d56b5b3",
+   "name": "b1_trex"
+  },
+  "10": {
+   "file": "DATA/MINES.PSX",
+   "offset": 504724,
+   "length": 4008,
+   "crc32": "1b82a2e8",
+   "name": "b1_burnt_mutant"
+  },
+  "11": {
+   "file": "DATA/TEMPLE.PSX",
+   "offset": 474948,
+   "length": 5292,
+   "crc32": "d000e598",
+   "name": "b1_shiva"
+  },
+  "12": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 488765,
+   "length": 1552,
+   "crc32": "37ece693",
+   "name": "b2_targets"
+  },
+  "13": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 476264,
+   "length": 3032,
+   "crc32": "dbc47d3f",
+   "name": "b2_white_soldier"
+  },
+  "14": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 502316,
+   "length": 3412,
+   "crc32": "d4627378",
+   "name": "b2_compy"
+  },
+  "15": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 506416,
+   "length": 4292,
+   "crc32": "12576928",
+   "name": "b2_security_guard"
+  },
+  "16": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 513612,
+   "length": 4656,
+   "crc32": "c8003750",
+   "name": "b2_lizard_man"
+  },
+  "17": {
+   "file": "DATA/DEMO3.PSX",
+   "offset": 502053,
+   "length": 4976,
+   "crc32": "82a10469",
+   "name": "b2_civvie"
+  },
+  "18": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 491961,
+   "length": 5004,
+   "crc32": "a89c47ae",
+   "name": "b2_mp1"
+  },
+  "19": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 460013,
+   "length": 6568,
+   "crc32": "c56d97db",
+   "name": "b2_monkey"
+  },
+  "20": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 466581,
+   "length": 1340,
+   "crc32": "dcc03b60",
+   "name": "b3_cobra"
+  },
+  "21": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 468464,
+   "length": 2560,
+   "crc32": "815be02a",
+   "name": "b3_tribeaxe"
+  },
+  "22": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 505728,
+   "length": 3020,
+   "crc32": "b6886e07",
+   "name": "b3_raptor"
+  },
+  "23": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 497200,
+   "length": 4212,
+   "crc32": "a0cfeb7c",
+   "name": "b3_oilred"
+  },
+  "24": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 506036,
+   "length": 4272,
+   "crc32": "c5c6187c",
+   "name": "b3_punk"
+  },
+  "25": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 496965,
+   "length": 4416,
+   "crc32": "99cec82a",
+   "name": "b3_bob"
+  },
+  "26": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 510708,
+   "length": 4763,
+   "crc32": "bf54d947",
+   "name": "b3_london_mercenary"
+  },
+  "27": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 479296,
+   "length": 5352,
+   "crc32": "6d3b1bfd",
+   "name": "b3_flamethrower"
+  },
+  "28": {
+   "file": "DATA/CITY.PSX",
+   "offset": 499612,
+   "length": 5752,
+   "crc32": "8b69d942",
+   "name": "b3_mutant2"
+  },
+  "29": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 501412,
+   "length": 1876,
+   "crc32": "0b3128bb",
+   "name": "b4_boo_mutant"
+  },
+  "30": {
+   "file": "DATA/CITY.PSX",
+   "offset": 505364,
+   "length": 2096,
+   "crc32": "d4abe5b8",
+   "name": "b4_mutant1"
+  },
+  "31": {
+   "file": "DATA/MINES.PSX",
+   "offset": 514088,
+   "length": 2136,
+   "crc32": "fac673e6",
+   "name": "b4_mutant3"
+  },
+  "32": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 508748,
+   "length": 3080,
+   "crc32": "a1b35655",
+   "name": "b4_sthpac_mercenary"
+  },
+  "33": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 471024,
+   "length": 3380,
+   "crc32": "43dcb0e5",
+   "name": "b4_blowpipe"
+  },
+  "34": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 501381,
+   "length": 4616,
+   "crc32": "56040390",
+   "name": "b4_mp2"
+  },
+  "35": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 510308,
+   "length": 896,
+   "crc32": "cf088364",
+   "name": "b4_rat"
+  },
+  "36": {
+   "file": "DATA/CITY.PSX",
+   "offset": 507460,
+   "length": 1210,
+   "crc32": "39cee054",
+   "name": "b5_flying_mutant_emitter"
+  },
+  "37": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 511204,
+   "length": 1460,
+   "crc32": "032bf11f",
+   "name": "b5_train"
+  },
+  "38": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 505997,
+   "length": 2140,
+   "crc32": "d4d1ba45",
+   "name": "b5_electric"
+  },
+  "39": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 518276,
+   "length": 728,
+   "crc32": "07196eae",
+   "name": "b5_croc"
+  },
+  "40": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 508137,
+   "length": 3340,
+   "crc32": "59888885",
+   "name": "b6_swat_gun"
+  },
+  "41": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 511477,
+   "length": 1416,
+   "crc32": "22d27c80",
+   "name": "b7_robot_gun"
+  },
+  "42": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 512893,
+   "length": 1104,
+   "crc32": "9599d096",
+   "name": "b8_whale"
+  },
+  "43": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 511840,
+   "length": 1118,
+   "crc32": "f8ea60d9",
+   "name": "b8_raptor_emitter"
+  },
+  "44": {
+   "file": "DATA/CITY.PSX",
+   "offset": 497644,
+   "length": 1952,
+   "crc32": "026cac68",
+   "name": "e1_firehead"
+  },
+  "45": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 492468,
+   "length": 2236,
+   "crc32": "78f72e1d",
+   "name": "e1_gas"
+  },
+  "46": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 480800,
+   "length": 3721,
+   "crc32": "c9d41e4f",
+   "name": "e1_missile"
+  },
+  "47": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 484521,
+   "length": 3688,
+   "crc32": "1a4e5a5a",
+   "name": "e2_laser"
+  },
+  "48": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 488209,
+   "length": 1268,
+   "crc32": "65615c22",
+   "name": "e3_51laser"
+  },
+  "49": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464192,
+   "length": 576,
+   "crc32": "91b95978",
+   "change": {
+    "360": 7
+   },
+   "name": "e3_fusebox"
+  },
+  "50": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 493512,
+   "length": 14244,
+   "crc32": "04bf273c",
+   "name": "alt1_v_upv"
+  },
+  "51": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 437804,
+   "length": 15049,
+   "crc32": "26c0fc4f",
+   "name": "alt1_v_quad"
+  },
+  "52": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 470028,
+   "length": 16288,
+   "crc32": "ca15d058",
+   "name": "v_boat"
+  },
+  "53": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 488332,
+   "length": 17312,
+   "crc32": "7e4f9124",
+   "name": "v_kayak"
+  },
+  "54": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 495668,
+   "length": 3636,
+   "crc32": "aba182ff",
+   "name": "v_biggun"
+  },
+  "55": {
+   "file": "DATA/MINES.PSX",
+   "offset": 494020,
+   "length": 8456,
+   "crc32": "b0c74847",
+   "name": "v_minecart"
+  },
+  "56": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 497816,
+   "length": 5720,
+   "crc32": "734abcb6",
+   "name": "w_specl"
+  },
+  "57": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 452853,
+   "length": 5900,
+   "crc32": "97a4551e",
+   "name": "w_rain"
+  },
+  "58": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 486316,
+   "length": 6152,
+   "crc32": "f6da531c",
+   "name": "w_snow"
+  }
+ },
+ "frrev": {
+  "0": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 458765,
+   "length": 1248,
+   "crc32": "7449a778",
+   "name": "b1_bird"
+  },
+  "1": {
+   "file": "DATA/JUNGLE.PSX",
+   "offset": 456664,
+   "length": 1300,
+   "crc32": "681f00c7",
+   "name": "b1_tiger"
+  },
+  "2": {
+   "file": "DATA/TONYBOSS.PSX",
+   "offset": 464380,
+   "length": 13308,
+   "crc32": "5eee4d38",
+   "name": "b1_tony"
+  },
+  "3": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 460616,
+   "length": 15648,
+   "crc32": "a6e0d753",
+   "name": "b1_willard"
+  },
+  "4": {
+   "file": "DATA/TRIBOSS.PSX",
+   "offset": 483976,
+   "length": 20564,
+   "crc32": "b66c3474",
+   "name": "b1_puna"
+  },
+  "5": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 486653,
+   "length": 2112,
+   "crc32": "75c6bf3b",
+   "name": "b1_winston"
+  },
+  "6": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464768,
+   "length": 22516,
+   "crc32": "edf70aed",
+   "name": "b1_sophia"
+  },
+  "7": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 494712,
+   "length": 2484,
+   "crc32": "1fd163ed",
+   "name": "b1_dog"
+  },
+  "8": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 513488,
+   "length": 2588,
+   "crc32": "f6cca325",
+   "name": "b1_diver"
+  },
+  "9": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 499320,
+   "length": 2996,
+   "crc32": "3d56b5b3",
+   "name": "b1_trex"
+  },
+  "10": {
+   "file": "DATA/MINES.PSX",
+   "offset": 504724,
+   "length": 4008,
+   "crc32": "1b82a2e8",
+   "name": "b1_burnt_mutant"
+  },
+  "11": {
+   "file": "DATA/TEMPLE.PSX",
+   "offset": 474948,
+   "length": 5292,
+   "crc32": "d000e598",
+   "name": "b1_shiva"
+  },
+  "12": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 488765,
+   "length": 1552,
+   "crc32": "37ece693",
+   "name": "b2_targets"
+  },
+  "13": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 476264,
+   "length": 3032,
+   "crc32": "dbc47d3f",
+   "name": "b2_white_soldier"
+  },
+  "14": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 502316,
+   "length": 3412,
+   "crc32": "d4627378",
+   "name": "b2_compy"
+  },
+  "15": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 506416,
+   "length": 4292,
+   "crc32": "12576928",
+   "name": "b2_security_guard"
+  },
+  "16": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 513612,
+   "length": 4656,
+   "crc32": "c8003750",
+   "name": "b2_lizard_man"
+  },
+  "17": {
+   "file": "DATA/DEMO3.PSX",
+   "offset": 502053,
+   "length": 4976,
+   "crc32": "82a10469",
+   "name": "b2_civvie"
+  },
+  "18": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 491961,
+   "length": 5004,
+   "crc32": "a89c47ae",
+   "name": "b2_mp1"
+  },
+  "19": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 460013,
+   "length": 6568,
+   "crc32": "c56d97db",
+   "name": "b2_monkey"
+  },
+  "20": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 466581,
+   "length": 1340,
+   "crc32": "dcc03b60",
+   "name": "b3_cobra"
+  },
+  "21": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 468464,
+   "length": 2560,
+   "crc32": "93ae748d",
+   "name": "b3_tribeaxe"
+  },
+  "22": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 505728,
+   "length": 3020,
+   "crc32": "b6886e07",
+   "name": "b3_raptor"
+  },
+  "23": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 497200,
+   "length": 4212,
+   "crc32": "a0cfeb7c",
+   "name": "b3_oilred"
+  },
+  "24": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 506036,
+   "length": 4272,
+   "crc32": "c5c6187c",
+   "name": "b3_punk"
+  },
+  "25": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 496965,
+   "length": 4416,
+   "crc32": "99cec82a",
+   "name": "b3_bob"
+  },
+  "26": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 510708,
+   "length": 4763,
+   "crc32": "bf54d947",
+   "name": "b3_london_mercenary"
+  },
+  "27": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 479296,
+   "length": 5352,
+   "crc32": "6d3b1bfd",
+   "name": "b3_flamethrower"
+  },
+  "28": {
+   "file": "DATA/CITY.PSX",
+   "offset": 499612,
+   "length": 5752,
+   "crc32": "8b69d942",
+   "name": "b3_mutant2"
+  },
+  "29": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 501412,
+   "length": 1876,
+   "crc32": "0b3128bb",
+   "name": "b4_boo_mutant"
+  },
+  "30": {
+   "file": "DATA/CITY.PSX",
+   "offset": 505364,
+   "length": 2096,
+   "crc32": "d4abe5b8",
+   "name": "b4_mutant1"
+  },
+  "31": {
+   "file": "DATA/MINES.PSX",
+   "offset": 514088,
+   "length": 2136,
+   "crc32": "fac673e6",
+   "name": "b4_mutant3"
+  },
+  "32": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 508748,
+   "length": 3080,
+   "crc32": "a1b35655",
+   "name": "b4_sthpac_mercenary"
+  },
+  "33": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 471024,
+   "length": 3380,
+   "crc32": "43dcb0e5",
+   "name": "b4_blowpipe"
+  },
+  "34": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 501381,
+   "length": 4616,
+   "crc32": "56040390",
+   "name": "b4_mp2"
+  },
+  "35": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 510308,
+   "length": 896,
+   "crc32": "cf088364",
+   "name": "b4_rat"
+  },
+  "36": {
+   "file": "DATA/CITY.PSX",
+   "offset": 507460,
+   "length": 1210,
+   "crc32": "39cee054",
+   "name": "b5_flying_mutant_emitter"
+  },
+  "37": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 511204,
+   "length": 1460,
+   "crc32": "032bf11f",
+   "name": "b5_train"
+  },
+  "38": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 505997,
+   "length": 2140,
+   "crc32": "d4d1ba45",
+   "name": "b5_electric"
+  },
+  "39": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 518276,
+   "length": 728,
+   "crc32": "07196eae",
+   "name": "b5_croc"
+  },
+  "40": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 508137,
+   "length": 3340,
+   "crc32": "59888885",
+   "name": "b6_swat_gun"
+  },
+  "41": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 511477,
+   "length": 1416,
+   "crc32": "22d27c80",
+   "name": "b7_robot_gun"
+  },
+  "42": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 512893,
+   "length": 1104,
+   "crc32": "9599d096",
+   "name": "b8_whale"
+  },
+  "43": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 511840,
+   "length": 1118,
+   "crc32": "f8ea60d9",
+   "name": "b8_raptor_emitter"
+  },
+  "44": {
+   "file": "DATA/CITY.PSX",
+   "offset": 497644,
+   "length": 1952,
+   "crc32": "026cac68",
+   "name": "e1_firehead"
+  },
+  "45": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 492468,
+   "length": 2236,
+   "crc32": "78f72e1d",
+   "name": "e1_gas"
+  },
+  "46": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 480800,
+   "length": 3721,
+   "crc32": "c9d41e4f",
+   "name": "e1_missile"
+  },
+  "47": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 484521,
+   "length": 3688,
+   "crc32": "1a4e5a5a",
+   "name": "e2_laser"
+  },
+  "48": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 488209,
+   "length": 1268,
+   "crc32": "65615c22",
+   "name": "e3_51laser"
+  },
+  "49": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464192,
+   "length": 576,
+   "crc32": "91b95978",
+   "change": {
+    "360": 7
+   },
+   "name": "e3_fusebox"
+  },
+  "50": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 493512,
+   "length": 14244,
+   "crc32": "04bf273c",
+   "name": "alt1_v_upv"
+  },
+  "51": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 437804,
+   "length": 15049,
+   "crc32": "26c0fc4f",
+   "name": "alt1_v_quad"
+  },
+  "52": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 470028,
+   "length": 16288,
+   "crc32": "ca15d058",
+   "name": "v_boat"
+  },
+  "53": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 488332,
+   "length": 17312,
+   "crc32": "7e4f9124",
+   "name": "v_kayak"
+  },
+  "54": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 495668,
+   "length": 3636,
+   "crc32": "aba182ff",
+   "name": "v_biggun"
+  },
+  "55": {
+   "file": "DATA/MINES.PSX",
+   "offset": 494020,
+   "length": 8456,
+   "crc32": "b0c74847",
+   "name": "v_minecart"
+  },
+  "56": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 497816,
+   "length": 5720,
+   "crc32": "734abcb6",
+   "name": "w_specl"
+  },
+  "57": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 452853,
+   "length": 5900,
+   "crc32": "97a4551e",
+   "name": "w_rain"
+  },
+  "58": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 486316,
+   "length": 6152,
+   "crc32": "f6da531c",
+   "name": "w_snow"
+  }
+ },
+ "itrev": {
+  "0": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 458765,
+   "length": 1248,
+   "crc32": "7449a778",
+   "name": "b1_bird"
+  },
+  "1": {
+   "file": "DATA/JUNGLE.PSX",
+   "offset": 456664,
+   "length": 1300,
+   "crc32": "681f00c7",
+   "name": "b1_tiger"
+  },
+  "2": {
+   "file": "DATA/TONYBOSS.PSX",
+   "offset": 464380,
+   "length": 13308,
+   "crc32": "4db66d60",
+   "name": "b1_tony"
+  },
+  "3": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 460616,
+   "length": 15648,
+   "crc32": "a6e0d753",
+   "name": "b1_willard"
+  },
+  "4": {
+   "file": "DATA/TRIBOSS.PSX",
+   "offset": 483976,
+   "length": 20564,
+   "crc32": "b66c3474",
+   "name": "b1_puna"
+  },
+  "5": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 486653,
+   "length": 2112,
+   "crc32": "75c6bf3b",
+   "name": "b1_winston"
+  },
+  "6": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464768,
+   "length": 22516,
+   "crc32": "edf70aed",
+   "name": "b1_sophia"
+  },
+  "7": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 494712,
+   "length": 2484,
+   "crc32": "1fd163ed",
+   "name": "b1_dog"
+  },
+  "8": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 513488,
+   "length": 2588,
+   "crc32": "f6cca325",
+   "name": "b1_diver"
+  },
+  "9": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 499320,
+   "length": 2996,
+   "crc32": "3d56b5b3",
+   "name": "b1_trex"
+  },
+  "10": {
+   "file": "DATA/MINES.PSX",
+   "offset": 504724,
+   "length": 4008,
+   "crc32": "1b82a2e8",
+   "name": "b1_burnt_mutant"
+  },
+  "11": {
+   "file": "DATA/TEMPLE.PSX",
+   "offset": 474948,
+   "length": 5292,
+   "crc32": "d000e598",
+   "name": "b1_shiva"
+  },
+  "12": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 488765,
+   "length": 1552,
+   "crc32": "37ece693",
+   "name": "b2_targets"
+  },
+  "13": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 476264,
+   "length": 3032,
+   "crc32": "dbc47d3f",
+   "name": "b2_white_soldier"
+  },
+  "14": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 502316,
+   "length": 3412,
+   "crc32": "d4627378",
+   "name": "b2_compy"
+  },
+  "15": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 506416,
+   "length": 4292,
+   "crc32": "12576928",
+   "name": "b2_security_guard"
+  },
+  "16": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 513612,
+   "length": 4656,
+   "crc32": "c8003750",
+   "name": "b2_lizard_man"
+  },
+  "17": {
+   "file": "DATA/DEMO3.PSX",
+   "offset": 502053,
+   "length": 4976,
+   "crc32": "82a10469",
+   "name": "b2_civvie"
+  },
+  "18": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 491961,
+   "length": 5004,
+   "crc32": "a89c47ae",
+   "name": "b2_mp1"
+  },
+  "19": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 460013,
+   "length": 6568,
+   "crc32": "c56d97db",
+   "name": "b2_monkey"
+  },
+  "20": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 466581,
+   "length": 1340,
+   "crc32": "dcc03b60",
+   "name": "b3_cobra"
+  },
+  "21": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 468464,
+   "length": 2560,
+   "crc32": "93ae748d",
+   "name": "b3_tribeaxe"
+  },
+  "22": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 505728,
+   "length": 3020,
+   "crc32": "b6886e07",
+   "name": "b3_raptor"
+  },
+  "23": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 497200,
+   "length": 4212,
+   "crc32": "a0cfeb7c",
+   "name": "b3_oilred"
+  },
+  "24": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 506036,
+   "length": 4272,
+   "crc32": "c5c6187c",
+   "name": "b3_punk"
+  },
+  "25": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 496965,
+   "length": 4416,
+   "crc32": "99cec82a",
+   "name": "b3_bob"
+  },
+  "26": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 510708,
+   "length": 4763,
+   "crc32": "bf54d947",
+   "name": "b3_london_mercenary"
+  },
+  "27": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 479296,
+   "length": 5352,
+   "crc32": "6d3b1bfd",
+   "name": "b3_flamethrower"
+  },
+  "28": {
+   "file": "DATA/CITY.PSX",
+   "offset": 499612,
+   "length": 5752,
+   "crc32": "8b69d942",
+   "name": "b3_mutant2"
+  },
+  "29": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 501412,
+   "length": 1876,
+   "crc32": "0b3128bb",
+   "name": "b4_boo_mutant"
+  },
+  "30": {
+   "file": "DATA/CITY.PSX",
+   "offset": 505364,
+   "length": 2096,
+   "crc32": "d4abe5b8",
+   "name": "b4_mutant1"
+  },
+  "31": {
+   "file": "DATA/MINES.PSX",
+   "offset": 514088,
+   "length": 2136,
+   "crc32": "fac673e6",
+   "name": "b4_mutant3"
+  },
+  "32": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 508748,
+   "length": 3080,
+   "crc32": "a1b35655",
+   "name": "b4_sthpac_mercenary"
+  },
+  "33": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 471024,
+   "length": 3380,
+   "crc32": "43dcb0e5",
+   "name": "b4_blowpipe"
+  },
+  "34": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 501381,
+   "length": 4616,
+   "crc32": "56040390",
+   "name": "b4_mp2"
+  },
+  "35": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 510308,
+   "length": 896,
+   "crc32": "cf088364",
+   "name": "b4_rat"
+  },
+  "36": {
+   "file": "DATA/CITY.PSX",
+   "offset": 507460,
+   "length": 1210,
+   "crc32": "39cee054",
+   "name": "b5_flying_mutant_emitter"
+  },
+  "37": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 511204,
+   "length": 1460,
+   "crc32": "032bf11f",
+   "name": "b5_train"
+  },
+  "38": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 505997,
+   "length": 2140,
+   "crc32": "d4d1ba45",
+   "name": "b5_electric"
+  },
+  "39": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 518276,
+   "length": 728,
+   "crc32": "07196eae",
+   "name": "b5_croc"
+  },
+  "40": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 508137,
+   "length": 3340,
+   "crc32": "59888885",
+   "name": "b6_swat_gun"
+  },
+  "41": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 511477,
+   "length": 1416,
+   "crc32": "22d27c80",
+   "name": "b7_robot_gun"
+  },
+  "42": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 512893,
+   "length": 1104,
+   "crc32": "9599d096",
+   "name": "b8_whale"
+  },
+  "43": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 511840,
+   "length": 1118,
+   "crc32": "f8ea60d9",
+   "name": "b8_raptor_emitter"
+  },
+  "44": {
+   "file": "DATA/CITY.PSX",
+   "offset": 497644,
+   "length": 1952,
+   "crc32": "026cac68",
+   "name": "e1_firehead"
+  },
+  "45": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 492468,
+   "length": 2236,
+   "crc32": "78f72e1d",
+   "name": "e1_gas"
+  },
+  "46": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 480800,
+   "length": 3721,
+   "crc32": "c9d41e4f",
+   "name": "e1_missile"
+  },
+  "47": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 484521,
+   "length": 3688,
+   "crc32": "1a4e5a5a",
+   "name": "e2_laser"
+  },
+  "48": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 488209,
+   "length": 1268,
+   "crc32": "65615c22",
+   "name": "e3_51laser"
+  },
+  "49": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464192,
+   "length": 576,
+   "crc32": "91b95978",
+   "change": {
+    "360": 7
+   },
+   "name": "e3_fusebox"
+  },
+  "50": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 493512,
+   "length": 14244,
+   "crc32": "04bf273c",
+   "name": "alt1_v_upv"
+  },
+  "51": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 437804,
+   "length": 15049,
+   "crc32": "26c0fc4f",
+   "name": "alt1_v_quad"
+  },
+  "52": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 470028,
+   "length": 16288,
+   "crc32": "ca15d058",
+   "name": "v_boat"
+  },
+  "53": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 488332,
+   "length": 17312,
+   "crc32": "7e4f9124",
+   "name": "v_kayak"
+  },
+  "54": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 495668,
+   "length": 3636,
+   "crc32": "aba182ff",
+   "name": "v_biggun"
+  },
+  "55": {
+   "file": "DATA/MINES.PSX",
+   "offset": 494020,
+   "length": 8456,
+   "crc32": "b0c74847",
+   "name": "v_minecart"
+  },
+  "56": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 497816,
+   "length": 5720,
+   "crc32": "734abcb6",
+   "name": "w_specl"
+  },
+  "57": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 452853,
+   "length": 5900,
+   "crc32": "97a4551e",
+   "name": "w_rain"
+  },
+  "58": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 486316,
+   "length": 6152,
+   "crc32": "f6da531c",
+   "name": "w_snow"
+  }
+ },
+ "sprev": {
+  "0": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 458765,
+   "length": 1248,
+   "crc32": "7449a778",
+   "name": "b1_bird"
+  },
+  "1": {
+   "file": "DATA/JUNGLE.PSX",
+   "offset": 456664,
+   "length": 1300,
+   "crc32": "681f00c7",
+   "name": "b1_tiger"
+  },
+  "2": {
+   "file": "DATA/TONYBOSS.PSX",
+   "offset": 464380,
+   "length": 13308,
+   "crc32": "94e07c96",
+   "name": "b1_tony"
+  },
+  "3": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 460616,
+   "length": 15648,
+   "crc32": "a6e0d753",
+   "name": "b1_willard"
+  },
+  "4": {
+   "file": "DATA/TRIBOSS.PSX",
+   "offset": 483976,
+   "length": 20564,
+   "crc32": "b66c3474",
+   "name": "b1_puna"
+  },
+  "5": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 486653,
+   "length": 2112,
+   "crc32": "75c6bf3b",
+   "name": "b1_winston"
+  },
+  "6": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464768,
+   "length": 22516,
+   "crc32": "edf70aed",
+   "name": "b1_sophia"
+  },
+  "7": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 494712,
+   "length": 2484,
+   "crc32": "1fd163ed",
+   "name": "b1_dog"
+  },
+  "8": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 513488,
+   "length": 2588,
+   "crc32": "f6cca325",
+   "name": "b1_diver"
+  },
+  "9": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 499320,
+   "length": 2996,
+   "crc32": "3d56b5b3",
+   "name": "b1_trex"
+  },
+  "10": {
+   "file": "DATA/MINES.PSX",
+   "offset": 504724,
+   "length": 4008,
+   "crc32": "1b82a2e8",
+   "name": "b1_burnt_mutant"
+  },
+  "11": {
+   "file": "DATA/TEMPLE.PSX",
+   "offset": 474948,
+   "length": 5292,
+   "crc32": "d000e598",
+   "name": "b1_shiva"
+  },
+  "12": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 488765,
+   "length": 1552,
+   "crc32": "37ece693",
+   "name": "b2_targets"
+  },
+  "13": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 476264,
+   "length": 3032,
+   "crc32": "dbc47d3f",
+   "name": "b2_white_soldier"
+  },
+  "14": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 502316,
+   "length": 3412,
+   "crc32": "d4627378",
+   "name": "b2_compy"
+  },
+  "15": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 506416,
+   "length": 4292,
+   "crc32": "12576928",
+   "name": "b2_security_guard"
+  },
+  "16": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 513612,
+   "length": 4656,
+   "crc32": "c8003750",
+   "name": "b2_lizard_man"
+  },
+  "17": {
+   "file": "DATA/DEMO3.PSX",
+   "offset": 502053,
+   "length": 4976,
+   "crc32": "82a10469",
+   "name": "b2_civvie"
+  },
+  "18": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 491961,
+   "length": 5004,
+   "crc32": "a89c47ae",
+   "name": "b2_mp1"
+  },
+  "19": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 460013,
+   "length": 6568,
+   "crc32": "c56d97db",
+   "name": "b2_monkey"
+  },
+  "20": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 466581,
+   "length": 1340,
+   "crc32": "dcc03b60",
+   "name": "b3_cobra"
+  },
+  "21": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 468464,
+   "length": 2560,
+   "crc32": "999f836d",
+   "name": "b3_tribeaxe"
+  },
+  "22": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 505728,
+   "length": 3020,
+   "crc32": "b6886e07",
+   "name": "b3_raptor"
+  },
+  "23": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 497200,
+   "length": 4212,
+   "crc32": "a0cfeb7c",
+   "name": "b3_oilred"
+  },
+  "24": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 506036,
+   "length": 4272,
+   "crc32": "c5c6187c",
+   "name": "b3_punk"
+  },
+  "25": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 496965,
+   "length": 4416,
+   "crc32": "99cec82a",
+   "name": "b3_bob"
+  },
+  "26": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 510708,
+   "length": 4763,
+   "crc32": "bf54d947",
+   "name": "b3_london_mercenary"
+  },
+  "27": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 479296,
+   "length": 5352,
+   "crc32": "6d3b1bfd",
+   "name": "b3_flamethrower"
+  },
+  "28": {
+   "file": "DATA/CITY.PSX",
+   "offset": 499612,
+   "length": 5752,
+   "crc32": "8b69d942",
+   "name": "b3_mutant2"
+  },
+  "29": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 501412,
+   "length": 1876,
+   "crc32": "0b3128bb",
+   "name": "b4_boo_mutant"
+  },
+  "30": {
+   "file": "DATA/CITY.PSX",
+   "offset": 505364,
+   "length": 2096,
+   "crc32": "d4abe5b8",
+   "name": "b4_mutant1"
+  },
+  "31": {
+   "file": "DATA/MINES.PSX",
+   "offset": 514088,
+   "length": 2136,
+   "crc32": "fac673e6",
+   "name": "b4_mutant3"
+  },
+  "32": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 508748,
+   "length": 3080,
+   "crc32": "a1b35655",
+   "name": "b4_sthpac_mercenary"
+  },
+  "33": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 471024,
+   "length": 3380,
+   "crc32": "43dcb0e5",
+   "name": "b4_blowpipe"
+  },
+  "34": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 501381,
+   "length": 4616,
+   "crc32": "56040390",
+   "name": "b4_mp2"
+  },
+  "35": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 510308,
+   "length": 896,
+   "crc32": "cf088364",
+   "name": "b4_rat"
+  },
+  "36": {
+   "file": "DATA/CITY.PSX",
+   "offset": 507460,
+   "length": 1210,
+   "crc32": "39cee054",
+   "name": "b5_flying_mutant_emitter"
+  },
+  "37": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 511204,
+   "length": 1460,
+   "crc32": "032bf11f",
+   "name": "b5_train"
+  },
+  "38": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 505997,
+   "length": 2140,
+   "crc32": "d4d1ba45",
+   "name": "b5_electric"
+  },
+  "39": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 518276,
+   "length": 728,
+   "crc32": "07196eae",
+   "name": "b5_croc"
+  },
+  "40": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 508137,
+   "length": 3340,
+   "crc32": "59888885",
+   "name": "b6_swat_gun"
+  },
+  "41": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 511477,
+   "length": 1416,
+   "crc32": "22d27c80",
+   "name": "b7_robot_gun"
+  },
+  "42": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 512893,
+   "length": 1104,
+   "crc32": "9599d096",
+   "name": "b8_whale"
+  },
+  "43": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 511840,
+   "length": 1118,
+   "crc32": "f8ea60d9",
+   "name": "b8_raptor_emitter"
+  },
+  "44": {
+   "file": "DATA/CITY.PSX",
+   "offset": 497644,
+   "length": 1952,
+   "crc32": "026cac68",
+   "name": "e1_firehead"
+  },
+  "45": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 492468,
+   "length": 2236,
+   "crc32": "78f72e1d",
+   "name": "e1_gas"
+  },
+  "46": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 480800,
+   "length": 3721,
+   "crc32": "c9d41e4f",
+   "name": "e1_missile"
+  },
+  "47": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 484521,
+   "length": 3688,
+   "crc32": "1a4e5a5a",
+   "name": "e2_laser"
+  },
+  "48": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 488209,
+   "length": 1268,
+   "crc32": "65615c22",
+   "name": "e3_51laser"
+  },
+  "49": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464192,
+   "length": 576,
+   "crc32": "91b95978",
+   "change": {
+    "360": 7
+   },
+   "name": "e3_fusebox"
+  },
+  "50": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 493512,
+   "length": 14244,
+   "crc32": "04bf273c",
+   "name": "alt1_v_upv"
+  },
+  "51": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 437804,
+   "length": 15049,
+   "crc32": "26c0fc4f",
+   "name": "alt1_v_quad"
+  },
+  "52": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 470028,
+   "length": 16288,
+   "crc32": "ca15d058",
+   "name": "v_boat"
+  },
+  "53": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 488332,
+   "length": 17312,
+   "crc32": "7e4f9124",
+   "name": "v_kayak"
+  },
+  "54": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 495668,
+   "length": 3636,
+   "crc32": "aba182ff",
+   "name": "v_biggun"
+  },
+  "55": {
+   "file": "DATA/MINES.PSX",
+   "offset": 494020,
+   "length": 8456,
+   "crc32": "b0c74847",
+   "name": "v_minecart"
+  },
+  "56": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 497816,
+   "length": 5720,
+   "crc32": "734abcb6",
+   "name": "w_specl"
+  },
+  "57": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 452853,
+   "length": 5900,
+   "crc32": "97a4551e",
+   "name": "w_rain"
+  },
+  "58": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 486316,
+   "length": 6152,
+   "crc32": "f6da531c",
+   "name": "w_snow"
+  }
+ },
+ "jp": {
+  "0": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 458773,
+   "length": 1248,
+   "crc32": "46d40bda",
+   "name": "b1_bird"
+  },
+  "1": {
+   "file": "DATA/JUNGLE.PSX",
+   "offset": 458312,
+   "length": 1300,
+   "crc32": "fc020a3e",
+   "name": "b1_tiger"
+  },
+  "2": {
+   "file": "DATA/TONYBOSS.PSX",
+   "offset": 466028,
+   "length": 13308,
+   "crc32": "5284f688",
+   "name": "b1_tony"
+  },
+  "3": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 462264,
+   "length": 15648,
+   "crc32": "13f62684",
+   "name": "b1_willard"
+  },
+  "4": {
+   "file": "DATA/TRIBOSS.PSX",
+   "offset": 485624,
+   "length": 20564,
+   "crc32": "32358351",
+   "name": "b1_puna"
+  },
+  "5": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 488309,
+   "length": 2112,
+   "crc32": "2e67d12e",
+   "name": "b1_winston"
+  },
+  "6": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 466416,
+   "length": 22516,
+   "crc32": "600015d0",
+   "name": "b1_sophia"
+  },
+  "7": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 496360,
+   "length": 2484,
+   "crc32": "461d234e",
+   "name": "b1_dog"
+  },
+  "8": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 515144,
+   "length": 2588,
+   "crc32": "c1a643a2",
+   "name": "b1_diver"
+  },
+  "9": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 500976,
+   "length": 2996,
+   "crc32": "64ce9a4d",
+   "name": "b1_trex"
+  },
+  "10": {
+   "file": "DATA/MINES.PSX",
+   "offset": 506380,
+   "length": 4008,
+   "crc32": "bcb77a76",
+   "name": "b1_burnt_mutant"
+  },
+  "11": {
+   "file": "DATA/TEMPLE.PSX",
+   "offset": 476596,
+   "length": 5292,
+   "crc32": "6fe27678",
+   "name": "b1_shiva"
+  },
+  "12": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 490421,
+   "length": 1552,
+   "crc32": "2523b843",
+   "name": "b2_targets"
+  },
+  "13": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 477912,
+   "length": 3032,
+   "crc32": "06f47900",
+   "name": "b2_white_soldier"
+  },
+  "14": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 503972,
+   "length": 3412,
+   "crc32": "fbe06d20",
+   "name": "b2_compy"
+  },
+  "15": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 508064,
+   "length": 4292,
+   "crc32": "f8eb1164",
+   "name": "b2_security_guard"
+  },
+  "16": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 515268,
+   "length": 4656,
+   "crc32": "6fc36ade",
+   "name": "b2_lizard_man"
+  },
+  "17": {
+   "file": "DATA/DEMO3.PSX",
+   "offset": 502061,
+   "length": 4976,
+   "crc32": "731afbbf",
+   "name": "b2_civvie"
+  },
+  "18": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 493609,
+   "length": 5004,
+   "crc32": "4662dbc5",
+   "name": "b2_mp1"
+  },
+  "19": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 460021,
+   "length": 6568,
+   "crc32": "e7b1c66a",
+   "name": "b2_monkey"
+  },
+  "20": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 466589,
+   "length": 1340,
+   "crc32": "6e11e1dc",
+   "name": "b3_cobra"
+  },
+  "21": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 470112,
+   "length": 2560,
+   "crc32": "ef68655f",
+   "name": "b3_tribeaxe"
+  },
+  "22": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 507384,
+   "length": 3020,
+   "crc32": "33a8a262",
+   "name": "b3_raptor"
+  },
+  "23": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 498848,
+   "length": 4212,
+   "crc32": "6fe066e8",
+   "name": "b3_oilred"
+  },
+  "24": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 506036,
+   "length": 4272,
+   "crc32": "a5afabfe",
+   "name": "b3_punk"
+  },
+  "25": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 498613,
+   "length": 4416,
+   "crc32": "e8184297",
+   "name": "b3_bob"
+  },
+  "26": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 512356,
+   "length": 4763,
+   "crc32": "d835c15f",
+   "name": "b3_london_mercenary"
+  },
+  "27": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 480944,
+   "length": 5352,
+   "crc32": "3e608978",
+   "name": "b3_flamethrower"
+  },
+  "28": {
+   "file": "DATA/CITY.PSX",
+   "offset": 501260,
+   "length": 5752,
+   "crc32": "73c5405c",
+   "name": "b3_mutant2"
+  },
+  "29": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 503060,
+   "length": 1876,
+   "crc32": "13760263",
+   "name": "b4_boo_mutant"
+  },
+  "30": {
+   "file": "DATA/CITY.PSX",
+   "offset": 507012,
+   "length": 2096,
+   "crc32": "03d44cbc",
+   "name": "b4_mutant1"
+  },
+  "31": {
+   "file": "DATA/MINES.PSX",
+   "offset": 515744,
+   "length": 2136,
+   "crc32": "867d21d3",
+   "name": "b4_mutant3"
+  },
+  "32": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 510404,
+   "length": 3080,
+   "crc32": "6bcc6c79",
+   "name": "b4_sthpac_mercenary"
+  },
+  "33": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 472672,
+   "length": 3380,
+   "crc32": "a84ca0f6",
+   "name": "b4_blowpipe"
+  },
+  "34": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 503029,
+   "length": 4616,
+   "crc32": "16cbd5be",
+   "name": "b4_mp2"
+  },
+  "35": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 510308,
+   "length": 896,
+   "crc32": "8c28626c",
+   "name": "b4_rat"
+  },
+  "36": {
+   "file": "DATA/CITY.PSX",
+   "offset": 509108,
+   "length": 1210,
+   "crc32": "b7c395a4",
+   "name": "b5_flying_mutant_emitter"
+  },
+  "37": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 511204,
+   "length": 1460,
+   "crc32": "47020016",
+   "name": "b5_train"
+  },
+  "38": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 507645,
+   "length": 2140,
+   "crc32": "ec8f6060",
+   "name": "b5_electric"
+  },
+  "39": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 519932,
+   "length": 728,
+   "crc32": "49b47f84",
+   "name": "b5_croc"
+  },
+  "40": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 509785,
+   "length": 3340,
+   "crc32": "c7e11b1f",
+   "name": "b6_swat_gun"
+  },
+  "41": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 513125,
+   "length": 1416,
+   "crc32": "707f1567",
+   "name": "b7_robot_gun"
+  },
+  "42": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 514541,
+   "length": 1104,
+   "crc32": "0981c71d",
+   "name": "b8_whale"
+  },
+  "43": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 513496,
+   "length": 1118,
+   "crc32": "981b8ce9",
+   "name": "b8_raptor_emitter"
+  },
+  "44": {
+   "file": "DATA/CITY.PSX",
+   "offset": 499292,
+   "length": 1952,
+   "crc32": "90b15183",
+   "name": "e1_firehead"
+  },
+  "45": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 494116,
+   "length": 2236,
+   "crc32": "ffe93e60",
+   "name": "e1_gas"
+  },
+  "46": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 482448,
+   "length": 3721,
+   "crc32": "eb4a55a6",
+   "name": "e1_missile"
+  },
+  "47": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 486169,
+   "length": 3688,
+   "crc32": "11b6fef5",
+   "name": "e2_laser"
+  },
+  "48": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 489857,
+   "length": 1268,
+   "crc32": "450edbb8",
+   "name": "e3_51laser"
+  },
+  "49": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 465840,
+   "length": 576,
+   "crc32": "ff0d4234",
+   "change": {
+    "360": 7
+   },
+   "name": "e3_fusebox"
+  },
+  "50": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 495160,
+   "length": 14252,
+   "crc32": "c3cc5b60",
+   "name": "alt2_v_upv"
+  },
+  "51": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 437804,
+   "length": 15057,
+   "crc32": "1e222794",
+   "name": "alt2_v_quad"
+  },
+  "52": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 471676,
+   "length": 16288,
+   "crc32": "2ebf6c65",
+   "name": "v_boat"
+  },
+  "53": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 489980,
+   "length": 17320,
+   "crc32": "4e5a7456",
+   "name": "alt1_v_kayak"
+  },
+  "54": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 497316,
+   "length": 3644,
+   "crc32": "fbb3c57a",
+   "name": "alt1_v_biggun"
+  },
+  "55": {
+   "file": "DATA/MINES.PSX",
+   "offset": 495668,
+   "length": 8464,
+   "crc32": "460074f4",
+   "name": "alt1_v_minecart"
+  },
+  "56": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 497816,
+   "length": 5720,
+   "crc32": "e17dd09d",
+   "name": "w_specl"
+  },
+  "57": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 452861,
+   "length": 5900,
+   "crc32": "3aa9511b",
+   "name": "w_rain"
+  },
+  "58": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 487964,
+   "length": 6152,
+   "crc32": "b4637651",
+   "name": "w_snow"
+  }
+ },
+ "jp2": {
+  "0": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 458773,
+   "length": 1248,
+   "crc32": "2a29a5c9",
+   "name": "b1_bird"
+  },
+  "1": {
+   "file": "DATA/JUNGLE.PSX",
+   "offset": 456664,
+   "length": 1300,
+   "crc32": "1582e31d",
+   "name": "b1_tiger"
+  },
+  "2": {
+   "file": "DATA/TONYBOSS.PSX",
+   "offset": 464380,
+   "length": 13308,
+   "crc32": "53c8ecce",
+   "name": "b1_tony"
+  },
+  "3": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 460616,
+   "length": 15648,
+   "crc32": "6dbc3fdb",
+   "name": "b1_willard"
+  },
+  "4": {
+   "file": "DATA/TRIBOSS.PSX",
+   "offset": 483976,
+   "length": 20564,
+   "crc32": "bc32c648",
+   "name": "b1_puna"
+  },
+  "5": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 486661,
+   "length": 2112,
+   "crc32": "fb29bcf0",
+   "name": "b1_winston"
+  },
+  "6": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464768,
+   "length": 22516,
+   "crc32": "5a3b5cf1",
+   "name": "b1_sophia"
+  },
+  "7": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 494712,
+   "length": 2484,
+   "crc32": "9e5438d3",
+   "name": "b1_dog"
+  },
+  "8": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 513496,
+   "length": 2588,
+   "crc32": "acb7d9ba",
+   "name": "b1_diver"
+  },
+  "9": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 499328,
+   "length": 2996,
+   "crc32": "c7fb0b32",
+   "name": "b1_trex"
+  },
+  "10": {
+   "file": "DATA/MINES.PSX",
+   "offset": 504732,
+   "length": 4008,
+   "crc32": "6f760f44",
+   "name": "b1_burnt_mutant"
+  },
+  "11": {
+   "file": "DATA/TEMPLE.PSX",
+   "offset": 474948,
+   "length": 5292,
+   "crc32": "0076e566",
+   "name": "b1_shiva"
+  },
+  "12": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 488773,
+   "length": 1552,
+   "crc32": "af7321bc",
+   "name": "b2_targets"
+  },
+  "13": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 476264,
+   "length": 3032,
+   "crc32": "15325090",
+   "name": "b2_white_soldier"
+  },
+  "14": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 502324,
+   "length": 3412,
+   "crc32": "31bbe8e5",
+   "name": "b2_compy"
+  },
+  "15": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 506416,
+   "length": 4292,
+   "crc32": "7b4f5a5b",
+   "name": "b2_security_guard"
+  },
+  "16": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 513620,
+   "length": 4656,
+   "crc32": "608e8aa4",
+   "name": "b2_lizard_man"
+  },
+  "17": {
+   "file": "DATA/DEMO3.PSX",
+   "offset": 502061,
+   "length": 4976,
+   "crc32": "0d9cd82a",
+   "name": "b2_civvie"
+  },
+  "18": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 491961,
+   "length": 5004,
+   "crc32": "90c61328",
+   "name": "b2_mp1"
+  },
+  "19": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 460021,
+   "length": 6568,
+   "crc32": "61e515e9",
+   "name": "b2_monkey"
+  },
+  "20": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 466589,
+   "length": 1340,
+   "crc32": "286ffa58",
+   "name": "b3_cobra"
+  },
+  "21": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 468464,
+   "length": 2560,
+   "crc32": "7062e6c2",
+   "name": "b3_tribeaxe"
+  },
+  "22": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 505736,
+   "length": 3020,
+   "crc32": "6a0ea73a",
+   "name": "b3_raptor"
+  },
+  "23": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 497200,
+   "length": 4212,
+   "crc32": "0222a51d",
+   "name": "b3_oilred"
+  },
+  "24": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 506036,
+   "length": 4272,
+   "crc32": "5d1642aa",
+   "name": "b3_punk"
+  },
+  "25": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 496965,
+   "length": 4416,
+   "crc32": "41203ec2",
+   "name": "b3_bob"
+  },
+  "26": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 510708,
+   "length": 4763,
+   "crc32": "8cd3471a",
+   "name": "b3_london_mercenary"
+  },
+  "27": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 479296,
+   "length": 5352,
+   "crc32": "048bd846",
+   "name": "b3_flamethrower"
+  },
+  "28": {
+   "file": "DATA/CITY.PSX",
+   "offset": 499612,
+   "length": 5752,
+   "crc32": "8a1b9a26",
+   "name": "b3_mutant2"
+  },
+  "29": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 501412,
+   "length": 1876,
+   "crc32": "f1aecc12",
+   "name": "b4_boo_mutant"
+  },
+  "30": {
+   "file": "DATA/CITY.PSX",
+   "offset": 505364,
+   "length": 2096,
+   "crc32": "b73a90ac",
+   "name": "b4_mutant1"
+  },
+  "31": {
+   "file": "DATA/MINES.PSX",
+   "offset": 514096,
+   "length": 2136,
+   "crc32": "3bfa1a8c",
+   "name": "b4_mutant3"
+  },
+  "32": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 508756,
+   "length": 3080,
+   "crc32": "b3b9c86c",
+   "name": "b4_sthpac_mercenary"
+  },
+  "33": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 471024,
+   "length": 3380,
+   "crc32": "6ead819b",
+   "name": "b4_blowpipe"
+  },
+  "34": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 501381,
+   "length": 4616,
+   "crc32": "ed87f383",
+   "name": "b4_mp2"
+  },
+  "35": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 510308,
+   "length": 896,
+   "crc32": "1a473544",
+   "name": "b4_rat"
+  },
+  "36": {
+   "file": "DATA/CITY.PSX",
+   "offset": 507460,
+   "length": 1210,
+   "crc32": "be0b9d31",
+   "name": "b5_flying_mutant_emitter"
+  },
+  "37": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 511204,
+   "length": 1460,
+   "crc32": "d630aa6b",
+   "name": "b5_train"
+  },
+  "38": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 505997,
+   "length": 2140,
+   "crc32": "856a475c",
+   "name": "b5_electric"
+  },
+  "39": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 518284,
+   "length": 728,
+   "crc32": "70bb8e96",
+   "name": "b5_croc"
+  },
+  "40": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 508137,
+   "length": 3340,
+   "crc32": "bbaf2fa0",
+   "name": "b6_swat_gun"
+  },
+  "41": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 511477,
+   "length": 1416,
+   "crc32": "5d7b64f8",
+   "name": "b7_robot_gun"
+  },
+  "42": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 512893,
+   "length": 1104,
+   "crc32": "6fbe5559",
+   "name": "b8_whale"
+  },
+  "43": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 511848,
+   "length": 1118,
+   "crc32": "9ac88772",
+   "name": "b8_raptor_emitter"
+  },
+  "44": {
+   "file": "DATA/CITY.PSX",
+   "offset": 497644,
+   "length": 1952,
+   "crc32": "53420a4c",
+   "name": "e1_firehead"
+  },
+  "45": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 492468,
+   "length": 2236,
+   "crc32": "6359e4b2",
+   "name": "e1_gas"
+  },
+  "46": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 480800,
+   "length": 3721,
+   "crc32": "d378b52c",
+   "name": "e1_missile"
+  },
+  "47": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 484521,
+   "length": 3688,
+   "crc32": "5cea062b",
+   "name": "e2_laser"
+  },
+  "48": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 488209,
+   "length": 1268,
+   "crc32": "9b66ede5",
+   "name": "e3_51laser"
+  },
+  "49": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464192,
+   "length": 576,
+   "crc32": "a9ff3663",
+   "change": {
+    "360": 7
+   },
+   "name": "e3_fusebox"
+  },
+  "50": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 493512,
+   "length": 14252,
+   "crc32": "10e40710",
+   "name": "alt2_v_upv"
+  },
+  "51": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 437804,
+   "length": 15057,
+   "crc32": "54e1d432",
+   "name": "alt2_v_quad"
+  },
+  "52": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 470028,
+   "length": 16288,
+   "crc32": "a8afb744",
+   "name": "v_boat"
+  },
+  "53": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 488332,
+   "length": 17320,
+   "crc32": "c4ee11ab",
+   "name": "alt1_v_kayak"
+  },
+  "54": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 495668,
+   "length": 3644,
+   "crc32": "6b7a88b6",
+   "name": "alt1_v_biggun"
+  },
+  "55": {
+   "file": "DATA/MINES.PSX",
+   "offset": 494020,
+   "length": 8464,
+   "crc32": "be551664",
+   "name": "alt1_v_minecart"
+  },
+  "56": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 497816,
+   "length": 5720,
+   "crc32": "4e7fffa6",
+   "name": "w_specl"
+  },
+  "57": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 452861,
+   "length": 5900,
+   "crc32": "0438fab1",
+   "name": "w_rain"
+  },
+  "58": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 486316,
+   "length": 6152,
+   "crc32": "34e3aa9c",
+   "name": "w_snow"
+  }
+ },
+ "as": {
+  "0": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 458773,
+   "length": 1248,
+   "crc32": "a9362403",
+   "name": "b1_bird"
+  },
+  "1": {
+   "file": "DATA/JUNGLE.PSX",
+   "offset": 458312,
+   "length": 1300,
+   "crc32": "4083e97f",
+   "name": "b1_tiger"
+  },
+  "2": {
+   "file": "DATA/TONYBOSS.PSX",
+   "offset": 466028,
+   "length": 13308,
+   "crc32": "ad11d4b4",
+   "name": "b1_tony"
+  },
+  "3": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 462264,
+   "length": 15648,
+   "crc32": "a62f9217",
+   "name": "b1_willard"
+  },
+  "4": {
+   "file": "DATA/TRIBOSS.PSX",
+   "offset": 485624,
+   "length": 20564,
+   "crc32": "e9764b05",
+   "name": "b1_puna"
+  },
+  "5": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 488309,
+   "length": 2112,
+   "crc32": "16f8ba48",
+   "name": "b1_winston"
+  },
+  "6": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 466416,
+   "length": 22516,
+   "crc32": "e447e60c",
+   "name": "b1_sophia"
+  },
+  "7": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 496360,
+   "length": 2484,
+   "crc32": "4b3c86b5",
+   "name": "b1_dog"
+  },
+  "8": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 515144,
+   "length": 2588,
+   "crc32": "1f8a71d2",
+   "name": "b1_diver"
+  },
+  "9": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 500976,
+   "length": 2996,
+   "crc32": "1d349c16",
+   "name": "b1_trex"
+  },
+  "10": {
+   "file": "DATA/MINES.PSX",
+   "offset": 506380,
+   "length": 4008,
+   "crc32": "88a0acea",
+   "name": "b1_burnt_mutant"
+  },
+  "11": {
+   "file": "DATA/TEMPLE.PSX",
+   "offset": 476596,
+   "length": 5292,
+   "crc32": "9dc1c2a5",
+   "name": "b1_shiva"
+  },
+  "12": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 490421,
+   "length": 1552,
+   "crc32": "3ae4fd1d",
+   "name": "b2_targets"
+  },
+  "13": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 477912,
+   "length": 3032,
+   "crc32": "3bd54fb7",
+   "name": "b2_white_soldier"
+  },
+  "14": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 503972,
+   "length": 3412,
+   "crc32": "84158523",
+   "name": "b2_compy"
+  },
+  "15": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 508064,
+   "length": 4292,
+   "crc32": "ecd72cfb",
+   "name": "b2_security_guard"
+  },
+  "16": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 515268,
+   "length": 4656,
+   "crc32": "e03b52c8",
+   "name": "b2_lizard_man"
+  },
+  "17": {
+   "file": "DATA/DEMO3.PSX",
+   "offset": 502061,
+   "length": 4976,
+   "crc32": "095bc43c",
+   "name": "b2_civvie"
+  },
+  "18": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 493609,
+   "length": 5004,
+   "crc32": "16a9f9bb",
+   "name": "b2_mp1"
+  },
+  "19": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 460021,
+   "length": 6568,
+   "crc32": "e0e49c05",
+   "name": "b2_monkey"
+  },
+  "20": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 466589,
+   "length": 1340,
+   "crc32": "b9b226f7",
+   "name": "b3_cobra"
+  },
+  "21": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 470112,
+   "length": 2560,
+   "crc32": "e7ab77ec",
+   "name": "b3_tribeaxe"
+  },
+  "22": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 507384,
+   "length": 3020,
+   "crc32": "ad9ac5b7",
+   "name": "b3_raptor"
+  },
+  "23": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 498848,
+   "length": 4212,
+   "crc32": "b74a99ae",
+   "name": "b3_oilred"
+  },
+  "24": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 506036,
+   "length": 4272,
+   "crc32": "ad8f058e",
+   "name": "b3_punk"
+  },
+  "25": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 498613,
+   "length": 4416,
+   "crc32": "3daedec3",
+   "name": "b3_bob"
+  },
+  "26": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 512356,
+   "length": 4763,
+   "crc32": "4dab4ca8",
+   "name": "b3_london_mercenary"
+  },
+  "27": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 480944,
+   "length": 5352,
+   "crc32": "3f277866",
+   "name": "b3_flamethrower"
+  },
+  "28": {
+   "file": "DATA/CITY.PSX",
+   "offset": 501260,
+   "length": 5752,
+   "crc32": "ac7993da",
+   "name": "b3_mutant2"
+  },
+  "29": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 503060,
+   "length": 1876,
+   "crc32": "130c269f",
+   "name": "b4_boo_mutant"
+  },
+  "30": {
+   "file": "DATA/CITY.PSX",
+   "offset": 507012,
+   "length": 2096,
+   "crc32": "064cba4d",
+   "name": "b4_mutant1"
+  },
+  "31": {
+   "file": "DATA/MINES.PSX",
+   "offset": 515744,
+   "length": 2136,
+   "crc32": "164f5c0d",
+   "name": "b4_mutant3"
+  },
+  "32": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 510404,
+   "length": 3080,
+   "crc32": "fba8de86",
+   "name": "b4_sthpac_mercenary"
+  },
+  "33": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 472672,
+   "length": 3380,
+   "crc32": "9af14f12",
+   "name": "b4_blowpipe"
+  },
+  "34": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 503029,
+   "length": 4616,
+   "crc32": "a76f8fe6",
+   "name": "b4_mp2"
+  },
+  "35": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 510308,
+   "length": 896,
+   "crc32": "4356ab03",
+   "name": "b4_rat"
+  },
+  "36": {
+   "file": "DATA/CITY.PSX",
+   "offset": 509108,
+   "length": 1210,
+   "crc32": "58d7b168",
+   "name": "b5_flying_mutant_emitter"
+  },
+  "37": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 511204,
+   "length": 1460,
+   "crc32": "b2e052e4",
+   "name": "b5_train"
+  },
+  "38": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 507645,
+   "length": 2140,
+   "crc32": "8dadc942",
+   "name": "b5_electric"
+  },
+  "39": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 519932,
+   "length": 728,
+   "crc32": "0fb36b65",
+   "name": "b5_croc"
+  },
+  "40": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 509785,
+   "length": 3340,
+   "crc32": "e3d67af0",
+   "name": "b6_swat_gun"
+  },
+  "41": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 513125,
+   "length": 1416,
+   "crc32": "fdd9dd0d",
+   "name": "b7_robot_gun"
+  },
+  "42": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 514541,
+   "length": 1104,
+   "crc32": "c432ca3e",
+   "name": "b8_whale"
+  },
+  "43": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 513496,
+   "length": 1118,
+   "crc32": "9ef127b0",
+   "name": "b8_raptor_emitter"
+  },
+  "44": {
+   "file": "DATA/CITY.PSX",
+   "offset": 499292,
+   "length": 1952,
+   "crc32": "8f655e1b",
+   "name": "e1_firehead"
+  },
+  "45": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 494116,
+   "length": 2236,
+   "crc32": "c55e58db",
+   "name": "e1_gas"
+  },
+  "46": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 482448,
+   "length": 3721,
+   "crc32": "bd251df5",
+   "name": "e1_missile"
+  },
+  "47": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 486169,
+   "length": 3688,
+   "crc32": "d098c820",
+   "name": "e2_laser"
+  },
+  "48": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 489857,
+   "length": 1268,
+   "crc32": "38d446b8",
+   "name": "e3_51laser"
+  },
+  "49": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 465840,
+   "length": 576,
+   "crc32": "9e48a0d0",
+   "change": {
+    "360": 7
+   },
+   "name": "e3_fusebox"
+  },
+  "50": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 495160,
+   "length": 14252,
+   "crc32": "9c0e9432",
+   "name": "alt2_v_upv"
+  },
+  "51": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 437804,
+   "length": 15057,
+   "crc32": "add2e141",
+   "name": "alt2_v_quad"
+  },
+  "52": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 471676,
+   "length": 16288,
+   "crc32": "df6f23ef",
+   "name": "v_boat"
+  },
+  "53": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 489980,
+   "length": 17320,
+   "crc32": "2f0b7aff",
+   "name": "alt1_v_kayak"
+  },
+  "54": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 497316,
+   "length": 3644,
+   "crc32": "0a097ab5",
+   "name": "alt1_v_biggun"
+  },
+  "55": {
+   "file": "DATA/MINES.PSX",
+   "offset": 495668,
+   "length": 8464,
+   "crc32": "0d3cb91a",
+   "name": "alt1_v_minecart"
+  },
+  "56": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 497816,
+   "length": 5720,
+   "crc32": "7b59f231",
+   "name": "w_specl"
+  },
+  "57": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 452861,
+   "length": 5900,
+   "crc32": "d1d9b523",
+   "name": "w_rain"
+  },
+  "58": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 487964,
+   "length": 6152,
+   "crc32": "26a41cd4",
+   "name": "w_snow"
+  }
+ },
+ "as2": {
+  "0": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 458773,
+   "length": 1248,
+   "crc32": "7d8bd368",
+   "name": "b1_bird"
+  },
+  "1": {
+   "file": "DATA/JUNGLE.PSX",
+   "offset": 456664,
+   "length": 1300,
+   "crc32": "f1bd1d91",
+   "name": "b1_tiger"
+  },
+  "2": {
+   "file": "DATA/TONYBOSS.PSX",
+   "offset": 464380,
+   "length": 13308,
+   "crc32": "a0e9bbf2",
+   "name": "b1_tony"
+  },
+  "3": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 460616,
+   "length": 15648,
+   "crc32": "e633f866",
+   "name": "b1_willard"
+  },
+  "4": {
+   "file": "DATA/TRIBOSS.PSX",
+   "offset": 483976,
+   "length": 20564,
+   "crc32": "69914c03",
+   "name": "b1_puna"
+  },
+  "5": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 486661,
+   "length": 2112,
+   "crc32": "c8801fcc",
+   "name": "b1_winston"
+  },
+  "6": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464768,
+   "length": 22516,
+   "crc32": "a28c21c5",
+   "name": "b1_sophia"
+  },
+  "7": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 494712,
+   "length": 2484,
+   "crc32": "7264ce15",
+   "name": "b1_dog"
+  },
+  "8": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 513496,
+   "length": 2588,
+   "crc32": "e29235f2",
+   "name": "b1_diver"
+  },
+  "9": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 499328,
+   "length": 2996,
+   "crc32": "a1f0eadf",
+   "name": "b1_trex"
+  },
+  "10": {
+   "file": "DATA/MINES.PSX",
+   "offset": 504732,
+   "length": 4008,
+   "crc32": "c0227da0",
+   "name": "b1_burnt_mutant"
+  },
+  "11": {
+   "file": "DATA/TEMPLE.PSX",
+   "offset": 474948,
+   "length": 5292,
+   "crc32": "c0770100",
+   "name": "b1_shiva"
+  },
+  "12": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 488773,
+   "length": 1552,
+   "crc32": "61b446d5",
+   "name": "b2_targets"
+  },
+  "13": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 476264,
+   "length": 3032,
+   "crc32": "2dd0ae53",
+   "name": "b2_white_soldier"
+  },
+  "14": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 502324,
+   "length": 3412,
+   "crc32": "cf8337fb",
+   "name": "b2_compy"
+  },
+  "15": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 506416,
+   "length": 4292,
+   "crc32": "f5ddd23c",
+   "name": "b2_security_guard"
+  },
+  "16": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 513620,
+   "length": 4656,
+   "crc32": "0b6909d3",
+   "name": "b2_lizard_man"
+  },
+  "17": {
+   "file": "DATA/DEMO3.PSX",
+   "offset": 502061,
+   "length": 4976,
+   "crc32": "101f94e4",
+   "name": "b2_civvie"
+  },
+  "18": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 491961,
+   "length": 5004,
+   "crc32": "4aec76c9",
+   "name": "b2_mp1"
+  },
+  "19": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 460021,
+   "length": 6568,
+   "crc32": "adebc403",
+   "name": "b2_monkey"
+  },
+  "20": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 466589,
+   "length": 1340,
+   "crc32": "70a49df4",
+   "name": "b3_cobra"
+  },
+  "21": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 468464,
+   "length": 2560,
+   "crc32": "93fc3e73",
+   "name": "b3_tribeaxe"
+  },
+  "22": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 505736,
+   "length": 3020,
+   "crc32": "64f485b4",
+   "name": "b3_raptor"
+  },
+  "23": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 497200,
+   "length": 4212,
+   "crc32": "3396903e",
+   "name": "b3_oilred"
+  },
+  "24": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 506036,
+   "length": 4272,
+   "crc32": "5f69bf35",
+   "name": "b3_punk"
+  },
+  "25": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 496965,
+   "length": 4416,
+   "crc32": "f98f476a",
+   "name": "b3_bob"
+  },
+  "26": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 510708,
+   "length": 4763,
+   "crc32": "3790caa6",
+   "name": "b3_london_mercenary"
+  },
+  "27": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 479296,
+   "length": 5352,
+   "crc32": "81133672",
+   "name": "b3_flamethrower"
+  },
+  "28": {
+   "file": "DATA/CITY.PSX",
+   "offset": 499612,
+   "length": 5752,
+   "crc32": "de517187",
+   "name": "b3_mutant2"
+  },
+  "29": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 501412,
+   "length": 1876,
+   "crc32": "7c6d3034",
+   "name": "b4_boo_mutant"
+  },
+  "30": {
+   "file": "DATA/CITY.PSX",
+   "offset": 505364,
+   "length": 2096,
+   "crc32": "045cca43",
+   "name": "b4_mutant1"
+  },
+  "31": {
+   "file": "DATA/MINES.PSX",
+   "offset": 514096,
+   "length": 2136,
+   "crc32": "7dd5ad18",
+   "name": "b4_mutant3"
+  },
+  "32": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 508756,
+   "length": 3080,
+   "crc32": "84252c63",
+   "name": "b4_sthpac_mercenary"
+  },
+  "33": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 471024,
+   "length": 3380,
+   "crc32": "6b3104d0",
+   "name": "b4_blowpipe"
+  },
+  "34": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 501381,
+   "length": 4616,
+   "crc32": "f55c0a14",
+   "name": "b4_mp2"
+  },
+  "35": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 510308,
+   "length": 896,
+   "crc32": "d8cf855a",
+   "name": "b4_rat"
+  },
+  "36": {
+   "file": "DATA/CITY.PSX",
+   "offset": 507460,
+   "length": 1210,
+   "crc32": "c9913cb4",
+   "name": "b5_flying_mutant_emitter"
+  },
+  "37": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 511204,
+   "length": 1460,
+   "crc32": "0302d785",
+   "name": "b5_train"
+  },
+  "38": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 505997,
+   "length": 2140,
+   "crc32": "5784b092",
+   "name": "b5_electric"
+  },
+  "39": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 518284,
+   "length": 728,
+   "crc32": "d0a7b29f",
+   "name": "b5_croc"
+  },
+  "40": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 508137,
+   "length": 3340,
+   "crc32": "0c8a9912",
+   "name": "b6_swat_gun"
+  },
+  "41": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 511477,
+   "length": 1416,
+   "crc32": "61cd19da",
+   "name": "b7_robot_gun"
+  },
+  "42": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 512893,
+   "length": 1104,
+   "crc32": "61647253",
+   "name": "b8_whale"
+  },
+  "43": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 511848,
+   "length": 1118,
+   "crc32": "fe6d17d7",
+   "name": "b8_raptor_emitter"
+  },
+  "44": {
+   "file": "DATA/CITY.PSX",
+   "offset": 497644,
+   "length": 1952,
+   "crc32": "e63c1a0a",
+   "name": "e1_firehead"
+  },
+  "45": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 492468,
+   "length": 2236,
+   "crc32": "ed664f95",
+   "name": "e1_gas"
+  },
+  "46": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 480800,
+   "length": 3721,
+   "crc32": "dae87c5e",
+   "name": "e1_missile"
+  },
+  "47": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 484521,
+   "length": 3688,
+   "crc32": "fbc193a8",
+   "name": "e2_laser"
+  },
+  "48": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 488209,
+   "length": 1268,
+   "crc32": "eaa79217",
+   "name": "e3_51laser"
+  },
+  "49": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464192,
+   "length": 576,
+   "crc32": "d0df542b",
+   "change": {
+    "360": 7
+   },
+   "name": "e3_fusebox"
+  },
+  "50": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 493512,
+   "length": 14252,
+   "crc32": "d2d9961c",
+   "name": "alt2_v_upv"
+  },
+  "51": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 437804,
+   "length": 15057,
+   "crc32": "9cb723a9",
+   "name": "alt2_v_quad"
+  },
+  "52": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 470028,
+   "length": 16288,
+   "crc32": "910b947e",
+   "name": "v_boat"
+  },
+  "53": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 488332,
+   "length": 17320,
+   "crc32": "eb6fe551",
+   "name": "alt1_v_kayak"
+  },
+  "54": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 495668,
+   "length": 3644,
+   "crc32": "cf10356e",
+   "name": "alt1_v_biggun"
+  },
+  "55": {
+   "file": "DATA/MINES.PSX",
+   "offset": 494020,
+   "length": 8464,
+   "crc32": "decb75db",
+   "name": "alt1_v_minecart"
+  },
+  "56": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 497816,
+   "length": 5720,
+   "crc32": "46d0facf",
+   "name": "w_specl"
+  },
+  "57": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 452861,
+   "length": 5900,
+   "crc32": "c36de81e",
+   "name": "w_rain"
+  },
+  "58": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 486316,
+   "length": 6152,
+   "crc32": "f339e738",
+   "name": "w_snow"
+  }
+ },
+ "us10": {
+  "0": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 458721,
+   "length": 1248,
+   "crc32": "34d13884",
+   "name": "b1_bird"
+  },
+  "1": {
+   "file": "DATA/JUNGLE.PSX",
+   "offset": 456664,
+   "length": 1300,
+   "crc32": "d62e7610",
+   "name": "b1_tiger"
+  },
+  "2": {
+   "file": "DATA/TONYBOSS.PSX",
+   "offset": 464380,
+   "length": 13308,
+   "crc32": "9dc55196",
+   "name": "b1_tony"
+  },
+  "3": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 475648,
+   "length": 15648,
+   "crc32": "e91615c6",
+   "name": "b1_willard"
+  },
+  "4": {
+   "file": "DATA/TRIBOSS.PSX",
+   "offset": 483976,
+   "length": 20564,
+   "crc32": "85fb473b",
+   "name": "b1_puna"
+  },
+  "5": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 486609,
+   "length": 2112,
+   "crc32": "c015e44a",
+   "name": "b1_winston"
+  },
+  "6": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464768,
+   "length": 22516,
+   "crc32": "378f6f0a",
+   "name": "b1_sophia"
+  },
+  "7": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 498904,
+   "length": 2484,
+   "crc32": "aac06e5c",
+   "name": "b1_dog"
+  },
+  "8": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 513488,
+   "length": 2588,
+   "crc32": "dae1b978",
+   "name": "b1_diver"
+  },
+  "9": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 505564,
+   "length": 2996,
+   "crc32": "93b6376b",
+   "name": "b1_trex"
+  },
+  "10": {
+   "file": "DATA/MINES.PSX",
+   "offset": 507224,
+   "length": 4008,
+   "crc32": "13479d58",
+   "name": "b1_burnt_mutant"
+  },
+  "11": {
+   "file": "DATA/TEMPLE.PSX",
+   "offset": 474948,
+   "length": 5292,
+   "crc32": "168eb780",
+   "name": "b1_shiva"
+  },
+  "12": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 488721,
+   "length": 1552,
+   "crc32": "d3fdec5e",
+   "name": "b2_targets"
+  },
+  "13": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 491296,
+   "length": 3032,
+   "crc32": "f88d15ef",
+   "name": "b2_white_soldier"
+  },
+  "14": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 508560,
+   "length": 3412,
+   "crc32": "a21a0ff7",
+   "name": "b2_compy"
+  },
+  "15": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 508916,
+   "length": 4292,
+   "crc32": "60610733",
+   "name": "b2_security_guard"
+  },
+  "16": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 516112,
+   "length": 4656,
+   "crc32": "6d6df0f8",
+   "name": "b2_lizard_man"
+  },
+  "17": {
+   "file": "DATA/DEMO3.PSX",
+   "offset": 502009,
+   "length": 4976,
+   "crc32": "0fd32153",
+   "name": "b2_civvie"
+  },
+  "18": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 491961,
+   "length": 5004,
+   "crc32": "87e6393a",
+   "name": "b2_mp1"
+  },
+  "19": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 459969,
+   "length": 6568,
+   "crc32": "c1fd4835",
+   "name": "b2_monkey"
+  },
+  "20": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 466537,
+   "length": 1340,
+   "crc32": "39b026b5",
+   "name": "b3_cobra"
+  },
+  "21": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 468464,
+   "length": 2560,
+   "crc32": "df0be590",
+   "name": "b3_tribeaxe"
+  },
+  "22": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 511972,
+   "length": 3020,
+   "crc32": "93fa17fe",
+   "name": "b3_raptor"
+  },
+  "23": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 501392,
+   "length": 4212,
+   "crc32": "c4852f72",
+   "name": "b3_oilred"
+  },
+  "24": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 506036,
+   "length": 4272,
+   "crc32": "d026c458",
+   "name": "b3_punk"
+  },
+  "25": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 496965,
+   "length": 4416,
+   "crc32": "3fe27b68",
+   "name": "b3_bob"
+  },
+  "26": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 513208,
+   "length": 4763,
+   "crc32": "2c655a95",
+   "name": "b3_london_mercenary"
+  },
+  "27": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 494328,
+   "length": 5352,
+   "crc32": "f5c467c2",
+   "name": "b3_flamethrower"
+  },
+  "28": {
+   "file": "DATA/CITY.PSX",
+   "offset": 502112,
+   "length": 5752,
+   "crc32": "6f3a5ded",
+   "name": "b3_mutant2"
+  },
+  "29": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 505604,
+   "length": 1876,
+   "crc32": "8078682a",
+   "name": "b4_boo_mutant"
+  },
+  "30": {
+   "file": "DATA/CITY.PSX",
+   "offset": 507864,
+   "length": 2096,
+   "crc32": "ab9131f3",
+   "name": "b4_mutant1"
+  },
+  "31": {
+   "file": "DATA/MINES.PSX",
+   "offset": 516588,
+   "length": 2136,
+   "crc32": "139edaca",
+   "name": "b4_mutant3"
+  },
+  "32": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 514992,
+   "length": 3080,
+   "crc32": "41a25b96",
+   "name": "b4_sthpac_mercenary"
+  },
+  "33": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 471024,
+   "length": 3380,
+   "crc32": "cf2cb366",
+   "name": "b4_blowpipe"
+  },
+  "34": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 501381,
+   "length": 4616,
+   "crc32": "82611dd3",
+   "name": "b4_mp2"
+  },
+  "35": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 510308,
+   "length": 896,
+   "crc32": "303a376b",
+   "name": "b4_rat"
+  },
+  "36": {
+   "file": "DATA/CITY.PSX",
+   "offset": 509960,
+   "length": 1210,
+   "crc32": "ca50e129",
+   "name": "b5_flying_mutant_emitter"
+  },
+  "37": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 511204,
+   "length": 1460,
+   "crc32": "c95a9dd2",
+   "name": "b5_train"
+  },
+  "38": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 505997,
+   "length": 2140,
+   "crc32": "a279098d",
+   "name": "b5_electric"
+  },
+  "39": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 520776,
+   "length": 728,
+   "crc32": "f7851cbd",
+   "name": "b5_croc"
+  },
+  "40": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 508137,
+   "length": 3340,
+   "crc32": "980ee71d",
+   "name": "b6_swat_gun"
+  },
+  "41": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 511477,
+   "length": 1416,
+   "crc32": "34f215d9",
+   "name": "b7_robot_gun"
+  },
+  "42": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 512893,
+   "length": 1104,
+   "crc32": "6a790048",
+   "name": "b8_whale"
+  },
+  "43": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 518084,
+   "length": 1118,
+   "crc32": "41c769ed",
+   "name": "b8_raptor_emitter"
+  },
+  "44": {
+   "file": "DATA/CITY.PSX",
+   "offset": 500144,
+   "length": 1952,
+   "crc32": "93536d02",
+   "name": "e1_firehead"
+  },
+  "45": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 496660,
+   "length": 2236,
+   "crc32": "706fcc1e",
+   "name": "e1_gas"
+  },
+  "46": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 480800,
+   "length": 3721,
+   "crc32": "e6e66fd6",
+   "name": "e1_missile"
+  },
+  "47": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 484521,
+   "length": 3688,
+   "crc32": "10436a6e",
+   "name": "e2_laser"
+  },
+  "48": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 488209,
+   "length": 1268,
+   "crc32": "25edec0d",
+   "name": "e3_51laser"
+  },
+  "49": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464192,
+   "length": 576,
+   "crc32": "525125e4",
+   "change": {
+    "360": 7
+   },
+   "name": "e3_fusebox"
+  },
+  "50": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 493512,
+   "length": 14244,
+   "crc32": "d477488e",
+   "name": "alt1_v_upv"
+  },
+  "51": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 437804,
+   "length": 15005,
+   "crc32": "88b5b424",
+   "name": "v_quad"
+  },
+  "52": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 474220,
+   "length": 16288,
+   "crc32": "a4c1ac16",
+   "name": "v_boat"
+  },
+  "53": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 490832,
+   "length": 17312,
+   "crc32": "c99ebe17",
+   "name": "v_kayak"
+  },
+  "54": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 501912,
+   "length": 3636,
+   "crc32": "8c8b482b",
+   "name": "v_biggun"
+  },
+  "55": {
+   "file": "DATA/MINES.PSX",
+   "offset": 496520,
+   "length": 8456,
+   "crc32": "be6ab558",
+   "name": "v_minecart"
+  },
+  "56": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 497816,
+   "length": 5720,
+   "crc32": "e445a4f5",
+   "name": "w_specl"
+  },
+  "57": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 452809,
+   "length": 5900,
+   "crc32": "0387a4b0",
+   "name": "w_rain"
+  },
+  "58": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 490508,
+   "length": 6152,
+   "crc32": "d514b08d",
+   "name": "w_snow"
+  }
+ },
+ "uk": {
+  "0": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 458721,
+   "length": 1248,
+   "crc32": "853a8b2d",
+   "name": "b1_bird"
+  },
+  "1": {
+   "file": "DATA/JUNGLE.PSX",
+   "offset": 456664,
+   "length": 1300,
+   "crc32": "b572353d",
+   "name": "b1_tiger"
+  },
+  "2": {
+   "file": "DATA/TONYBOSS.PSX",
+   "offset": 464380,
+   "length": 13308,
+   "crc32": "5caeca61",
+   "name": "b1_tony"
+  },
+  "3": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 475648,
+   "length": 15648,
+   "crc32": "89b6297c",
+   "name": "b1_willard"
+  },
+  "4": {
+   "file": "DATA/TRIBOSS.PSX",
+   "offset": 483976,
+   "length": 20564,
+   "crc32": "3521c76e",
+   "name": "b1_puna"
+  },
+  "5": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 486609,
+   "length": 2112,
+   "crc32": "4f839552",
+   "name": "b1_winston"
+  },
+  "6": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464768,
+   "length": 22516,
+   "crc32": "0fdc10ef",
+   "name": "b1_sophia"
+  },
+  "7": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 498904,
+   "length": 2484,
+   "crc32": "cacd39b2",
+   "name": "b1_dog"
+  },
+  "8": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 513464,
+   "length": 2588,
+   "crc32": "9d36f56a",
+   "name": "b1_diver"
+  },
+  "9": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 505564,
+   "length": 2996,
+   "crc32": "54e140b2",
+   "name": "b1_trex"
+  },
+  "10": {
+   "file": "DATA/MINES.PSX",
+   "offset": 507224,
+   "length": 4008,
+   "crc32": "571464f7",
+   "name": "b1_burnt_mutant"
+  },
+  "11": {
+   "file": "DATA/TEMPLE.PSX",
+   "offset": 474948,
+   "length": 5292,
+   "crc32": "995a1e83",
+   "name": "b1_shiva"
+  },
+  "12": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 488721,
+   "length": 1552,
+   "crc32": "576f8c9f",
+   "name": "b2_targets"
+  },
+  "13": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 491296,
+   "length": 3032,
+   "crc32": "debf77fb",
+   "name": "b2_white_soldier"
+  },
+  "14": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 508560,
+   "length": 3412,
+   "crc32": "7e648c6f",
+   "name": "b2_compy"
+  },
+  "15": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 510100,
+   "length": 4292,
+   "crc32": "0752d6ee",
+   "name": "b2_security_guard"
+  },
+  "16": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 516112,
+   "length": 4656,
+   "crc32": "2f47dbc6",
+   "name": "b2_lizard_man"
+  },
+  "17": {
+   "file": "DATA/DEMO3.PSX",
+   "offset": 502009,
+   "length": 4976,
+   "crc32": "bb930057",
+   "name": "b2_civvie"
+  },
+  "18": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 491961,
+   "length": 5004,
+   "crc32": "87f6a5c3",
+   "name": "b2_mp1"
+  },
+  "19": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 459969,
+   "length": 6568,
+   "crc32": "cb57c749",
+   "name": "b2_monkey"
+  },
+  "20": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 466537,
+   "length": 1340,
+   "crc32": "59915b81",
+   "name": "b3_cobra"
+  },
+  "21": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 468464,
+   "length": 2560,
+   "crc32": "48de531d",
+   "name": "b3_tribeaxe"
+  },
+  "22": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 511972,
+   "length": 3020,
+   "crc32": "896b8feb",
+   "name": "b3_raptor"
+  },
+  "23": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 501392,
+   "length": 4212,
+   "crc32": "191c7037",
+   "name": "b3_oilred"
+  },
+  "24": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 506036,
+   "length": 4272,
+   "crc32": "6578463b",
+   "name": "b3_punk"
+  },
+  "25": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 496965,
+   "length": 4416,
+   "crc32": "4c9a9fee",
+   "name": "b3_bob"
+  },
+  "26": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 514392,
+   "length": 4763,
+   "crc32": "55e27cbb",
+   "name": "b3_london_mercenary"
+  },
+  "27": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 494328,
+   "length": 5352,
+   "crc32": "2f4ee203",
+   "name": "b3_flamethrower"
+  },
+  "28": {
+   "file": "DATA/CITY.PSX",
+   "offset": 502112,
+   "length": 5752,
+   "crc32": "36b0f205",
+   "name": "b3_mutant2"
+  },
+  "29": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 505604,
+   "length": 1876,
+   "crc32": "0359171e",
+   "name": "b4_boo_mutant"
+  },
+  "30": {
+   "file": "DATA/CITY.PSX",
+   "offset": 507864,
+   "length": 2096,
+   "crc32": "3824d115",
+   "name": "b4_mutant1"
+  },
+  "31": {
+   "file": "DATA/MINES.PSX",
+   "offset": 516588,
+   "length": 2136,
+   "crc32": "ddc8b0fb",
+   "name": "b4_mutant3"
+  },
+  "32": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 514992,
+   "length": 3080,
+   "crc32": "55e4a195",
+   "name": "b4_sthpac_mercenary"
+  },
+  "33": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 471024,
+   "length": 3380,
+   "crc32": "ba1d2627",
+   "name": "b4_blowpipe"
+  },
+  "34": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 501381,
+   "length": 4616,
+   "crc32": "aa4e60fd",
+   "name": "b4_mp2"
+  },
+  "35": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 510308,
+   "length": 896,
+   "crc32": "6cb8bcde",
+   "name": "b4_rat"
+  },
+  "36": {
+   "file": "DATA/CITY.PSX",
+   "offset": 509960,
+   "length": 1210,
+   "crc32": "5885e9ce",
+   "name": "b5_flying_mutant_emitter"
+  },
+  "37": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 511204,
+   "length": 1460,
+   "crc32": "154edba9",
+   "name": "b5_train"
+  },
+  "38": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 505997,
+   "length": 2140,
+   "crc32": "70801981",
+   "name": "b5_electric"
+  },
+  "39": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 520776,
+   "length": 728,
+   "crc32": "c8da267c",
+   "name": "b5_croc"
+  },
+  "40": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 508137,
+   "length": 3340,
+   "crc32": "f68c521a",
+   "name": "b6_swat_gun"
+  },
+  "41": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 511477,
+   "length": 1416,
+   "crc32": "af918836",
+   "name": "b7_robot_gun"
+  },
+  "42": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 512893,
+   "length": 1104,
+   "crc32": "987b6ada",
+   "name": "b8_whale"
+  },
+  "43": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 518084,
+   "length": 1118,
+   "crc32": "282b79be",
+   "name": "b8_raptor_emitter"
+  },
+  "44": {
+   "file": "DATA/CITY.PSX",
+   "offset": 500144,
+   "length": 1952,
+   "crc32": "0fdcb4e4",
+   "name": "e1_firehead"
+  },
+  "45": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 496660,
+   "length": 2236,
+   "crc32": "90919869",
+   "name": "e1_gas"
+  },
+  "46": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 480800,
+   "length": 3721,
+   "crc32": "116fe270",
+   "name": "e1_missile"
+  },
+  "47": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 484521,
+   "length": 3688,
+   "crc32": "ea01045a",
+   "name": "e2_laser"
+  },
+  "48": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 488209,
+   "length": 1268,
+   "crc32": "bd418027",
+   "name": "e3_51laser"
+  },
+  "49": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464192,
+   "length": 576,
+   "crc32": "f6d05350",
+   "change": {
+    "360": 7
+   },
+   "name": "e3_fusebox"
+  },
+  "50": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 493512,
+   "length": 14220,
+   "crc32": "a55224db",
+   "name": "v_upv"
+  },
+  "51": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 437804,
+   "length": 15005,
+   "crc32": "c5c4f4f9",
+   "name": "v_quad"
+  },
+  "52": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 474220,
+   "length": 16288,
+   "crc32": "582cdf70",
+   "name": "v_boat"
+  },
+  "53": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 490832,
+   "length": 17312,
+   "crc32": "7e4bdc2d",
+   "name": "v_kayak"
+  },
+  "54": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 501912,
+   "length": 3636,
+   "crc32": "150bd17a",
+   "name": "v_biggun"
+  },
+  "55": {
+   "file": "DATA/MINES.PSX",
+   "offset": 496520,
+   "length": 8456,
+   "crc32": "9c27db71",
+   "name": "v_minecart"
+  },
+  "56": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 497816,
+   "length": 5720,
+   "crc32": "9a41fdc3",
+   "name": "w_specl"
+  },
+  "57": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 452809,
+   "length": 5900,
+   "crc32": "81c53f90",
+   "name": "w_rain"
+  },
+  "58": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 490508,
+   "length": 6152,
+   "crc32": "2dc1801d",
+   "name": "w_snow"
+  }
+ },
+ "de": {
+  "0": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 458721,
+   "length": 1248,
+   "crc32": "853a8b2d",
+   "name": "b1_bird"
+  },
+  "1": {
+   "file": "DATA/JUNGLE.PSX",
+   "offset": 456664,
+   "length": 1300,
+   "crc32": "b572353d",
+   "name": "b1_tiger"
+  },
+  "2": {
+   "file": "DATA/TONYBOSS.PSX",
+   "offset": 464380,
+   "length": 13308,
+   "crc32": "6814c2bb",
+   "name": "b1_tony"
+  },
+  "3": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 475648,
+   "length": 15648,
+   "crc32": "89b6297c",
+   "name": "b1_willard"
+  },
+  "4": {
+   "file": "DATA/TRIBOSS.PSX",
+   "offset": 483976,
+   "length": 20564,
+   "crc32": "3521c76e",
+   "name": "b1_puna"
+  },
+  "5": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 486609,
+   "length": 2112,
+   "crc32": "4f839552",
+   "name": "b1_winston"
+  },
+  "6": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464768,
+   "length": 22516,
+   "crc32": "0fdc10ef",
+   "name": "b1_sophia"
+  },
+  "7": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 498904,
+   "length": 2484,
+   "crc32": "cacd39b2",
+   "name": "b1_dog"
+  },
+  "8": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 513464,
+   "length": 2588,
+   "crc32": "9d36f56a",
+   "name": "b1_diver"
+  },
+  "9": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 505564,
+   "length": 2996,
+   "crc32": "54e140b2",
+   "name": "b1_trex"
+  },
+  "10": {
+   "file": "DATA/MINES.PSX",
+   "offset": 507224,
+   "length": 4008,
+   "crc32": "571464f7",
+   "name": "b1_burnt_mutant"
+  },
+  "11": {
+   "file": "DATA/TEMPLE.PSX",
+   "offset": 474948,
+   "length": 5292,
+   "crc32": "995a1e83",
+   "name": "b1_shiva"
+  },
+  "12": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 488721,
+   "length": 1552,
+   "crc32": "576f8c9f",
+   "name": "b2_targets"
+  },
+  "13": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 491296,
+   "length": 3032,
+   "crc32": "debf77fb",
+   "name": "b2_white_soldier"
+  },
+  "14": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 508560,
+   "length": 3412,
+   "crc32": "7e648c6f",
+   "name": "b2_compy"
+  },
+  "15": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 510100,
+   "length": 4292,
+   "crc32": "0752d6ee",
+   "name": "b2_security_guard"
+  },
+  "16": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 516112,
+   "length": 4656,
+   "crc32": "2f47dbc6",
+   "name": "b2_lizard_man"
+  },
+  "17": {
+   "file": "DATA/DEMO3.PSX",
+   "offset": 502009,
+   "length": 4976,
+   "crc32": "bb930057",
+   "name": "b2_civvie"
+  },
+  "18": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 491961,
+   "length": 5004,
+   "crc32": "87f6a5c3",
+   "name": "b2_mp1"
+  },
+  "19": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 459969,
+   "length": 6568,
+   "crc32": "cb57c749",
+   "name": "b2_monkey"
+  },
+  "20": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 466537,
+   "length": 1340,
+   "crc32": "59915b81",
+   "name": "b3_cobra"
+  },
+  "21": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 468464,
+   "length": 2560,
+   "crc32": "f1ac5dec",
+   "name": "b3_tribeaxe"
+  },
+  "22": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 511972,
+   "length": 3020,
+   "crc32": "896b8feb",
+   "name": "b3_raptor"
+  },
+  "23": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 501392,
+   "length": 4212,
+   "crc32": "191c7037",
+   "name": "b3_oilred"
+  },
+  "24": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 506036,
+   "length": 4272,
+   "crc32": "6578463b",
+   "name": "b3_punk"
+  },
+  "25": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 496965,
+   "length": 4416,
+   "crc32": "4c9a9fee",
+   "name": "b3_bob"
+  },
+  "26": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 514392,
+   "length": 4763,
+   "crc32": "55e27cbb",
+   "name": "b3_london_mercenary"
+  },
+  "27": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 494328,
+   "length": 5352,
+   "crc32": "2f4ee203",
+   "name": "b3_flamethrower"
+  },
+  "28": {
+   "file": "DATA/CITY.PSX",
+   "offset": 502112,
+   "length": 5752,
+   "crc32": "36b0f205",
+   "name": "b3_mutant2"
+  },
+  "29": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 505604,
+   "length": 1876,
+   "crc32": "0359171e",
+   "name": "b4_boo_mutant"
+  },
+  "30": {
+   "file": "DATA/CITY.PSX",
+   "offset": 507864,
+   "length": 2096,
+   "crc32": "3824d115",
+   "name": "b4_mutant1"
+  },
+  "31": {
+   "file": "DATA/MINES.PSX",
+   "offset": 516588,
+   "length": 2136,
+   "crc32": "ddc8b0fb",
+   "name": "b4_mutant3"
+  },
+  "32": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 514992,
+   "length": 3080,
+   "crc32": "55e4a195",
+   "name": "b4_sthpac_mercenary"
+  },
+  "33": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 471024,
+   "length": 3380,
+   "crc32": "ba1d2627",
+   "name": "b4_blowpipe"
+  },
+  "34": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 501381,
+   "length": 4616,
+   "crc32": "aa4e60fd",
+   "name": "b4_mp2"
+  },
+  "35": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 510308,
+   "length": 896,
+   "crc32": "6cb8bcde",
+   "name": "b4_rat"
+  },
+  "36": {
+   "file": "DATA/CITY.PSX",
+   "offset": 509960,
+   "length": 1210,
+   "crc32": "5885e9ce",
+   "name": "b5_flying_mutant_emitter"
+  },
+  "37": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 511204,
+   "length": 1460,
+   "crc32": "154edba9",
+   "name": "b5_train"
+  },
+  "38": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 505997,
+   "length": 2140,
+   "crc32": "70801981",
+   "name": "b5_electric"
+  },
+  "39": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 520776,
+   "length": 728,
+   "crc32": "c8da267c",
+   "name": "b5_croc"
+  },
+  "40": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 508137,
+   "length": 3340,
+   "crc32": "f68c521a",
+   "name": "b6_swat_gun"
+  },
+  "41": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 511477,
+   "length": 1416,
+   "crc32": "af918836",
+   "name": "b7_robot_gun"
+  },
+  "42": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 512893,
+   "length": 1104,
+   "crc32": "987b6ada",
+   "name": "b8_whale"
+  },
+  "43": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 518084,
+   "length": 1118,
+   "crc32": "282b79be",
+   "name": "b8_raptor_emitter"
+  },
+  "44": {
+   "file": "DATA/CITY.PSX",
+   "offset": 500144,
+   "length": 1952,
+   "crc32": "0fdcb4e4",
+   "name": "e1_firehead"
+  },
+  "45": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 496660,
+   "length": 2236,
+   "crc32": "90919869",
+   "name": "e1_gas"
+  },
+  "46": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 480800,
+   "length": 3721,
+   "crc32": "116fe270",
+   "name": "e1_missile"
+  },
+  "47": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 484521,
+   "length": 3688,
+   "crc32": "ea01045a",
+   "name": "e2_laser"
+  },
+  "48": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 488209,
+   "length": 1268,
+   "crc32": "bd418027",
+   "name": "e3_51laser"
+  },
+  "49": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464192,
+   "length": 576,
+   "crc32": "f6d05350",
+   "change": {
+    "360": 7
+   },
+   "name": "e3_fusebox"
+  },
+  "50": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 493512,
+   "length": 14220,
+   "crc32": "a55224db",
+   "name": "v_upv"
+  },
+  "51": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 437804,
+   "length": 15005,
+   "crc32": "c5c4f4f9",
+   "name": "v_quad"
+  },
+  "52": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 474220,
+   "length": 16288,
+   "crc32": "582cdf70",
+   "name": "v_boat"
+  },
+  "53": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 490832,
+   "length": 17312,
+   "crc32": "7e4bdc2d",
+   "name": "v_kayak"
+  },
+  "54": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 501912,
+   "length": 3636,
+   "crc32": "150bd17a",
+   "name": "v_biggun"
+  },
+  "55": {
+   "file": "DATA/MINES.PSX",
+   "offset": 496520,
+   "length": 8456,
+   "crc32": "9c27db71",
+   "name": "v_minecart"
+  },
+  "56": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 497816,
+   "length": 5720,
+   "crc32": "9a41fdc3",
+   "name": "w_specl"
+  },
+  "57": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 452809,
+   "length": 5900,
+   "crc32": "81c53f90",
+   "name": "w_rain"
+  },
+  "58": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 490508,
+   "length": 6152,
+   "crc32": "2dc1801d",
+   "name": "w_snow"
+  }
+ },
+ "fr": {
+  "0": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 458721,
+   "length": 1248,
+   "crc32": "853a8b2d",
+   "name": "b1_bird"
+  },
+  "1": {
+   "file": "DATA/JUNGLE.PSX",
+   "offset": 456664,
+   "length": 1300,
+   "crc32": "b572353d",
+   "name": "b1_tiger"
+  },
+  "2": {
+   "file": "DATA/TONYBOSS.PSX",
+   "offset": 464380,
+   "length": 13308,
+   "crc32": "3ecddd52",
+   "name": "b1_tony"
+  },
+  "3": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 475648,
+   "length": 15648,
+   "crc32": "89b6297c",
+   "name": "b1_willard"
+  },
+  "4": {
+   "file": "DATA/TRIBOSS.PSX",
+   "offset": 483976,
+   "length": 20564,
+   "crc32": "3521c76e",
+   "name": "b1_puna"
+  },
+  "5": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 486609,
+   "length": 2112,
+   "crc32": "4f839552",
+   "name": "b1_winston"
+  },
+  "6": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464768,
+   "length": 22516,
+   "crc32": "0fdc10ef",
+   "name": "b1_sophia"
+  },
+  "7": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 498904,
+   "length": 2484,
+   "crc32": "cacd39b2",
+   "name": "b1_dog"
+  },
+  "8": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 513464,
+   "length": 2588,
+   "crc32": "9d36f56a",
+   "name": "b1_diver"
+  },
+  "9": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 505564,
+   "length": 2996,
+   "crc32": "54e140b2",
+   "name": "b1_trex"
+  },
+  "10": {
+   "file": "DATA/MINES.PSX",
+   "offset": 507224,
+   "length": 4008,
+   "crc32": "571464f7",
+   "name": "b1_burnt_mutant"
+  },
+  "11": {
+   "file": "DATA/TEMPLE.PSX",
+   "offset": 474948,
+   "length": 5292,
+   "crc32": "995a1e83",
+   "name": "b1_shiva"
+  },
+  "12": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 488721,
+   "length": 1552,
+   "crc32": "576f8c9f",
+   "name": "b2_targets"
+  },
+  "13": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 491296,
+   "length": 3032,
+   "crc32": "debf77fb",
+   "name": "b2_white_soldier"
+  },
+  "14": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 508560,
+   "length": 3412,
+   "crc32": "7e648c6f",
+   "name": "b2_compy"
+  },
+  "15": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 510100,
+   "length": 4292,
+   "crc32": "0752d6ee",
+   "name": "b2_security_guard"
+  },
+  "16": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 516112,
+   "length": 4656,
+   "crc32": "2f47dbc6",
+   "name": "b2_lizard_man"
+  },
+  "17": {
+   "file": "DATA/DEMO3.PSX",
+   "offset": 502009,
+   "length": 4976,
+   "crc32": "bb930057",
+   "name": "b2_civvie"
+  },
+  "18": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 491961,
+   "length": 5004,
+   "crc32": "87f6a5c3",
+   "name": "b2_mp1"
+  },
+  "19": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 459969,
+   "length": 6568,
+   "crc32": "cb57c749",
+   "name": "b2_monkey"
+  },
+  "20": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 466537,
+   "length": 1340,
+   "crc32": "59915b81",
+   "name": "b3_cobra"
+  },
+  "21": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 468464,
+   "length": 2560,
+   "crc32": "9ceea36d",
+   "name": "b3_tribeaxe"
+  },
+  "22": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 511972,
+   "length": 3020,
+   "crc32": "896b8feb",
+   "name": "b3_raptor"
+  },
+  "23": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 501392,
+   "length": 4212,
+   "crc32": "191c7037",
+   "name": "b3_oilred"
+  },
+  "24": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 506036,
+   "length": 4272,
+   "crc32": "6578463b",
+   "name": "b3_punk"
+  },
+  "25": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 496965,
+   "length": 4416,
+   "crc32": "4c9a9fee",
+   "name": "b3_bob"
+  },
+  "26": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 514392,
+   "length": 4763,
+   "crc32": "55e27cbb",
+   "name": "b3_london_mercenary"
+  },
+  "27": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 494328,
+   "length": 5352,
+   "crc32": "2f4ee203",
+   "name": "b3_flamethrower"
+  },
+  "28": {
+   "file": "DATA/CITY.PSX",
+   "offset": 502112,
+   "length": 5752,
+   "crc32": "36b0f205",
+   "name": "b3_mutant2"
+  },
+  "29": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 505604,
+   "length": 1876,
+   "crc32": "0359171e",
+   "name": "b4_boo_mutant"
+  },
+  "30": {
+   "file": "DATA/CITY.PSX",
+   "offset": 507864,
+   "length": 2096,
+   "crc32": "3824d115",
+   "name": "b4_mutant1"
+  },
+  "31": {
+   "file": "DATA/MINES.PSX",
+   "offset": 516588,
+   "length": 2136,
+   "crc32": "ddc8b0fb",
+   "name": "b4_mutant3"
+  },
+  "32": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 514992,
+   "length": 3080,
+   "crc32": "55e4a195",
+   "name": "b4_sthpac_mercenary"
+  },
+  "33": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 471024,
+   "length": 3380,
+   "crc32": "ba1d2627",
+   "name": "b4_blowpipe"
+  },
+  "34": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 501381,
+   "length": 4616,
+   "crc32": "aa4e60fd",
+   "name": "b4_mp2"
+  },
+  "35": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 510308,
+   "length": 896,
+   "crc32": "6cb8bcde",
+   "name": "b4_rat"
+  },
+  "36": {
+   "file": "DATA/CITY.PSX",
+   "offset": 509960,
+   "length": 1210,
+   "crc32": "5885e9ce",
+   "name": "b5_flying_mutant_emitter"
+  },
+  "37": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 511204,
+   "length": 1460,
+   "crc32": "154edba9",
+   "name": "b5_train"
+  },
+  "38": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 505997,
+   "length": 2140,
+   "crc32": "70801981",
+   "name": "b5_electric"
+  },
+  "39": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 520776,
+   "length": 728,
+   "crc32": "c8da267c",
+   "name": "b5_croc"
+  },
+  "40": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 508137,
+   "length": 3340,
+   "crc32": "f68c521a",
+   "name": "b6_swat_gun"
+  },
+  "41": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 511477,
+   "length": 1416,
+   "crc32": "af918836",
+   "name": "b7_robot_gun"
+  },
+  "42": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 512893,
+   "length": 1104,
+   "crc32": "987b6ada",
+   "name": "b8_whale"
+  },
+  "43": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 518084,
+   "length": 1118,
+   "crc32": "282b79be",
+   "name": "b8_raptor_emitter"
+  },
+  "44": {
+   "file": "DATA/CITY.PSX",
+   "offset": 500144,
+   "length": 1952,
+   "crc32": "0fdcb4e4",
+   "name": "e1_firehead"
+  },
+  "45": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 496660,
+   "length": 2236,
+   "crc32": "90919869",
+   "name": "e1_gas"
+  },
+  "46": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 480800,
+   "length": 3721,
+   "crc32": "116fe270",
+   "name": "e1_missile"
+  },
+  "47": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 484521,
+   "length": 3688,
+   "crc32": "ea01045a",
+   "name": "e2_laser"
+  },
+  "48": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 488209,
+   "length": 1268,
+   "crc32": "bd418027",
+   "name": "e3_51laser"
+  },
+  "49": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464192,
+   "length": 576,
+   "crc32": "f6d05350",
+   "change": {
+    "360": 7
+   },
+   "name": "e3_fusebox"
+  },
+  "50": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 493512,
+   "length": 14220,
+   "crc32": "a55224db",
+   "name": "v_upv"
+  },
+  "51": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 437804,
+   "length": 15005,
+   "crc32": "c5c4f4f9",
+   "name": "v_quad"
+  },
+  "52": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 474220,
+   "length": 16288,
+   "crc32": "582cdf70",
+   "name": "v_boat"
+  },
+  "53": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 490832,
+   "length": 17312,
+   "crc32": "7e4bdc2d",
+   "name": "v_kayak"
+  },
+  "54": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 501912,
+   "length": 3636,
+   "crc32": "150bd17a",
+   "name": "v_biggun"
+  },
+  "55": {
+   "file": "DATA/MINES.PSX",
+   "offset": 496520,
+   "length": 8456,
+   "crc32": "9c27db71",
+   "name": "v_minecart"
+  },
+  "56": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 497816,
+   "length": 5720,
+   "crc32": "9a41fdc3",
+   "name": "w_specl"
+  },
+  "57": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 452809,
+   "length": 5900,
+   "crc32": "81c53f90",
+   "name": "w_rain"
+  },
+  "58": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 490508,
+   "length": 6152,
+   "crc32": "2dc1801d",
+   "name": "w_snow"
+  }
+ },
+ "it": {
+  "0": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 458721,
+   "length": 1248,
+   "crc32": "853a8b2d",
+   "name": "b1_bird"
+  },
+  "1": {
+   "file": "DATA/JUNGLE.PSX",
+   "offset": 456664,
+   "length": 1300,
+   "crc32": "b572353d",
+   "name": "b1_tiger"
+  },
+  "2": {
+   "file": "DATA/TONYBOSS.PSX",
+   "offset": 464380,
+   "length": 13308,
+   "crc32": "5b63f19c",
+   "name": "b1_tony"
+  },
+  "3": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 475648,
+   "length": 15648,
+   "crc32": "89b6297c",
+   "name": "b1_willard"
+  },
+  "4": {
+   "file": "DATA/TRIBOSS.PSX",
+   "offset": 483976,
+   "length": 20564,
+   "crc32": "3521c76e",
+   "name": "b1_puna"
+  },
+  "5": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 486609,
+   "length": 2112,
+   "crc32": "4f839552",
+   "name": "b1_winston"
+  },
+  "6": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464768,
+   "length": 22516,
+   "crc32": "0fdc10ef",
+   "name": "b1_sophia"
+  },
+  "7": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 498904,
+   "length": 2484,
+   "crc32": "cacd39b2",
+   "name": "b1_dog"
+  },
+  "8": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 513464,
+   "length": 2588,
+   "crc32": "9d36f56a",
+   "name": "b1_diver"
+  },
+  "9": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 505564,
+   "length": 2996,
+   "crc32": "54e140b2",
+   "name": "b1_trex"
+  },
+  "10": {
+   "file": "DATA/MINES.PSX",
+   "offset": 507224,
+   "length": 4008,
+   "crc32": "571464f7",
+   "name": "b1_burnt_mutant"
+  },
+  "11": {
+   "file": "DATA/TEMPLE.PSX",
+   "offset": 474948,
+   "length": 5292,
+   "crc32": "995a1e83",
+   "name": "b1_shiva"
+  },
+  "12": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 488721,
+   "length": 1552,
+   "crc32": "576f8c9f",
+   "name": "b2_targets"
+  },
+  "13": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 491296,
+   "length": 3032,
+   "crc32": "debf77fb",
+   "name": "b2_white_soldier"
+  },
+  "14": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 508560,
+   "length": 3412,
+   "crc32": "7e648c6f",
+   "name": "b2_compy"
+  },
+  "15": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 510100,
+   "length": 4292,
+   "crc32": "0752d6ee",
+   "name": "b2_security_guard"
+  },
+  "16": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 516112,
+   "length": 4656,
+   "crc32": "2f47dbc6",
+   "name": "b2_lizard_man"
+  },
+  "17": {
+   "file": "DATA/DEMO3.PSX",
+   "offset": 502009,
+   "length": 4976,
+   "crc32": "bb930057",
+   "name": "b2_civvie"
+  },
+  "18": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 491961,
+   "length": 5004,
+   "crc32": "87f6a5c3",
+   "name": "b2_mp1"
+  },
+  "19": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 459969,
+   "length": 6568,
+   "crc32": "cb57c749",
+   "name": "b2_monkey"
+  },
+  "20": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 466537,
+   "length": 1340,
+   "crc32": "59915b81",
+   "name": "b3_cobra"
+  },
+  "21": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 468464,
+   "length": 2560,
+   "crc32": "c92d6e46",
+   "name": "b3_tribeaxe"
+  },
+  "22": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 511972,
+   "length": 3020,
+   "crc32": "896b8feb",
+   "name": "b3_raptor"
+  },
+  "23": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 501392,
+   "length": 4212,
+   "crc32": "191c7037",
+   "name": "b3_oilred"
+  },
+  "24": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 506036,
+   "length": 4272,
+   "crc32": "6578463b",
+   "name": "b3_punk"
+  },
+  "25": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 496965,
+   "length": 4416,
+   "crc32": "4c9a9fee",
+   "name": "b3_bob"
+  },
+  "26": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 514392,
+   "length": 4763,
+   "crc32": "55e27cbb",
+   "name": "b3_london_mercenary"
+  },
+  "27": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 494328,
+   "length": 5352,
+   "crc32": "2f4ee203",
+   "name": "b3_flamethrower"
+  },
+  "28": {
+   "file": "DATA/CITY.PSX",
+   "offset": 502112,
+   "length": 5752,
+   "crc32": "36b0f205",
+   "name": "b3_mutant2"
+  },
+  "29": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 505604,
+   "length": 1876,
+   "crc32": "0359171e",
+   "name": "b4_boo_mutant"
+  },
+  "30": {
+   "file": "DATA/CITY.PSX",
+   "offset": 507864,
+   "length": 2096,
+   "crc32": "3824d115",
+   "name": "b4_mutant1"
+  },
+  "31": {
+   "file": "DATA/MINES.PSX",
+   "offset": 516588,
+   "length": 2136,
+   "crc32": "ddc8b0fb",
+   "name": "b4_mutant3"
+  },
+  "32": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 514992,
+   "length": 3080,
+   "crc32": "55e4a195",
+   "name": "b4_sthpac_mercenary"
+  },
+  "33": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 471024,
+   "length": 3380,
+   "crc32": "ba1d2627",
+   "name": "b4_blowpipe"
+  },
+  "34": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 501381,
+   "length": 4616,
+   "crc32": "aa4e60fd",
+   "name": "b4_mp2"
+  },
+  "35": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 510308,
+   "length": 896,
+   "crc32": "6cb8bcde",
+   "name": "b4_rat"
+  },
+  "36": {
+   "file": "DATA/CITY.PSX",
+   "offset": 509960,
+   "length": 1210,
+   "crc32": "5885e9ce",
+   "name": "b5_flying_mutant_emitter"
+  },
+  "37": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 511204,
+   "length": 1460,
+   "crc32": "154edba9",
+   "name": "b5_train"
+  },
+  "38": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 505997,
+   "length": 2140,
+   "crc32": "70801981",
+   "name": "b5_electric"
+  },
+  "39": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 520776,
+   "length": 728,
+   "crc32": "c8da267c",
+   "name": "b5_croc"
+  },
+  "40": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 508137,
+   "length": 3340,
+   "crc32": "f68c521a",
+   "name": "b6_swat_gun"
+  },
+  "41": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 511477,
+   "length": 1416,
+   "crc32": "af918836",
+   "name": "b7_robot_gun"
+  },
+  "42": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 512893,
+   "length": 1104,
+   "crc32": "987b6ada",
+   "name": "b8_whale"
+  },
+  "43": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 518084,
+   "length": 1118,
+   "crc32": "282b79be",
+   "name": "b8_raptor_emitter"
+  },
+  "44": {
+   "file": "DATA/CITY.PSX",
+   "offset": 500144,
+   "length": 1952,
+   "crc32": "0fdcb4e4",
+   "name": "e1_firehead"
+  },
+  "45": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 496660,
+   "length": 2236,
+   "crc32": "90919869",
+   "name": "e1_gas"
+  },
+  "46": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 480800,
+   "length": 3721,
+   "crc32": "116fe270",
+   "name": "e1_missile"
+  },
+  "47": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 484521,
+   "length": 3688,
+   "crc32": "ea01045a",
+   "name": "e2_laser"
+  },
+  "48": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 488209,
+   "length": 1268,
+   "crc32": "bd418027",
+   "name": "e3_51laser"
+  },
+  "49": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464192,
+   "length": 576,
+   "crc32": "f6d05350",
+   "change": {
+    "360": 7
+   },
+   "name": "e3_fusebox"
+  },
+  "50": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 493512,
+   "length": 14220,
+   "crc32": "a55224db",
+   "name": "v_upv"
+  },
+  "51": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 437804,
+   "length": 15005,
+   "crc32": "c5c4f4f9",
+   "name": "v_quad"
+  },
+  "52": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 474220,
+   "length": 16288,
+   "crc32": "582cdf70",
+   "name": "v_boat"
+  },
+  "53": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 490832,
+   "length": 17312,
+   "crc32": "7e4bdc2d",
+   "name": "v_kayak"
+  },
+  "54": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 501912,
+   "length": 3636,
+   "crc32": "150bd17a",
+   "name": "v_biggun"
+  },
+  "55": {
+   "file": "DATA/MINES.PSX",
+   "offset": 496520,
+   "length": 8456,
+   "crc32": "9c27db71",
+   "name": "v_minecart"
+  },
+  "56": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 497816,
+   "length": 5720,
+   "crc32": "9a41fdc3",
+   "name": "w_specl"
+  },
+  "57": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 452809,
+   "length": 5900,
+   "crc32": "81c53f90",
+   "name": "w_rain"
+  },
+  "58": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 490508,
+   "length": 6152,
+   "crc32": "2dc1801d",
+   "name": "w_snow"
+  }
+ },
+ "sp": {
+  "0": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 458721,
+   "length": 1248,
+   "crc32": "853a8b2d",
+   "name": "b1_bird"
+  },
+  "1": {
+   "file": "DATA/JUNGLE.PSX",
+   "offset": 456664,
+   "length": 1300,
+   "crc32": "b572353d",
+   "name": "b1_tiger"
+  },
+  "2": {
+   "file": "DATA/TONYBOSS.PSX",
+   "offset": 464380,
+   "length": 13308,
+   "crc32": "2d3cc913",
+   "name": "b1_tony"
+  },
+  "3": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 475648,
+   "length": 15648,
+   "crc32": "89b6297c",
+   "name": "b1_willard"
+  },
+  "4": {
+   "file": "DATA/TRIBOSS.PSX",
+   "offset": 483976,
+   "length": 20564,
+   "crc32": "3521c76e",
+   "name": "b1_puna"
+  },
+  "5": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 486609,
+   "length": 2112,
+   "crc32": "4f839552",
+   "name": "b1_winston"
+  },
+  "6": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464768,
+   "length": 22516,
+   "crc32": "0fdc10ef",
+   "name": "b1_sophia"
+  },
+  "7": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 498904,
+   "length": 2484,
+   "crc32": "cacd39b2",
+   "name": "b1_dog"
+  },
+  "8": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 513464,
+   "length": 2588,
+   "crc32": "9d36f56a",
+   "name": "b1_diver"
+  },
+  "9": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 505564,
+   "length": 2996,
+   "crc32": "54e140b2",
+   "name": "b1_trex"
+  },
+  "10": {
+   "file": "DATA/MINES.PSX",
+   "offset": 507224,
+   "length": 4008,
+   "crc32": "571464f7",
+   "name": "b1_burnt_mutant"
+  },
+  "11": {
+   "file": "DATA/TEMPLE.PSX",
+   "offset": 474948,
+   "length": 5292,
+   "crc32": "995a1e83",
+   "name": "b1_shiva"
+  },
+  "12": {
+   "file": "DATA/HOUSE.PSX",
+   "offset": 488721,
+   "length": 1552,
+   "crc32": "576f8c9f",
+   "name": "b2_targets"
+  },
+  "13": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 491296,
+   "length": 3032,
+   "crc32": "debf77fb",
+   "name": "b2_white_soldier"
+  },
+  "14": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 508560,
+   "length": 3412,
+   "crc32": "7e648c6f",
+   "name": "b2_compy"
+  },
+  "15": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 510100,
+   "length": 4292,
+   "crc32": "0752d6ee",
+   "name": "b2_security_guard"
+  },
+  "16": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 516112,
+   "length": 4656,
+   "crc32": "2f47dbc6",
+   "name": "b2_lizard_man"
+  },
+  "17": {
+   "file": "DATA/DEMO3.PSX",
+   "offset": 502009,
+   "length": 4976,
+   "crc32": "bb930057",
+   "name": "b2_civvie"
+  },
+  "18": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 491961,
+   "length": 5004,
+   "crc32": "87f6a5c3",
+   "name": "b2_mp1"
+  },
+  "19": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 459969,
+   "length": 6568,
+   "crc32": "cb57c749",
+   "name": "b2_monkey"
+  },
+  "20": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 466537,
+   "length": 1340,
+   "crc32": "59915b81",
+   "name": "b3_cobra"
+  },
+  "21": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 468464,
+   "length": 2560,
+   "crc32": "197f1a4b",
+   "name": "b3_tribeaxe"
+  },
+  "22": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 511972,
+   "length": 3020,
+   "crc32": "896b8feb",
+   "name": "b3_raptor"
+  },
+  "23": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 501392,
+   "length": 4212,
+   "crc32": "191c7037",
+   "name": "b3_oilred"
+  },
+  "24": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 506036,
+   "length": 4272,
+   "crc32": "6578463b",
+   "name": "b3_punk"
+  },
+  "25": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 496965,
+   "length": 4416,
+   "crc32": "4c9a9fee",
+   "name": "b3_bob"
+  },
+  "26": {
+   "file": "DATA/ROOFS.PSX",
+   "offset": 514392,
+   "length": 4763,
+   "crc32": "55e27cbb",
+   "name": "b3_london_mercenary"
+  },
+  "27": {
+   "file": "DATA/CHAMBER.PSX",
+   "offset": 494328,
+   "length": 5352,
+   "crc32": "2f4ee203",
+   "name": "b3_flamethrower"
+  },
+  "28": {
+   "file": "DATA/CITY.PSX",
+   "offset": 502112,
+   "length": 5752,
+   "crc32": "36b0f205",
+   "name": "b3_mutant2"
+  },
+  "29": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 505604,
+   "length": 1876,
+   "crc32": "0359171e",
+   "name": "b4_boo_mutant"
+  },
+  "30": {
+   "file": "DATA/CITY.PSX",
+   "offset": 507864,
+   "length": 2096,
+   "crc32": "3824d115",
+   "name": "b4_mutant1"
+  },
+  "31": {
+   "file": "DATA/MINES.PSX",
+   "offset": 516588,
+   "length": 2136,
+   "crc32": "ddc8b0fb",
+   "name": "b4_mutant3"
+  },
+  "32": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 514992,
+   "length": 3080,
+   "crc32": "55e4a195",
+   "name": "b4_sthpac_mercenary"
+  },
+  "33": {
+   "file": "DATA/SHORE.PSX",
+   "offset": 471024,
+   "length": 3380,
+   "crc32": "ba1d2627",
+   "name": "b4_blowpipe"
+  },
+  "34": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 501381,
+   "length": 4616,
+   "crc32": "aa4e60fd",
+   "name": "b4_mp2"
+  },
+  "35": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 510308,
+   "length": 896,
+   "crc32": "6cb8bcde",
+   "name": "b4_rat"
+  },
+  "36": {
+   "file": "DATA/CITY.PSX",
+   "offset": 509960,
+   "length": 1210,
+   "crc32": "5885e9ce",
+   "name": "b5_flying_mutant_emitter"
+  },
+  "37": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 511204,
+   "length": 1460,
+   "crc32": "154edba9",
+   "name": "b5_train"
+  },
+  "38": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 505997,
+   "length": 2140,
+   "crc32": "70801981",
+   "name": "b5_electric"
+  },
+  "39": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 520776,
+   "length": 728,
+   "crc32": "c8da267c",
+   "name": "b5_croc"
+  },
+  "40": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 508137,
+   "length": 3340,
+   "crc32": "f68c521a",
+   "name": "b6_swat_gun"
+  },
+  "41": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 511477,
+   "length": 1416,
+   "crc32": "af918836",
+   "name": "b7_robot_gun"
+  },
+  "42": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 512893,
+   "length": 1104,
+   "crc32": "987b6ada",
+   "name": "b8_whale"
+  },
+  "43": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 518084,
+   "length": 1118,
+   "crc32": "282b79be",
+   "name": "b8_raptor_emitter"
+  },
+  "44": {
+   "file": "DATA/CITY.PSX",
+   "offset": 500144,
+   "length": 1952,
+   "crc32": "0fdcb4e4",
+   "name": "e1_firehead"
+  },
+  "45": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 496660,
+   "length": 2236,
+   "crc32": "90919869",
+   "name": "e1_gas"
+  },
+  "46": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 480800,
+   "length": 3721,
+   "crc32": "116fe270",
+   "name": "e1_missile"
+  },
+  "47": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 484521,
+   "length": 3688,
+   "crc32": "ea01045a",
+   "name": "e2_laser"
+  },
+  "48": {
+   "file": "DATA/AREA51.PSX",
+   "offset": 488209,
+   "length": 1268,
+   "crc32": "bd418027",
+   "name": "e3_51laser"
+  },
+  "49": {
+   "file": "DATA/OFFICE.PSX",
+   "offset": 464192,
+   "length": 576,
+   "crc32": "f6d05350",
+   "change": {
+    "360": 7
+   },
+   "name": "e3_fusebox"
+  },
+  "50": {
+   "file": "DATA/TOWER.PSX",
+   "offset": 493512,
+   "length": 14220,
+   "crc32": "a55224db",
+   "name": "v_upv"
+  },
+  "51": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 437804,
+   "length": 15005,
+   "crc32": "c5c4f4f9",
+   "name": "v_quad"
+  },
+  "52": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 474220,
+   "length": 16288,
+   "crc32": "582cdf70",
+   "name": "v_boat"
+  },
+  "53": {
+   "file": "DATA/RAPIDS.PSX",
+   "offset": 490832,
+   "length": 17312,
+   "crc32": "7e4bdc2d",
+   "name": "v_kayak"
+  },
+  "54": {
+   "file": "DATA/CRASH.PSX",
+   "offset": 501912,
+   "length": 3636,
+   "crc32": "150bd17a",
+   "name": "v_biggun"
+  },
+  "55": {
+   "file": "DATA/MINES.PSX",
+   "offset": 496520,
+   "length": 8456,
+   "crc32": "9c27db71",
+   "name": "v_minecart"
+  },
+  "56": {
+   "file": "DATA/DEMO1.PSX",
+   "offset": 497816,
+   "length": 5720,
+   "crc32": "9a41fdc3",
+   "name": "w_specl"
+  },
+  "57": {
+   "file": "DATA/DEMO2.PSX",
+   "offset": 452809,
+   "length": 5900,
+   "crc32": "81c53f90",
+   "name": "w_rain"
+  },
+  "58": {
+   "file": "DATA/ANTARC.PSX",
+   "offset": 490508,
+   "length": 6152,
+   "crc32": "2dc1801d",
+   "name": "w_snow"
+  }
+ }
+}

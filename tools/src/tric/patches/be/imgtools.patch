@@ -1,0 +1,45 @@
+@@ -1,5 +1,5 @@
+ /*
+- * Library that Contains some Functions Relating to Images
++ * Library that Contains some Functions Relating to Images (BE)
+  * Copyright (C) 2017  b122251
+  * 
+  * This program is free software: you can redistribute it and/or modify
+@@ -58,6 +58,37 @@
+ 	/* Checks bmp file */
+ 	if (bmp==NULL) return 1;
+ 	
++	/* Adjusts for Little-Endian file format */
++	size=(((size&0xFF000000)>>24)|((size&0x00FF0000)>>8)|
++	      ((size&0x0000FF00)<<8)|((size&0x000000FF)<<24));
++	imageOffset=(((imageOffset&0xFF000000)>>24)|
++	             ((imageOffset&0x00FF0000)>>8)|
++	             ((imageOffset&0x0000FF00)<<8)|
++	             ((imageOffset&0x000000FF)<<24));
++	width=(((width&0xFF000000)>>24)|((width&0x00FF0000)>>8)|
++	       ((width&0x0000FF00)<<8)|((width&0x000000FF)<<24));
++	height=(((height&0xFF000000)>>24)|((height&0x00FF0000)>>8)|
++		    ((height&0x0000FF00)<<8)|((height&0x000000FF)<<24));
++	compression=(((compression&0xFF000000)>>24)|
++	             ((compression&0x00FF0000)>>8)|
++	             ((compression&0x0000FF00)<<8)|
++	             ((compression&0x000000FF)<<24));
++	xres=(((xres&0xFF000000)>>24)|((xres&0x00FF0000)>>8)|
++	      ((xres&0x0000FF00)<<8)|((xres&0x000000FF)<<24));
++	yres=(((yres&0xFF000000)>>24)|((yres&0x00FF0000)>>8)|
++	      ((yres&0x0000FF00)<<8)|((yres&0x000000FF)<<24));
++	imageSize=(((imageSize&0xFF000000)>>24)|
++	           ((imageSize&0x00FF0000)>>8)|
++	           ((imageSize&0x0000FF00)<<8)|
++	           ((imageSize&0x000000FF)<<24));
++	colours=(((colours&0xFF000000)>>24)|((colours&0x00FF0000)>>8)|
++	         ((colours&0x0000FF00)<<8)|((colours&0x000000FF)<<24));
++	impColours=(((impColours&0xFF000000)>>24)|
++	            ((impColours&0x00FF0000)>>8)|
++	            ((impColours&0x0000FF00)<<8)|
++	            ((impColours&0x000000FF)<<24));
++	bpp=(((bpp&0xFF0000)>>8)|((bpp&0x00FF)<<8));
++	
+ 	/* Writes signature */
+ 	fseekret=fseek(bmp,0,SEEK_SET);
+ 	if (fseekret!=0) return 2;

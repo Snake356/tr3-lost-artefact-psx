@@ -1,0 +1,137 @@
+Tomb Raider : The Lost Artefact PS1-Conversion -- Project Directory
+===================================================================
+b122251
+
+This directory contains everything used in converting Tomb Raider: The Lost
+Artefact to the Sony Playstaton. This file exists as a guide through this
+directory, sould I ever wish to return to this project at some point in the
+future.
+
+NOTE (this fork, 2026): b122251's Linux programs (tools/bin) are not used any more. The levels
+are built on Windows with tools/windows_build.py,
+which compiles the tools from tools/src. The text below is b122251's original guide.
+
+TOP LEVEL DIRECTORIES
+---------------------
+The top-level directories are:
+	art:     Contains loading screens, logo's and other graphical artwork
+	bin:     Contains the game executable and patches
+	disc:    Contains the files on-disc and the disc-building project files
+	fonts:   Contains fonts used in this project (in title images and the like)
+	levels:  Contains the files and scripts needed to convert the levels
+	manual:  Contains the manual for the PC-version (MIGHT DELETE THIS LATER)
+	tombpsx: Contains the sources and scripts to make the TOMBPSX.DAT-files.
+	tools:   Contains all the tools used in converting the game
+
+ART
+---
+The art-directory contains two subdirectories:
+	loadscr: Contains the game's loading screens
+	logos:   Contains some logo's
+The art/loadscr-directory contains several subdirectories:
+	common: Contains the load screens and credit images common to all versions
+	de:     Contains the images specific to the German version
+	es:     Contains the images specific to the Spanish version
+	fr:     Contains the images specific to the French version
+	it:     Contains the images specific to the Italian version
+	uk:     Contains the images specific to the UK-version
+	us:     Contains the images specific to the US-version
+	src:    Contains the sources for these images
+The images are all in a format called RAW. This format is an RNC2-compressed
+15-bit BGR bitmap image. Conversion between this format and BMP is provided by
+the tool called tric (Tomb Raider Image Converter). This conversion is lossless.
+Usage:
+	tric tr3psx image.raw image.bmp /* To convert raw to bmp */
+	tric tr3psx image.bmp image.raw /* To convert bmp to raw */
+
+BIN
+---
+The bin-directory contains the following directories and files:
+	mod:      Contains the modified binaries
+	orig:     Contains the unmodified original binaries
+	parches:  Contains the patches to create the modified binaries
+	patch.sh: Handles patching.
+Every modification made to the game executables is done via patches. These
+patches are stored in the bin/patches-directory, in which the patches are
+organised by version of the game, and a file titled patches.txt gives a list of
+all the patches, explaining what they do.
+
+DISC
+----
+The disc-directory contains the following directories and files:
+	files:    Contains on-disc files that don't fit any other category
+	licenses: Contains the license files needed for building the discs
+	*.xml:    The XML-files needed to be passed to mkpsxiso to build the discs
+Each version of the game has its own xml-file to build the appropriate disc.
+To build the disc, run: mkpsxiso version.xml
+
+LEVELS
+------
+The levels-directory contains the following directories:
+	anims:    Contains the replacements for the movables and animations
+	geom:     Contains the scripts to modify world geometry
+	in:       Contains original unmodified level files
+	mesh:     Contains the needed changes to mesh data (in text form)
+	out:      Contains the converted finished levels
+	sfx:      Contains empty.wav (used to remove samples to save space
+	textures: Contains new texture data for the levels
+To convert the levels, run convert.sh. The conversion routine is a bit
+complicated, and the script copies the files into /tmp for the conversion,
+and copies the output back into the project directory.
+
+TOMBPSX
+-------
+The tombpsx-directory contains the following directories:
+	src: Contains the tombpsx script files in text-form
+	out: Contains the compiled TOMBPSX.DAT-files
+To convert the text-form files, simply run convert.sh.
+
+TOOLS
+-----
+In the tools-directory are two directories: src and bin. The src-directory
+contains the source code of every tool used in the conversion, and the bin-
+directory contains statically linked compiled versions of every tool for
+Linux (amd64), as that is the system I'm building this project on.
+	3texex: Tomb Raider III Texture Extractor
+		Extracts the texture data from a Tomb Raider III (TR2)-file and saves
+		it as a BMP-file.
+		Usage: ./3texex [level] [bmp-file]
+	3texrep: Tomb Raider III Texture Replacement Tool
+		Replaces the texture data in a Tomb Raider III (TR2)-file with the
+		image data from a BMP-file
+		Usage: ./3texrep [level] [bmp-file]
+	applyips: Tool that applies an IPS-patch to a file
+		Usage: ./applyips [file] [ips-file]
+	gameflow: Tool that makes a tombpc.dat or tombpsx.dat file
+		Usage: ./gameflow [file.txt]
+	meshsimp: Tool that reduces the number of vertices in a mesh
+		Usage: ./meshsimp [file] [numvertices]
+	mkpsxiso: Playstation Disc Image Builder
+		Usage: ./mkpsxiso file.xml
+	lpaq1: Data compression utility (used in packing this directory)
+		Usage: ./lpaq1 9 [infile] [outfile]
+		Usage: ./lpaq1 d [infile] [outfile]
+	texmod: Tomb Raider III Object Texture Modifier
+		Can extract or add an object texture.
+		Usage: ./texmod level.tr2 x [ObjectTexture]
+		Usage: ./texmod level.tr2 a [tile] [XCoordinate 0] [XPixel 0] [YCoordinate 0] [YPixel 0] [XCoordinate 1] [XPixel 1] [YCoordinate 1] [YPixel 1] [XCoordinate 2] [XPixel 2] [YCoordinate 2] [YPixel 2] [XCoordinate 3] [XPixel 3] [YCoordinate 3] [YPixel 3] [Attribute]
+	tr3mesh: Tomb Raider III Mesh Editor
+		Tool to either extract the mesh data as text, or replace the mesh data
+		based on a text-file.
+		Usage: ./tr3mesh [level file]             /* To extract the mesh data */
+		Usage: ./tr3mesh [level file] [text file] /* To replace the mesh data */
+	tric: Tomb Raider Image Converter
+		Tool to convert the various image types used in the Tomb Raider-games
+		Usage: ./tric [format] [input] [output]
+	trmod: Tomb Raider Level Modification Tool
+		General level editor. Has complex syntax.
+	troi: Tomb Raider Object Exporter/Importer
+		Either extracts or injects a block of data from NumAnimations to
+		NumSpriteTextures in a level file.
+		Usage: ./troi [level file] extract [output file]
+		Usage: ./troi [level file] inject [input file]
+	trsfx: Tomb Raider II/III SFX Editor
+		Can convert the MAIN.SFX file to a folder full of wave files, and
+		convert a folder full of wave files into a MAIN.SFX file.
+		Usage: ./trsfx [input] [output]
+	xarem: Program that overwrites a track in an xa-audio file with zeroes.

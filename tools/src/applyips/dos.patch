@@ -1,0 +1,43 @@
+@@ -1,5 +1,5 @@
+ /*
+- * ApplyIPS 3.0
++ * ApplyIPS 3.0 (DOS version)
+  * (A Tool that applies an IPS-patch to a file)
+  * --
+  * Copyright (C) 2017  b122251
+@@ -21,7 +21,7 @@
+ /* File Inclusions */
+ #include <stdio.h>
+ #include <stdlib.h>
+-#include <unistd.h>
++#include <io.h>
+ 
+ /* Macro Definitions */
+ #ifndef INT16
+@@ -94,6 +94,7 @@
+ 	INTU16 size; /* Size of the change */
+ 	int rlechange; /* Whether the change is RLE-compressed (0=No, 1=Yes) */
+ 	int rlevalue; /* Value of the RLE-compressed change */
++	int handle; /* File handle for low-level I/O */
+ 	size_t freesizet1; /* size_t for general use */
+ 	int freeint1; /* Integer for general use */
+ 	int retval=0; /* Return value for this function */
+@@ -304,11 +305,17 @@
+ 		freeint1=fclose(file);
+ 		if (freeint1!=0) retval=3;
+ 		file=NULL;
+-		freeint1=truncate(filepath,(off_t)offset);
++		handle=open(filepath,0x8004);
++		if (handle<0){
++			retval=7;
++			goto end;
++		}
++		freeint1=chsize(handle,offset);
+ 		if (freeint1!=0){
+ 			retval=7;
+ 			goto end;
+ 		}
++		close(handle);
+ 	}
+ 	
+ end:/* Frees buffer, closes files, and returns the function */

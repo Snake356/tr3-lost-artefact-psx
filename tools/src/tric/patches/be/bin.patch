@@ -1,0 +1,69 @@
+--- bin.c	2018-05-22 16:17:43.886296688 +0200
++++ binbe.c	2018-05-22 16:16:52.886179811 +0200
+@@ -1,5 +1,5 @@
+ /*
+- * Library for Converting between BIN (TR1SAT) and BMP
++ * Library for Converting between BIN (TR1SAT) and BMP (BE)
+  * Copyright (C) 2018  b122251
+  * 
+  * This program is free software: you can redistribute it and/or modify
+@@ -140,10 +140,10 @@
+ 		for (bufferpos=0;bufferpos<buffersize;bufferpos+=2){
+ 			memmove(&colour,buffer+bufferpos,2);
+ 			colour=(unsigned INT16)
+-			       ((((unsigned INT16)(colour&0xE000))>>8)|
+-			        (((unsigned INT16)(colour&0x1F00))<<2)|
+-			        (((unsigned INT16)(colour&0x0083))<<8)|
+-			        (((unsigned INT16)(colour&0x007C))>>2));
++			       ((((unsigned INT16)(colour&0x00E0))<<8)|
++			        (((unsigned INT16)(colour&0x001F))<<2)|
++			        (((unsigned INT16)(colour&0x8300))>>8)|
++			        (((unsigned INT16)(colour&0x7C00))>>2));
+ 			memmove(buffer+bufferpos,&colour,2);
+ 		}
+ 		
+@@ -244,6 +244,10 @@
+ 		retval=2;
+ 		goto end;
+ 	}
++	imagestart=(((imagestart&0xFF000000)>>24)|
++	            ((imagestart&0x00FF0000)>>8)|
++	            ((imagestart&0x0000FF00)<<8)|
++	            ((imagestart&0x000000FF)<<24));
+ 	
+ 	/* Reads width and height */
+ 	freeint1=fseek(bmp,18,SEEK_SET);
+@@ -261,6 +265,10 @@
+ 		retval=2;
+ 		goto end;
+ 	}
++	width=(((width&0xFF000000)>>24)|((width&0x00FF0000)>>8)|
++	       ((width&0x0000FF00)<<8)|((width&0x000000FF)<<24));
++	height=(((height&0xFF000000)>>24)|((height&0x00FF0000)>>8)|
++	        ((height&0x0000FF00)<<8)|((height&0x000000FF)<<24));
+ 	
+ 	/* Reads bbp */
+ 	freeint1=fseek(bmp,28,SEEK_SET);
+@@ -273,6 +281,7 @@
+ 		retval=2;
+ 		goto end;
+ 	}
++	freeshort1=(((freeshort1&0xFF00)>>8)|((freeshort1&0x00FF)<<8));
+ 	
+ 	/* Checks whether the image is 16 bits per pixel */
+ 	if (freeshort1!=16){
+@@ -339,10 +348,10 @@
+ 		for (bufferpos=0;bufferpos<buffersize;bufferpos+=2){
+ 			memmove(&colour,buffer+bufferpos,2);
+ 			colour=(unsigned INT16)
+-			       ((((unsigned INT16)(colour&0x8300))>>8)|
+-			        (((unsigned INT16)(colour&0x7C00))>>2)|
+-			        (((unsigned INT16)(colour&0x00E0))<<8)|
+-			        (((unsigned INT16)(colour&0x001F))<<2));
++			       ((((unsigned INT16)(colour&0x0083))<<8)|
++			        (((unsigned INT16)(colour&0x007C))>>2)|
++			        (((unsigned INT16)(colour&0xE000))>>8)|
++			        (((unsigned INT16)(colour&0x1F00))<<2));
+ 			memmove(buffer+bufferpos,&colour,2);
+ 		}
+ 		

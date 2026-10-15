@@ -1,0 +1,9 @@
+@@ -78,7 +78,7 @@
+ 	}
+ 	
+ 	/* Makes output directory */
+-	(void) mkdir(outDirPath,0755);
++	(void) mkdir(outDirPath);
+ 	
+ 	/* Allocates buffer */
+ 	buffer=NULL;

@@ -1,0 +1,53 @@
+asia1:
+Monkey line is at 4992C
+Autogun is at 49A3C
+Dog is at 49DF8
+Swat is at 4A9AC
+Lizard man is at 4ABD4
+Vulture is at 4B214
+Crocodile is at 4B850
+
+asia2:
+Monkey line is at 49928
+Autogun is at 49A38
+Dog is at 49DF4
+Swat is at 4A9A8
+Lizard man is at 4ABD0
+Vulture is at 4B210
+Crocodile is at 4B84C
+
+derev / frrev / sprev / ukrev:
+Monkey line is at 4968C
+Autogun is at 4979C
+Dog is at 49B58
+Swat is at 4A70C
+Lizard man is at 4A934
+Vulture is at 4AF74
+Crocodile is at 4B5B0
+
+jp1:
+Monkey line is at 4995C
+Autogun is at 49A6C
+Dog is at 49E18
+Swat is at 4A9CC
+Lizard man is at 4ABF4
+Vulture is at 4B244
+Crocodile is at 4B880
+
+jp2:
+Monkey line is at 49958
+Autogun is at 49A68
+Dog is at 49E14
+Swat is at 4A9C8
+Lizard man is at 4ABF0
+Vulture is at 4B240
+Crocodile is at 4B87C
+
+us:
+Monkey line is at 49684
+Autogun is at 49794
+Dog is at 49B50
+Swat is at 4A704
+Lizard man is at 4A92C
+Vulture is at 4AF6C
+Crocodile is at 4B5A8

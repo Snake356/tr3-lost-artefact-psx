@@ -1,0 +1,292 @@
+===============================
+  TOMB RAIDER 3 GOLD SPLIT PSX:
+===============================
+
+LEVEL PROGRESS:
+---------------
+    - DONE - Highland Fling (see BUGS section);
+    - DONE - Willard's Lair;
+    - DONE - Shakespeare Cliff (see BUGS section);
+    - DONE - Sleeping with the Fishes Part 1 (see BUGS section);
+    - DONE - Sleeping with the Fishes Part 2 (see BUGS section);
+    - DONE - It's a Madhouse!;
+    - DONE - Reunion (see BUGS section).
+
+
+
+TO DO:
+------
+    Art & text:
+    - Japanese [jp] translation: done (tombpsx/out/jp.dat, built by tools/make_jp_gameflow.py from the
+      Japanese TR3 TOMBPSX.DAT; 13 added glyphs in art/kanji/kanji_la.psx);
+    - Disc layouts us, uk, de, fr, it, sp, jp, jp2, as, as2 are complete and build (2TIM_4.22, b122251's
+      password-protected project archive from pack.sh, was dropped: the game never reads it; pack.sh,
+      unpack.sh and the lpaq1 packer are removed as well).
+      CREDIT01: UK, DE/FR/IT/SP PAL, the German NTSC disc, jp2 and as2 use credit01eu.raw (EU logo
+      "The Lost Artefact"); US uses credit01.raw (US logo "Lost Artifact"). jp and as (Japanese
+      discs) use their own title, legal and credit 1 pictures with the Japanese title added
+      (art/loadscr/jp/titlejap.raw, legaljap.raw, credit01jp.raw); jp2/as2 (English Disc 2) use the
+      UK title and legal pictures (as IT and SP do) under PIXJAP.
+    - Save crystal changes of 26.09.2026 done and confirmed in testing (Test 3).
+    - Japanese/Asian Disc 1 (jp, as) levels made easier like the original Japanese TR3 Disc 1 (29.09.2026,
+      levels by XeNoN3560 in levels/japan_edited): more pickups (save crystals,
+      medipacks, flares, ammo, the grenade launcher already in Highland Fling) and fewer traps; jp2/as2
+      keep the US content. In levels/convert.sh: each level is copied to <level>_jp.tr2 and changed with
+      levels/japan/<level>.txt (trmod commands made by tools/make_japan_commands.py, which checks that
+      items, FloorData and room faces then equal the finished Japan level); jp and as convert from it.
+      The grenade launcher pickup (object 167) had an emptied model in Highland Fling and Shakespeare Cliff
+      (the mesh optimisation empties unused models -> it showed Lara's hips/leg). It now uses the mesh of
+      its inventory object 192, which the level loads anyway (tools/share_model.py, no extra memory):
+      putting its own mesh back made Highland Fling freeze on load (least memory left of all levels:
+      rain, and the Japanese discs keep the Kanji font in RAM; 1,046,304 bytes froze, 1,044,300 loaded,
+      now 1,043,680). The Desert Eagle (162, in Willard's Lair in the Japan version) gets its own mesh
+      back in Shakespeare Cliff (tools/restore_model.py; its inventory model stands upright).
+      Checked for all levels: no other pickup can be carried into a level where its model is emptied,
+      and all emptied models of placed items are invisible helpers (as in the normal version).
+      Found on the way: editor leftovers (unused meshes/animations/object textures) cost Highland Fling
+      35 KB of load memory and froze it while loading (tools/strip_unused_tail.py removes them; the
+      command approach does not carry them over at all); two crystals had flags 0000 instead of 3E00
+      and could be picked up. Played on jp and as (10.10.2026).
+    - Room splits (29.09.2026, tried and removed): Reunion rooms 38/58 (all versions) and 14 big rooms of
+      Highland Fling (jp) were cut in two with tools/split_room.py (it also splits flipmap rooms and
+      checks both states). In testing they made no noticeable difference: in open areas both halves
+      stay visible and are drawn anyway. levels/convert.sh no longer splits; the tool stays for later.
+    - Draw distance and fog (29.09.2026 on Japanese Disc 1, since 01.10.2026 in every version): the
+      executable has no variables for these, the values are immediates in the drawing code (draw distance
+      20 blocks: vertex counters, object culling, room vertex transform, sprites; fog from 12 blocks over
+      8 blocks). bin/patches/<version>/reunionview.ips (tools/make_reunionview_ips.py) hooks
+      InitialiseLevel and writes its own values for each listed level into these 19 instructions (since
+      10.10.2026: Highland Fling draw distance 14 with the original fog 12/8, Reunion draw distance 12,
+      fog from 12 over 4 blocks), for every other level the original values, then flushes the
+      instruction cache. The routine sits in an unused library function
+      (Japanese/Asian executables) or in two unused game functions (other versions); none is referenced
+      by the executable, a code module or a disc file.
+    - Performance tests (Highland Fling, 26.09.2026): removing all 163 light sources, all 44 static
+      meshes (12 % of the faces) and the 6 smoke emitters made no noticeable difference on the PS1.
+      Room geometry is 88 % of the faces; the only lever left would be simplifying rooms at the slow
+      places (room numbers from TRView needed). A shorter draw distance would need its own study of
+      the PSX executable (no single zfar value as on PC). Not planned for now.
+    - Play-test of every disc version (10.10.2026): all 16 Tomb Raider III PS1 releases (US, Europe,
+      Germany, France, Italy, Spain in Rev 0 and Rev 1/2, Japan and Asia Disc 1 and 2) were built
+      with the disc builder and played: every level loads, Sophia dies, the credits run. The European
+      discs were also played as NTSC discs.
+    - The early test layouts (test*.xml, their texts and title screen, test/) and the German NTSC layout
+      (usde) are removed (15.10.2026): the disc builder makes test and NTSC discs for every version.
+
+    Binary / build:
+    - (done) The Reunion/Sophia fix (ControlFusebox compares CurrentLevel with 7 instead of 6) is
+      now in the converter (tools/src/tr3pcpsx/mod/modblob.h, module_base_e3_fusebox); slinc.psx
+      no longer needs the hand patch at 0x7A130. Rebuilt slinc.psx is byte-identical in all 10
+      versions.
+
+    Disc builder (tools/builder, 10.10.2026):
+    - Builds the disc image from the player's own Tomb Raider III PS1 disc (any of the 16 releases,
+      also from a .zip) and their own Lost Artefact PC files (Gold CD in any language, Tomb Raider
+      I-III Remastered, TRX; the free fan levels patch was supported at first and dropped on 15.10.2026,
+      as it does not need the game). No game data is shipped: levels, textures,
+      animations, meshes and texts are differences to the player's files; only the project's own
+      edited pictures are included. Each disc keeps its own language (speech, texts, pictures).
+    - Options: blood colour (as the version has it, red or purple), level select on New Game (the
+      Japanese and Asian Disc 1 get a save crystal in the inventory at every level start, as
+      tombpsx/out/jptest.dat/astest.dat), NTSC for the European discs (needs the US disc).
+    - Rev 0 executables: the IPS patches are ported by tools/builder/port_patches.py
+      (bin/patches/us10, uk, de, fr, it, sp); the converter has flags for them.
+    - Window (gui.py) or command line (build.py); one Windows EXE with build_exe.py, the players'
+      readme is tools/builder/package/README.txt; the matching cover (PAL, USA, Japan) is written
+      next to the disc image.
+    - After changing levels, textures, animations, meshes or texts: rebuild levels/out, then
+      tools/builder/make_data.py renews the difference files and checks that the builder gives
+      exactly levels/in, the texts and all of levels/out.
+    - tools/export_public.py copies the part of the project without game data into the public
+      repository.
+
+    Level fixes (11.10.2026, play-tested):
+    - "Highland Fling": the pillar in room 49 could be entered through sector (5,6), and from above
+      through room 20 sector (11,6). On the PC these sectors lead into room 21, which is closed there;
+      levels/geom/scotland.sh removes room 21 to save memory, which left them open. Both are now walls
+      (in the same line that already closed room 49 (1,3)/(1,5) and four sectors of room 19), in every
+      version. All seven levels were checked for other sectors that are closed on the PC but open on
+      the PS1 after the geometry scripts: none left.
+    - "Reunion": a flare box and the triggers in room 51 (secret, music, clear bodies), leftovers from
+      It's a Madhouse that cannot be reached, removed (levels/in/slinc.tr2; the Japan version had
+      them removed already). The item numbers after it moved down by one: levels/convert.sh removes
+      item 79 instead of 80 (the same item), levels/japan/slinc.txt was made again.
+    - "It's a Madhouse!": two faces in room 97 got the right texture (as the Japan version already
+      had); levels/japan/zoo.txt no longer needs to change them.
+
+
+
+BUGS:
+-----
+    "HIGHLAND FLING":
+      - The area between room 2 and room 3 is walled off. Looking into the heavily connected room 3
+        cluster from there crashed the PS1 (too much geometry at once); the area is not needed to
+        finish the level;
+      - In large or open areas the frame rate drops to 15-20 fps (the original TR3 on PS1 does the
+        same in many places).
+
+    "SHAKESPEARE CLIFF":
+      - (not seen any more) The quad bike's audio used to glitch rarely (jumping and crossing room 9); it did
+        not happen in the play-tests of 10.10.2026, likely since samples were silenced to free sound RAM;
+      - The bazooka firing sound (sample 078) is silenced to save sound RAM, like a few other samples
+        in several levels (see "nosfx" in levels/convert.sh). A test with it restored sounded fine
+        (the level then uses 505,104 bytes of sample data, more than any original TR3 level), but it
+        was left silenced.
+
+    "SLEEPING WITH THE FISHES" (both parts):
+      - The yellow submarine in room 124 (static mesh 12, before the Desert Eagle secret) is left out on
+        purpose: the PS1 draws it wrongly (its textures jump to the room in front while its collision
+        stays; moving it did not help). It is one of the largest static meshes and reaches over the
+        room's edge; the data converts correctly. The level plays fine without it;
+      - (not confirmed) The charging submarine (object 134) was reported as slightly faster than on the PC;
+        in the play-tests of 10.10.2026 it could be dodged as usual and no difference was noticed;
+
+
+
+NOT BUGS (same as the original game):
+-------------------------------------
+    - "The Hand of Rathmore" (It's a Madhouse!), the "Circuit Bulbs" and the "Mutant Samples"
+      (Sleeping with the Fishes Part 2) are drawn semi-transparent and are hard to see in the dark.
+      The original TR3 on PS1 draws its own additive items (crystal, artefacts) the same way and TRX
+      shows the Hand the same; a flare makes them visible.
+
+
+
+CHANGELOG:
+----------
+    "WILLARD'S LAIR":
+        - Fixed a camera target bug when inserting the "Cairn Key";
+
+    "SLEEPING WITH THE FISHES":
+        - Level splitted into two parts due to being too big (undersea.tr2 and underse2.tr2);
+        - Both parts have a new custom load screen based on the part of the level;
+        - In part 2, added a savegame crystal near the spawning area (room 8);
+
+    "IT'S A MADHOUSE!":
+        - Added a savegame crystal before the second tiger ambush (room 85);
+        - Added a savegame crystal at the start of the aviary (room 54);
+        - Fixed a vulture (item 63) by slightly moving it diagonaly and slightly lowering its height so it doesn't get stuck in the wall like the pc version (room 58);
+
+    "REUNION":
+        - Added a savegame crystal in the room with the lever just before Sophia (room 0);
+
+    "SLEEPING WITH THE FISHES" (continued, this fork):
+        - Fixed the "geometry corrupted in rooms 14, 44 and 53" bug for real: it's the PSX room format's
+          31-click vertex-height limit (rooms were 34 clicks tall), not something specific to the split.
+          The undersea.sh "temporary fix" (resizeroom on room 44) didn't actually solve it, just moved
+          the truncation to different vertices -- replaced it with a per-vertex fix that raises the
+          affected vertices (all part of a decorative "abyss" floor well below the real walkable floor,
+          so invisible to gameplay/collision) by 3 clicks. Zero Y-value warnings across all 70 builds now.
+
+    "REUNION" (this fork):
+        - Fixed the engine treating Reunion like Madubu Gorge (level slot 7): the lava/fire death check
+          (bin/patches/<version>/reunionlava.ips) and the Sophia boss module no longer use the Madubu
+          behaviour.
+        - The ten punks no longer carry burning clubs (the flame emitters under them are removed). All
+          ten burned at once, often three together, each with its own dynamic light and a constant stream
+          of flame sprites: too much for the PS1 (the original Aldwych has the same punk code but only
+          5 of 18 burning, spread out). To make up for it, a warm glow is baked into the room vertex
+          colours around them (tools/bake_point_light.py, no cost in the game) and a warm room light per
+          group lights the punks themselves (levels/convert.sh).
+        - Note: Sophia dies when the fuse box above the arena (room 38) is destroyed by an explosion
+          (rocket or grenade within one block of the box, or a harpoon hit) - not by shooting Sophia.
+
+    "HIGHLAND FLING" (this fork):
+        - Walled off the area between room 2 and room 3 (PS1 crash, see BUGS);
+        - Textures that the level editor stored as new rotated object textures are folded back
+          onto the original ones before conversion (tools/fold_rotated_textures.py), so rotations are
+          kept and the crystal/controller texture indices stay valid.
+
+    "ALL" (this fork, crystals 26.09.2026; height = floor at the sector centre, on
+    triangulated floors computed like GetHeight()):
+        - Highland Fling: new in rooms 45 (X1 Z9), 112 (X2 Z4), 77 (X12 Z1);
+        - Willard's Lair: new in 71 (X4 Z1), 107 (X5 Z2), 64 (X2 Z2), 78 (X5 Z4); room 103 removed;
+        - Shakespeare Cliff: new in 36 (X3 Z1), 79 (X7 Z2), 92 (X2 Z2), 112 (X7 Z4); room 90 removed;
+        - Sleeping with the Fishes Part 2: new in 105 (X1 Z3), 53 (X8 Z8), 84 (X4 Z2);
+        - It's a Madhouse!: new in 63 (X4 Z3), 111 (X1 Z5), 99 (X1 Z8), 96 (X6 Z4), 116 (X4 Z6),
+          128 (X2 Z1); the crystal in room 54 at X1 Z6 removed (the one at X5 Z7 stays);
+        - Reunion: new in 66 (X2 Z3), 7 (X1 Z4), 40 (X1 Z2); room 0 removed.
+
+    "ALL" (this fork):
+        - Savegame crystals placed at the positions of the TRX (tr3-la) crystal injections in all levels,
+          with the heights taken from the sector floors; later adjusted by hand: Highland Fling room 50
+          removed, Willard's Lair room 100 removed, Sleeping with the Fishes Part 1 room 63 moved to
+          sector X:1 Z:2, room 32 moved to X:1 Z:1 and room 5 removed;
+        - Madhouse crystals had the wrong (small) mesh and now use the big crystal mesh;
+        - Sleeping with the Fishes Part 1: the animated diver (object 119, FAN slot; rooms 19 and 100) left
+          stretched polygons behind. Its "off" animation 436 (frames 80-179) jumped to frame 242, which
+          does not exist (Core bug, Lud's Gate has the same; TRX fixes both with luds_diver_animation.bin).
+          Fixed in levels/anims/undersea.dat (jump frame 179), and the new binary patch "diverhide" makes
+          the diver invisible when that animation has ended instead of leaving him lying in his last pose;
+        - Reunion: blue/noisy band below the sky. The sky dome (HORIZON, levels/mesh/slinc.txt mesh 327)
+          was Core's standard dome lowered by 353 units, and its lower cone is never drawn on PS1 (its tip
+          is under the camera, and TR3 PS1 drops polygons with a vertex behind the camera), so the empty
+          background showed through the fence. The dome is back at standard height and the cone is
+          replaced by a black two-ring skirt from the horizon band downwards;
+        - Lara model fix (two head triangles with a new skin texture) in all levels. For Shakespeare
+          Cliff, both parts of Sleeping with the Fishes, It's a Madhouse! and Reunion it is applied in the
+          build: the texture is written into the unused corner x176-255, y224-255 of the last tile in
+          levels/textures/<level>.bmp and its two object textures are appended after the crystal/controller
+          textures, so no indices shift;
+        - New binary patch "noicons": artefact icons are no longer re-added at level start. The Hand of
+          Rathmore picked up at the end of Sleeping with the Fishes Part 2 used to show up as an empty
+          item in the It's a Madhouse! inventory (TRX does the same with "remove_scions");
+        - German texts: fixed 15 doubled strings ("Erfolgreich geladenErfolgreich geladen" etc.) and
+          renamed "Siege" to "Besiegte Gegner";
+        - German NTSC disc (first as disc/usde.xml, now made by the disc builder for every European language): US executable with German texts, German speech in Lara's
+          house, German best-times headings, level select, German title and EU credit 1; the blood stays red.
+        - Start-up like the original TR3: the language's "LOADING" picture (PIX\INITLOAD.RAW, taken from
+          each original TR3 disc; initload.ips is no longer applied) and the Eidos logo video
+          (FMV\LOGO.FMV, identical on all TR3 discs; nofmv.ips is no longer applied). Every layout carries
+          the FMV.MOD code module that matches its executable (disc/files/data/<us|uk|jp|jp2>/fmv.mod,
+          from the US Rev 1/2, German, Japanese and Japanese International discs). Japan also shows ENIX.RAW;
+        - End credits: ten pictures instead of nine (binary patch "credits10", 9 -> 10 and in the Japanese
+          executables 13 -> 10): Lost Artefact credits 1-8, the PlayStation edition credit (credit09.raw)
+          and, as the last one, b122251's farewell picture (thanks.raw). The Japanese executables (jp, jp2)
+          showed each picture for 150 frames, timed for their 13 pictures; with ten the credits went by
+          too fast, so they now get 210 frames per picture like the other NTSC discs (PAL: 175);
+        - Japanese version: Japanese texts, save crystal in the inventory as in the Japanese TR3 (level
+          select test builds give one at the start of every level), and textures 25% brighter like the
+          Japanese TR3 (tr3pcpsx: all Japanese/Asian flags, each 5-bit channel c -> min(31, c + c/4)).
+        - Japanese/Asian discs: as.xml (Asia Disc 1 = Japan Disc 1: Japanese texts, brighter textures,
+          also for FLAGS_LANGUAGE_ASIA_JP), jp2.xml and as2.xml (Japan/Asia Disc 2 "International" =
+          US content: English texts from tombpsx/src/uk with language 0 as on the originals, English
+          speech, US title/legal pictures under PIXJAP, Enix logo). tools/make_region_dat.py: as.dat =
+          jp.dat with its memory card code; jp2.dat/as2.dat are built from tombpsx/src/jp2|as2 (uk
+          sources with their memory card code and all three title/legal pairs pointing at pixJAP,
+          because the executable picks the pair by language and language 0 means pixUK). Each disc
+          has its own SYSTEM.CNF and FMV.MOD from the original disc.
+        - tr3pcpsx: the Kanji support (kanji sprite and its two palette entries) is now added for all
+          Japanese/Asian executables (JP_JP, JP_EN, ASIA_JP, ASIA_EN), not only for the Japanese
+          language: the original Japan/Asia Disc 2 levels carry it too, and without it jp2/as2 froze
+          while loading a level. The brighter textures apply to all four as well: the original
+          Japan/Asia Disc 2 levels are as bright as Disc 1 (measured on the palette data).
+          The colours of the untextured (coloured) faces are brightened the same way, otherwise
+          parts of Lara and the top of the sky dome stayed darker (the horizon colour is unchanged
+          on the original discs and stays so).
+          The palette of the Kanji sprite (0x0000 + 15 x 0xFFFF) now lies directly before the
+          palettes of the colour entries, as on the original Japanese discs; before, it was appended
+          at the end. art/kanji/kanji_la.psx now has exactly the original length (it was padded
+          with 2044 zero bytes).
+        - Sky dome tip (all levels with a sky dome): the Japanese executables draw untextured
+          triangles in a wrong light cyan (the original Japanese TR3 shows it too, e.g. in
+          Lara's house; the English Disc 2 and US do not). The 16 untextured triangles around the
+          apex of every sky dome (levels/mesh, HORIZON meshes) are now rectangles with a doubled
+          last vertex, which every executable draws correctly and which look the same. The PSX
+          sky object has no triangles at all (Core's files and tr3pcpsx alike), so the apex was
+          simply open. Lara's house (disc/files/data/<version>/house.psx, original files) got the
+          same 16 rectangles with tools/close_dome_tip.py; title.psx has no sky dome.
+
+    "ALL":
+        - All title, legal, credits and loadscreens are finished. All use the US credits, IT, ES, JP, UK use the UK legal and title screens, with DE, FR and US having their own,
+          credits are same for all;
+        - All .raw images have been reconstructed so that the game's loading screens do not crop corners, making it closer to the PC counterpart. Upon further inspection, Tomb
+          Raider 3 loading screens on playstation appear normal, with complete proportions, but in Tomb Raider 3 Gold the image appears to have been cut 8 pixels up and 8
+          pixels down in all load screens. To remedy this, grab the PC's .bmps and, in Krita, "Scale image to new size..." and resize the image to 512x240, then "Resize
+          canvas..." to 512x256 and now grab the "Pixel Art" brush, set brush size to 8 and select the "Line Tool", now with one straight line, with the color black, paint the
+          top and bottom parts of the screen. When done, click the "Save" button in "File", do not export. Now in GIMP, grab the Krita treated image and choose "Export as...",
+          after the path selection, click "Advanced options" and tick the line "16 bits - X1 R5 G5 B5" to make the RGB 16bpp (1555) necessary for "tric" to work when converting
+          to .raw. "house.raw" did not need this treatment because its proportions were correct already;
+        - Tweaked each version's binary "secrets.ips" patch file to make the engine correctly assign 1 missing secrets instead of 3, 2 missing secrets instead of 3 and 3 missing
+          secrets instead of 0 to "Sleeping with the Fishes Part 1", "Sleeping with the Fishes Part 2" and "It's a Madhouse!", respectively. The final level statistics screen
+          also shows the correct total number of secrets of the game.

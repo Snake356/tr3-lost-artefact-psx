@@ -1,0 +1,35 @@
+{
+ "scotland": {
+  "input_crc": "ce103fa2",
+  "7bfbce58": "scotland_7bfbce58.patch",
+  "df85fceb": "scotland_df85fceb.patch"
+ },
+ "willsden": {
+  "input_crc": "bcc8cfa7",
+  "6c8d35fe": "willsden_6c8d35fe.patch",
+  "1bb3f079": "willsden_1bb3f079.patch"
+ },
+ "chunnel": {
+  "input_crc": "0b265541",
+  "0b265541": "same",
+  "0f671623": "chunnel_0f671623.patch",
+  "564ce593": "chunnel_564ce593.patch"
+ },
+ "undersea": {
+  "input_crc": "bb33cc09",
+  "bb33cc09": "same",
+  "e453c7c8": "undersea_e453c7c8.patch"
+ },
+ "zoo": {
+  "input_crc": "11f49b62",
+  "7d23e3ca": "zoo_7d23e3ca.patch",
+  "b8e783b7": "zoo_b8e783b7.patch"
+ },
+ "slinc": {
+  "input_crc": "455526b6",
+  "74a87f70": "slinc_74a87f70.patch",
+  "ab88e130": "slinc_ab88e130.patch",
+  "5c432a07": "slinc_5c432a07.patch"
+ },
+ "underse2": "copy of undersea"
+}

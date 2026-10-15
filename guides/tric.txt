@@ -1,0 +1,361 @@
+Tomb Raider Image Converter
+===========================
+v2.0.1
+
+CONTENTS OF THIS FILE
+---------------------
+
+ • Introduction
+ • Usage
+ • Supported Formats
+ • Format Specifications
+ • Usage Examples
+ • Source Notes
+ • Source Patching
+ • Changelog
+ • License
+
+
+INTRODUCTION
+------------
+
+Tomb Raider Image Converter (or tric), is a tool written by b122251 in C
+programming language for GNU/Linux, Mac OS X, Windows and DOS. It
+provides lossless conversion between bmp format and several image 
+formats used by the Core Design Tomb Raider games.
+It is released under the GNU General Public License version 3.
+
+
+USAGE
+-----
+
+Tomb Raider Image Converter uses the following syntax:
+
+ tric <format> [input] [output]
+ 
+The possible formats to use are listed in the "Supported Formats" section.
+Appropriate input and output depend on the format.
+
+
+SUPPORTED FORMATS
+-----------------
+
+Tomb Raider Image Converter supports the following formats:
+
+ • tr1pc  (PCX) (Tomb Raider 1 on PC)
+ • tr1psx (RAW) (Tomb Raider 1 on Playstation)
+ • tr1sat (BIN) (Tomb Raider 1 on Sega Saturn)
+ • tr2pc  (PCX) (Tomb Raider 2 on PC)
+ • tr2psx (RAW) (Tomb Raider 2 on Playstation)
+ • tr3psx (RAW) (Tomb Raider 3 on Playstation)
+ • tr4psx (OBJ) (Tomb Raider 4 on Playstation)
+ • tr4dc  (WAD) (Tomb Raider 4 on Dreamcast)
+ • tr5pc  (STR) (Tomb Raider 5 on PC)
+ • tr5dc  (STR) (Tomb Raider 5 on Dreamcast)
+ • tr5psx (OBJ) (Tomb Raider 5 on Playstation)
+ • beta1psx (RAW) (Tomb Raider 1 Playstation Beta (04-09-1996))
+ • beta2psx (RAW) (Tomb Raider 2 Playstation Beta (16-06-1997))
+ • beta4pc  (RAW) (Tomb Raider 4 PC Beta (15-09-1999))
+ • trlemac  (RAW) (Tomb Raider Level Editor (Mac))
+
+
+FORMAT SPECIFICATIONS
+---------------------
+
+  • TR1PC has image files encoded in PCX format.
+    TRIC can convert them to and from BMP.
+    These BMP files will be as follows:
+     • 640x480 resolution.
+     • 8-bit indexed colour (256 colours)
+    Appropriate input and output are: one pcx file and one bmp file.
+
+  • TR1PSX has image files encoded in RAW format.
+    TRIC can convert them to and from BMP.
+    These BMP files will be as follows:
+     • Width can vary, height=256.
+     • 16-bit RGB (1555) colour.
+    Appropriate input and output are: one raw file and one bmp file.
+
+  • TR1SAT has image files encoded in BIN format.
+    TRIC can convert them to and from BMP.
+    These BMP files will be as follows:
+     • Possible resolutions: 320x224, 320x240, 320x256, 352x224 and 352x256.
+     • 16-bit RGB (1555) colour.
+    Appropriate input and output are: one bin file and one bmp file.
+  
+  • TR2PC is identical to TR1PC.
+  
+  • TR2PSX has image files encoded in RAW format.
+    TRIC can convert them to and from BMP.
+    These BMP files will be as follows:
+     • Width can vary, height=256.
+     • 16-bit RGB (1555) colour.
+    Appropriate input and output are: one raw file and one bmp file.
+
+  • TR3PSX has image files encoded in RAW format.
+    TRIC can convert them to and from BMP.
+    These BMP files will be as follows:
+     • Width can vary, height=256.
+     • 16-bit RGB (1555) colour.
+    Appropriate input and output are: one raw file and one bmp file.
+
+  • TR4PSX has several images embedded in its GAMEWAD.OBJ file.
+    TRIC can extract and replace these images in BMP format.
+    These BMP files will be as follows:
+     • Width=512, height can vary.
+     • 16-bit RGB (1555) colour.
+    Appropriate input and output are: one obj file and one directory.
+      When extracting images from a gamewad.obj file, one should enter a
+    directory as output, so that all images can be extracted to it. The image
+    files will have names consisting of eight hexadecimal characters and a
+    ".bmp" file extension. This name is the location in the gamewad.obj where
+    that image data was stored.
+      When replacing images in a gamewad.obj file, one should enter a directory
+    as input, so that all the images can be read from there. This directory must
+    contain a file titled "List.txt", which contains a list of all bmp-files in
+    that directory, that are to be added to the output obj-file. As output one
+    should enter the gamewad.obj file in which one wants the images to be
+    replaced. TRIC will write the image data to the location in gamewad.obj
+    that the name of each image file refers to.
+
+  • TR4DC has several images embedded in its GALLERY.WAD file.
+    TRIC can extract these images in BMP format, or make new WAD files.
+    Appropriate input and output are: one wad file and one directory.
+      When extracting images from a wad file, one should enter a directory 
+    as output, so that all images can be extracted to it.
+    The image files will have names consisting of sequential numbers and a
+    ".bmp" file extension.
+      When converting from bmp to wad, one sould enter a directory containing
+    the images as input. As output one can simply enter the filename for the
+    output wad.file.
+      Take note that 0.bmp contains thumbnails of all other images.
+    And it must be 16-bit 565 RGB.
+
+  • TR5PC has image files encoded in STR format.
+    TRIC can convert them to and from BMP.
+    These BMP files will be as follows:
+     • Width=640, height can vary.
+     • 16-bit RGB (1555) colour.
+    Appropriate input and output are: one str file and one bmp file.
+  
+  • TR5DC is identical to TR5PC.
+
+  • TR5PSX is identical to TR4PSX.
+
+  • BETA1PSX has image files encoded in RAW format.
+    TRIC can convert them to and from BMP.
+    These BMP files will be as follows:
+     • Width can vary, height=256.
+     • 16-bit RGB (1555) colour.
+    Appropriate input and output are: one raw file and one bmp file.
+
+  • BETA2PSX has image files encoded in RAW format.
+    TRIC can convert them to and from BMP.
+    These BMP files will be as follows:
+     • Width can vary, height=256.
+     • 16-bit RGB (1555) colour.
+    Appropriate input and output are: one raw file and one bmp file.
+
+  • BETA4PC has image files encoded in RAW format.
+    TRIC can convert them to and from BMP.
+    These BMP files will be as follows:
+     • 512x256 resolution.
+     • 24-bit RGB (888) colour.
+    Appropriate input and output are: one raw file and one bmp file.
+
+  • TRLEMAC has image files encoded in RAW format.
+    TRIC can convert them to and from BMP.
+    These BMP files will be as follows:
+     • 640x480 resolution.
+     • 16-bit RGB (1555) colour.
+    Appropriate input and output are: one raw file and one bmp file.
+
+
+USAGE EXAMPLES
+--------------
+
+tric tr1pc CRED1.PCX cred1.bmp
+   This converts CRED1.PCX (which is encoded in Tomb Raider 1 on PC's format)
+   to cred1.bmp.
+
+tric tr1pc custom.bmp CRED1.PCX
+   This converts custom.bmp to CRED1.PCX (in Tomb Raider 1 on PC's format).
+
+tric tr1psx ATLANLOA.RAW atlanloa.bmp
+   This converts ATLANLOA.RAW (which is encoded in Tomb Raider 1 on
+   Playstation's format) to atlanloa.bmp.
+
+tric tr1psx custom.bmp ATLANLOA.RAW
+   This converts custom.bmp to ATLANLOA.RAW (in Tomb Raider 1 on Playstation's
+   format).
+
+tric tr1sat egypt224.bin egypt.bmp
+   This converts egypt224.bin (which is encoded in Tomb Raider 1 on the
+   Saturn's format) to egypt.bmp.
+
+tric tr1sat custom.bmp egypt224.bin
+   This converts custom.bmp to egypt224.bin (in Tomb Raider 1 on the Saturn's
+   format).
+
+tric tr2pc title.pcx title.bmp
+   This converts title.pcx (which is encoded in Tomb Raider 2 on PC's format)
+   to title.bmp.
+
+tric tr2pc custom.bmp title.pcx
+   This converts custom.bmp to title.pcx (in Tomb Raider 2 on PC's format).
+
+tric tr2psx venice.raw venice.bmp
+   This converts venice.raw (which is encoded in Tomb Raider 2 on Playstation's
+   format) to venice.bmp.
+
+tric tr2psx custom.bmp venice.raw
+   This converts custom.bmp to venice.raw (in Tomb Raider 2 on Playstation's
+   format).
+
+tric tr3psx london.raw london.bmp
+   This converts london.raw (which is encoded in Tomb Raider 3 on Playstation's
+   format) to london.bmp.
+
+tric tr3psx custom.bmp london.raw
+   This converts custom.bmp to london.raw (in Tomb Raider 3 on Playstation's
+   format).
+
+tric tr4psx GAMEWAD.OBJ images
+   This creates a folder named images, and then proceeds to extract all images
+   from the gamewad.obj file into the "images" directory, along with the
+   corresponding List.txt file.
+
+tric tr4psx custom GAMEWAD.OBJ
+   In this example there are two images in the "custom" folder: "0518F800.bmp"
+   and "0528F800.bmp".
+   They are both in the List.txt file.
+   This commands causes the image data of "0518F800.bmp" to be written at
+   0x518f800 in GAMEWAD.OBJ, and the image data of "0528F800.bmp" to be written
+   at 0x528f800 in GAMEWAD.OBJ.
+
+tric tr4dc GALLERY.WAD tr4gallery
+   This creates a folder named tr4gallery, and proceeds to extract all images
+   from the gallery.wad file into the "tr4gallery" directory.
+
+tric tr4dc tr4gallery GALLERY.WAD
+   In this example there are five files in the "tr4gallery" folder: "0.bmp",
+   "1.bmp", "2.bmp", "3.bmp" and "4.bmp". "0.bmp" of course being the
+   thumbnails for all other images. This command makes a new GALLERY.WAD file,
+   containing all the images from "tr4gallery".
+
+tric tr5pc gallery.str gallery.bmp
+   This converts gallery.str (which is encoded in Tomb Raider 5 on PC's format)
+   to gallery.bmp.
+
+tric tr5pc custom.bmp gallery.str
+   This converts custom.bmp to gallery.str (in Tomb Raider 5 on PC's format).
+
+tric tr5dc GALLERY.STR gallery.bmp
+   This converts GALLERY.STR (which is encoded in Tomb Raider 5 on Dreamcast's
+   format) to gallery.bmp.
+
+tric tr5dc custom.bmp GALLERY.STR
+   This converts custom.bmp to GALLERY.STR (in Tomb Raider 5 on Dreamcast's
+   format).
+
+tric tr5psx GAMEWAD.OBJ images
+   This creates a folder named images, and then proceeds to extract all images
+   from the gamewad.obj file into the "images" directory, along with the
+   corresponding List.txt file.
+
+tric tr5psx custom GAMEWAD.OBJ
+   In this example there are two images in the "custom" folder:
+   "00A7C800.bmp" and "032B6800.bmp".
+   They are both in the List.txt file.
+   This commands causes the image data of "00A7C800.bmp" to be written at
+   0xa7c800 in GAMEWAD.OBJ, and the image data of "032B6800.bmp" to be written
+   at 0x32b6800 in GAMEWAD.OBJ.
+
+tric beta1psx AZTECLOA.RAW aztecloa.bmp
+   This converts AZTECLOA.RAW (which is encoded in RAW-format) to aztecloa.bmp.
+
+tric beta1psx custom.bmp AZTECLOA.RAW
+   This converts custom.bmp to AZTECLOA.RAW (in RAW-format).
+
+tric beta2psx AVAIL.RAW avail.bmp
+   This converts AVAIL.RAW (which is encoded in RAW-format) to avail.bmp.
+
+tric beta2psx custom.bmp AVAIL.RAW
+   This converts custom.bmp to AVAIL.RAW (in RAW-format).
+
+tric beta4pc LOGO.RAW logo.bmp
+   This converts LOGO.RAW (which is encoded in RAW-format) to logo.bmp.
+
+tric beta4pc custom.bmp LOGO.RAW
+   This converts custom.bmp to LOGO.RAW (in RAW-format).
+
+tric trlemac Load.raw load.bmp
+   This converts LOAD.RAW (which is encoded in RAW-format) to load.bmp.
+
+tric trlemac custom.bmp Load.raw
+   This converts custom.bmp to Load.raw (in RAW-format).
+
+
+SOURCE NOTES
+------------
+
+The source code to tric comes in the form of a collection of C-files, and
+several patches. The main function is in tric.c. tricints.h contains
+declarations for 16-bit and 32-bit integers. Tric is designed for Little-
+Endian unix-like operating systems, although it can easily be compiled
+for other systems. The windows version was compiled using MinGW. The
+DOS version was compiled using Borland Turbo C 2.01. The source code
+required no alteration to work on it, other than conversion from
+unix-like line endings to dos-like line endings.
+
+Before compiling this code, please ensure that the definitions in
+tricints.h are accurate for the platform you are compiling for.
+INT32 must be a 32-bit integer, and INT16 must be a 16-bit integer.
+
+To make the source code compatible with Microsoft Windows, some
+changes had to be made. These changes can be found in the "windows"-folder.
+
+To make the source code compatible with Big-Endian computers, some
+changes had to be made. These changes can be found in the "be"-folder.
+
+
+SOURCE PATCHING
+---------------
+
+To patch the source code for Big-Endian, run the "apply.sh" script that
+can be found in the "Source/patches/be"-directory.
+
+To patch the source code for Microsoft Windows, run the "apply.sh" script
+that can be found in the "Source/patches/windows"-directory.
+
+
+CHANGELOG
+---------
+
+v2.0.0
+ • Rewrote the program entirely
+ • Added a DOS-port
+ • Added support for tr4dc, beta1psx, beta2psx, beta4pc and trlemac
+ • Improved stability
+v2.0.1
+ • Added support for the 320x240 resolution to tr1sat
+
+
+LICENSE
+-------
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+
+<b122251.org>

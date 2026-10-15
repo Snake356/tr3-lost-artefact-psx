@@ -1,0 +1,4 @@
+BOOT = cdrom:\SCPS_453.85;1
+TCB = 4
+EVENT = 16
+STACK = 0x801ffff0

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iso_project image_name="tr3g_uk.bin" cue_sheet="tr3g_uk.cue" no_xa="0">
+	<track type="data">
+		<identifiers
+			system			="PLAYSTATION"
+			application		="TR3G"
+			volume			="TR3G"
+			volume_set		="TR3G"
+			publisher		="B122251"
+			data_preparer	=" "
+			copyright		="COPYLEFT"
+		/>
+		<license file="./licenses/licensee.dat"/>
+		<directory_tree>
+			<file name="SYSTEM.CNF" type="data" source="./files/system/uk.cnf"/>
+			<file name="SLES_016.49" type="data" source="../bin/mod/ukrev.exe"/>
+			<dir name="PIX">
+				<file name="HOUSE.RAW" type="data" source="../art/loadscr/common/house.raw"/>
+				<file name="HIGHLAND.RAW" type="data" source="../art/loadscr/common/highland.raw"/>
+				<file name="WILLARD.RAW" type="data" source="../art/loadscr/common/willard.raw"/>
+				<file name="CHUNNEL.RAW" type="data" source="../art/loadscr/common/chunnel.raw"/>
+				<file name="UNDERSEA.RAW" type="data" source="../art/loadscr/common/undersea.raw"/>
+				<file name="UNDERSE2.RAW" type="data" source="../art/loadscr/common/underse2.raw"/>
+				<file name="ZOO.RAW" type="data" source="../art/loadscr/common/zoo.raw"/>
+				<file name="SLINC.RAW" type="data" source="../art/loadscr/common/slinc.raw"/>
+				<file name="THEEND.RAW" type="data" source="../art/loadscr/common/theend.raw"/>
+				<file name="THEEND2.RAW" type="data" source="../art/loadscr/common/theend2.raw"/>
+				<file name="CREDIT01.RAW" type="data" source="../art/loadscr/common/credit01eu.raw"/>
+				<file name="CREDIT02.RAW" type="data" source="../art/loadscr/common/credit02.raw"/>
+				<file name="CREDIT03.RAW" type="data" source="../art/loadscr/common/credit03.raw"/>
+				<file name="CREDIT04.RAW" type="data" source="../art/loadscr/common/credit04.raw"/>
+				<file name="CREDIT05.RAW" type="data" source="../art/loadscr/common/credit05.raw"/>
+				<file name="CREDIT06.RAW" type="data" source="../art/loadscr/common/credit06.raw"/>
+				<file name="CREDIT07.RAW" type="data" source="../art/loadscr/common/credit07.raw"/>
+				<file name="CREDIT08.RAW" type="data" source="../art/loadscr/common/credit08.raw"/>
+				<file name="CREDIT09.RAW" type="data" source="../art/loadscr/common/credit09.raw"/>
+				<file name="CREDIT10.RAW" type="data" source="../art/loadscr/common/thanks.raw"/>
+				<file name="INITLOAD.RAW" type="data" source="../art/loadscr/us/initload.raw"/>
+			</dir>
+			<dir name="PIXUK">
+				<file name="TITLEUK.RAW" type="data" source="../art/loadscr/uk/titleuk.raw"/>
+				<file name="LEGALUK.RAW" type="data" source="../art/loadscr/uk/legaluk.raw"/>
+			</dir>
+			<dir name="FMV">
+				<file name="LOGO.FMV" type="str" source="./files/fmv/common/logo.fmv"/>
+			</dir>
+			<dummy sectors="150"/>
+			<dir name="XA">
+				<file name="F1.XA" type="xa" source="./files/xa/common/f1.xa"/>
+				<file name="F2.XA" type="xa" source="./files/xa/common/f2.xa"/>
+				<file name="F3.XA" type="xa" source="./files/xa/common/f3.xa"/>
+				<file name="F4.XA" type="xa" source="./files/xa/common/f4.xa"/>
+				<file name="F5.XA" type="xa" source="./files/xa/common/f5.xa"/>
+				<file name="F6.XA" type="xa" source="./files/xa/common/f6.xa"/>
+				<file name="F7.XA" type="xa" source="./files/xa/common/f7.xa"/>
+				<file name="F8.XA" type="xa" source="./files/xa/common/f8.xa"/>
+				<file name="F9.XA" type="xa" source="./files/xa/common/f7.xa"/>
+				<file name="F10.XA" type="xa" source="./files/xa/common/f10.xa"/>
+				<file name="F11.XA" type="xa" source="./files/xa/en/f11.xa"/>
+				<file name="F12.XA" type="xa" source="./files/xa/en/f12.xa"/>
+				<file name="F13.XA" type="xa" source="./files/xa/en/f13.xa"/>
+				<file name="F14.XA" type="xa" source="./files/xa/en/f14.xa"/>
+				<file name="F15.XA" type="xa" source="./files/xa/en/f15.xa"/>
+				<file name="F16.XA" type="xa" source="./files/xa/common/f16.xa"/>
+			</dir>
+			<dir name="DATA">
+				<file name="TOMBPSX.DAT" type="data" source="../tombpsx/out/uk.dat"/>
+				<file name="FMV.MOD" type="data" source="./files/data/uk/fmv.mod"/>
+				<file name="TITLE.PSX" type="data" source="./files/data/uk/title.psx"/>
+				<file name="HOUSE.PSX" type="data" source="./files/data/uk/house.psx"/>
+				<file name="SCOTLAND.PSX" type="data" source="../levels/out/ukrev/scotland.psx"/>
+				<file name="WILLSDEN.PSX" type="data" source="../levels/out/ukrev/willsden.psx"/>
+				<file name="CHUNNEL.PSX" type="data" source="../levels/out/ukrev/chunnel.psx"/>
+				<file name="UNDERSEA.PSX" type="data" source="../levels/out/ukrev/undersea.psx"/>
+				<file name="UNDERSE2.PSX" type="data" source="../levels/out/ukrev/underse2.psx"/>
+				<file name="ZOO.PSX" type="data" source="../levels/out/ukrev/zoo.psx"/>
+				<file name="SLINC.PSX" type="data" source="../levels/out/ukrev/slinc.psx"/>
+			</dir>
+		</directory_tree>
+	</track>
+</iso_project>

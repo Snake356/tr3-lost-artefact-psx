@@ -1,0 +1,9 @@
+@@ -90,7 +90,7 @@
+ 	}
+ 	
+ 	/* Makes output directory */
+-	(void) mkdir(outDirPath,0755);
++	(void) mkdir(outDirPath);
+ 	
+ 	/* Opens output list */
+ 	memcpy(outFilePath,outDirPath,strlen(outDirPath));

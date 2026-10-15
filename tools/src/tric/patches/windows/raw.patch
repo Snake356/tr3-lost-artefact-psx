@@ -1,0 +1,163 @@
+@@ -21,11 +21,18 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include "tricints.h"
++#include "strtools.h"
+ #include "imgtools.h"
+ #include "dernc2.h"
+ #include "rnc2.h"
+ #include "raw.h"
+ 
++/* Compensating for the stupid windows file system */
++static FILE *tmp; /* Temporary-file */
++static char *tmpfilepath; /* Path to temporary file */
++static int maketempfile();
++static int destroytempfile();
++
+ /*
+  * Function that converts RAW to BMP
+  * Parameters:
+@@ -50,7 +57,6 @@
+ 	/* Variable Declarations */
+ 	FILE *raw=NULL; /* Input RAW-file */
+ 	FILE *bmp=NULL; /* Output BMP-file */
+-	FILE *tmp=NULL; /* Temporary-file */
+ 	char *buffer=NULL; /* Buffer for image data */
+ 	INT32 tmpsize; /* Size of the temporary file */
+ 	INT32 tmppos; /* Current position in temporary file */
+@@ -63,6 +69,7 @@
+ 	int freeint1, freeint2; /* Integers for general use */
+ 	size_t freesizet1; /* size_t for general use */
+ 	int retval=0; /* Return value of this function */
++	tmp=NULL;
+ 	
+ 	/* Opens input RAW-file */
+ 	raw=fopen(inFilePath,"rb");
+@@ -84,9 +91,9 @@
+ 		case 1:
+ 		case 2: /* Tomb Raider 1-3 on Sony Playstation */
+ 			/* Makes temporary file */
+-			tmp=tmpfile();
+-			if (tmp==NULL){
+-				retval=15;
++			freeint1=maketempfile();
++			if (freeint1!=0){
++				retval=freeint1;
+ 				goto end;
+ 			}
+ 			
+@@ -483,8 +490,8 @@
+ 		if (freeint1!=0) retval=4;
+ 	}
+ 	if (tmp!=NULL){
+-		freeint1=fclose(tmp);
+-		if (freeint1!=0) retval=17;
++		freeint1=destroytempfile(tmp);
++		if (freeint1!=0) retval=freeint1;
+ 	}
+ 	return retval;
+ }
+@@ -512,7 +519,6 @@
+ 	/* Variable Declarations */
+ 	FILE *bmp=NULL; /* Input bmp-file */
+ 	FILE *raw=NULL; /* Output raw-file */
+-	FILE *tmp=NULL; /* Temporary file */
+ 	char *buffer=NULL; /* Buffer */
+ 	unsigned INT32 buffersize=0; /* Size of buffer in bytes */
+ 	unsigned INT32 bufferpos=0; /* Current position in buffer */
+@@ -527,6 +533,7 @@
+ 	size_t freesizet1; /* size_t for general use */
+ 	int freeint1, freeint2; /* Integer for general use */
+ 	int retval=0; /* Return value for this function */
++	tmp=NULL;
+ 	
+ 	/* Opens input bmp-file */
+ 	bmp=fopen(inFilePath,"rb");
+@@ -613,9 +620,9 @@
+ 			}
+ 			
+ 			/* Makes temporary file */
+-			tmp=tmpfile();
+-			if (tmp==NULL){
+-				retval=15;
++			freeint1=maketempfile();
++			if (freeint1!=0){
++				retval=freeint1;
+ 				goto end;
+ 			}
+ 			
+@@ -1061,8 +1068,72 @@
+ 		if (freeint1!=0) retval=4;
+ 	}
+ 	if (tmp!=NULL){
+-		freeint1=fclose(tmp);
+-		if (freeint1!=0) retval=17;
++		freeint1=destroytempfile(tmp);
++		if (freeint1!=0) retval=freeint1;
+ 	}
+ 	return retval;
+ }
++
++/* 
++ * Function that makes a temporary file
++ * Return values:
++ *   0 = Everything went well
++ *   5 = Buffer could not be allocated
++ *   15 = Temporary file could not be created
++ */
++static int maketempfile(){
++	/* Variable Declarations */
++	INT32 tmpnum;
++	int freeint1;
++	
++	/* Allocates tmpfilepath */
++	tmpfilepath=NULL;
++	tmpfilepath=malloc(8);
++	if (tmpfilepath==NULL) return 5;
++	memset(tmpfilepath,0,8);
++	
++	/* Makes temporary file */
++	for (tmpnum=0;tmpnum<4096;++tmpnum){
++		tmp=NULL;
++		inttostring(tmpfilepath,tmpnum,16,3);
++		memset(tmpfilepath+3,'.',1);
++		memset(tmpfilepath+4,'$',1);
++		memset(tmpfilepath+5,'$',1);
++		memset(tmpfilepath+6,'$',1);
++		memset(tmpfilepath+7,0,1);
++		tmp=fopen(tmpfilepath,"rb");
++		if (tmp!=NULL){
++			freeint1=fclose(tmp);
++			if (freeint1!=0) return 15;
++			continue;
++		}else{
++			tmp=fopen(tmpfilepath,"w+b");
++			if (tmp!=NULL) break;
++		}
++	}
++	
++	/* Checks whether temporary file has been opened */
++	if (tmp==NULL) return 15;
++	
++	return 0;
++}
++
++/* 
++ * Function that destroys a temporary file
++ * Return values:
++ *   0 = Everything went well
++ *  17 = Temporary file could not be written to
++ */
++static int destroytempfile(){
++	/* Variable Declarations */
++	int freeint1;
++	
++	/* Closes tmp */
++	freeint1=fclose(tmp);
++	if (freeint1!=0) return 17;
++	
++	freeint1=remove(tmpfilepath);
++	if (freeint1!=0) return 17;
++	
++	return 0;
++}

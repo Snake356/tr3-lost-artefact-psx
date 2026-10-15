@@ -1,0 +1,89 @@
+@@ -1,5 +1,5 @@
+ /*
+- * Library for Converting between RAW (Tomb Raider) and BMP
++ * Library for Converting between RAW (Tomb Raider) and BMP (BE)
+  * Copyright (C) 2017  b122251
+  * 
+  * This program is free software: you can redistribute it and/or modify
+@@ -168,9 +168,9 @@
+ 				for (bufferpos=0;bufferpos<buffersize;bufferpos+=2){
+ 					memmove(&colour,buffer+bufferpos,2);
+ 					colour=(unsigned INT16)
+-						((unsigned INT16)(colour&0x83e0)+
+-						((unsigned INT16)(colour&0x7c00)>>10)+
+-						((unsigned INT16)(colour&0x1f)<<10));
++						((unsigned INT16)(colour&0xe083)+
++						((unsigned INT16)(colour&0x007c)<<6)+
++						((unsigned INT16)(colour&0x1f00)>>6));
+ 					memmove(buffer+bufferpos,&colour,2);
+ 				}
+ 				
+@@ -246,9 +246,9 @@
+ 				for (bufferpos=0;bufferpos<buffersize;bufferpos+=2){
+ 					memmove(&colour,buffer+bufferpos,2);
+ 					colour=(unsigned INT16)
+-						((unsigned INT16)(colour&0x83e0)+
+-						((unsigned INT16)(colour&0x7c00)>>10)+
+-						((unsigned INT16)(colour&0x1f)<<10));
++						((unsigned INT16)(colour&0xe083)+
++						((unsigned INT16)(colour&0x007c)<<6)+
++						((unsigned INT16)(colour&0x1f00)>>6));
+ 					memmove(buffer+bufferpos,&colour,2);
+ 				}
+ 				
+@@ -560,6 +560,10 @@
+ 		retval=2;
+ 		goto end;
+ 	}
++	imagestart=(((imagestart&0xFF000000)>>24)|
++	            ((imagestart&0x00FF0000)>>8)|
++	            ((imagestart&0x0000FF00)<<8)|
++	            ((imagestart&0x000000FF)<<24));
+ 	
+ 	/* Reads width and height */
+ 	freeint1=fseek(bmp,18,SEEK_SET);
+@@ -577,6 +581,10 @@
+ 		retval=2;
+ 		goto end;
+ 	}
++	width=(((width&0xFF000000)>>24)|((width&0x00FF0000)>>8)|
++	       ((width&0x0000FF00)<<8)|((width&0x000000FF)<<24));
++	height=(((height&0xFF000000)>>24)|((height&0x00FF0000)>>8)|
++	        ((height&0x0000FF00)<<8)|((height&0x000000FF)<<24));
+ 	
+ 	/* Reads bbp */
+ 	freeint1=fseek(bmp,28,SEEK_SET);
+@@ -589,6 +597,7 @@
+ 		retval=2;
+ 		goto end;
+ 	}
++	bpp=(((bpp&0xFF00)>>8)|((bpp&0x00FF)<<8));
+ 	
+ 	/* Calculates imageend */
+ 	imageend=(unsigned INT32) (bpp/8);
+@@ -664,9 +673,9 @@
+ 				for (bufferpos=0;bufferpos<buffersize;bufferpos+=2){
+ 					memmove(&colour,buffer+bufferpos,2);
+ 					colour=(unsigned INT16)
+-						((unsigned INT16)(colour&0x83e0)+
+-						((unsigned INT16)(colour&0x7c00)>>10)+
+-						((unsigned INT16)(colour&0x1f)<<10));
++						((unsigned INT16)(colour&0xe083)+
++						((unsigned INT16)(colour&0x007c)<<6)+
++						((unsigned INT16)(colour&0x1f00)>>6));
+ 					memmove(buffer+bufferpos,&colour,2);
+ 				}
+ 				
+@@ -789,9 +798,9 @@
+ 				for (bufferpos=0;bufferpos<buffersize;bufferpos+=2){
+ 					memmove(&colour,buffer+bufferpos,2);
+ 					colour=(unsigned INT16)
+-						((unsigned INT16)(colour&0x83e0)+
+-						((unsigned INT16)(colour&0x7c00)>>10)+
+-						((unsigned INT16)(colour&0x1f)<<10));
++						((unsigned INT16)(colour&0xe083)+
++						((unsigned INT16)(colour&0x007c)<<6)+
++						((unsigned INT16)(colour&0x1f00)>>6));
+ 					memmove(buffer+bufferpos,&colour,2);
+ 				}
+ 				

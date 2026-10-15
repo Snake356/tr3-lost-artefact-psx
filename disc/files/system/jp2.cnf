@@ -1,0 +1,4 @@
+BOOT = cdrom:\SLPM_861.97;1
+TCB = 4
+EVENT = 16
+STACK = 0x801ffff0

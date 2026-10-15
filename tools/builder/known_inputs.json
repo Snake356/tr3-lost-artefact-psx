@@ -1,0 +1,240 @@
+{
+ "ps1_images": [
+  {
+   "redump": "Tomb Raider III - Adventures of Lara Croft (Asia) (Disc 1) (Japanese Version)",
+   "bin_crc32": "2769d6ae",
+   "bin_size": 698334672,
+   "version": "as",
+   "language": "Japanese (Asia)",
+   "revision": "original",
+   "exe": "SCPS_453.85",
+   "exe_crc32": "1af73751",
+   "supported": true
+  },
+  {
+   "redump": "Tomb Raider III - Adventures of Lara Croft (Asia) (Disc 2) (International Version)",
+   "bin_crc32": "d72d33ab",
+   "bin_size": 698626320,
+   "version": "as2",
+   "language": "English (Asia)",
+   "revision": "original",
+   "exe": "SCPS_453.86",
+   "exe_crc32": "2b05eab8",
+   "supported": true
+  },
+  {
+   "redump": "Tomb Raider III - Adventures of Lara Croft (Europe)",
+   "bin_crc32": "62317f88",
+   "bin_size": 697236288,
+   "version": "uk",
+   "language": "English (Europe)",
+   "revision": "Rev 0",
+   "exe": "SLES_016.49",
+   "exe_crc32": "4a85c0bd",
+   "supported": true
+  },
+  {
+   "redump": "Tomb Raider III - Adventures of Lara Croft (Europe) (Rev 1)",
+   "bin_crc32": "6bb24281",
+   "bin_size": 698459328,
+   "version": "ukrev",
+   "language": "English (Europe)",
+   "revision": "Rev 1",
+   "exe": "SLES_016.49",
+   "exe_crc32": "be7c5116",
+   "supported": true
+  },
+  {
+   "redump": "Tomb Raider III - Adventures of Lara Croft (Europe) (Rev 1) (EDC)",
+   "bin_crc32": "b78149dc",
+   "bin_size": 698459328,
+   "version": "ukrev",
+   "language": "English (Europe)",
+   "revision": "Rev 1 (EDC)",
+   "exe": "SLES_016.49",
+   "exe_crc32": "be7c5116",
+   "supported": true
+  },
+  {
+   "redump": "Tomb Raider III - Adventures of Lara Croft (Germany)",
+   "bin_crc32": "86e55a8c",
+   "bin_size": 699966960,
+   "version": "de",
+   "language": "German",
+   "revision": "Rev 0",
+   "exe": "SLES_016.83",
+   "exe_crc32": "0b3b65db",
+   "supported": true
+  },
+  {
+   "redump": "Tomb Raider III - Adventures of Lara Croft (Germany) (Rev 1)",
+   "bin_crc32": "8ad3e866",
+   "bin_size": 701190000,
+   "version": "derev",
+   "language": "German",
+   "revision": "Rev 1",
+   "exe": "SLES_016.83",
+   "exe_crc32": "a3577dcd",
+   "supported": true
+  },
+  {
+   "redump": "Tomb Raider III - Adventures of Lara Croft (Italy)",
+   "bin_crc32": "e8b79f6e",
+   "bin_size": 698576928,
+   "version": "it",
+   "language": "Italian",
+   "revision": "Rev 0",
+   "exe": "SLES_016.84",
+   "exe_crc32": "861d64d8",
+   "supported": true
+  },
+  {
+   "redump": "Tomb Raider III - Adventures of Lara Croft (Italy) (Rev 1)",
+   "bin_crc32": "f29b327b",
+   "bin_size": 699799968,
+   "version": "itrev",
+   "language": "Italian",
+   "revision": "Rev 1",
+   "exe": "SLES_016.84",
+   "exe_crc32": "1ba1cf23",
+   "supported": true
+  },
+  {
+   "redump": "Tomb Raider III - Adventures of Lara Croft (Japan) (Disc 1) (Japanese Version)",
+   "bin_crc32": "a8067728",
+   "bin_size": 698332320,
+   "version": "jp",
+   "language": "Japanese",
+   "revision": "original",
+   "exe": "SLPM_861.96",
+   "exe_crc32": "a32ec220",
+   "supported": true
+  },
+  {
+   "redump": "Tomb Raider III - Adventures of Lara Croft (Japan) (Disc 2) (International Version)",
+   "bin_crc32": "f3080fd0",
+   "bin_size": 698623968,
+   "version": "jp2",
+   "language": "English (Japan)",
+   "revision": "original",
+   "exe": "SLPM_861.97",
+   "exe_crc32": "439f6cba",
+   "supported": true
+  },
+  {
+   "redump": "Tomb Raider III - Adventures of Lara Croft (Spain)",
+   "bin_crc32": "23d106c5",
+   "bin_size": 700192752,
+   "version": "sp",
+   "language": "Spanish",
+   "revision": "Rev 0",
+   "exe": "SLES_016.85",
+   "exe_crc32": "74ac1dfe",
+   "supported": true
+  },
+  {
+   "redump": "Tomb Raider III - Adventures of Lara Croft (Spain) (Rev 1)",
+   "bin_crc32": "f1b57019",
+   "bin_size": 701415792,
+   "version": "sprev",
+   "language": "Spanish",
+   "revision": "Rev 1",
+   "exe": "SLES_016.85",
+   "exe_crc32": "aa4ca274",
+   "supported": true
+  },
+  {
+   "redump": "Tomb Raider III - Adventures of Lara Croft (USA)",
+   "bin_crc32": "f3bc2037",
+   "bin_size": 697252752,
+   "version": "us10",
+   "language": "English (USA)",
+   "revision": "Rev 0",
+   "exe": "SLUS_006.91",
+   "exe_crc32": "882a58de",
+   "supported": true
+  },
+  {
+   "redump": "Tomb Raider III - Adventures of Lara Croft (USA) (Rev 1)",
+   "bin_crc32": "fc338fb9",
+   "bin_size": 742514640,
+   "version": "us",
+   "language": "English (USA)",
+   "revision": "Rev 1",
+   "exe": "TOMB3.EXE",
+   "exe_crc32": "944abfbd",
+   "supported": true,
+   "marker": {
+    "file": "CONTENTS.DAT",
+    "crc32": "c0c874e5"
+   }
+  },
+  {
+   "redump": "Tomb Raider III - Adventures of Lara Croft (USA) (Rev 2)",
+   "bin_crc32": "ed5f793d",
+   "bin_size": 747357408,
+   "version": "us",
+   "language": "English (USA)",
+   "revision": "Rev 2",
+   "exe": "TOMB3.EXE",
+   "exe_crc32": "944abfbd",
+   "supported": true,
+   "marker": {
+    "file": "CONTENTS.DAT",
+    "crc32": "4200790b"
+   }
+  },
+  {
+   "redump": "Tomb Raider III - Les Aventures de Lara Croft (France)",
+   "bin_crc32": "1aa55d94",
+   "bin_size": 697636128,
+   "version": "fr",
+   "language": "French",
+   "revision": "Rev 0",
+   "exe": "SLES_016.82",
+   "exe_crc32": "8cbcd422",
+   "supported": true
+  },
+  {
+   "redump": "Tomb Raider III - Les Aventures de Lara Croft (France) (Rev 1)",
+   "bin_crc32": "c4cdcfb8",
+   "bin_size": 698859168,
+   "version": "frrev",
+   "language": "French",
+   "revision": "Rev 1",
+   "exe": "SLES_016.82",
+   "exe_crc32": "85f01cd1",
+   "supported": true
+  }
+ ],
+ "pc_levels": {
+  "Gold CD (all languages)": {
+   "scotland": "7bfbce58",
+   "willsden": "6c8d35fe",
+   "chunnel": "0b265541",
+   "undersea": "bb33cc09",
+   "zoo": "7d23e3ca",
+   "slinc": "74a87f70"
+  },
+  "Remastered": {
+   "scotland": "df85fceb",
+   "willsden": "1bb3f079",
+   "chunnel": "0f671623",
+   "undersea": "e453c7c8",
+   "zoo": "b8e783b7",
+   "slinc": "ab88e130"
+  },
+  "Remastered (older update)": {
+   "scotland": "df85fceb",
+   "willsden": "1bb3f079",
+   "chunnel": "564ce593",
+   "undersea": "e453c7c8",
+   "zoo": "b8e783b7",
+   "slinc": "5c432a07"
+  }
+ },
+ "pc_main_sfx": {
+  "Gold CD (all languages)": "f491c119",
+  "Remastered": "5eb7d9ce"
+ }
+}

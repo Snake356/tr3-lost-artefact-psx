@@ -1,0 +1,79 @@
+{
+ "us": {
+  "base_disc": "us",
+  "base_file": "DATA/TOMBPSX.DAT",
+  "patch": "us.dat.patch",
+  "target_crc": "4e060513"
+ },
+ "uk": {
+  "base_disc": "uk",
+  "base_file": "DATA/TOMBPSX.DAT",
+  "patch": "uk.dat.patch",
+  "target_crc": "47cc6eda"
+ },
+ "de": {
+  "base_disc": "de",
+  "base_file": "DATA/TOMBPSX.DAT",
+  "patch": "de.dat.patch",
+  "target_crc": "6efdc75a"
+ },
+ "fr": {
+  "base_disc": "fr",
+  "base_file": "DATA/TOMBPSX.DAT",
+  "patch": "fr.dat.patch",
+  "target_crc": "acb3a627"
+ },
+ "it": {
+  "base_disc": "it",
+  "base_file": "DATA/TOMBPSX.DAT",
+  "patch": "it.dat.patch",
+  "target_crc": "54d34f07"
+ },
+ "sp": {
+  "base_disc": "sp",
+  "base_file": "DATA/TOMBPSX.DAT",
+  "patch": "sp.dat.patch",
+  "target_crc": "187fda63"
+ },
+ "jp": {
+  "base_disc": "jp",
+  "base_file": "DATA/TOMBPSX.DAT",
+  "patch": "jp.dat.patch",
+  "target_crc": "f94a0924"
+ },
+ "jp2": {
+  "base_disc": "jp2",
+  "base_file": "DATA/TOMBPSX.DAT",
+  "patch": "jp2.dat.patch",
+  "target_crc": "5c42a382"
+ },
+ "as": {
+  "base_disc": "as",
+  "base_file": "DATA/TOMBPSX.DAT",
+  "patch": "as.dat.patch",
+  "target_crc": "9c4124c6"
+ },
+ "as2": {
+  "base_disc": "as2",
+  "base_file": "DATA/TOMBPSX.DAT",
+  "patch": "as2.dat.patch",
+  "target_crc": "ed58ae27"
+ },
+ "kanji": {
+  "base_file": "DATA/KANJI.PSX",
+  "patch": "kanji_la.psx.patch",
+  "target_crc": "1a267772"
+ },
+ "jptest": {
+  "base_disc": "jp",
+  "base_file": "DATA/TOMBPSX.DAT",
+  "patch": "jptest.dat.patch",
+  "target_crc": "9e4bab37"
+ },
+ "astest": {
+  "base_disc": "as",
+  "base_file": "DATA/TOMBPSX.DAT",
+  "patch": "astest.dat.patch",
+  "target_crc": "fb4086d5"
+ }
+}

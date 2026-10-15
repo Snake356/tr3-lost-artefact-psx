@@ -1,0 +1,30 @@
+@@ -190,8 +190,7 @@
+ 		}
+ 		ipspos+=3;
+ 		/* Converts offset to correct format */
+-		offset=(((offset&0x00FF0000)>>16)|(offset&0x0000FF00)|
+-		        ((offset&0x000000FF)<<16));
++		offset=((offset&0xFFFFFF00)>>8);
+ 		
+ 		/* Checks for EOF flag */
+ 		if (offset==0x00454F46) break;
+@@ -213,9 +212,6 @@
+ 			}
+ 			ipspos+=2;
+ 		}
+-		/* Converts size to correct format */
+-		size=(INTU16) ((((INTU16)(size&0xFF00))>>8)|
+-		               (((INTU16)(size&0x00FF))<<8));
+ 		
+ 		/* Moves to offset */
+ 		if (offset>filesize){
+@@ -298,8 +294,7 @@
+ 			goto end;
+ 		}
+ 		/* Converts offset to correct format */
+-		offset=(((offset&0x00FF0000)>>16)|(offset&0x0000FF00)|
+-		        ((offset&0x000000FF)<<16));
++		offset=((offset&0xFFFFFF00)>>8);
+ 		/* Truncates the file */
+ 		freeint1=fclose(file);
+ 		if (freeint1!=0) retval=3;

@@ -1,0 +1,360 @@
+================================================================================
+  TOMB RAIDER III: THE LOST ARTEFACT - PS1
+  Changes, known issues and fixed bugs
+================================================================================
+
+
+  This file lists what is different from the PC version and why, the known
+  issues that are left as they are, and the bugs that were fixed.
+
+  Found something new? Report it on the project page:
+
+     https://github.com/Snake356/tr3-lost-artefact-psx/issues
+
+  The builder's "Report a problem" button opens a report that is already
+  filled in with your disc version and options. Please add the level, the
+  place (room number from TRView if you can) and what happens. A crash or
+  freeze matters most: please say what you did just before it.
+
+
+================================================================================
+  ON PURPOSE: DIFFERENT FROM THE PC VERSION
+================================================================================
+
+  The PlayStation has 2 MB of main memory and 512 KB of sound memory. Some
+  changes were needed to make the levels fit and run.
+
+  SLEEPING WITH THE FISHES
+
+  * The level is split into two parts, each with its own loading screen.
+    -> In one piece it is too big for the PS1: as soon as several enemies
+       became active at once, the game ran out of memory and crashed.
+       (FindingTheLost found this and made the split.)
+
+  * Each part is the whole level file with the other part taken out.
+    Part 1 drops the rooms, items, models, lights and floor data of
+    Part 2, and Part 2 drops those of Part 1. That is what frees the
+    memory. Some things had to stay or be handled with care:
+    -> Part 1 keeps the geometry of one room of Part 2 (room 54). Without
+       it, the green acid in the camera shot at the very start of the
+       level shows broken textures. This was tested twice with the same
+       result, so the room stays.
+    -> Part 1 also keeps room 13 of Part 2, so that the view at the end of
+       room 44 does not end in nothing.
+    -> Part 1 ends with a new level end in room 44, where Part 2 begins.
+    -> Part 2 keeps three rooms of Part 1 (rooms 26, 27 and 28), so that
+       the last aquarium does not look black and empty. What lies outside
+       the glass of the tank with the Uzis is still not visible.
+    -> Two SLINC diving bells in Part 2 are turned so that their missing
+       back (which lay in Part 1) cannot be seen.
+    -> Making the left-out rooms smaller as well was tried and dropped:
+       it broke textures and caused random freezes.
+    -> Part 2 drops two triggers it does not need: one at the end of room
+       44 that cleared bodies and one at the start of room 13 that
+       switched off all triggers.
+
+  * The yellow submarine standing before the Desert Eagle secret is left
+    out.
+    -> The PS1 draws this large model wrongly: its picture jumps to the
+       room in front while it still blocks the way, and moving it did not
+       help (found by FindingTheLost). It is one of the largest models in
+       the level and reaches over the edge of its room. The level plays
+       the same without it.
+
+  HIGHLAND FLING
+
+  * The side path between rooms 2 and 3 is closed off completely with a
+    new wall, so it can no longer be entered.
+    -> From there the view reached into the large, closely connected
+       area of room 3: far too much was visible at once for the PS1, and
+       the game froze. The path is not needed to finish the level.
+
+  * The view distance is shorter (14 blocks instead of 20).
+    -> For a smoother frame rate in this large outdoor level.
+
+  REUNION
+
+  * The punks no longer carry burning clubs.
+    -> All ten burning at once was too much for the PS1. A warm glow around
+       them makes up for it.
+
+  * Shorter view distance (12 blocks) and closer fog, and two rooms got
+    some extra light.
+
+  SOUNDS
+
+  The PS1 keeps all sounds of a level in its own 512 KB of sound memory.
+  The original Tomb Raider III levels use between 439 and 499 KB of it.
+  The Lost Artefact levels have more sounds than fit, so a few that are
+  rarely heard or have other variants are silent. Most of this was already
+  done in b122251's conversion; it was checked again for this release.
+
+  * Shakespeare Cliff: the bazooka shot, the quad bike hitting a wall from
+    the side or from the front and landing after a jump, the push switch,
+    the Uzi stop and shotgun shell sounds, the reservoir flush, a small
+    fan, the attack of the winged mutant, two of the generator and two of
+    the squeak variants, and four of Lara's wet-feet steps and her wading.
+    -> A test with the bazooka shot back worked, but the level then used
+       505 KB of sound memory, more than any original Tomb Raider III
+       level. As that is right at the limit, the shot stays silent for
+       safety. The quad bike's engine and
+       all its other sounds are there.
+
+  * Willard's Lair: the crocodile's attack and death, the blowpipe, metal
+    shutters breaking, a wooden gate, the portcullis going up and down,
+    the wall blades, a small subway door, a light water sound, a water
+    loop, one generator variant, the Uzi stop, and four of Lara's
+    wet-feet steps and her wading.
+
+  * Sleeping with the Fishes (both parts): a jet flying by, a generic
+    swoosh, a light water sound, Lara's death on spikes, metal shutters
+    breaking, one mud footstep variant, and four of Lara's wet-feet steps
+    and her wading.
+
+  * It's a Madhouse!: Lara using a key, the portcullis going up and down,
+    a trapdoor closing and small metal shutters.
+
+  * Highland Fling and Reunion: nothing silent.
+
+  SAVE CRYSTALS
+
+  * The PS1 version saves with save crystals, like the original Tomb
+    Raider III on the PS1. They were placed in every level, mostly where
+    the TRX version of The Lost Artefact has them.
+
+  JAPANESE AND ASIAN DISC 1
+
+  * Easier levels: more pickups and save crystals, fewer traps, and the
+    grenade launcher already in Highland Fling. This is how the original
+    Japanese Tomb Raider III differs from the western one. The Lost
+    Artefact came out in Japan only on the PC, with the same levels as the
+    western version, so these levels were adapted by hand for this
+    project, following the original Japanese Tomb Raider III.
+  * As in the Japanese Tomb Raider III, the game is saved from a save
+    crystal in the inventory, and the textures are brighter.
+
+  START AND END
+
+  * The game starts like the original Tomb Raider III on the PS1: the
+    language's loading picture and the Eidos logo video (Enix logo on the
+    Japanese discs).
+  * The end credits show ten pictures: the Lost Artefact credits, the
+    PlayStation edition credit and b122251's farewell picture.
+
+
+================================================================================
+  KNOWN ISSUES
+================================================================================
+
+  * In large or open areas the frame rate drops to about 15-20 frames per
+    second. The original Tomb Raider III on the PS1 does the same in many
+    places.
+
+  * Sleeping with the Fishes Part 2: the two SLINC capsules hanging in the
+    open water look very dark on the PS1.
+
+  * Not a bug: the Hand of Rathmore (It's a Madhouse!), the Circuit Bulbs
+    and the Mutant Samples (Sleeping with the Fishes Part 2) are drawn
+    see-through and are hard to see in the dark. The original Tomb Raider
+    III on the PS1 draws such items the same way. Light a flare.
+
+  * Formerly reported: the quad bike's sound in Shakespeare Cliff glitched
+    now and then. It was not seen any more in the latest tests.
+
+
+================================================================================
+  GOOD TO KNOW
+================================================================================
+
+  * Reunion: Sophia is not defeated by shooting her. Destroy the fuse box
+    above the arena with an explosion (a rocket or a grenade close to the
+    box) or a harpoon.
+
+
+================================================================================
+  FIXED BUGS
+================================================================================
+
+  Every fix applies to all disc versions (USA, Europe, Japan, Asia, both
+  discs, every revision) unless a version is named. Small things were
+  fixed too, so that the PS1 version is as clean and complete as possible.
+
+  Each entry says what was wrong, why, and what was done. "(FTL)" marks
+  fixes by FindingTheLost, "(found by FTL)" bugs he found and listed that
+  were fixed later; all others were found and fixed in this continuation
+  of the project. b122251's own groundwork (moving enemy code to free slots, the
+  savegame name, the sky colour, the loading bar and more) is not listed,
+  because it made the port possible in the first place.
+
+
+  HIGHLAND FLING
+  --------------
+
+  * The game froze when looking from room 2 into room 3.
+    Why: from that side path the view reached into the large, closely
+    connected area of room 3. Far too much geometry was visible at once,
+    more than the PS1 can draw, and the game stopped.
+    Fix: the side path is closed off with a new wall. It is not needed to
+    finish the level.
+
+  * You could walk into the stone pillar in room 49, and reach into it
+    from the room above (room 20).
+    Why: on the PC these two spots belong to a third room (room 21) in
+    which the pillar is solid. To save memory, the PS1 version leaves room
+    21 out. b122251 had already closed the neighbouring spots for the same
+    reason, but these two were missed.
+    Fix: both spots are now solid walls. All seven levels were checked for
+    other places of this kind: there are none.
+
+  * Textures turned in the level editor came out wrong on the PS1.
+    Why: the editor stores a turned texture as a new texture entry, which
+    pushed the save crystal and controller textures to other numbers.
+    Fix: turned textures are folded back onto the originals before the
+    conversion, so the turns are kept and nothing moves.
+
+
+  WILLARD'S LAIR
+  --------------
+
+  * (FTL) When the Cairn Key was inserted, the camera looked at the wrong
+    place.
+    Fix: the camera now shows the right spot.
+
+
+  SLEEPING WITH THE FISHES
+  ------------------------
+
+  * (FTL) The level crashed the game once several enemies became active.
+    Why: an enemy only takes memory when it wakes up. In this large level,
+    several enemies waking up at once used up the PS1's 2 MB and the game
+    crashed. Making the rooms simpler does not help against that.
+    Fix: the level is split into Part 1 and Part 2, each of which fits on
+    its own, with its own loading screen. Part 2 got a save crystal near
+    the start.
+
+  * Broken, stretched floor geometry in rooms 14, 44 and 53.
+    Why: these rooms were taller than the PS1 room format allows (31
+    steps of height); the highest points were cut off and folded down.
+    An earlier attempt only moved the problem to other points.
+    Fix: the affected points belong to a decorative floor far below the
+    real one and were raised a little. Now no point is cut off in any of
+    the 70 level files.
+
+  * The animated diver left stretched polygons behind and then lay frozen
+    in his last pose.
+    Why: his animation jumps to a frame that does not exist. This is a bug
+    in the original game data (the original Tomb Raider III level Lud's
+    Gate has it too).
+    Fix: the jump goes to the right frame, and the diver disappears when
+    his animation is over instead of lying there.
+
+
+  IT'S A MADHOUSE!
+  ----------------
+
+  * (FTL) A vulture got stuck in a wall (as on the PC).
+    Fix: it was moved a little and set lower, so it flies free.
+
+  * (found by FTL) An invisible item was already in Lara's inventory at
+    the start of the level: a "Hand of Rathmore" with no model and no
+    texture, an empty slot.
+    Why: at the end of Sleeping with the Fishes Part 2 Lara picks up the
+    Hand of Rathmore. Tomb Raider III puts the icons of the artefacts
+    collected so far back into the inventory at the start of every level
+    (in the original game for the artefacts of the earlier levels). It's a
+    Madhouse! does not load a model for the Hand, so the item showed up
+    empty.
+    Fix: the artefact icons are no longer put back at the start of a
+    level. The TRX version on the PC does the same.
+
+  * (found by FTL) The save crystals were drawn too small.
+    Why: they used the small crystal model.
+    Fix: they now use the big crystal model like in all other levels.
+
+  * Two wall faces in room 97 showed the wrong texture.
+    Fix: they now have the right one (the Japanese version already had
+    it).
+
+
+  REUNION
+  -------
+
+  Reunion takes the place of the Tomb Raider III level Madubu Gorge in the
+  game's level list (level 7). Some game code checks the level number and
+  behaves specially for the level that originally had that number. That
+  caused the first two bugs:
+
+  * When Lara touched the green acid, she did not burn. She played the
+    wrong reaction meant for the rapids of Madubu Gorge (a drowning-like
+    reaction, tinted green), and the game could crash.
+    Why: the code for deadly surfaces treats level 7 as Madubu Gorge and
+    its rapids.
+    Fix: that special case no longer applies, so Lara burns as on the PC.
+
+  * Sophia could not be defeated: destroying the fuse box above the arena
+    had no effect.
+    Why: in Tomb Raider III, Sophia only becomes vulnerable when the fuse
+    box is destroyed, and the fuse box code checks for one fixed level
+    number from Tomb Raider III. Reunion has a different number, so the
+    check never matched.
+    Fix: the fuse box code now checks for Reunion's number. Destroying the
+    box (a rocket or grenade close to it, or a harpoon) defeats Sophia.
+
+  * A blue, noisy band showed below the sky when looking out over the
+    fence.
+    Why: the sky dome sat lower than usual, and its lower part is never
+    drawn on the PS1, so the empty background showed through.
+    Fix: the dome is back at its normal height and closed at the bottom
+    with a black ring.
+
+  * Leftovers from It's a Madhouse! were still in an unreachable room
+    (room 51): a flare box and triggers for a secret, music and "clear
+    bodies".
+    Fix: removed, so that nothing of the other level is left in Reunion.
+
+  * (FTL) A save crystal was added in the room with the lever just before
+    Sophia (later moved, see "All levels").
+
+
+  ALL LEVELS
+  ----------
+
+  * Save crystals: (FTL) added crystals in Sleeping with the Fishes Part 2
+    and It's a Madhouse!. Later all crystals were placed where the TRX
+    version on the PC has them, and then checked and adjusted by hand in
+    every level (some added, moved or removed). Two crystals in the
+    Japanese Highland Fling could be picked up like items; fixed.
+
+  * (FTL) The number of secrets: Sleeping with the Fishes Part 1 and Part
+    2 and It's a Madhouse! showed the wrong number of secrets, and the
+    final statistics screen the wrong total. Both are correct now.
+
+  * (FTL) Loading screens were cut at the top and bottom, as on the PC
+    Gold version. They were rebuilt in the right proportions, like the
+    original Tomb Raider III loading screens on the PS1. All title, legal,
+    credit and loading pictures are finished.
+
+  * Lara's head had two wrongly textured triangles.
+    Fix: they have a new skin texture in every level.
+
+  * The very top of the sky dome was open in every level with a sky. On
+    the Japanese discs the hole even showed in light blue.
+    Fix: closed.
+
+  * The game did not start like the original Tomb Raider III: the
+    loading picture and the Eidos logo video were switched off.
+    Fix: both are back, in each language (Enix logo on the Japanese
+    discs).
+
+  * End credits: there are now ten pictures, ending with the PlayStation
+    edition credit and b122251's farewell picture. On the Japanese discs
+    the credits went by too fast, because their timing was made for
+    thirteen pictures; they now run as long as on the other NTSC discs.
+
+  * German texts: doubled messages ("Erfolgreich geladenErfolgreich
+    geladen" and 14 more) fixed, "Siege" renamed to "Besiegte Gegner".
+
+  * Japanese and Asian discs: Japanese texts (13 new characters for the
+    level names), the brighter colours of the Japanese Tomb Raider III,
+    and Japanese Disc 2 and Asian Disc 2, which froze while loading a
+    level, now load.

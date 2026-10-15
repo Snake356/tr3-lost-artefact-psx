@@ -1,0 +1,12 @@
+{
+ "from_player_disc": {
+  "art/loadscr/common/house.raw": "PIX/HOUSE.RAW",
+  "art/loadscr/de/initload.raw": "PIX/INITLOAD.RAW",
+  "art/loadscr/es/initload.raw": "PIX/INITLOAD.RAW",
+  "art/loadscr/fr/initload.raw": "PIX/INITLOAD.RAW",
+  "art/loadscr/it/initload.raw": "PIX/INITLOAD.RAW",
+  "art/loadscr/jp/enix.raw": "PIX/ENIX.RAW",
+  "art/loadscr/us/initload.raw": "PIX/INITLOAD.RAW"
+ },
+ "note": "all other art/loadscr pictures used by disc/<layout>.xml are shipped as they are"
+}

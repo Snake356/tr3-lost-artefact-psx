@@ -1,0 +1,10 @@
+Skip    LRLLRLRLRLLLLRLRRRRL
+Weapons LRRLLLLRLRRLRRLLRLLR
+Items   LLLLLRLLLRLRLLRLLRLL
+
+
+PC & Macintosh Level Skip: Draw PISTOLS.* Walk one step back, one step forward, crouch, release crouch, turn around three times and immediately jump forward.
+
+PC & Macintosh All Weapons & Ammo: Draw PISTOLS.* Walk one step back, one step forward, crouch, release crouch, turn around three times in either direction and immediately back flip. This cheat also provides medipaks.
+
+Useful Ammo Glitch: Allows you to fire powerful ammo, like grenades or rockets, using rapid-fire weapons like the MP5 or harpoon gun. See below for details.

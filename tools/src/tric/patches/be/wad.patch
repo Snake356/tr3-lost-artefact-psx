@@ -1,0 +1,60 @@
+@@ -1,5 +1,5 @@
+ /*
+- * Library for Converting between WAD (TR4 on Dreamcast) and BMP
++ * Library for Converting between WAD (TR4 on Dreamcast) and BMP (BE)
+  * Copyright (C) 2017  b122251
+  * 
+  * This program is free software: you can redistribute it and/or modify
+@@ -211,6 +211,10 @@
+ 			retval=27;
+ 			goto end;
+ 		}
++		freeuint1=(((freeuint1&0xFF000000)>>24)|
++	               ((freeuint1&0x00FF0000)>>8)|
++	               ((freeuint1&0x0000FF00)<<8)|
++	               ((freeuint1&0x000000FF)<<24));
+ 		
+ 		/* Determines whether the image in the wad is complete */
+ 		if ((curpos+freeuint1)>((unsigned INT32)wadSize)){
+@@ -356,6 +360,10 @@
+ 		retval=2;
+ 		goto end;
+ 	}
++	freeuint2=(((freeuint2&0xFF000000)>>24)|
++	           ((freeuint2&0x00FF0000)>>8)|
++	           ((freeuint2&0x0000FF00)<<8)|
++	           ((freeuint2&0x000000FF)<<24));
+ 	freeint1=fseek(bmp,34,SEEK_SET);
+ 	if (freeint1!=0){
+ 		retval=2;
+@@ -366,6 +374,10 @@
+ 		retval=2;
+ 		goto end;
+ 	}
++	freeuint1=(((freeuint1&0xFF000000)>>24)|
++	           ((freeuint1&0x00FF0000)>>8)|
++	           ((freeuint1&0x0000FF00)<<8)|
++	           ((freeuint1&0x000000FF)<<24));
+ 	if (freeuint1>0x80000){
+ 		retval=28;
+ 		goto end;
+@@ -446,11 +458,19 @@
+ 			retval=4;
+ 			goto end;
+ 		}
++		freeuint1=(((freeuint1&0xFF000000)>>24)|
++	               ((freeuint1&0x00FF0000)>>8)|
++	               ((freeuint1&0x0000FF00)<<8)|
++	               ((freeuint1&0x000000FF)<<24));
+ 		freesizet1=fwrite(&freeuint1,1,4,wad);
+ 		if (freesizet1!=4){
+ 			retval=4;
+ 			goto end;
+ 		}
++		freeuint1=(((freeuint1&0xFF000000)>>24)|
++	               ((freeuint1&0x00FF0000)>>8)|
++	               ((freeuint1&0x0000FF00)<<8)|
++	               ((freeuint1&0x000000FF)<<24));
+ 		freeuint1-=6;
+ 		while (freeuint1>0){
+ 			/* Determines size of chunk */

@@ -1,0 +1,80 @@
+@@ -1,5 +1,5 @@
+ /*
+- * Library for Converting between PCX (8-bit indexed) and BMP
++ * Library for Converting between PCX (8-bit indexed) and BMP (BE)
+  * Copyright (C) 2017  b122251
+  * 
+  * This program is free software: you can redistribute it and/or modify
+@@ -112,6 +112,7 @@
+ 		retval=2;
+ 		goto end;
+ 	}
++	freeshort1=(((freeshort1&0xFF00)>>8)|((freeshort1&0x00FF)<<8));
+ 	freeint1=fseek(pcx,8,SEEK_SET);
+ 	if (freeint1!=0){
+ 		retval=2;
+@@ -122,6 +123,7 @@
+ 		retval=2;
+ 		goto end;
+ 	}
++	freeshort2=(((freeshort2&0xFF00)>>8)|((freeshort2&0x00FF)<<8));
+ 	width=(unsigned INT32) (1+(freeshort2-freeshort1));
+ 	
+ 	/* Reads height */
+@@ -135,6 +137,7 @@
+ 		retval=2;
+ 		goto end;
+ 	}
++	freeshort1=(((freeshort1&0xFF00)>>8)|((freeshort1&0x00FF)<<8));
+ 	freeint1=fseek(pcx,10,SEEK_SET);
+ 	if (freeint1!=0){
+ 		retval=2;
+@@ -145,6 +148,7 @@
+ 		retval=2;
+ 		goto end;
+ 	}
++	freeshort2=(((freeshort2&0xFF00)>>8)|((freeshort2&0x00FF)<<8));
+ 	height=(unsigned INT32) (1+(freeshort2-freeshort1));
+ 	
+ 	/* Calculates imagesize */
+@@ -343,6 +347,10 @@
+ 		retval=2;
+ 		goto end;
+ 	}
++	imagestart=(((imagestart&0xFF000000)>>24)|
++	            ((imagestart&0x00FF0000)>>8)|
++	            ((imagestart&0x0000FF00)<<8)|
++	            ((imagestart&0x000000FF)<<24));
+ 	
+ 	/* Reads width and height */
+ 	freeint1=fseek(bmp,18,SEEK_SET);
+@@ -360,6 +368,10 @@
+ 		retval=2;
+ 		goto end;
+ 	}
++	width=(((width&0xFF000000)>>24)|((width&0x00FF0000)>>8)|
++	       ((width&0x0000FF00)<<8)|((width&0x000000FF)<<24));
++	height=(((height&0xFF000000)>>24)|((height&0x00FF0000)>>8)|
++	        ((height&0x0000FF00)<<8)|((height&0x000000FF)<<24));
+ 	
+ 	/* Reads bbp */
+ 	freeint1=fseek(bmp,28,SEEK_SET);
+@@ -372,6 +384,7 @@
+ 		retval=2;
+ 		goto end;
+ 	}
++	freeshort1=(((freeshort1&0xFF00)>>8)|((freeshort1&0x00FF)<<8));
+ 	
+ 	/* Checks whether the image is 8 bits per pixel */
+ 	if (freeshort1!=8){
+@@ -390,6 +403,10 @@
+ 		retval=2;
+ 		goto end;
+ 	}
++	numcolours=(((numcolours&0xFF000000)>>24)|
++	            ((numcolours&0x00FF0000)>>8)|
++	            ((numcolours&0x0000FF00)<<8)|
++	            ((numcolours&0x000000FF)<<24));
+ 	
+ 	/* Checks numcolours */
+ 	if ((numcolours>256)||(numcolours==0)){

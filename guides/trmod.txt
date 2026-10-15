@@ -1,0 +1,916 @@
+Tomb Raider Level Modifier
+==========================
+Copyright (C) 2022 b122251
+v0.1.1
+
+
+CONTENTS OF THIS FILE
+---------------------
+ - Introduction
+ - Scope
+ - Usage
+ - Level Type Identifiers
+ - Formats
+ - Command List
+   +- Get
+   +- Items
+   +- Static Meshes
+   +- Lights
+   +- Sound Sources
+   +- FloorData
+   +- Floor/Ceiling Heights
+   +- Zones
+   +- Step Sounds
+   +- Vertices
+   +- Rectangles
+   +- Triangles
+   +- Sprites
+   +- Viewports
+   +- Roomlight
+   +- Alternate Rooms
+   +- Room Flags
+   +- Adding Rooms
+   +- Moving Rooms
+   +- Resizing Rooms
+   +- Removing Rooms
+   +- Boxes
+   \- Hexdump
+ - Notes on the Source Code
+ - Changelog
+
+
+INTRODUCTION
+------------
+TRMOD is a command-line level editor for the Tomb Raider games by Core Design.
+It is written entirely by me (b122251) in the C programming language, and
+released with source code and compiled binaries for several operating systems
+and processor architectures under the GNU General Public License 3.
+    The interface is entirely command-line based, meaning no graphical interface
+for it exists. This might cause the program to be somewhat difficult to use for
+users with little to no experience in the use of command-line interfaces. This
+document is written to explain how this program is correctly used, but assumes
+a basic understanding of how to use a command-line interface.
+    There exists a document called TRosetta Stone, which explains how many
+parts of the Tomb Raider level files work. It is highly recommended to read
+this. A copy of it has been included in this package, but it is sourced from
+https://github.com/opentomb/TRosettaStone3.
+
+
+SCOPE
+-----
+The current version of TRMOD (v0.1.1) supports only editing levels for
+Tomb Raider (1996), Tomb Raider II (1997) and Tomb Raider III (1998) and their
+expansions "Unfinished Business", "The Golden Mask" and "The Lost Artefact" on
+Windows. Currently no support is implemented for the Sony Playstation or Sega
+Saturn versions of the game, nor for Tomb Raider IV or Tomb Raider Chronicles.
+Support for these later games and different ports may be implemented at some
+point in the future.
+    TRMOD can modify almost everything about a level, except for the assets
+(being mesh data, textures and audio samples). It can, however, modify the
+layout of world geometry, placement of triggers, placement of items, static
+meshes, sprites and sound sources, change room flags, boxes and zones, move or
+resize entire rooms, and change lighting conditions. Though usage of this tool
+might at first seem complicated, once a user gets used to it, he will find a
+very powerful set of features which can be used with far greater precision than
+any other modification tool allows.
+    There are several reasons why I chose a command-line interface for this
+program. Firstly, the use of command-line tools allows for very exact,
+repeatable steps to be automated in scripts. Secondly, text is still the only
+truly universal interface all computer systems share. So this program can be
+compiled for virtually any operating system and architecture, and will still
+work as intended. Thirdly, this is where my personal preference comes in. I
+wrote TRMOD entirely on OpenBSD, running on a console without X. And since I
+wrote TRMOD mainly for my own use, it made sense to write it in a way that
+would integrate well in my own workflow. And fourthly, I wanted an editor that
+would follow the "Do this AND NOTHING ELSE"-school of program design. This is
+because all level editing tools I had used before would do the thing I wanted,
+but then also have a bunch of side-effects. TRMOD changes exactly what the user
+tells it to, and doesn't touch any other parts of the level file.
+
+
+USAGE
+-----
+TRMOD's invocation is as follows:
+	trmod [level type] [level file] "command" ...
+Where trmod is the name of the program (so on windows this might be changed
+to "trmod.exe" or on unix to "./trmod" or to just "trmod" if installed in the
+$PATH.
+    Level type refers to a short string identifying what type of level file
+TRMOD is operating on. They follow a very predictable pattern, and all valid
+type identifiers will be listed below.
+    Level file is the full path to the level file to be modified.
+    Command is the actual function the user wants TRMOD to perform. The user
+may supply one command or several (as many as the shell of the operating system
+supports) separated by spaces, and TRMOD will execute them in order.
+
+There exist two special commands that don't follow this pattern. These commands
+are:
+ - "trmod -l" which prints the GNU General Public License 3
+ - "trmod -h" which prints a list of all TRMOD-commands.
+
+
+LEVEL TYPE IDENTIFIERS
+----------------------
+These are the level type identifiers TRMOD expects:
+ - "tr1pc"  for Tomb Raider (1996) on MS-DOS (PHD)
+ - "tr1gpc" for Tomb Raider: Unfinished Business (1998) on MS-DOS (TUB)
+ - "tr2pc"  for Tomb Raider II (1997) on Windows (TR2)
+ - "tr3pc"  for Tomb Raider III (1998) on Windows (TR2)
+
+
+FORMATS
+-------
+I recommend reading the TRosetta Stone document before using TRMOD, as TRMOD
+has such a direct relation to the level file formats, an understanding of
+the level format is very useful.
+TRMOD itself uses some specific formats and conventions. They are as follows:
+    Everything is counted from zero (items, rooms, sectors, meshes). The first
+element is always numbered 0 in TRMOD.
+    Coordinates are always relative to the room the element is in (except when
+moving rooms themselves), and follow the coordinate system of the game engine.
+The Tomb Raider engine is of course set on a grid system, consisting of
+"blocks". A "block" is always 1024 long, wide and tall. So for example, an item
+that is placed on the floor in the middle of sector (2,3) of the room it's in
+will have coordinates (2560,3584,0) in TRMOD.
+    Angles are always in 16-bit signed integers. They are set on a scale from
+-32768 to 32767 where 0 means facing north, 16384 means facing east, -32768
+means facing south, and -16384 means facing west.
+    Intensity (or lighting) depends on the level type and format, but generally
+follows one of three forms: direct integer, fraction or RGB-colour. A direct
+integer is most often used on items with an intensity-value of -1 (which is a
+special value meaning "follow dynamic lighting conditions in the room"). A
+fraction is most commonly used in Tomb Raider I and Tomb Raider II, and is
+printed as A/B, where B means maximum light, and A means the actual value. A
+user may enter any two numbers, and TRMOD will calculate it to the correct
+scale for where it is used. (Meaning, if the scale used by the game in a
+particular case is 0-8192, and the user enters 1/2, TRMOD will set the value to
+4096). RGB-colour is mostly used in Tomb Raider III and later. It is printed
+in the standard 6-character hexadecimal value (RRGGBB).
+
+
+COMMAND LIST
+------------
+This chapter handles all command TRMOD can execute. They are handled per
+subject, to make it easier for the user to find the command he needs.
+
+Get
+---
+One of the most useful commands in TRMOD's arsenal is the "get"-command.
+It exists in many forms, but its function is to print some aspect of the level
+to the screen. Here is a full list of get-commands:
+ - "getitem(item)"                   Gets an item (also called an "entity")
+ - "getstaticmesh(room, mesh)"       Gets a static mesh
+ - "getlight(room, light)"           Gets a dynamic light from a room
+ - "getsoundsource(soundsource)"     Gets a sound source
+ - "getfloordata(room, column, row)" Gets the floor data from a given sector
+ - "getfloor(room, column, row)"     Gets the height of the floor in a sector
+ - "getceiling(room, column, row)"   Gets the height of the ceiling in a sector
+ - "getzone(room, column, row)"      Gets the zone number for a sector
+ - "getstepsound(room, column, row)" Gets the material index for a sector
+ - "getvertex(room, vertex)"         Gets a vertex from a room
+ - "getrectangle(room, rectangle)"   Gets a rectangle from a room
+ - "gettriangle(room, triangle)"     Gets a triangle from a room
+ - "getsprite(room, sprite)"         Gets a sprite from a room
+ - "getviewport(room, viewport)"     Gets a viewport (or door) from a room
+ - "getroomlight(room)"              Gets roomlight (or ambient intensity)
+ - "getaltroom(room)"                Gets a room's alternate room
+ - "getroomflags(room)"              Gets what room flags are set
+ - "getwater(room)"                  Gets whether the "Underwater"-flag is set
+ - "getsfxalways(room)"              Gets whether the "SFXAlways"-flag is set
+ - "getpitchshift(room)"             Gets whether the "PitchShift"-flag is set
+ - "getsky(room)"                    Gets whether the "Sky"-flag is set
+ - "getdynamic(room)"                Gets whether the "Dynamic"-flag is set
+ - "getwind(room)"                   Gets whether the "Outside"-flag is set
+ - "getinside(room)"                 Gets whether the "Inside"-flag is set
+ - "getswamp(room)"                  Gets whether the "Swamp"-flag is set
+ - "getroompos(room)"                Gets the position of a room
+ - "getroomsize(room)"               Gets the size of a room
+ - "getbox(box)"                     Gets a box from the level
+These commands have two subtleties which make them a lot more powerful.
+Firstly, any of the above parameters (like "room", "mesh", "row" etc.) can be
+replaced with an asterisk to mean "all of them".
+Secondly, each of these commands can be preceded by the letter 'c' to have
+TRMOD print the element in the form of a TRMOD-command, or by the letter 'r'
+to have TRMOD print the element in the form of a TRMOD-replace-command.
+    Some examples:
+ - trmod tr1pc LEVEL1.PHD "getitem(*)"
+    Prints all items in the level to the screen.
+ - trmod tr1pc LEVEL1.PHD "cgetitem(3)"
+    Prints the fourth item as a "additem"-command.
+ - trmod tr2pc WALL.TR2 "getfloordata(4,*,2)"
+    Prints the floordata for all of row 2 in room 4.
+ - trmod tr3pc JUNGLE.TR2 "getfloor(*,*,*)"
+    Prints the height of the floor in every sector in the level.
+ - trmod tr1pc GYM.PHD "rgetstaticmesh(7,*)"
+    Prints all static meshes in room 7 as replacestaticmesh-commands.
+ - trmod tr1pc LEVEL3A.PHD "getwater(*)"
+    Prints all rooms which have the "Underwater"-flag set.
+ - trmod tr2pc VENICE.TR2 "cgetroomsize(4)"
+    Prints the size of room 4, in the form of a "resizeroom"-command
+ - trmod tr3pc SCOTLAND.TR2 "getroomflags(4)"
+    Prints all room flags that are set in room 4.
+Note: the functionality of "cget" and "rget" are extremely useful for learning
+how to use TRMOD, as they can be used to generate a practically infinite number
+of examples of how each command is used.
+    Note: Everything in TRMOD is counted from zero, therefore the first item is
+numbered 0.
+    Note: Some commands can also be preceded by the letter 'h' to print the
+element in the form of its hexadecimal representation, being the actual bytes in
+the level file. (If you don't know what that means, you don't need it).
+
+Items
+-----
+Items (also referred to as entities) are all the objects Lara interacts with
+(including Lara herself) such as enemies, pickups, doors, locks, blocks, traps
+and bridges. TRMOD is capable of adding, changing or removing them.
+ - "additem(id, room, x, z, y, angle, intensity1, <intensity2>, flags)"
+This adds an item to the level.
+    id is the ObjectID. This varies per game.
+    room is the room the item is to be placed in (counted from zero)
+    x, z, and y form the position of the item (in local coordinates)
+    angle determines how the item is rotated.
+    intensity1 is the first intensity or "lighting" value.
+    intensity2 is the second intensity or "lighting" value.
+    flags is a hexadecimal representation of the "flags"-field.
+ - "replaceitem(item, <id>, <room>, <x>, <z>, <y>, <angle>, <intensity1>, <intensity2>, <flags>)"
+This modifies an item. Any property of the item can be modified separately, or
+all properties of the item can be modified at once. The parameters have the
+same meanings as in the additem-command.
+    item is counted from zero, and can also be replaced by an asterisk to imply
+"all items".
+    If a parameter is empty, the property remains unchanged.
+ - "removeitem(item, <raw>)"
+This removes an item from the level, and adjusts all FloorData-entries, to
+reflect the change.
+    item is counted from zero, and can also be replaced with an asterisk to
+remove all items from the level.
+    If the raw-parameter is added, FloorData is not modified (this is not
+recommended as it will most likely break the level).
+    Some examples:
+ - trmod tr1pc GYM.PHD "additem(87,9,1536,12800,0,0,1/2,1/2,0000)"
+Adds the Uzis to the centre of sector (1,12) in room 9.
+ - trmod tr3pc HOUSE.TR2 "additem(16,55,3584,2560,0,16384,0000FF,0000FF,0000)"
+Adds a quad bike to room 16 in HOUSE.TR2, and makes it very blue.
+ - trmod tr2pc WALL.TR2 "replaceitem(20,,78,6656,5632,0,-24576)"
+Change item number 20's room to 78, and it's location to the centre of
+sector (6,5), and rotated facing southwest. In this case the item has ID 0,
+meaning the item is Lara. This changes the starting position of the level.
+ - trmod tr2pc WALL.TR2 "replaceitem(11,214)" "replaceitem(18,214)" "replaceitem(19,214)" "replaceitem(22,214)" "replaceitem(23,214)"
+This replaces every tiger in WALL.TR2 with a T-Rex.
+ - trmod tr1pc LEVEL3B.PHD "removeitem(19)"
+This removes item 19 from LEVEL3B.PHD, and updates FloorData entries to still
+work correctly.
+ - trmod tr2pc LEVEL2.TR2 "removeitem(*)"
+This removes all items from LEVEL2.TR2
+
+Static Meshes
+-------------
+Static Meshes are, as the name implies, immovable objects (things like plants,
+trees, statues, banisters, furniture, etc.) TRMOD is capable of adding,
+changing or removing them.
+  - "addstaticmesh(id, room, x, z, y, angle, intensity1, <intensity2>)"
+This adds a static mesh to a room.
+    id is the Static Mesh's ID. This varies per game.
+    room is the room the static mesh is to be placed in (counted from zero)
+    x, z, and y form the position of the static mesh (in local coordinates)
+    angle determines how the static mesh is rotated.
+    intensity1 is the first intensity or "lighting" value.
+    intensity2 is the second intensity or "lighting" value.
+  - "replacestaticmesh(room, mesh, <id>, <x>, <z>, <y>, <angle>, <intensity1>, <intensity2>)"
+This modifies a static mesh in the same way as replaceitem can change an item.
+Room and/or mesh can be replaced with an asterisk to imply "all of them".
+  - "removestaticmesh(room, mesh)"
+This removes one or several static meshes from the level. Room and/or mesh can
+be replaced with an asterisk to imply "all of them".
+    Some examples:
+ - trmod tr1pc GYM.PHD "addstaticmesh(15,7,3584,3584,768,-16384,1/2)"
+This adds static mesh ID 15 (the statue from the pool room) to room 7, in the
+middle of sector (3,3), three-quarters of a "block" above the lowest point in
+the room (which is the height of the floor in that sector), rotated to face
+west, and with an intensity half of the maximum).
+ - trmod tr1pc GYM.PHD "replacestaticmesh(7,*,12)"
+This replaces every static mesh in room 7 with ID 12 (the harp).
+ - trmod tr2pc EMPRTOMB.TR2 "removestaticmesh(155,*)"
+This removes all static meshes from room 155 in EMPRTOMB.TR2.
+ - trmod tr3pc HOUSE.TR2 "removestaticmesh(*,*)"
+This removes all static meshes from HOUSE.TR2.
+
+Lights
+------
+This section refers to the light sources placed in a room.
+TRMOD is capable of adding, changing or removing them.
+The format of the command is different for various versions of the game.
+    On tr1pc, tr1gpc and tr2pc:
+ - "addlight(room, x, z, y, intensity1, <intensity2>, fade1, <fade2>)"
+This adds a light to the room.
+    room is the room the light is to be added to (counted from zero).
+    x, z and y form the position of the light (in local coordinates).
+    intensity1 and intensity2 are the intensity of the light.
+	fade1 and fade2 are the "falloff" value, or range of the light.
+ - "replacelight(room, light, <x>, <z>, <y>, <intensity1>, <intensity2>, <fade1>, <fade2>)"
+This modifies a light in the same way as replaceitem can change an item.
+Room and/or light can be replaced with an asterisk to imply "all of them".
+    On tr3pc, there are two types of lights: spotlights and sunlights.
+ - "addlight(room,x,z,y,colour,spotlight,intensity,fade)"
+ - "addlight(room,x,z,y,colour,sunlight,nX,nZ,nY)"
+    room is the room the light is to be added to (counted from zero).
+    x, z and y form the position of the light (in local coordinates).
+    colour is the colour value of the light.
+	fade is the "falloff" value, or range of the light.
+	nX,nZ,nY form the normal of the sunlight.
+ - "replacelight(room,light,x,z,y,colour,spotlight,intensity,fade)"
+ - "replacelight(room,light,x,z,y,colour,sunlight,nX,nZ,nY)"
+These modify a light in the room.
+ - "removelight(room, light)"
+This can remove one or several lights from the level.
+    Some examples:
+ - trmod tr1pc GYM.PHD "addlight(7,1280,4096,1664,5376/8191,5120)"
+This adds a light to room 7, at position (1280,4096,1664), with an intensity
+of 5376/8191, and a fade value of 5120.
+ - trmod tr2pc LEVEL3.TR2 "replacelight(101,0,,,,3/4,3/4,,)"
+This replaces the intensity of light 0 in room 101 to three quarters of the
+maximum.
+ - trmod tr3pc SHORE.TR2 "addlight(4,11776,12800,2944,FFAC58,sunlight,-503,-3964,-1)"
+This adds a sunlight to room 4, at position (11776,12800,2944), with colour
+value of FFAC58, with a normal of (-503,-3964,-1).
+ - trmod tr1pc LEVEL10B.PHD "removelight(*,*)"
+This removes all lights from the level.
+
+Sound Sources
+-------------
+A sound source is a point in space emitting a looping sound constantly. They are
+commonly used for rushing waterfalls, alarms, the ticking clock in Lara's Home
+and things like that. TRMOD can add, modify and remove them.
+ - "addsoundsource(id, room, x, z, y, room/altroom/both)"
+This adds a sound source to the level.
+   id is the SoundID for the sound sample to loop.
+   room, x, z and y form the location of the sound source.
+   room/altroom/both determines whether the sound should be heard in the normal
+room only, the alternate room only, or both.
+ - "replacesoundsource(soundsource, <id>, <room>, <x>, <z>, <y>, <room/altroom/both>)"
+This modifies a sound source in the level. Each property can be changed
+individually or all at once. Soundsource can be replaced with an asterisk to
+imply "all of them".
+ - "removesoundsource(soundsource)"
+This removes one or several sound sources from a level. Soundsource can be
+replaced with an asterisk to remove all sound sources from the level.
+    Some examples:
+ - trmod tr1pc LEVEL3A.PHD "addsoundsource(80,31,8704,512,4352,both)"
+This adds a sound source with SoundID 80 to position (8704,512,4352) in room 31,
+and it will be audible in both the normal room and alternate room.
+ - trmod tr3pc JUNGLE.TR2 "replacesoundsource(*,79)"
+This changes all sound sources in JUNGLE.TR2 to emit the sample with SoundID 79.
+ - trmod tr2pc BOAT.TR2 "removesoundsource(4)"
+This removes the fifth sound source from BOAT.TR2
+
+FloorData
+---------
+FloorData defines almost everything related to the "physical" world (things like
+slanted floors/ceilings, portals between rooms, triggers of enemies, traps and
+doors, changed camera angles, underwater currents, climbable walls,
+monkeyswing, etc.). To fully understand the concept, it is recommended to read
+the TRosetta Stone document. TRMOD can change or remove this.
+ - "replacefloordata(room, column, row: floordata)"
+This overwrites the FloorData of one or several sectors. Any of the room,
+column, and row parameters can be set to an asterisk to imply "all of them"
+so the FloorData of a whole column, a whole row, a whole room or a whole level
+can be overwritten all at once if needed. The syntax of the FloorData itself
+will be discussed below.
+    Note: The way TRMOD overwrites FloorData may be important to know about.
+FloorData for a given sector is defined by an offset into a large block
+containing all FloorData for the level. When replacing FloorData, TRMOD will
+generate the needed FloorData-entry in memory, and look through all existing
+FloorData to see if an identical entry already exists. If it does, TRMOD will
+point the desired sector to that same entry. If no such entry exists, only then
+will TRMOD add a new one. This feature was implemented to save space, and can
+be used to reduce a level in size by several kilobytes. An example of how this
+feature can be used to its fullest extent would be to run the
+"cgetfloordata(*,*,*)" command to get all the FloorData for a level, then
+to sort that output by line length (longest to shortest), then to run
+"removefloordata(*,*,*)" to remove all existing FloorData, and then to run
+the earlier generated and sorted output as a script to add all FloorData back
+into the level. (Sorting the output guarantees the most efficient storage of
+FloorData entries possible, without modifying any of them.)
+ - "removefloordata(room, column, row)"
+This removes the FloorData from a given sector. Any of the room, column or row-
+parameters can be replaced with an asterisk, to remove FloorData from a whole
+column, a whole row, a whole room or a whole level if needed.
+    Note: Running this command will only overwrite the fdOffset, roomBelow and
+roomAbove variables for a given sector or set of sectors, and will not actually
+remove any FloorData entries, unless all three parameters are set to asterisks,
+which will not only set all sectors to have no fdOffset, but will actually
+remove the FloorData itself, reducing level size.
+
+The FloorData-parameter can be one or several of the following parameters,
+which are to be separated with comma's:
+ - floorportal(room)
+This changes the RoomBelow-variable to another room.
+ - ceilingportal(room)
+This changes the RoomAbove-variable to another room.
+ - portal(room)
+This turns the sector into a portal to another room that Lara can walk through.
+ - floorslant(x,z)
+This makes the floor of this sector slanted, with separate values for the slant
+along the X-axis and the Z-axis.
+ - ceilingslant(x,z)
+This makes the ceiling of this sector slanted, with separate values for the
+slant along the X-axis and the Z-axis.
+ - trigger(type,timer,oneshot,mask:triggerfunction,...)
+This makes the sector a trigger.
+    type represents the condition under which the trigger is to be activated.
+The possible values are "trigger", "pad", "switch(item)", "key(item)",
+"pickup(item)", "heavytrigger", "antipad", "combat", "dummy", "antitrigger",
+"heavyswitch", "heavyantitrigger", "monkey", "skeleton", "tightrope", "crawl"
+or "climb".
+    timer is a number of seconds to wait for a trigger to occur. This is often
+used to set up a door that opens and closes after a given time.
+    oneshot is set to "once" if the trigger is to be triggered only one, and
+left empty is not.
+    mask is a hexadecimal representation of the trigger mask.
+    The trigger can have one or several triggerfunction-parameters, separated by
+comma's. The syntax for these is quite complicated, and will be discussed later.
+ - kill
+This makes this sector kill Lara when she stands on it. The toxic water in the
+Temple of Xian, and the lava in Atlantis use this.
+ - climbwalls(<z>,<x>,<-z>,<-x>)
+This makes the walls around this sector climbable. It can be given any
+combination of the parameters "z", "x", "-z" or "-x" to make the walls climbable
+in a given direction. (Present in Tomb Raider II and later.)
+ - trifloor(diagonal,portal,h1,h2,c10,c00,c01,c11)
+This makes this sector divided into two triangles.
+    diagonal can be either a '/' or a '\' to set the direction of the split.
+    portal can be either 'l', 'r' or '-' to set whether the left triangle, the
+right triangle, or neither triangle is a floorportal.
+    h1 and h2 form the height of the individual triangles.
+    c-values form the height of the individual corners.
+ - monkeyswing
+This makes the ceiling of this sector climbable.
+ - f14
+This sets FloorData function 14, the meaning of this differs per game.
+ - f15
+This sets FloorData function 15, the meaning of this differs per game.
+
+The triggerfunction-parameter can be one or several of the following parameters,
+which are to be separated with comma's:
+ - object(item)
+This causes an item in the level to activate. This can be a door opening or
+closing, an enemy becoming active, or some environmental item activating.
+ - camera(room,x,z,y,timer,speed,once,flags)
+This causes the game to switch to some other camera angle.
+    room, x, z and y form the location of the camera.
+    timer is a number of seconds the camera is to be in this position.
+    speed is how fast the camera is to move from that position.
+    once is set to "once" or left empty depending on how many times this camera
+is to be possible triggered.
+    flags is a hexadecimal representation of the "flags" field for the camera.
+ - current(room,x,z,y,strength,zone)
+This causes there to be a current if the sector is underwater.
+    room, x, z, and y form the point the current is flowing towards.
+    strength is how strongly the current is flowing.
+    zone needs to be set to the zone number of the sector this trigger is
+placed in. (This can of course be retrieved with the "getzone"-command.)
+ - flipmap(mask)
+Sets the flipmap entry.
+ - flipon(mask)
+Flips the alternate rooms on.
+ - flipoff(mask)
+Flips the alternate rooms off.
+ - lookitem(item)
+This causes the camera to pan to look at an item.
+ - endlevel
+This causes the level to end.
+ - soundtrack(track)
+This causes a music track to play.
+ - effect(effect)
+This causes some special effect to trigger (this varies between games).
+ - secret(secret)
+This causes a secret to be found.
+ - clearbodies
+This causes the bodies of dead enemies to disappear.
+ - flyby(entry,once)
+This causes the Tomb Raider IV-style flyby-camera sequences.
+    entry is the number in the list of flyby camera frames.
+    once can be set to "once" or left empty to make this trigger only once
+or several times
+    Note: (Only in Tomb Raider IV and later).
+ - cutscene(entry)
+This causes an in-level cutscene to play.
+    Note: (Only in Tomb Raider IV and later).
+
+Of all thing TRMOD can modify, FloorData is by far the most complicated. So in
+order to learn how it works, it is highly recommended to use the cgetfloordata-
+function often to learn how the syntax works.
+    Here follow some examples:
+ - trmod tr1pc GYM.PHD "replacefloordata(9,8,5:floorportal(10),ceilingslant(0,-3))"
+This causes the floor of sector (9,8,5) to be a portal into room 10, and the
+ceiling of this sector to be slanted -3 on the Z-axis.
+ - trmod tr1pc GYM.PHD "replacefloordata(7,3,5:trigger(trigger,0,once,1F:soundtrack(27)))"
+This causes a trigger to be set on sector (7,3,5) to play soundtrack 27 only
+once when Lara is on or above this sector.
+ - trmod tr2pc rig.tr2 "replacefloordata(82,1,7:trigger(switch(60),0,once,1F:object(67),camera(37,1536,1536,1920,3,0,,0000),lookitem(68)))"
+This causes a trigger to be set in sector (82,1,7), that will be only triggered
+once, when Lara pulls the switch that is item 60. The trigger will cause item
+67 to be activated, the camera to cut to a position in sector (1,1) in room 37
+for three seconds, and look at item 68.
+ - trmod tr3pc HOUSE.TR2 "replacefloordata(89,7,6:trifloor(\\,,0,2,0,0,0,2),ceilingslant(1,0),trigger(trigger,0,,1F:object(76)))"
+This causes the floor in sector (89,7,6) to be split into two triangles, with
+the diagonal going from northwest to southeast. Neither of the two triangles
+is to be a portal to another room, and the height of the second triangle is
+2. This will also cause the ceiling to be slanted 1 along the X-axis. Also this
+sector will contain a trigger that will activate item 76.
+ - trmod tr1pc GYM.PHD "replacefloordata(9,5,*,floorslant(1,0))"
+This will cause the whole sixth row of room 9 to no longer be a floorportal to
+room 10, but to have merely a floor slanted 1 along the X-axis.
+ - trmod tr2pc WALL.TR2 "removefloordata(5,*,*)"
+This will remove all FloorData from room 5.
+ - trmod tr3pc JUNGLE.TR2 "removefloordata(*,*,*)"
+This removes all FloorData from the entire level.
+
+Floor/Ceiling Heights
+---------------------
+This is the collision data that Lara actually interacts with. TRMOD can set the
+floor and ceiling heights.
+ - "floor(room, column, row, height)"
+This sets the height of the floor of one or several sectors.
+    room, column and row form the sector.
+    height determines the height, in local coordinates (meaning a value of 0
+means the lowest point in the room).
+    Note: the room, column and row-parameters can be each replaced with
+asterisks to change the floor of a sector, a whole column, a whole row, a whole
+room or the whole level all at once.
+    Note: height can also be set to "wall" to make this sector a wall.
+ - "ceiling(room, column, row height)"
+This sets the height of the ceiling of one or several sectors.
+    room, column and row form the sector.
+    height determines the height, in local coordinates (meaning a value of 0
+means the lowest point in the room).
+    Note: the room, column and row-parameters can be each replaced with
+asterisks to change the ceiling of a sector, a whole column, a whole row,
+a whole room or the whole level all at once.
+    Note: height can also be set to "wall" to make this sector a wall.
+
+Zones
+-----
+This is the zone a specific sector is part of. TRMOD can set this.
+ - "zone(room, column, row, zone)"
+This sets the zone of one or several sectors.
+    room, column and row form the sector.
+    zone is the actual zone value.
+    Note: the room, column and row-parameters can be each replaced with
+asterisks to change the ceiling of a sector, a whole column, a whole row,
+a whole room or the whole level all at once.
+    Note: zone can also be set to -1 to imply a wall.
+
+Step Sounds
+-----------
+This is the sound Lara's footsteps make in a given sector. This is also
+referred as the "material index". TRMOD can set this.
+ - "stepsound(room, column, row, stepsound)"
+This sets the step sound of one or several sectors.
+    room, column and row form the sector.
+    stepsound forms the index.
+    Note: the room, column and row-parameters can be each replaced with
+asterisks to change the ceiling of a sector, a whole column, a whole row,
+a whole room or the whole level all at once.
+
+Vertices
+--------
+The world geometry consists of five parts: vertices, rectangles, triangles,
+sprites and viewports. Vertices are points defined in 3D-space. The visible
+world geometry consists of rectangles and triangles, which are set between
+vertices. Sprites are flat 2D objects that Lara can not interact with (like
+the skeleton mummy in the Caves in Tomb Raider 1). Viewports define portals
+to view from one room into another room. The commands listed here allow the
+user to add, modify and remove vertices.
+ - "addvertex(room, x, z, y, intensity1, <intensity2>, <attributes>)"
+This adds a vertex to the room.
+    room is the room the vertex is to be added to.
+    x, z and y form the location of the vertex.
+    intensity1 and intensity2 form the intensities or colours of the vertex.
+    attributes are a hexadecimal representation of the vertex's attributes.
+ - "replacevertex(room, vertex, <x>, <z>, <y>, <intensity1>, <intensity2>, <attributes>)"
+This changes a vertex in the same way as replacestaticmesh changes static
+meshes. All properties between '<>'-characters are optional.
+    Note: room and vertex-parameters can be set to an asterisk to imply "all
+of them". So all vertices in a room or level can be changed at once if needed.
+ - "removevertex(room, vertex)"
+This removes one or more vertices from a room, and adjusts all rectangles,
+triangles and sprites to have each still refer to the correct one.
+ - "removegeometry(room)"
+This removes all geometry from a room. The room-parameter can be replaced with
+an asterisk to remove all geometry from the level.
+
+Rectangles
+----------
+Rectangles are rectangular surfaces that are part of the world geometry. They
+are defined as connecting four vertices, and a texture. TRMOD can add, modify
+and remove them.
+ - "addrectangle(room, vertex1, vertex2, vertex3, vertex4, texture, <doublesided>)"
+This adds a rectangle to the room.
+    room is the room the rectangle is to be added to (counted from zero).
+    vertex-parameters refer to the vertices in that room (counted from zero).
+    texture is the ObjectTexture this rectangle holds.
+    doublesided is an optional parameter to make the rectangle visible from
+both sides. If this parameter is absent, the rectangle is only visible from
+one side.
+ - "replacerectangle(room, rectangle, <vertex1>, <vertex2>, <vertex3>, <vertex4>, <texture>, <doublesided>)"
+This modifies the rectangle in a room in the same way as replaceitem changes an
+item. The room and rectangle parameters can each be replaced with an asterisk
+to imply "all of them".
+ - "removerectangle(room, rectangle)"
+This removes one or several rectangles. The room and rectangle parameters can
+each be replaced with an asterisk to remove all rectangles from a room or from
+the entire level.
+
+Triangles
+---------
+Triangles are triangular surfaces that are part of the world geometry. They are
+defined as connecting three vertices, and a texture. TRMOD can add, modify and
+remove them.
+ - "addtriangle(room, vertex1, vertex2, vertex3, texture, <doublesided>)"
+This adds a triangle to the room.
+    room is the room the triangle is to be added to (counted from zero).
+    vertex-parameters refer to the vertices in that room (counted from zero).
+    texture is the ObjectTexture this triangle holds.
+    doublesided is an optional parameter to make the triangle visible from
+both sides. If this parameter is absent, the triangle is only visible from
+one side.
+ - "replacetriangle(room, triangle, <vertex1>, <vertex2>, <vertex3>, <texture>, <doublesided>)"
+This modifies the triangle in a room in the same way as replaceitem changes an
+item. The room and triangle parameters can each be replaced with an asterisk
+to imply "all of them".
+ - "removetriangle(room, triangle)"
+This removes one or several triangles. The room and triangle parameters can
+each be replaced with an asterisk to remove all triangles from a room or from
+the entire level.
+
+Sprites
+-------
+Sprites are 2D objects that Lara can't interact with. Objects like the skeleton
+mummy in Caves in Tomb Raider (1996). These are hardly used in Tomb Raider II,
+and entirely absent in Tomb Raider III and later. TRMOD can add, modify and
+remove them.
+ - "addsprite(id, room, x, z, y, intensity1, <intensity2>, <attributes>)"
+This adds a sprite to the level.
+    id is the ObjectID for the sprite to add.
+    room, x, z and y form the location of the sprite.
+    intensity1, intensity2 and attributes are identical to vertices.
+ - "replacesprite(room, sprite, <id>, <x>, <z>, <y>, <intensity1>, <intensity2>, <attributes>)"
+This modifies the sprite in a room in the same way as replacevertex changes a
+vertex. The room and sprite parameters can each be replaced with an asterisk
+to imply "all of them".
+ - "removesprite(room, sprite)"
+This removes one or several sprites. The room and sprite parameters can
+each be replaced with an asterisk to remove all sprites from a room or from
+the entire level.
+
+Viewports
+---------
+Viewports can be thought of as surfaces through which another room can be seen.
+TRMOD van add, replace and remove them.
+ - "addviewport(room, adjroom, (n_x, n_z, n_y), (v1_x, v1_z, v1_y), (v2_x, v2_z, v2_y), (v3_x, v3_z, v3_y), (v4_x, v4_z, v4_y))"
+This adds a viewport to a room.
+    room is the room the viewport is in.
+    adjroom is the adjoining room (the room that can be seen).
+    n_x, n_z and n_y form the normal.
+    v-variables form the coordinates of the corners.
+ - "replaceviewport(room, viewport, <adjroom>, <(<n_x>, <n_z>, <n_y>)>, <(<v1_x>, <v1_z>, <v1_y>)>, <(<v2_x>, <v2_z>, <v2_y>)>, <(<v3_x>, <v3_z>, <v3_y>)>, <(<v4_x>, <v4_z>, <v4_y>)>)"
+This modifies a viewport in a similar way as replaceitem modifies an item.
+    Note: The room and viewport parameter can each be replaced with an asterisk
+to imply "all of them".
+ - "removeviewport(room, viewport)"
+This removes one or several viewports from a level. The room and viewport
+parameter can each be replaced with an asterisk to imply "all of them".
+
+Roomlight
+---------
+Roomlight (also referred to as "Ambient Intensity") is the "baseline" value of
+how bright all objects in the room are, on top of which the individual lights
+have an effect on items.
+ - "roomlight(room, intensity1, <intensity2>, <lightmode>)"
+This command will set the roomlight value for one or several rooms.
+
+Alternate Rooms
+---------------
+TRMOD can set the alternate room for each room with a single command.
+ - "altroom(room, altroom)"
+    room is the room of which the alternate room value should be changed.
+    altroom is the alternate room. (-1 means none.)
+    Note: The room-parameter can be replaced with an asterisk to set
+the alternate room to all rooms.
+
+Room Flags
+----------
+Every room has a set of eight on/off-flags for various features. These flags
+are referred to as "water", "sfxAlways", "pitchShift", "sky", "dynamic",
+"outside", "inside", and "swamp". TRMOD has functions to set or unset any of
+them.
+ - "water(room)"
+Sets the "water"-flag.
+ - "nowater(room)"
+Unsets the "water"-flag.
+ - "sfxalways(room)"
+Sets the "sfxAlways"-flag.
+ - "notsfxalways(room)"
+Unsets the "sfxAlways"-flag.
+ - "pitchshift(room)"
+Sets the "pitchShift"-flag.
+ - "nopitchshift(room)"
+Unsets the "pitchShift"-flag.
+ - "sky(room)"
+Sets the "sky"-flag.
+ - "nosky(room)"
+Unsets the "sky"-flag.
+ - "dynamic(room)"
+Sets the "dynamic"-flag.
+ - "nodynamic(room)"
+Unsets the "dynamic"-flag.
+ - "wind(room)"
+Sets the "outside"-flag.
+ - "nowind(room)"
+Unsets the "outside"-flag.
+ - "inside(room)"
+Sets the "inside"-flag.
+ - "notinside(room)"
+Unsets the "inside"-flag.
+ - "swamp(room)"
+Sets the "swamp"-flag.
+ - "noswamp(room)"
+Unsets the "swamp"-flag.
+    Note: in any of these commands the room-parameter can be replaced with an
+asterisk to set or unset a specific flag for all rooms at once.
+
+Adding Rooms
+------------
+TRMOD has a function to add a room to the level.
+ - "addroom"
+This adds an empty room to the level.
+
+Moving Rooms
+------------
+All coordinates in TRMOD are in local coordinates (meaning relative to a room),
+with one exception: when moving a room (and related "getroompos(room)" command).
+TRMOD is capable of moving rooms (and all items, static meshes, sprites etc. in
+them).
+ - "moveroom(room, x, z, y)"
+This moves a room.
+    room is the room to be moved.
+    x, z and y form the new location of the room (in global coordinates).
+    Note: though this moves the room, it doesn't move the associated boxes, so
+those would need to be modified manually.
+
+Resizing Rooms
+--------------
+TRMOD is capable of changing the size of a room.
+ - "resizeroom(room, columns, rows, height)"
+    room is the room to be resized.
+    columns is number of columns to make the room wide
+    rows is the number of rows to make the room long
+    height is the height of the room in coordinates.
+    Notes: this merely changes the size of the room, but doesn't automatically
+change the outermost sectors to walls when reducing size, so they should be
+set to walls manually to avoid Lara walking out of bounds.
+
+Removing Rooms
+--------------
+TRMOD is has a function to remove all rooms from a level. This is not
+recommended as a level without rooms will not work, but it may be useful for a
+user wanting to completely re-build the rooms with later commands.
+ - "removerooms"
+
+Boxes
+-----
+Boxes are mostly used for enemy A.I. and camera control. The way they are
+combined with zones and overlaps is somewhat complicated, and it is recommended
+to read the TRosetta Stone document before editing boxes. TRMOD has commands to
+add, modify and remove boxes, zones and overlaps.
+ - "addbox((room, xmin, zmin, y), (room, xmax, zmax, y), (gz1, gz2, gz3, gz4, fz), (agz1, agz2, agz3, agz4, afz), [<overlap, overlap, overlap>], <blocked/blockable/both>)"
+This adds a box to the level.
+    (room, xmin, zmin, y) forms the location of the "bottom-left" corner of the
+box, with y being he "trueFloor"-variable.
+    (room, xmax, zmax, y) forms the location of the "top-right" corner of the
+box, except for the y, being identical to the y-parameter from the previous
+coordinate. It is essentially another copy of the "trueFloor"-variable.
+    (gz1, gz2, gz3, gz4, fz) are the ground zones 1-4 and fly zone.
+    (agz1, agz2, agz3, agz4, afz) are the alternate ground zones 1-4
+and alternate fly zone.
+    overlap forms an array of the overlaps.
+    The blocked/blockable/both sets either the "blocked"-flag, the "blockable"-
+flag, both flags, or neither flag (if this parameter is left empty).
+ - "replacebox(box, <(room, xmin, zmin, y)>, <(room, xmax, zmax, y)>, <(gz1, gz2, gz3, gz4, fz)>, <(agz1, agz2, agz3, agz4, afz)>, <[<overlap, overlap, overlap>]>, <blocked/blockable/both>)"
+This modifies a box in the same way as replaceitem modifies an item.
+ - "removeboxes"
+This removes all boxes from the levels.
+
+Hexdump
+-------
+There is a command that may be only useful for developers, that will print the
+entire contents of a level file as a hexadecimal representation. What makes this
+command more useful is the possible parameters.
+ - "hexdump(<o><n><N>)"
+This command dumps the entire level in hexadecimal representation.
+    The user can add any combination of the characters 'o', 'n' or 'N', to
+change the output.
+    n adds labels to all the Num-something variables
+    N adds labels to every element
+    o adds offsets before every printed element
+
+
+NOTES ON THE SOURCE CODE
+------------------------
+The source code of TRMOD is written almost entirely in C89, and is
+endian-independent. It should therefore be easy to compile on virtually any
+platform with a C-compiler.
+    There are however some aspects of the program which might need to be
+modified on some platforms. These can be found in the following files:
+ - fixedint.h (Used to define fixed-size integers for the program)
+ - osdep.c (Used to truncate files if they are reduced in size)
+The chance of a modification being necessary in these files is very small,
+though, as they should work perfectly without modification on any system that
+has <stdint.h> and <unistd.h> available.
+    If you wish to make modifications to TRMOD or add functionality to it (of
+course in accordance with the terms of the GNU General Public License 3, under
+which TRMOD is published), it might be useful to know the general conceptual
+structure of how the program is set up.
+    One can think of the program of consisting of the following "blocks":
+
+                 +------------------------------------+
+                 | Initialisation and Error Handling  |
+                 |------------------------------------|
+                 | main.c                             |
+                 | error.c / error.h                  |
+                 | fixedint.h / version.h / structs.h |
+                 +------------------------------------+
+                                   |
+                                   V
+                       +-----------------------+
+                       | User Input Processing |
+                       |-----------------------|
+                       | command.c / command.h |
+                       +-----------------------+
+                                   |
+                                   V
+                         +-------------------+
+                         | Wrapper Functions |
+                         |-------------------|
+                         | wrap.c / wrap.h   |
+                         | conv.c / conv.h   |
+                         +-------------------+
+                                | | |
+                                V V V
+                  +---------------------------------+
+                  | Leveltype-based Implementations |
+                  |---------------------------------|
+                  | tr1pc.c / tr1pc.h               |
+                  | tr1psx.c / tr1psx.h             |
+                  | tr2pc.c / tr2pc.h               |
+                  | tr2psx.c / tr2psx.h             |
+                  | tr3pc.c / tr3pc.h               |
+                  | tr3psx.c / tr3psx.h             |
+                  +---------------------------------+
+                                  |
+                                  V
+                     +------------------------+
+                     | Low-level Utility Code |
+                     |------------------------|
+                     | util.c / util.h        |
+                     | osdep.c / osdep.h      |
+                     | trmodio.c / trmodio.h  |
+                     +------------------------+
+
+The program starts in main.c, which performs some basic checks and
+initialisation, identifies the leveltype-parameter, opens the level file, and
+sets up the central structs of the program. There are two of them: level (which
+is defined in structs.h) and error (which is defined in error.h). These hold
+the internal "state" of the program, for as far as they are needed. It then
+hands off control to command.c, which interprets the entered commands and
+parameters, and converts them to types more useful for the rest of the program.
+    Once the command has been interpreted, and TRMOD knows which command the
+user wants to run and with which parameters, it needs to connect this
+interpreted command to the actual implementation of the command. This is the
+task of the wrapper functions. Since there are many similarities between level
+file formats, many commands don't require re-implementation on different
+formats. wrap.c contains the logic to connect the command interpretation to the
+leveltype-based implementations.
+    The leveltype-based implementations contain the actual implementations of
+the commands. If the needed implementation between two level files is identical,
+they will not hold duplicates of the same functionality. Rather, they will
+refer to each other via wrap.c to "borrow" functionality between them.
+    Below this exists the low-level utility code. This contains generic
+functions that don't necessarily relate to a specific level format. Things like
+inserting bytes in a file, comparing strings and truncating files.
+
+
+CHANGELOG
+---------
+-v0.1.1: Fixed: - Bug in removeitem-function
+         Added: - Partial TR1 Sega Saturn support
+                - The "vardump"-command
+
+
+I hope modders will enjoy using TRMOD, and will find it a useful addition to
+the arsenal of tools this great community has produced.
+
+God bless,
+b122251
+

@@ -1,0 +1,155 @@
+Tomb Raider II/III SFX Editor
+=============================
+v2.0
+
+CONTENTS OF THIS FILE
+---------------------
+
+ • Introduction
+ • Usage
+ • Usage Examples
+ • Potential Errors
+ • Source Notes
+ • Source Patching
+ • Changelog
+ • License
+
+
+INTRODUCTION
+------------
+
+trsfx is a tool written by b122251 in C programming language
+for GNU/Linux, Mac OS X, Windows and DOS.
+It can read and modify the main.sfx files that Tomb Raider 2 and 3 use.
+It is released under the GNU General Public License version 3 or later.
+
+
+USAGE
+-----
+
+trsfx uses the following syntax:
+
+	trsfx input output
+
+To extract the wave files from an sfx-file, the input must be that sfx-
+file, and the output a directory (please note that this directory must
+not yet exist). To make a new sfx-file, the input must be a directory
+in which the wave files are located, and the output must be an sfx-file.
+
+Note that when making a new sfx-file, the naming convention for the wave
+files is as follows: 000.wav, 001.wav, 002.wav etc. Note that only wave
+files that follow this pattern will be added to the sfx-file. If a wave
+file is missing, the program will assume the sfx-file is finished.
+
+For further clarification, see USAGE EXAMPLES.
+
+
+USAGE EXAMPLES
+--------------
+
+trsfx main.sfx tr2sfx
+	This will make a new directory called tr2sfx, and extract all the
+	wave files in main.sfx to it.
+
+trsfx tr2sfx main.sfx
+	This will read the wave files in tr2sfx, and make a new main.sfx
+	based on them. The wave files must be correctly named.
+
+
+POTENTIAL ERRORS
+----------------
+
+trsfx may give one of the following error messages:
+
+ • "trsfx: missing operands"
+	This means there were an insufficient number of operands.
+
+ • "trsfx: file could not be opened"
+	This means the specified file doesn't exist or can't be opened.
+
+ • "trsfx: Buffer could not be allocated"
+	This means no buffer could be allocated.
+
+ • "trsfx: file is not a valid sfx-file"
+	This means the specified file is not a valid main.sfx file.
+
+ • "trsfx: Reading from file failed"
+	This means the file is either non-readable or non-existent.
+
+ • "trsfx: Writing to file failed"
+	This means the file's location is either read-only or doesn't exist.
+
+ • "trsfx: Directory could not be made"
+	This means the specified directory either already exists, or could
+	not be made because its location is read-only or non-existent.
+
+
+SOURCE NOTES
+------------
+
+The source code to trsfx comes in the form of tsfx.c, and several
+patches. trsfx.c is the standard source file. It is designed for
+unix-like operating systems. The windows version was compiled using
+MinGW, but requires a slight alteration to the source code. This change
+can be found in windows.patch. The DOS version was compiled using
+Borland Turbo C 2.01. The source code requires no alteration to work on
+it, other than conversion from unix-like line endings to dos-like line
+endings.
+
+It is assumed that "long int" is 32-bits. If on the system you are
+compiling for, this is NOT the case, please replace all "long int"
+occurences with the 32-bit integer for your system. For 64-bit systems,
+this has already been done in 64bit.patch.
+
+To make the source code compatible with Big-Endian computers, some
+changes had to be made. These changes can be found in be.patch.
+
+
+SOURCE PATCHING
+---------------
+
+To patch the source code for Windows:
+	$ patch trsfx.c windows.patch
+
+To patch the source code for Big-Endian:
+	$ patch trsfx.c be.patch
+
+To patch the source code for 64-bits:
+	$ patch trsfx.c 64bit.patch
+
+To patch the source code for 64-bit Windows:
+	$ patch trsfx.c windows.patch
+	$ patch trsfx.c 64bit.patch
+
+To patch the source code for 64-bit Big-Endian:
+	$ patch trsfx.c 64bit.patch
+	$ patch trsfx.c be.patch
+
+
+CHANGELOG
+---------
+
+v2.0
+ • Rewrote the program entirely
+ • Added a DOS-port
+ • Improved stability
+
+
+LICENSE
+-------
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+
+<b122251.org>

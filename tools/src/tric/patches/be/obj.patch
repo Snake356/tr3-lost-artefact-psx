@@ -1,0 +1,91 @@
+@@ -1,5 +1,5 @@
+ /*
+- * Library for Converting between OBJ (Tomb Raider on PSX) and BMP
++ * Library for Converting between OBJ (Tomb Raider on PSX) and BMP (BE)
+  * Copyright (C) 2017  b122251
+  * 
+  * This program is free software: you can redistribute it and/or modify
+@@ -161,6 +161,15 @@
+ 			retval=2;
+ 			goto end;
+ 		}
++		freelong1=(((freelong1&0xFF000000)>>24)|
++	               ((freelong1&0x00FF0000)>>8)|
++	               ((freelong1&0x0000FF00)<<8)|
++	               ((freelong1&0x000000FF)<<24));
++		freelong2=(((freelong2&0xFF000000)>>24)|
++	               ((freelong2&0x00FF0000)>>8)|
++	               ((freelong2&0x0000FF00)<<8)|
++	               ((freelong2&0x000000FF)<<24));
++		
+ 		if ((type==5)&&((curpos<240)||(curpos>=328))) freelong2=262144;
+ 		if (((freelong1)!=0)&&((freelong2)!=0)){
+ 			/* Writes the name of the file to outList */
+@@ -224,9 +233,9 @@
+ 				for (bufferpos=0;bufferpos<chunksize;bufferpos+=2){
+ 					memmove(&colour,buffer+bufferpos,2);
+ 					colour=((unsigned INT16)
+-					        (((unsigned INT16)(colour&0x83e0))+
+-					        ((unsigned INT16)(colour&0x7c00)>>10)+
+-					        ((unsigned INT16)(colour&0x1f)<<10)));
++					        (((unsigned INT16)(colour&0xe083))+
++					        ((unsigned INT16)(colour&0x007c)<<6)+
++					        ((unsigned INT16)(colour&0x1f00)>>6)));
+ 					memmove(buffer+bufferpos,&colour,2);
+ 				}
+ 				
+@@ -422,6 +431,10 @@
+ 				retval=2;
+ 				goto end;
+ 			}
++			freelong1=(((freelong1&0xFF000000)>>24)|
++	                   ((freelong1&0x00FF0000)>>8)|
++	                   ((freelong1&0x0000FF00)<<8)|
++	                   ((freelong1&0x000000FF)<<24));
+ 			freeint1=fseek(bmp,18,SEEK_SET);
+ 			if (freeint1!=0){
+ 				retval=2;
+@@ -432,11 +445,19 @@
+ 				retval=2;
+ 				goto end;
+ 			}
++			freelong2=(((freelong2&0xFF000000)>>24)|
++	                   ((freelong2&0x00FF0000)>>8)|
++	                   ((freelong2&0x0000FF00)<<8)|
++	                   ((freelong2&0x000000FF)<<24));
+ 			freesizet1=fread(&freelong3,1,4,bmp);
+ 			if (freesizet1!=4){
+ 				retval=2;
+ 				goto end;
+ 			}
++			freelong3=(((freelong3&0xFF000000)>>24)|
++	                   ((freelong3&0x00FF0000)>>8)|
++	                   ((freelong3&0x0000FF00)<<8)|
++	                   ((freelong3&0x000000FF)<<24));
+ 			freeint1=fseek(bmp,28,SEEK_SET);
+ 			if (freeint1!=0){
+ 				retval=2;
+@@ -447,6 +468,8 @@
+ 				retval=2;
+ 				goto end;
+ 			}
++			colour=(((colour&0xFF00)>>8)|
++	                ((colour&0x00FF)<<8));
+ 			freelong4=(freelong2*(colour>>3));
+ 			freelong3=(freelong4*freelong3);
+ 			
+@@ -486,10 +509,10 @@
+ 				/* Converts colours from BGR to RGB */
+ 				for (bufferpos=0;bufferpos<chunksize;bufferpos+=2){
+ 					memmove(&colour,buffer+bufferpos,2);
+-					colour=(unsigned INT16)
+-					       ((unsigned INT16)(colour&0x83e0)+
+-					       ((unsigned INT16)(colour&0x7c00)>>10)+
+-					       ((unsigned INT16)(colour&0x1f)<<10));
++					colour=((unsigned INT16)
++					        (((unsigned INT16)(colour&0xe083))+
++					        ((unsigned INT16)(colour&0x007c)<<6)+
++					        ((unsigned INT16)(colour&0x1f00)>>6)));
+ 					memmove(buffer+bufferpos,&colour,2);
+ 				}
+ 				

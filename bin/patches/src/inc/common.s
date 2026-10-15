@@ -1,0 +1,16 @@
+; Positions in functions (File Offset)
+F_BaddieObjects_Vulture			equ		(F_BaddieObjects+(M_BaddieObjects_Vulture-M_BaddieObjects))
+F_BaddieObjects_Crow			equ		(F_BaddieObjects+(M_BaddieObjects_Crow-M_BaddieObjects))
+F_BaddieObjects_Croc			equ		(F_BaddieObjects+(M_BaddieObjects_Croc-M_BaddieObjects))
+F_BaddieObjects_Lizard			equ		(F_BaddieObjects+(M_BaddieObjects_Lizard-M_BaddieObjects))
+F_GF_InterpretSequence_FMV		equ		(F_GF_InterpretSequence+(M_GF_InterpretSequence_FMV-M_GF_InterpretSequence))
+F_main_Initload					equ		(F_main+(M_main_Initload-M_main))
+F_LevelStats_LV_INDIABOSS		equ		(F_LevelStats+(M_LevelStats_LV_INDIABOSS-M_LevelStats))
+F_GetSavedGamesList_strsofar	equ		(F_GetSavedGamesList+(M_GetSavedGamesList_strsofar-M_GetSavedGamesList))
+F_LOAD_VSyncHandler_WIDTH		equ		(F_LOAD_VSyncHandler+(M_LOAD_VSyncHandler_WIDTH-M_LOAD_VSyncHandler))
+F_LOAD_VSyncHandler_LOADBAR_X	equ		(F_LOAD_VSyncHandler+(M_LOAD_VSyncHandler_LOADBAR_X-M_LOAD_VSyncHandler))
+F_LOAD_Update_LOADBAR_WIDTH		equ		(F_LOAD_Update+(M_LOAD_Update_LOADBAR_WIDTH-M_LOAD_Update))
+
+; Global constants
+LOADBAR_WIDTH		equ		(256<<3)
+LOADBAR_X			equ		((512-(LOADBAR_WIDTH>>3))/2)

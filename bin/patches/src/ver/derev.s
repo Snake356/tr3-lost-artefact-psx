@@ -1,0 +1,37 @@
+; Definitions for the German version
+
+.include "./inc/pal.s"
+
+; Title for the game's save file
+.macro	SAVENAME
+.dh 0x7382 ; T
+.dh 0x8F82 ; o
+.dh 0x8D82 ; m
+.dh 0x8282 ; b
+.dh 0x4081 ; [space]
+.dh 0x7182 ; R
+.dh 0x8182 ; a
+.dh 0x8982 ; i
+.dh 0x8482 ; d
+.dh 0x8582 ; e
+.dh 0x9282 ; r
+.dh 0x4081 ; [space]
+.dh 0x6882 ; I
+.dh 0x6882 ; I
+.dh 0x6882 ; I
+.dh 0x4081 ; [space]
+.dh 0x6382 ; D
+.dh 0x8982 ; i
+.dh 0x9282 ; r
+.dh 0x8582 ; e
+.dh 0x8382 ; c
+.dh 0x9482 ; t
+.dh 0x8F82 ; o
+.dh 0x9282 ; r
+.dh 0x9382 ; s
+.dh 0x4081 ; [space]
+.dh 0x6282 ; C
+.dh 0x9582 ; u
+.dh 0x9482 ; t
+.dh 0x0000 
+.endmacro
