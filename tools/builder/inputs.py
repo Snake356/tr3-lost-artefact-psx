@@ -139,14 +139,13 @@ def pc_files_from_disc(disc):
 
 def pc_files_from_folder(folder):
     """{name: bytes} from an installed game. The folder may be the game folder or its level folder:
-    <folder>/data (Gold CD install), <folder>/3/DATA/LA and 3/SFX (Tomb Raider I-III Remastered),
-    TRX (games/tr3-la/levels, main.sfx one folder up), or the folder holding the files itself; the
-    folder above is searched as well, for MAIN.SFX next to the level folder."""
+    <folder>/data (Gold CD install), <folder>/3/DATA/LA and 3/SFX (Tomb Raider I-III Remastered), or
+    the folder holding the files itself; the folder above is searched as well, for MAIN.SFX next to
+    the level folder."""
     folder = os.path.abspath(folder)
     up = os.path.dirname(folder)
-    candidates = [folder, os.path.join(folder, "data"), os.path.join(folder, "DATA"), os.path.join(folder, "levels"),
+    candidates = [folder, os.path.join(folder, "data"), os.path.join(folder, "DATA"),
                   os.path.join(folder, "3", "DATA", "LA"), os.path.join(folder, "DATA", "LA"),
-                  os.path.join(folder, "games", "tr3-la"), os.path.join(folder, "games", "tr3-la", "levels"),
                   os.path.join(folder, "3", "SFX"), os.path.join(folder, "SFX"), up, os.path.join(up, "SFX"),
                   os.path.join(os.path.dirname(up), "SFX")]           # Remastered: 3/DATA/LA -> 3/SFX
     out = {}

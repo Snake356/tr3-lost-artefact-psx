@@ -160,7 +160,7 @@ class App(tk.Tk):
         c, self.pc_mark, self.pc_label = card(1, "2   Lost Artefact PC files")
         ttk.Button(c, text="Disc image...", command=self.pick_pc).grid(row=0, column=2, rowspan=2, padx=(8, 0))
         ttk.Button(c, text="Folder...", command=self.pick_pc_folder).grid(row=0, column=3, rowspan=2, padx=(6, 0))
-        self.pc_label.config(text="Gold CD image or its installed game folder, Tomb Raider I-III Remastered or TRX")
+        self.pc_label.config(text="Gold CD image or its installed game folder, or Tomb Raider I-III Remastered")
 
         opt = ttk.Frame(body, style="Card.TFrame", padding=(12, 10))
         opt.grid(row=2, column=0, sticky="ew", pady=(0, 10))

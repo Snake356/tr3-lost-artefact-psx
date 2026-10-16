@@ -34,7 +34,7 @@ The Lost Artefact on the PlayStation: all six levels (Sleeping with the Fishes i
 Download the **disc builder** from the [Releases](https://github.com/Snake356/tr3-lost-artefact-psx/releases) page (Windows 10/11). It makes the PS1 disc image from your own copies of both games:
 
 - your **Tomb Raider III PS1 disc image** (.bin/.cue, .iso or .zip); your disc decides the language;
-- your **Lost Artefact PC files**: the Tomb Raider III Gold / Lost Artefact CD (any language, as a disc image or installed), Tomb Raider I-III Remastered, or a TRX installation.
+- your **Lost Artefact PC files**: the Tomb Raider III Gold / Lost Artefact CD (any language, as a disc image or installed) or Tomb Raider I-III Remastered.
 
 Options: blood colour, level select on New Game, and NTSC (60 Hz) for the European discs (with the US disc as well, any revision: Rev 0, 1 or 2). The players' readme (`tools/builder/package/README.txt`) explains everything; `tools/builder/package/CHANGES.txt` lists what differs from the PC version and why, the known issues and every fixed bug.
 

@@ -45,7 +45,6 @@ issues and the fixed bugs.
      - the Tomb Raider III Gold / The Lost Artefact CD (any language),
        as a disc image or installed (the game folder)
      - Tomb Raider I-III Remastered: choose the game folder
-     - a TRX installation of The Lost Artefact
 
    For a folder, the builder searches it for the levels and MAIN.SFX.
 

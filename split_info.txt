@@ -82,8 +82,8 @@ TO DO:
     Disc builder (tools/builder, 10.10.2026):
     - Builds the disc image from the player's own Tomb Raider III PS1 disc (any of the 16 releases,
       also from a .zip) and their own Lost Artefact PC files (Gold CD in any language, Tomb Raider
-      I-III Remastered, TRX; the free fan levels patch was supported at first and dropped on 15.10.2026,
-      as it does not need the game). No game data is shipped: levels, textures,
+      I-III Remastered; the free fan levels patch was supported at first and dropped on 15.10.2026,
+      as it does not need the game, and TRX installations on 16.10.2026). No game data is shipped: levels, textures,
       animations, meshes and texts are differences to the player's files; only the project's own
       edited pictures are included. Each disc keeps its own language (speech, texts, pictures).
     - Options: blood colour (as the version has it, red or purple), level select on New Game (the
