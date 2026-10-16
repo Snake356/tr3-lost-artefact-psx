@@ -119,8 +119,8 @@
   SAVE CRYSTALS
 
   * The PS1 version saves with save crystals, like the original Tomb
-    Raider III on the PS1. They were placed in every level, mostly where
-    the TRX version of The Lost Artefact has them.
+    Raider III on the PS1. They were placed in every level and checked
+    by hand.
 
   JAPANESE AND ASIAN DISC 1
 
@@ -265,7 +265,7 @@
     Madhouse! does not load a model for the Hand, so the item showed up
     empty.
     Fix: the artefact icons are no longer put back at the start of a
-    level. The TRX version on the PC does the same.
+    level.
 
   * (found by FTL) The save crystals were drawn too small.
     Why: they used the small crystal model.
@@ -320,9 +320,9 @@
   ----------
 
   * Save crystals: (FTL) added crystals in Sleeping with the Fishes Part 2
-    and It's a Madhouse!. Later all crystals were placed where the TRX
-    version on the PC has them, and then checked and adjusted by hand in
-    every level (some added, moved or removed). Two crystals in the
+    and It's a Madhouse!. Later crystals were placed in all levels, then
+    checked and adjusted by hand in every level (some added, moved or
+    removed). Two crystals in the
     Japanese Highland Fling could be picked up like items; fixed.
 
   * (FTL) The number of secrets: Sleeping with the Fishes Part 1 and Part

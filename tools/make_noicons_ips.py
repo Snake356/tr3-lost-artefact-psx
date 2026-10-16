@@ -4,8 +4,7 @@
 In The Lost Artefact the Hand of Rathmore is picked up at the end of Sleeping with the Fishes
 Part 2 as ICON_PICKUP1. TR3 stores such icons in the level's start info and InitialiseLaraInventory
 re-adds them in the next level, but It's a Madhouse! has no model for it, so an
-empty "Die Hand von Rathmore" shows up there. TRX solves the same thing with "remove_scions" at the
-start of Madhouse. Here the four
+empty "Die Hand von Rathmore" shows up there. Here the four
 
     lbu  v0, 28..31(sX)      ; start->num_icon1..4
     nop

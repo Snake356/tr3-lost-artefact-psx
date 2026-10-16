@@ -83,7 +83,7 @@ TO DO:
     - Builds the disc image from the player's own Tomb Raider III PS1 disc (any of the 16 releases,
       also from a .zip) and their own Lost Artefact PC files (Gold CD in any language, Tomb Raider
       I-III Remastered; the free fan levels patch was supported at first and dropped on 15.10.2026,
-      as it does not need the game, and TRX installations on 16.10.2026). No game data is shipped: levels, textures,
+      as it does not need the game). No game data is shipped: levels, textures,
       animations, meshes and texts are differences to the player's files; only the project's own
       edited pictures are included. Each disc keeps its own language (speech, texts, pictures).
     - Options: blood colour (as the version has it, red or purple), level select on New Game (the
@@ -147,8 +147,8 @@ NOT BUGS (same as the original game):
 -------------------------------------
     - "The Hand of Rathmore" (It's a Madhouse!), the "Circuit Bulbs" and the "Mutant Samples"
       (Sleeping with the Fishes Part 2) are drawn semi-transparent and are hard to see in the dark.
-      The original TR3 on PS1 draws its own additive items (crystal, artefacts) the same way and TRX
-      shows the Hand the same; a flare makes them visible.
+      The original TR3 on PS1 draws its own additive items (crystal, artefacts) the same way; a flare
+      makes them visible.
 
 
 
@@ -208,14 +208,14 @@ CHANGELOG:
         - Reunion: new in 66 (X2 Z3), 7 (X1 Z4), 40 (X1 Z2); room 0 removed.
 
     "ALL" (this fork):
-        - Savegame crystals placed at the positions of the TRX (tr3-la) crystal injections in all levels,
+        - Savegame crystals placed in all levels,
           with the heights taken from the sector floors; later adjusted by hand: Highland Fling room 50
           removed, Willard's Lair room 100 removed, Sleeping with the Fishes Part 1 room 63 moved to
           sector X:1 Z:2, room 32 moved to X:1 Z:1 and room 5 removed;
         - Madhouse crystals had the wrong (small) mesh and now use the big crystal mesh;
         - Sleeping with the Fishes Part 1: the animated diver (object 119, FAN slot; rooms 19 and 100) left
           stretched polygons behind. Its "off" animation 436 (frames 80-179) jumped to frame 242, which
-          does not exist (Core bug, Lud's Gate has the same; TRX fixes both with luds_diver_animation.bin).
+          does not exist (Core bug, Lud's Gate has the same).
           Fixed in levels/anims/undersea.dat (jump frame 179), and the new binary patch "diverhide" makes
           the diver invisible when that animation has ended instead of leaving him lying in his last pose;
         - Reunion: blue/noisy band below the sky. The sky dome (HORIZON, levels/mesh/slinc.txt mesh 327)
@@ -230,7 +230,7 @@ CHANGELOG:
           textures, so no indices shift;
         - New binary patch "noicons": artefact icons are no longer re-added at level start. The Hand of
           Rathmore picked up at the end of Sleeping with the Fishes Part 2 used to show up as an empty
-          item in the It's a Madhouse! inventory (TRX does the same with "remove_scions");
+          item in the It's a Madhouse! inventory;
         - German texts: fixed 15 doubled strings ("Erfolgreich geladenErfolgreich geladen" etc.) and
           renamed "Siege" to "Besiegte Gegner";
         - German NTSC disc (first as disc/usde.xml, now made by the disc builder for every European language): US executable with German texts, German speech in Lara's
