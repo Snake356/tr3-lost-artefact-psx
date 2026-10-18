@@ -21,14 +21,21 @@
   VERSIONS
 ================================================================================
 
+  1.0.2  Highland Fling and Reunion: the shorter view distance now
+         applies to the rooms only. Enemies, items and other objects are
+         drawn as far as in the original game again; in 1.0 and 1.0.1
+         they vanished already at 14 (Highland Fling) and 12 blocks
+         (Reunion), which also kept the Loch Ness monster out of its
+         camera shot.
+
   1.0.1  Fix for Highland Fling: the picture could break up and freeze in
          very busy views, followed by a crash at the next loading screen
          (in 1.0 very rarely under the bridge). The game now never draws
          more room geometry than its drawing buffer holds, in every level
          and disc version. The side path between rooms 2 and 3 is open
-         again (the Loch Ness camera shot was moved with it, so the
-         monster stays in the picture).
-         Build a new disc image with this builder. Details under
+         again.
+
+         Build a new disc image with the newest builder. Details under
          HIGHLAND FLING in the fixed bugs.
 
   1.0    First release.
@@ -80,7 +87,9 @@
 
   HIGHLAND FLING
 
-  * The view distance is shorter (14 blocks instead of 20).
+  * Rooms are drawn up to 14 blocks away instead of 20, with the
+    original fog. Enemies, items and other objects are still drawn up to
+    20 blocks, as in the original game.
     -> For a smoother frame rate in this large outdoor level.
 
   REUNION
@@ -89,8 +98,9 @@
     -> All ten burning at once was too much for the PS1. A warm glow around
        them makes up for it.
 
-  * Shorter view distance (12 blocks) and closer fog, and two rooms got
-    some extra light.
+  * Rooms are drawn up to 12 blocks away instead of 20, with closer fog
+    (black at 16 blocks); objects are still drawn up to 20 blocks. Two
+    rooms got some extra light.
 
   SOUNDS
 
@@ -212,10 +222,19 @@
     has room for it. At that limit the farthest pieces, already deep in
     the black distance fog, are left out for that frame. This guard works
     in every level and every disc version. The side path, closed with a
-    wall in version 1.0, is open again as on the PC. The camera that shows
-    the Loch Ness monster (when you pick up the shotgun on the bridge)
-    stands at the edge of room 4 instead of in room 2, where the busy view
-    left the monster out of the picture.
+    wall in version 1.0, is open again as on the PC. The camera of the
+    short shot of the guard in room 4 keeps the place it had in 1.0, at
+    the edge of room 4: in room 2 it would stand right in the busiest
+    view of the level.
+
+  * The Loch Ness monster did not show up in its camera shot (when you
+    pick up the shotgun on the bridge).
+    Why: the shorter view distance of this level (14 blocks) was applied
+    to everything, objects included, and the monster swims further out
+    on the loch, so it was left out although its room was drawn.
+    Fix: the shorter distance applies to the rooms only; objects are
+    drawn up to 20 blocks as in the original game. Reunion (12 blocks)
+    is set the same way.
 
   * You could walk into the stone pillar in room 49, and reach into it
     from the room above (room 20).

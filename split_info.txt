@@ -61,6 +61,12 @@ TO DO:
       instruction cache. The routine sits in an unused library function
       (Japanese/Asian executables) or in two unused game functions (other versions); none is referenced
       by the executable, a code module or a disc file.
+      Since 18.10.2026 (1.0.2) both levels use "rooms only" (--werte 1=14,12,8,r 7=12,12,4,r): only the
+      room selection (portal corners) and the fog get the level's values; the vertex counters, object
+      culling and sprite limits keep 20 blocks. Until then the patch cut objects at 14/12 blocks too,
+      while the in-game menu the values were chosen with had only changed the room selection and the fog:
+      the Loch Ness monster (item 49, room 30, shown by the camera when the item in room 2 sector (6,13)
+      is picked up) swims further out and was left out of its shot.
     - Room guard (18.10.2026, every version): each frame the game writes its GPU primitives into one of
       two buffers of 103,480 bytes. The object, sprite and effect routines check the end of the buffer;
       the room geometry routine does not, so in very busy views (Highland Fling, side path room 2 ->
@@ -209,8 +215,10 @@ CHANGELOG:
         - 1.0 walled off the area between room 2 and room 3 (PS1 crash); since 18.10.2026 the level
           is converted from the unchanged Gold CD file again (levels/in/scotland.tr2 = the PC file,
           the builder needs no patch for it) and the room guard handles that view. The edited file
-          had changed only rooms 2 and 4 (the wall); items, cameras, boxes and all other faces were
-          the same, so nothing else changes. tools/fold_rotated_textures.py was only needed for that
+          had changed only rooms 2 and 4 (the wall) and moved fixed camera 1 into room 4; items,
+          boxes and all other faces were the same. Camera 1 (guard shot: trigger room 4 sector (13,4)
+          looking at item 21, and the pickup in room 18 sector (3,2)) keeps that 1.0 position through
+          levels/geom/scotland.sh, since its original place in room 2 sector (9,1) is the busiest view. tools/fold_rotated_textures.py was only needed for that
           edited file.
 
     "ALL" (this fork, crystals 26.09.2026; height = floor at the sector centre, on

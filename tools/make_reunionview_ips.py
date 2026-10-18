@@ -1,5 +1,5 @@
 """Builds bin/patches/<version>/reunionview.ips: a shorter draw distance and fog for some levels only
-(Highland Fling, level 1: draw distance 14, and Reunion, level 7: draw distance 12, fog from 12 over 4
+(Highland Fling, level 1: draw distance 14 for the rooms, and Reunion, level 7: 12 for the rooms, fog from 12 over 4
 blocks, in every version, so they run smoother; the other levels keep the original values).
 
 The PS1 executable has no variables for these; the values are immediates in the drawing code:
@@ -18,8 +18,13 @@ versions, in two game functions nothing refers to (code and tables apart): no ju
 lui/addiu pair in the executable, no reference from the version's code modules and no pointer in any
 disc file (checked, see modules() and unused_routines()).
 
-Usage: make_reunionview_ips.py [--versions us,ukrev,...] [--werte 1=14,12,8 7=12,12,4]
-(distances in blocks of 1024; the fog length must be 1, 2, 4, 8 or 16)
+A level can also get the shorter distance for the room selection only ("r" after its values): rooms
+further away are not drawn, but objects, room vertices and sprites keep the original 20 blocks, so a
+distant object in a drawn room (the Loch Ness monster in Highland Fling) stays visible.
+
+Usage: make_reunionview_ips.py [--versions us,ukrev,...] [--exe VERSION=PATH ...] [--werte 1=14,12,8,r 7=12,12,4]
+(distances in blocks of 1024; the fog length must be 1, 2, 4, 8 or 16; --exe for executables not in
+bin/orig, e.g. the first releases us10, uk, de, fr, it, sp)
 Checks that bin/patch.sh's patches rebuild bin/mod exactly first, like the other make_*_ips.py tools."""
 import argparse
 import os
@@ -208,8 +213,13 @@ def values(far, fog, length):
             "obj_shift": (L // 4096).bit_length() - 1 if L >= 4096 else -((4096 // L).bit_length() - 1)}
 
 
+ROOM_SITES = {0x2B215000,                                          # room selection (portal corners)
+              0x210ED000, 0x29C11FFF, 0x000E7202,                  # fog, rooms
+              0x2108D000, 0x00084842, 0x20A5D000, 0x00054042}      # fog, objects
+
+
 def build(exe, ver, settings):
-    """settings: {level number: (draw distance, fog start, fog length)} in blocks."""
+    """settings: {level number: (draw distance, fog start, fog length[, rooms only])} in blocks."""
     W = words(exe)
     S = sites(exe)
     orig = values(20, 12, 8)
@@ -270,8 +280,10 @@ def build(exe, ver, settings):
     assert len(code) == code_len
     table = [off + LOAD for off, _, _ in S] + [w for _, w, _ in S]
     for lvl in levels:
-        v = values(*settings[lvl])
-        table += [f(v) for _, _, f in S]
+        far, fog, length, *flags = settings[lvl]
+        v = values(far, fog, length)
+        keep = values(20, fog, length) if flags and flags[0] else v      # rooms only: the rest stays at 20
+        table += [f(v if w in ROOM_SITES else keep) for _, w, f in S]
     assert len(table) == table_len
     assert cave + 4 * len(code) <= end and data + 4 * len(table) <= data_end, "does not fit"
     if data == cave + 4 * code_len:
@@ -292,19 +304,24 @@ def ips(patches):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--versions", default="us,ukrev,derev,frrev,itrev,sprev,jp,jp2,as,as2")
-    ap.add_argument("--werte", nargs="+", default=["1=14,12,8", "7=12,12,4"],
-                    help="level=draw distance,fog start,fog length (blocks); 1 = Highland Fling, 7 = Reunion")
+    ap.add_argument("--exe", nargs="*", default=[], help="VERSION=PATH for executables not in bin/orig")
+    ap.add_argument("--werte", nargs="+", default=["1=14,12,8,r", "7=12,12,4,r"],
+                    help="level=draw distance,fog start,fog length[,r] (blocks; r = rooms only); "
+                         "1 = Highland Fling, 7 = Reunion")
     a = ap.parse_args()
-    settings = {int(l): tuple(int(x) for x in v.split(",")) for l, v in (w.split("=") for w in a.werte)}
+    settings = {int(l): tuple(int(x) for x in v.split(",")[:3]) + (v.split(",")[3:] == ["r"],)
+                for l, v in (w.split("=") for w in a.werte)}
+    paths = {v: os.path.join(BIN, "orig", f"{v}.exe") for v in a.versions.split(",") if v}
+    paths.update(dict(e.split("=", 1) for e in a.exe))
     patch_sh = open(os.path.join(BIN, "patch.sh"), encoding="utf-8").read()
     patches = [l.split('"')[1].split(",") for l in patch_sh.splitlines() if l.startswith("patches=")][0]
-    for ver in a.versions.split(","):
-        exe = open(os.path.join(BIN, "orig", f"{ver}.exe"), "rb").read()
-        for pat in [p for p in patches if p != "reunionview"]:
+    for ver, path in paths.items():
+        exe = open(path, "rb").read()
+        for pat in [p for p in patches if p not in ("reunionview", "roomguard")]:
             exe = apply_ips(exe, open(os.path.join(BIN, "patches", ver, f"{pat}.ips"), "rb").read())
         p, info = build(exe, ver, settings)
         open(os.path.join(BIN, "patches", ver, "reunionview.ips"), "wb").write(ips(p))
         print(f"{ver}: hook {hex(info['hook'])} -> code {hex(info['cave'] + LOAD)} (then {hex(info['orig'])}), "
               f"tables {hex(info['data'] + LOAD)}, FlushCache {hex(info['flush'])}, {len(info['sites'])} sites, "
-              + "; ".join(f"level {l}: draw distance {v[0]}, fog from {v[1]}, fog length {v[2]}"
-                          for l, v in sorted(settings.items())))
+              + "; ".join(f"level {l}: draw distance {v[0]}" + (" (rooms only)" if v[3] else "")
+                          + f", fog from {v[1]}, fog length {v[2]}" for l, v in sorted(settings.items())))
