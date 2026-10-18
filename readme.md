@@ -1,4 +1,4 @@
-# Tomb Raider III: The Lost Artefact (PS1)
+# Tomb Raider III: The Lost Artefact (Artifact) (PS1)
 
 > **No game data is included in this repository.** The levels, sounds, speech, videos, executables
 > and texts of Tomb Raider III and The Lost Artefact belong to their rights holders. To play, build the
