@@ -61,6 +61,20 @@ TO DO:
       instruction cache. The routine sits in an unused library function
       (Japanese/Asian executables) or in two unused game functions (other versions); none is referenced
       by the executable, a code module or a disc file.
+    - Room guard (18.10.2026, every version): each frame the game writes its GPU primitives into one of
+      two buffers of 103,480 bytes. The object, sprite and effect routines check the end of the buffer;
+      the room geometry routine does not, so in very busy views (Highland Fling, side path room 2 ->
+      room 3: 19-26 rooms, about 4,000 faces) it ran past the end into the buffer being displayed and
+      the memory behind it (broken polygons, hanging picture, crash at the next loading screen; the
+      single crash under the bridge on 15.10.2026 was the same, at about 3,500 faces). Measured live in
+      DuckStation: the game's own high-water mark (gp+0x23A0, in 52-byte units) stood at 1990 of 1990.
+      bin/patches/<version>/roomguard.ips (tools/make_roomguard_ips.py) redirects the call that draws
+      each room piece to a 12-instruction routine that skips the piece when less than 8 KB are left
+      (the largest room piece of the project needs about 7 KB). Normal views are unchanged; at the
+      limit the farthest pieces, already in the black fog, are left out. Tested with the open side
+      path: 200-325 pieces left out per second there, no errors, no crash, every level flown through.
+      The routine sits in an unused game function found on the executable with all other patches
+      applied (make_reunionview_ips.unused_routines), so it never overlaps the draw distance patch.
     - Performance tests (Highland Fling, 26.09.2026): removing all 163 light sources, all 44 static
       meshes (12 % of the faces) and the 6 smoke emitters made no noticeable difference on the PS1.
       Room geometry is 88 % of the faces; the only lever left would be simplifying rooms at the slow
@@ -119,9 +133,9 @@ TO DO:
 BUGS:
 -----
     "HIGHLAND FLING":
-      - The area between room 2 and room 3 is walled off. Looking into the heavily connected room 3
-        cluster from there crashed the PS1 (too much geometry at once); the area is not needed to
-        finish the level;
+      - The side path between room 2 and room 3 is open again (walled off in 1.0). Looking from it
+        into the heavily connected room 3 cluster overran the GPU primitive buffer; the room guard
+        (bin/patches/<version>/roomguard.ips) prevents that now, see "ALL" below;
       - In large or open areas the frame rate drops to 15-20 fps (the original TR3 on PS1 does the
         same in many places).
 
@@ -192,10 +206,12 @@ CHANGELOG:
           (rocket or grenade within one block of the box, or a harpoon hit) - not by shooting Sophia.
 
     "HIGHLAND FLING" (this fork):
-        - Walled off the area between room 2 and room 3 (PS1 crash, see BUGS);
-        - Textures that the level editor stored as new rotated object textures are folded back
-          onto the original ones before conversion (tools/fold_rotated_textures.py), so rotations are
-          kept and the crystal/controller texture indices stay valid.
+        - 1.0 walled off the area between room 2 and room 3 (PS1 crash); since 18.10.2026 the level
+          is converted from the unchanged Gold CD file again (levels/in/scotland.tr2 = the PC file,
+          the builder needs no patch for it) and the room guard handles that view. The edited file
+          had changed only rooms 2 and 4 (the wall); items, cameras, boxes and all other faces were
+          the same, so nothing else changes. tools/fold_rotated_textures.py was only needed for that
+          edited file.
 
     "ALL" (this fork, crystals 26.09.2026; height = floor at the sector centre, on
     triangulated floors computed like GetHeight()):

@@ -12,5 +12,6 @@ loadbar.ips  : Make the loading bar 256 pixels wide
 reunionlava.ips : Fixes Reunion's lava/acid incorrectly triggering the Rapids-level drowning reaction (level-slot collision).
 credits10.ips : Shows ten end credit pictures (CREDIT01-10.RAW): 9 -> 10, Japanese 13 -> 10; Japanese also 150 -> 210 frames per picture like the other NTSC discs (they were timed for 13 pictures).
 reunionview.ips : Shorter draw distance in Highland Fling (14 blocks) and Reunion (12 blocks, fog from 12 blocks, 4 blocks long) only, so they run smoother.
+roomguard.ips : Draws a room piece only while the GPU primitive buffer has room for it, so very busy views no longer overrun the buffer (broken polygons, hanging picture, crash at the next loading screen).
 bloodred.ips : Optional: red blood in every language (the German versions show purple blood otherwise).
 bloodpurple.ips : Optional: purple blood in every language, as in the German versions.

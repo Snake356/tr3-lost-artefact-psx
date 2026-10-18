@@ -59,5 +59,9 @@
 # Fixes the incorrect collision data in room 19, 20 and 49 in scotland.tr2
 ./trmod tr3pc scotland.tr2 "removefloordata(19,1,1)" "zone(19,1,1,-1)" "floor(19,1,1,wall)" "ceiling(19,1,1,wall)" "removefloordata(19,1,3)" "zone(19,1,3,-1)" "floor(19,1,3,wall)" "ceiling(19,1,3,wall)" "removefloordata(19,1,5)" "zone(19,1,5,-1)" "floor(19,1,5,wall)" "ceiling(19,1,5,wall)" "removefloordata(19,1,7)" "zone(19,1,7,-1)" "floor(19,1,7,wall)" "ceiling(19,1,7,wall)" "removefloordata(49,1,3)" "zone(49,1,3,-1)" "floor(49,1,3,wall)" "ceiling(49,1,3,wall)" "removefloordata(49,1,5)" "zone(49,1,5,-1)" "floor(49,1,5,wall)" "ceiling(49,1,5,wall)" "removefloordata(49,5,6)" "zone(49,5,6,-1)" "floor(49,5,6,wall)" "ceiling(49,5,6,wall)" "removefloordata(20,11,6)" "zone(20,11,6,-1)" "floor(20,11,6,wall)" "ceiling(20,11,6,wall)"
 
+# Moves the camera of the Loch Ness shot (shotgun on the bridge, and room 4) from room 2 sector (9,1) to
+# the edge of room 4: from room 2 the view is so busy that the monster was left out of the picture
+./trmod tr3pc scotland.tr2 "replacefloordata(4,13,4:trigger(trigger,0,once,1F:soundtrack(58),camera(4,9344,7936,896,4,0,once,0000),lookitem(21)))" "replacefloordata(18,3,2:floorslant(0,-1),ceilingslant(0,1),trigger(pickup(31),0,,1F:camera(4,9344,7936,896,3,0,once,0000),soundtrack(58),object(19)))"
+
 # Fixes the invisible ceiling in room 3
 ./trmod tr3pc scotland.tr2 "replacefloordata(3,2,9:trifloor(/,,-2,0,0,2,2,2),ceilingportal(99))"

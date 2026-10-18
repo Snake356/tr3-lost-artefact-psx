@@ -1,7 +1,7 @@
 {
  "scotland": {
-  "input_crc": "ce103fa2",
-  "7bfbce58": "scotland_7bfbce58.patch",
+  "input_crc": "7bfbce58",
+  "7bfbce58": "same",
   "df85fceb": "scotland_df85fceb.patch"
  },
  "willsden": {

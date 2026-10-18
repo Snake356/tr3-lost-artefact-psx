@@ -33,7 +33,7 @@ import build  # noqa: E402
 import inputs  # noqa: E402
 
 TITLE = "Tomb Raider III: The Lost Artefact - PS1 Builder"
-VERSION = "1.0"
+VERSION = "1.0.1"
 ISSUES = "https://github.com/Snake356/tr3-lost-artefact-psx/issues/new"
 HERE = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
 

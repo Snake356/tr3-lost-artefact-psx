@@ -18,6 +18,23 @@
 
 
 ================================================================================
+  VERSIONS
+================================================================================
+
+  1.0.1  Fix for Highland Fling: the picture could break up and freeze in
+         very busy views, followed by a crash at the next loading screen
+         (in 1.0 very rarely under the bridge). The game now never draws
+         more room geometry than its drawing buffer holds, in every level
+         and disc version. The side path between rooms 2 and 3 is open
+         again (the Loch Ness camera shot was moved with it, so the
+         monster stays in the picture).
+         Build a new disc image with this builder. Details under
+         HIGHLAND FLING in the fixed bugs.
+
+  1.0    First release.
+
+
+================================================================================
   ON PURPOSE: DIFFERENT FROM THE PC VERSION
 ================================================================================
 
@@ -62,12 +79,6 @@
        the same without it.
 
   HIGHLAND FLING
-
-  * The side path between rooms 2 and 3 is closed off completely with a
-    new wall, so it can no longer be entered.
-    -> From there the view reached into the large, closely connected
-       area of room 3: far too much was visible at once for the PS1, and
-       the game froze. The path is not needed to finish the level.
 
   * The view distance is shorter (14 blocks instead of 20).
     -> For a smoother frame rate in this large outdoor level.
@@ -190,12 +201,21 @@
   HIGHLAND FLING
   --------------
 
-  * The game froze when looking from room 2 into room 3.
-    Why: from that side path the view reached into the large, closely
-    connected area of room 3. Far too much geometry was visible at once,
-    more than the PS1 can draw, and the game stopped.
-    Fix: the side path is closed off with a new wall. It is not needed to
-    finish the level.
+  * The picture broke up and froze when looking from the side path
+    between rooms 2 and 3 into room 3, and the game crashed at the next
+    loading screen. It could also happen, very rarely, under the bridge.
+    Why: the game collects everything it draws in a frame in a buffer for
+    the graphics chip. Objects and effects stop when it is full, but the
+    room geometry did not: in these views it wrote past the end of the
+    buffer, into the picture being shown and into the memory behind it.
+    Fix: a piece of room geometry is now only drawn while the buffer still
+    has room for it. At that limit the farthest pieces, already deep in
+    the black distance fog, are left out for that frame. This guard works
+    in every level and every disc version. The side path, closed with a
+    wall in version 1.0, is open again as on the PC. The camera that shows
+    the Loch Ness monster (when you pick up the shotgun on the bridge)
+    stands at the edge of room 4 instead of in room 2, where the busy view
+    left the monster out of the picture.
 
   * You could walk into the stone pillar in room 49, and reach into it
     from the room above (room 20).
@@ -206,11 +226,6 @@
     Fix: both spots are now solid walls. All seven levels were checked for
     other places of this kind: there are none.
 
-  * Textures turned in the level editor came out wrong on the PS1.
-    Why: the editor stores a turned texture as a new texture entry, which
-    pushed the save crystal and controller textures to other numbers.
-    Fix: turned textures are folded back onto the originals before the
-    conversion, so the turns are kept and nothing moves.
 
 
   WILLARD'S LAIR
