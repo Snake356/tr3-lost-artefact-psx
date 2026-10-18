@@ -20,11 +20,11 @@ The Lost Artefact on the PlayStation: all six levels (Sleeping with the Fishes i
     <td align="center"><img src="docs/screenshots/04_sleeping_with_the_fishes.jpg" alt="Sleeping with the Fishes" width="380"><br>Sleeping with the Fishes</td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/screenshots/05_sleeping_with_the_fishes_crystal.jpg" alt="Sleeping with the Fishes: a save crystal" width="380"><br>Sleeping with the Fishes: a save crystal</td>
+    <td align="center"><img src="docs/screenshots/05_sleeping_with_the_fishes_crystal.jpg" alt="Sleeping with the Fishes: a save crystal" width="380"><br>Sleeping with the Fishes 2</td>
     <td align="center"><img src="docs/screenshots/06_its_a_madhouse.jpg" alt="It's a Madhouse!" width="380"><br>It's a Madhouse!</td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/screenshots/07_reunion_acid.jpg" alt="Reunion: the green acid" width="380"><br>Reunion: the green acid</td>
+    <td align="center"><img src="docs/screenshots/07_reunion_acid.jpg" alt="Reunion: the green acid" width="380"><br>Reunion: Sophia</td>
     <td align="center"><img src="docs/screenshots/08_reunion_temple.jpg" alt="Reunion" width="380"><br>Reunion</td>
   </tr>
 </table>
