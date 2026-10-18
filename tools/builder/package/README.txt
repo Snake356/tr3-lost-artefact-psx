@@ -104,6 +104,12 @@ Many front ends show the .png next to it as the cover; for DuckStation, copy
 it into its "covers" folder. The cover is optional: use your own if you
 prefer, or none at all.
 
+DuckStation with PGXP: keep "Geometry Correction" on (it stops the shaking),
+but switch "Texture Correction" off. With it on, the items in the inventory
+ring (for example the controller) look grainy and torn. Without it,
+textures on large surfaces close to the camera bend a little, as on a real
+PlayStation.
+
 Real PlayStation: use an optical drive emulator, or burn the .bin/.cue to a
 CD-R (the console must be able to play burned discs). Use the version that
 matches your console (PAL or NTSC) unless it plays both.
