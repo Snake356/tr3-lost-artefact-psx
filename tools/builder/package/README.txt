@@ -107,9 +107,8 @@ prefer, or none at all.
 DuckStation with PGXP: keep "Geometry Correction" on (it stops the shaking),
 but switch "Texture Correction" off. With it on, the items in the inventory
 ring (for example the controller) and the very top of the sky dome look
-grainy and torn. Without it,
-textures on large surfaces close to the camera bend a little, as on a real
-PlayStation.
+grainy and torn. Without it, textures on large surfaces close to the camera
+bend a little, as on a real PlayStation.
 
 Real PlayStation: use an optical drive emulator, or burn the .bin/.cue to a
 CD-R (the console must be able to play burned discs). Use the version that
