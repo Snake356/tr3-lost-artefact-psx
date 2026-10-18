@@ -58,6 +58,8 @@ The builder also puts a cover next to the disc image for emulator frontends, des
   </tr>
 </table>
 
+**DuckStation tip:** with PGXP, keep *Geometry Correction* on but switch *Texture Correction* off. With it on, the items in the inventory ring (for example the controller) look grainy; that is the emulator setting, not a bug of the disc image.
+
 Found a problem? Use **Report a problem** in the builder or [open an issue](https://github.com/Snake356/tr3-lost-artefact-psx/issues).
 
 ## One project, one place
