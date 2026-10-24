@@ -61,12 +61,16 @@ issues and the fixed bugs.
 3. Step 2: choose your Lost Artefact files (a disc image or a folder).
    Both steps show a green tick when the files were recognised.
 4. Step 3: options (see below), or leave them as they are.
-5. Choose where to save the disc image and click "Build disc image".
+5. Choose where to save the disc image and click "Build disc image". The
+   builder names it after your disc, e.g. "Tomb Raider III - The Lost
+   Artefact (Germany) (Rev 1).bin"; for 60 Hz the US disc's revision is
+   added, e.g. "(NTSC USA Rev 0)", as its game code runs the disc. You
+   can change the name.
 
 Building takes about one minute. You get:
 
-   tr3la_<version>.bin / .cue   the disc image
-   tr3la_<version>.png          the matching cover (PAL, USA or Japan)
+   <name>.bin / .cue   the disc image
+   <name>.png          the matching cover (PAL, USA or Japan)
 
 Windows may warn about an unknown program the first time ("Windows protected
 your PC"): click "More info", then "Run anyway".
@@ -83,16 +87,96 @@ Blood
 Level select on New Game (optional)
    New Game lets you start any level. For a normal playthrough, leave it
    off: a level started this way begins without what you would have
-   collected before. The Japanese and Asian Disc 1 get a save crystal in
+   collected before, with the pistols, 2 flares, a small and a large
+   medipack and a save crystal (in a New Game+: all weapons with its
+   ammunition, see below, and the same). The Japanese and Asian Disc 1 get a save crystal in
    the inventory at every level start (they save from the inventory); all
    other versions also get the cheat codes.
+
+Stronger weapons as in the Japanese version
+   Lara's weapons do twice the damage, as on the Japanese and Asian Disc 1
+   (which always have it; there the box is ticked and cannot be changed).
+   Only the weapons change, not the levels. Leave it off for a normal
+   playthrough.
 
 NTSC 60 Hz (European discs only)
    Turns a German, French, Italian, Spanish or English (Europe) disc into
    an NTSC disc with your language's speech and texts. This needs the US
    Tomb Raider III disc as well (any revision: Rev 0, 1 or 2), for the NTSC
    game code. The disc then runs like the US version (also on NTSC
-   consoles).
+   consoles). Its savegames have their own name and your language's title
+   on the memory card, apart from the US disc's and the PAL disc's.
+
+
+--------------------------------------------------------------------------------
+  EXTRAS IN EVERY DISC
+--------------------------------------------------------------------------------
+
+Forward roll out of the crouch
+   While crouching, press Sprint (R2 on the western discs; on the Japanese
+   and Asian discs the button Sprint has there). Lara rolls forward and
+   ends in the crouch again; keep Sprint held to keep rolling.
+
+Turning in the crouch
+   While crouching, press Left or Right: Lara turns on the spot, as in
+   Tomb Raider IV. Where the ceiling is too low to stand up, Duck does not
+   need to be held.
+
+Flip out of a crawlspace
+   At the edge of a crawlspace with a drop ahead, press Walk + Jump (R1 +
+   square on the western discs; on the Japanese and Asian discs the
+   buttons Walk and Jump have there). Lara flips out head first and
+   falls.
+
+New Game+
+   As in Tomb Raider II and the Remastered games. After the end credits and
+   the statistics of a normal game the game asks twice: first for your
+   normal savegame (it now offers every level you reached), then for the
+   New Game+ savegame, which starts in the first level and unlocks it.
+   After a New Game+ it asks once, and that savegame keeps every level you
+   reached in it. "Continue" leaves a savegame as it was. From then on, "New Game"
+   first asks for the game mode: "New Game" or "New Game+" (with the level
+   select: the mode first, then the level).
+
+   A New Game+ starts with all weapons, but only a little ammunition:
+   Desert Eagle 10, Uzis 80, MP5 80, shotgun 12, harpoon 24, rocket
+   launcher 4, grenade launcher 6, 2 flares and a small and a large
+   medipack (the pistols are unlimited as always), and Lara has the pistols
+   in her hands at every level start. Ammunition is used up and found as
+   usual, and what Lara has goes on into the next level. Enemies take twice
+   as much damage to kill, and Lara takes twice the damage. You start with
+   one save crystal and collect the others as usual.
+
+   A New Game+ is saved in a savegame of its own (a + at the end of its
+   title on the memory card), so it never overwrites your normal game:
+   the save dialog says "Create New Game+ save on" or "Overwrite New Game+
+   on". When both are on the card, "Load Game" asks which one to load on
+   the title screen and in Lara's home; in a level it loads the savegame
+   of the mode you are playing, so a load there never changes the mode.
+   After a normal game the game asks for the New Game+ savegame only while
+   there is none, so a finished New Game+ is never replaced by a new one.
+   Lara's home is always a normal visit, without weapons and without a
+   save crystal (a savegame made there would replace your normal one).
+
+   As in the original, the game saves on memory card 1, one savegame (and
+   one New Game+ savegame) per card. To keep a finished game, copy it to
+   memory card 2 in the console's memory card menu (start the console
+   without a disc; in emulators, their memory card editor) and copy it
+   back when you want it again.
+
+   Savegames belong to the release of the disc the game runs from. A disc
+   built from a first release (Rev 0; for NTSC 60 Hz: the US disc Rev 0)
+   saves under its own name, so it never sees the savegames of a Rev 1 or
+   Rev 2 disc and the other way round: a current position saved by the
+   other release does not fit its memory and could crash the game.
+   Building again from the same disc with other options (blood, weapons,
+   level select) keeps your savegames.
+
+3D pickups
+   A picked up item slides into the bottom right corner as a turning 3D
+   model, as in Tomb Raider IV, and slides out again after about three
+   seconds. Several items picked up in one place are shown side by side.
+   It stands still while the game is paused or the inventory is open.
 
 
 --------------------------------------------------------------------------------

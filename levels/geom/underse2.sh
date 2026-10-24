@@ -63,6 +63,9 @@
 # the removal list above ever changes again, recompute instead).
 ./trmod tr3pc underse2.tr2 "replaceitem(27,,,,,,16384,,,)"
 ./trmod tr3pc underse2.tr2 "replaceitem(29,,,,,,16384,,,)"
+# The two submarines coming down (ANIMATING6) start in rooms 24 and 25, which have no light at the darkest
+# ambient, so they were almost black: a light at each submarine (a fixed shade instead flickers on the PS1).
+./trmod tr3pc underse2.tr2 "addlight(24,3584,6656,3584,D0E8E8,spotlight,4095,4096)" "addlight(25,3584,7680,2432,D0E8E8,spotlight,4095,4096)"
 
 # Sets Lara's new position in the end of room 44:
 # NOTE: original item index 2 -> now 1 after the full 60-item removal above

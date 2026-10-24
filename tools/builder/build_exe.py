@@ -18,7 +18,8 @@ NAME = "TR3 Lost Artefact PS1 Builder"
 OWN = ["assets", "levels", "texts", "covers", "known_inputs.json", "levels.json", "modules.json", "sounds.json",
        "texts.json", "pictures_from_disc.json", "icon.ico", "icon.png"]
 TOOLS = ["close_dome_tip.py", "bake_point_light.py", "optimise_floordata.py", "share_model.py", "restore_model.py",
-         "strip_unused_tail.py", "psx_inventory.py"]
+         "strip_unused_tail.py", "psx_inventory.py", "add_crawl_flip.py", "add_crouch_turn.py", "psx_lara_anims.py",
+         "house_nose_fix.py"]
 # made from the player's disc (unchanged pictures, the Kanji font with texts.kanji), never bundled
 FROM_DISC = set(json.load(open(os.path.join(HERE, "pictures_from_disc.json"), encoding="utf-8"))["from_player_disc"])     | {"art/kanji/kanji_la.psx"}
 EXES = ["mkpsxiso", "tr3pcpsx_builder", "texmod", "trmod", "troi", "trsfx", "tr3mesh", "3texex", "3texrep"]
@@ -26,11 +27,12 @@ EXES = ["mkpsxiso", "tr3pcpsx_builder", "texmod", "trmod", "troi", "trsfx", "tr3
 
 def project_files():
     """Project-relative paths of the files the builder reads from the project."""
-    files = ["bin/patch.sh", "levels/convert.sh", "levels/sfx/empty.wav"]
+    files = ["bin/patch.sh", "levels/convert.sh", "levels/sfx/empty.wav", "art/lara/nose.bin"]
     files += [os.path.relpath(p, PRJ) for p in glob.glob(os.path.join(PRJ, "bin", "patches", "*", "*.ips"))]
     files += [os.path.relpath(p, PRJ) for p in glob.glob(os.path.join(PRJ, "levels", "geom", "*.sh"))]
     files += [os.path.relpath(p, PRJ) for p in glob.glob(os.path.join(PRJ, "levels", "japan", "*.txt"))]
     files += [os.path.relpath(p, PRJ) for p in glob.glob(os.path.join(PRJ, "disc", "files", "system", "*.cnf"))]
+    files += [os.path.relpath(p, PRJ) for p in glob.glob(os.path.join(PRJ, "art", "loadscr", "*", "title*.raw"))]   # NTSC titles
     files += [f"tools/{t}" for t in TOOLS] + [f"build/win/bin/{e}.exe" for e in EXES]
     for layout in ("us", "uk", "de", "fr", "it", "sp", "jp", "jp2", "as", "as2"):
         files.append(f"disc/{layout}.xml")

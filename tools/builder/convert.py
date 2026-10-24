@@ -174,6 +174,8 @@ class Converter:
         open(self.path(lv, "anim.dat"), "wb").write(self.hooks["anims"](lv, cur))
         self.run(lv, "troi", f"{lv}.tr2", "i", "anim.dat")
         os.remove(self.path(lv, "anim.dat"))
+        self.py(lv, "add_crawl_flip.py", f"{lv}.tr2")
+        self.py(lv, "add_crouch_turn.py", f"{lv}.tr2")
 
     def step_geom(self, lv):
         for line in open(os.path.join(PRJ, "levels", "geom", f"{lv}.sh"), encoding="utf-8"):

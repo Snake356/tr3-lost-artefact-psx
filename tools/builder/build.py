@@ -10,6 +10,8 @@ Options:
                       versions show purple blood)
   --level-select      level select on New Game (and cheats, except on the Japanese and Asian Disc 1,
                       which get a save crystal at every level start instead); also --test
+  --japan-weapons     Lara's weapons as strong as in the Japanese Disc 1: double damage, stronger rocket
+                      and grenade explosions (japanweapons.ips; the Japanese and Asian Disc 1 have it)
 
 Steps: disc files from the image (disc_files.py), input levels (pc_levels.py), sounds (sounds.py), code
 modules (modules.py), level conversion (convert.py with assets.py's hooks), executable (the IPS patches
@@ -17,7 +19,8 @@ of bin/patch.sh, then the options), texts (texts.py), pictures (the project's ow
 originals from the disc), the licence sectors of the disc, then mkpsxiso with disc/<layout>.xml. The cover
 (covers/: PAL, USA or Japan by the disc's region) goes next to the disc image with the same name.
 
-Usage: build.py <TR3 PS1 image> <Lost Artefact PC files> <out .bin> [--ntsc <US image>] [--blood red|purple] [--test]"""
+Usage: build.py <TR3 PS1 image> <Lost Artefact PC files> <out .bin> [--ntsc <US image>] [--blood red|purple] [--test]
+                [--japan-weapons]"""
 import argparse
 import json
 import os
@@ -51,19 +54,60 @@ COVERS = {"us": "usa.png", "us10": "usa.png", "jp": "japan.png", "jp2": "japan.p
 PICTURES = json.load(open(os.path.join(HERE, "pictures_from_disc.json"), encoding="utf-8"))["from_player_disc"]
 
 
-def patched_exe(disc, info, blood=None):
+JAPAN_WEAPONS_BUILT_IN = ("jp", "as")                 # the Japanese and Asian Disc 1 have it themselves
+
+
+def patched_exe(disc, info, blood=None, japan_weapons=False, ntsc_lang=None):
+    """japan_weapons: Lara's weapons as strong as in the Japanese Disc 1 (japanweapons.ips); ntsc_lang: the
+    US executable of a European NTSC disc gets the savegame title and the New Game+ texts in that language
+    (savename_<lang>.ips, ngpchoice_<lang>.ips)."""
     exe = disc.file(info["exe"])
     sh = open(os.path.join(PRJ, "bin", "patch.sh"), encoding="utf-8").read()
     for name in re.search(r'^patches="([^"]*)"', sh, re.M).group(1).split(","):
+        if name in ("savename", "ngpchoice") and ntsc_lang:
+            name = f"{name}_{ntsc_lang}"
         exe = apply_ips(exe, open(os.path.join(PRJ, "bin", "patches", info["version"], f"{name}.ips"), "rb").read())
     if blood:
         exe = apply_ips(exe, open(os.path.join(PRJ, "bin", "patches", info["version"], f"blood{blood}.ips"), "rb").read())
+    if japan_weapons and info["version"] not in JAPAN_WEAPONS_BUILT_IN:
+        exe = apply_ips(exe, open(os.path.join(PRJ, "bin", "patches", info["version"], "japanweapons.ips"), "rb").read())
     return exe
+
+
+NTSC_CARD = b"BASLUS-00691TR3G"
+REV0 = ("de", "fr", "it", "sp", "uk", "us10")        # the first release of each disc (executable)
+
+
+def ntsc_card_name(dat, lang):
+    """The memory card file of a European NTSC disc: LANGUAGE AMERICAN picks the US name; it gets the
+    language's letter instead of the 3 (BASLUS-00691TRFG for French), so its savegames are kept apart from
+    the US disc's and the PAL disc's. The strings are XOR-ed with the cypher byte at 382."""
+    key = dat[382]
+    body = bytes(b ^ key for b in dat[384:])
+    assert body.count(NTSC_CARD) == 1, "US memory card name not found"
+    new = NTSC_CARD[:-2] + {"en": b"E", "de": b"D", "fr": b"F", "it": b"I", "sp": b"S"}[lang] + NTSC_CARD[-1:]
+    return dat[:384] + bytes(b ^ key for b in body.replace(NTSC_CARD, new))
+
+
+def rev0_card_names(dat):
+    """The memory card files of a game run by a first release executable (Rev 0): T0 instead of TR in every
+    card name (BESLES-01683T03G, BASLUS-00691T0DG for a German NTSC disc on US Rev 0). Rev 0 and Rev 1 share
+    the names, but their level memory starts elsewhere (and the European savegames are 20 bytes apart), so a
+    current position saved by the other release is read wrongly and can crash the game. The last letter stays,
+    it tells the normal savegame (G) from the New Game+ one (P)."""
+    key = dat[382]
+    body = bytearray(b ^ key for b in dat[384:])
+    names = list(re.finditer(rb"B[A-Z]S[A-Z]{2}[SM]-\d{5}TR[A-Z0-9]{2}", body))
+    assert names, "memory card names not found"
+    for m in names:
+        body[m.start() + 13] = ord("0")
+    return dat[:384] + bytes(b ^ key for b in body)
 
 
 def ntsc_xml(xml, layout):
     """The NTSC layout of a European language's PAL layout:
-    US licence, SYSTEM.CNF and executable name, PIXUS pictures, the US disc's data files and levels."""
+    US licence, SYSTEM.CNF and executable name, PIXUS pictures, the US disc's data files and levels, and the title
+    picture of 240 lines with black borders (the PAL one fills all 256 lines, as Tomb Raider III's PAL title)."""
     rep = [('<license file="./licenses/licensee.dat"/>', '<license file="./licenses/licensea.dat"/>'),
            ('source="./files/system/' + layout + '.cnf"', 'source="./files/system/us.cnf"'),
            ('<dir name="PIXUK">', '<dir name="PIXUS">'), ('name="TITLEUK.RAW"', 'name="TITLEUS.RAW"'),
@@ -72,6 +116,7 @@ def ntsc_xml(xml, layout):
         assert old in xml, f"disc/{layout}.xml: {old} not found"
         xml = xml.replace(old, new)
     xml = re.sub(r'<file name="SLES_\d{3}\.\d{2}" type="data"', '<file name="SLUS_006.91" type="data"', xml)
+    xml = re.sub(r"(art/loadscr/\w+/title\w+)_pal\.raw", r"\1.raw", xml)   # NTSC shows 240 lines: the title with its borders
     xml = re.sub(r"\.\./levels/out/\w+rev/", "../levels/out/us/", xml)
     return xml
 
@@ -85,15 +130,16 @@ def licence(disc):
     return bytes(out)
 
 
-def build(ps1_image, pc_source, out_bin, ntsc_image=None, blood=None, work=None, log=print, test=False, keep_work=False):
+def build(ps1_image, pc_source, out_bin, ntsc_image=None, blood=None, work=None, log=print, test=False, keep_work=False,
+          japan_weapons=False):
     """The work folder (intermediate files, about 1 GB) is removed after a successful build unless keep_work."""
     try:
-        return _build(ps1_image, pc_source, out_bin, ntsc_image, blood, work, log, test, keep_work)
+        return _build(ps1_image, pc_source, out_bin, ntsc_image, blood, work, log, test, keep_work, japan_weapons)
     finally:
         inputs.close_unpacked()
 
 
-def _build(ps1_image, pc_source, out_bin, ntsc_image, blood, work, log, test, keep_work):
+def _build(ps1_image, pc_source, out_bin, ntsc_image, blood, work, log, test, keep_work, japan_weapons=False):
     work = os.path.abspath(work or os.path.join(os.path.dirname(os.path.abspath(out_bin)), "build_work"))
     if os.path.exists(work):
         shutil.rmtree(work)
@@ -145,11 +191,14 @@ def _build(ps1_image, pc_source, out_bin, ntsc_image, blood, work, log, test, ke
     c.convert()
 
     log("executable, texts, pictures")
-    exe = patched_exe(main_disc, main_info, blood)
+    exe = patched_exe(main_disc, main_info, blood, japan_weapons, NTSC_LANG[info["version"]] if ntsc_image else None)
     dat = bytearray(texts.tombpsx(layout, disc, test))
     if ntsc_image:
         exe = make_ntsc_exe.make(exe, patched_exe(disc, info), NTSC_LANG[info["version"]])
         dat[383] = 3                                       # LANGUAGE AMERICAN (no German blood censorship)
+        dat = ntsc_card_name(dat, NTSC_LANG[info["version"]])
+    if main_info["version"] in REV0:                       # the executable decides: an NTSC disc's is the US one
+        dat = bytearray(rev0_card_names(dat))
     open(w("game.exe"), "wb").write(exe)
     open(w("TOMBPSX.DAT"), "wb").write(bytes(dat))
     if layout in texts.JAPANESE:
@@ -219,8 +268,10 @@ def main(argv=None):
     ap.add_argument("--work")
     ap.add_argument("--level-select", "--test", dest="test", action="store_true")
     ap.add_argument("--keep-work", action="store_true", help="keep the intermediate files")
+    ap.add_argument("--japan-weapons", action="store_true", help="weapons as strong as in the Japanese Disc 1")
     a = ap.parse_args(argv)
-    build(a.ps1_image, a.pc_files, a.out_bin, a.ntsc, a.blood, a.work, test=a.test, keep_work=a.keep_work)
+    build(a.ps1_image, a.pc_files, a.out_bin, a.ntsc, a.blood, a.work, test=a.test, keep_work=a.keep_work,
+          japan_weapons=a.japan_weapons)
 
 
 if __name__ == "__main__":

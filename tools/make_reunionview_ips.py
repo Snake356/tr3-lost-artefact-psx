@@ -317,7 +317,7 @@ if __name__ == "__main__":
     patches = [l.split('"')[1].split(",") for l in patch_sh.splitlines() if l.startswith("patches=")][0]
     for ver, path in paths.items():
         exe = open(path, "rb").read()
-        for pat in [p for p in patches if p not in ("reunionview", "roomguard")]:
+        for pat in patches[:patches.index("reunionview")]:      # the patches before this one
             exe = apply_ips(exe, open(os.path.join(BIN, "patches", ver, f"{pat}.ips"), "rb").read())
         p, info = build(exe, ver, settings)
         open(os.path.join(BIN, "patches", ver, "reunionview.ips"), "wb").write(ips(p))

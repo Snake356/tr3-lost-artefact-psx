@@ -81,6 +81,144 @@ TO DO:
       path: 200-325 pieces left out per second there, no errors, no crash, every level flown through.
       The routine sits in an unused game function found on the executable with all other patches
       applied (make_reunionview_ips.unused_routines), so it never overlaps the draw distance patch.
+    - Crouch roll, New Game+, 3D pickups (22.10.2026, 1.0.3, every version, fixed in bin/patch.sh;
+      each generator builds on the patches listed before it there):
+      duckroll.ips (tools/make_duckroll_ips.py): Lara's animations still hold the roll (state 72) and
+      the crouch animation changes into it, but the executable never asks for it. Sprint in the crouch
+      sets the goal state 72 (held: keeps rolling, released: back to the crouch, 71); state 72 gets the
+      crouch's collision routine.
+      newgameplus.ips (tools/make_newgameplus_ips.py): the bonus mode of the savegame (all weapons,
+      unlimited ammunition, 255 flares, enemies with twice their hit points) is set by the call of the
+      end credits and no longer cleared by New Game (since 23.10.2026 the choice and the savegame are
+      ngpchoice.ips/ngpfile.ips, see below). The
+      ammunition is limited instead of unlimited: the start equipment gets Desert Eagle 10, Uzis 80,
+      shotgun 12, MP5 80, rockets 4, harpoon 24, grenades 6, 2 flares and a small and a large medipack,
+      the pistols in Lara's hands (not the rocket launcher), and the 19 other reads of the
+      bonus byte (no ammo-- and flares--, refill to 1000, hidden ammo counts) are switched off; the
+      enemy hit points stay doubled. Also one save crystal instead of 50 (Rev 1/2, Japan, Asia), and
+      Lara takes twice the damage (a routine before the health bar compares her hit points with the
+      last frame). The first level's normal start clears the shotgun as well (a normal game after a
+      New Game+ in the same session kept it).
+      pickup3d.ips (tools/make_pickup3d_ips.py): the display of the ECTS demo (Sep 1998), with the
+      behaviour of Tomb Raider IV: slide in, turn, slide out; items of one frame side by side, later
+      ones queued. Built from the game's matrix stack, mesh drawing and first-frame rotation; DQB (the
+      underwater palette shift) is 0 while it draws, its time runs by wibble (the level timer stands
+      still in Lara's home), NTSC is recognised by the GTE's screen centre. The code (about 1.2 KB) did
+      not fit into the unused functions of every version, so the executable is extended:
+      init_game_malloc gets 0xEE0 bytes less, 0xDE0 on Japan/Asia Disc 2 (2 KB until 23.10.2026; their
+      limit is the RAM above the BSS, with 1 KB kept for the stack; pickup3d.extra(ver); the executable is padded to whole
+      2048-byte sectors, or the BIOS does not start it), the routines are appended to the executable (header text size),
+      a routine at the new start address copies them above the BSS before the start code clears it,
+      and a routine called instead of InitHeap copies them to the last 2 KB of the level memory (the
+      crawl flip's routine as well, crawlflip.ips: there is no unused function left for it in every
+      version).
+    - Crawl flip (22.10.2026, crawlflip.ips, tools/make_crawlflip_ips.py; animation by
+      tools/add_crawl_flip.py in levels/convert.sh and the builder): a "roll jump down from crawl"
+      animation (frame rate 2, effort sound 46) as Lara's
+      animation 313 in every level; Walk + Jump in the crawl standstill at an edge more than 768 deep
+      with standing height ahead starts it (state AS_NULL), Lara squared to the axis 225 short of the
+      edge as in Tomb Raider III's crawl to hang. Lara's collision table does not follow the control
+      table directly (13 routines for special animations lie between); duckroll.ips no longer writes
+      into it (it had set the collision of the ladder's top exit).
+    - Crouch turns (22.10.2026, crouchturn.ips, tools/make_crouchturn_ips.py; animations by
+      tools/add_crouch_turn.py after add_crawl_flip.py): "crouch turn left/right" animations (frame
+      rate 2, shuffle sound 24 on land) as Lara's
+      animations 314 and 315, state AS_DUCK, no state changes. The crouch's entry of Lara's control
+      table (shared with the roll, which keeps the old one) points to a routine behind the crawl
+      flip's: it calls the crouch routine, starts a turn from the crouch animation (222) on Left/Right
+      with Duck held or keep_ducked set (bit 0x20 of Lara's flag word, found by the crouch routine's
+      IsDucked 'ori 0x400'; the ceiling is too low to stand up, 24.10.2026), turns 273 per frame as the crawl turns, and puts Lara back into 222 (frame 6487
+      in every level) when the side or Duck is released, Forward/Back is pressed or the goal state
+      changes, so 222's state changes take over. The table holds addresses without 0x80000000; the
+      game calls them through the RAM mirror at 0.
+    - Level touches (22.10.2026, levels/convert.sh, levels/geom/underse2.sh): Reunion room 19's own
+      point light (light 32 of the PSX level, orange 255,63,32) gets the punks' fire colour FFB050 at
+      6143 (replacelight; trmod needs every field, empty ones become 0), and the six orange vertices of
+      room 19 plus room 21's vertex 23 (same corner) the warm yellow of room 19's vertex 29, brightness
+      kept (replacevertex sets both colour fields; trmod takes the value as blue<<10|green<<5|red).
+      Sleeping with the Fishes 2: the two ANIMATING6 submarines (items 27, 29, rooms 24/25 without
+      lights) get a light each (addlight D0E8E8, 4095, 4096); a fixed item shade instead flickers on
+      the PS1.
+    - Known, not fixed (22.10.2026): in Reunion near rooms 30/60 the primitive buffer (2 x 0x19438
+      bytes) fills up at some camera angles, and the objects drawn last (pendulum, save crystal, hanging
+      bodies) vanish; measured over GDB (pointer past the end), the same in 1.0.1 and 1.0.2, PAL and NTSC.
+    - Lara's home (22.10.2026): the released HOUSE.PSX has no animations 313-315 (313 is the first
+      animation of the pistols there), so tools/psx_lara_anims.py adds them to the PSX file (same
+      records and frames as the PC level, moveables 20 bytes) in the builder after close_dome_tip.py;
+      disc/files/data/*/house.psx have them too. 158 KB of level memory stay free there.
+    - New Game+ choice and savegame (23.10.2026, play-tested on DE PAL with and without level select,
+      DE NTSC, FR NTSC, JP Disc 1 and 2): ngpfile.ips (tools/make_ngpfile_ips.py) points the four
+      calls of the BIOS open (card check, save, create, load) at a routine that, with the bonus byte
+      set, copies the memory card name (game text, e.g. bu00:BESLES-01683TR3G) into a buffer and ends
+      it in P: the New Game+ savegame is a file of its own. ngpchoice.ips
+      (tools/make_ngpchoice_ips.py): the New Game+ is unlocked when its file is on the card (it is
+      made by the game's own save question after the credits and statistics); New Game then shows the
+      game mode (New Game / New Game+) in the level list's requester, with the level select the level
+      list follows in the same requester; Load Game asks which file when both exist (on the title and in
+      Lara's home; in a level it loads the file of the mode running); the save dialog's
+      first line says "Create New Game+ save on" / "Overwrite New Game+ on" and the card title gets a
+      full width + (an XOR table switches it; French: "TR3: Le Dernier Artefact+"); the dialog's card
+      status is cleared before every switch of the file. GAMECOMPLETE (Lost Artefact ends with it,
+      never reaching Tomb Raider III's own end loops) goes through newgameplus.ips's routine, whose
+      first words now keep the bonus byte from before (t9) for a routine that sets it and jumps to the
+      credits. The end statistics' save call (GameStats: behind it Tomb Raider III sets level 20, its
+      bonus level, after all secrets) goes to a routine that sets the current level to the first and
+      saves a normal game twice (as it is, then as the New Game+ with ModifyStartInfo(1) and the later
+      levels unavailable), a New Game+ once with its levels kept (24.10.2026). A normal start gives levels 2
+      and later the first level's start equipment (pistols, 2 flares, a small and a large medipack, a
+      save crystal); the level start skips ModifyStartInfo in the New Game+ (Lara keeps what she has,
+      pistols in her hands) except in Lara's home (level 0), which always gets it, clears the bonus
+      byte, stops the CD music and clears the background track byte (gp+0x3490 on the US/European
+      executables): the house's track 0 plays nothing and left the last level's music running, and
+      the music came back to it after every speech. Japanese texts as glyph strings (+ in KANJI cell
+      256). For a European NTSC disc the builder takes the US executable's ngpchoice_<language>.ips
+      and savename_<language>.ips (tools/make_ntsc_savename_ips.py: the PAL disc's title) and gives the
+      memory card name the language's letter instead of the 3 (BASLUS-00691TRDG etc., build.py
+      ntsc_card_name), so its savegames are kept apart from the US and PAL discs'.
+    - PAL title (24.10.2026): Tomb Raider III's PAL TITLEUK.RAW fills all 256 lines (the loading pictures
+      have 8 black lines at the top and the bottom, as ours). art/loadscr/{uk,de,fr}/title*_pal.raw are
+      made from art/loadscr/src/*/title*.bmp (640 x 480, bicubic to 512 x 256); disc/{uk,de,fr,it,sp}.xml
+      use them, build.py's ntsc_xml takes the 240-line ones back.
+    - No save crystal in Lara's home (24.10.2026, make_ngpchoice_ips.py keep routine): ModifyStartInfo gives
+      level 0 one save crystal (byte 0x14 of its start info, US 0x8005722c); the keep routine now calls it and
+      clears that byte (3 words; on US Rev 0 the page text removal behind it fills the function exactly).
+    - Rev 0 card names (24.10.2026, build.py rev0_card_names): a game run by a first release executable (de, fr,
+      it, sp, uk, us10; for NTSC the US one) gets T0 instead of TR in every card name of TOMBPSX.DAT (after
+      ntsc_card_name). Rev 0 and Rev 1 share the names, but their level memory starts elsewhere (EU 0x800e2ba8 /
+      0x800e3148, US 0x800e2ebc / 0x800e329c) and the EU savegames differ (0x359c / 0x35b0 bytes, the head 20
+      bytes apart), so the other release's current position was read wrongly: a US Rev 2 position crashed a
+      German NTSC disc on US Rev 0 in the item restore (GetFloor on a position read out of step); the original
+      Rev 0 only missed a Rev 1 position by chance.
+    - Title retouch (24.10.2026, tools/make_title_pictures.py builds every art/loadscr/*/title*.raw):
+      the PC title's last three columns become column 636 (the top edge stays as Core made it), the plain
+      blue corner at the bottom left (x 0-45 from row 365) takes the frost
+      pattern 45 pixels to its right with a 20 pixel fade, and the lighter blue beside Lara's arm
+      (x 626-639, y 418-456) takes the blue of row 466. 5 bits per colour, dithered only in the bottom
+      left corner. NTSC: 512 x 240 with 8 black lines above and below; PAL: 512 x 256. The Japanese
+      title is the UK NTSC one with art/loadscr/src/jp/titlejap_logo.png (the former picture's logo,
+      alpha = logo); IT, ES and JP's titleuk.raw are copies of the UK one.
+    - Lara's home nose (23.10.2026, tools/house_nose_fix.py, in the builder after psx_lara_anims.py,
+      disc/files/data/*/house.psx too): Core's HOUSE.PSX has the same fault as the PC levels before
+      the Lara model fix (two head triangles, vertices 10/13/17 and 10/18/13 of mesh 14 of LARA_SKIN,
+      on a 5 x 4 eyebrow crop: a yellow band instead of the nose). As in the other levels: the skin
+      piece of the Lost Artefact levels patch (art/lara/nose.bin) goes into an empty area no texture
+      uses (tile 2 at 192, 96), toned to the file's own skin (the Japanese discs are lighter) and
+      reduced to the head's best CLUT; three object textures are appended (nose x 2, plain skin for
+      the two triangles beside it, which had the same crop), so no index shifts. The file keeps its
+      size (the 48 bytes come out of the padding). The patch's other fixes do not apply to the PS1:
+      the holsters are already fixed in our levels, Lara's home has Core's own PS1 gun flash, and the
+      PS1 has no flight cheat.
+    - Level memory (22.10.2026, measured live in DuckStation with a breakpoint on game_malloc): after
+      loading, Highland Fling had only about 1 KB to spare; its last allocations are the pathfinding
+      blocks of the 5 creature slots (number of boxes * 8 = 11,168 bytes each). With the 2 KB of the
+      routines and the 1.7 KB of the flip animation the fifth got none (address 0): the guard of room
+      19 then wrote his pathfinding over the BIOS tables at 0x80000100 and the game crashed.
+      lotslots4.ips (tools/make_lotslots_ips.py) keeps 4 slots; Highland Fling then has 7,600 bytes
+      free, the other levels between 20 KB and 190 KB. The crouch turns take 2,052 bytes more in
+      every level: 5,548 left in Highland Fling (measured). Tested in the courtyard with 14 creatures
+      awake: the slots changed every few seconds, nothing to notice. Not usable instead: the RAM
+      above the BSS (the stack reaches down to 1 KB above it) and the primitive buffers (the loading
+      code uses them as a temporary buffer).
     - Performance tests (Highland Fling, 26.09.2026): removing all 163 light sources, all 44 static
       meshes (12 % of the faces) and the 6 smoke emitters made no noticeable difference on the PS1.
       Room geometry is 88 % of the faces; the only lever left would be simplifying rooms at the slow
@@ -108,7 +246,9 @@ TO DO:
       edited pictures are included. Each disc keeps its own language (speech, texts, pictures).
     - Options: blood colour (as the version has it, red or purple), level select on New Game (the
       Japanese and Asian Disc 1 get a save crystal in the inventory at every level start, as
-      tombpsx/out/jptest.dat/astest.dat), NTSC for the European discs (needs the US disc).
+      tombpsx/out/jptest.dat/astest.dat), weapons as strong as on the Japanese Disc 1
+      (japanweapons.ips; built into the Japanese and Asian Disc 1), NTSC for the European discs
+      (needs the US disc).
     - Rev 0 executables: the IPS patches are ported by tools/builder/port_patches.py
       (bin/patches/us10, uk, de, fr, it, sp); the converter has flags for them.
     - Window (gui.py) or command line (build.py); one Windows EXE with build_exe.py, the players'

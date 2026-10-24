@@ -21,6 +21,70 @@
   VERSIONS
 ================================================================================
 
+  1.0.3  New in every disc: a forward roll out of the crouch (Sprint),
+         turning on the spot in the crouch and a flip out of a crawlspace
+         (Walk + Jump), New Game+ after the end credits, as in Tomb Raider
+         II, and 3D pickups in the corner, as in Tomb Raider IV (see
+         EXTRAS in the README). Lara's home gets the new animations as
+         well. The game code for these did not fit into the executable,
+         so it takes 3.75 KB of the level memory (3.5 KB on the Japanese
+         and Asian Disc 2); the animations take about
+         3.8 KB in every level.
+
+         The game now keeps 4 instead of 5 enemies active with
+         pathfinding at the same time (a further one waits, out of
+         sight, until a place is free, as the game always did with a
+         sixth). Each place takes a block of level memory, and Highland
+         Fling would otherwise not have enough for the new features: the
+         last place got none, and the game crashed when a guard used it
+         (in the courtyard with the bats).
+
+         Reunion: a light and the walls next to it in one corridor were
+         a harsh orange; they now have the warm colour of the fire glow
+         around the punks. Sleeping with the Fishes, part 2: the two
+         submarines coming down were almost black and now have a light.
+
+         New option in the builder: Lara's weapons can be as strong as
+         in the Japanese version.
+
+         New Game+ is built on the original game's bonus mode, which
+         gave unlimited ammunition. Here the ammunition is limited (see
+         the README) and used up as usual, the later releases (Rev 1
+         and 2) and the Japanese and Asian discs no longer give 50 save
+         crystals (now one, as in a normal game), and Lara takes twice
+         the damage as well. As in the Remastered games, it is unlocked
+         by the savegame after the end credits (after a normal game the
+         game first offers the normal savegame, then the New Game+ one,
+         the latter only while there is none on the card),
+         chosen with "New Game"
+         (game mode New Game or New Game+) and saved in a savegame of its
+         own, so it never overwrites the normal game. Lara keeps what she
+         has from level to level and starts each level with the pistols
+         in her hands.
+
+         Lara's home: her nose has its texture now, as in the levels (see
+         "All levels"), and the music of the last level played no longer
+         comes back after every speech there.
+
+         NTSC discs of the European versions: their savegames have their
+         own name and the language's title on the memory card, apart from
+         the US disc's and the PAL disc's, and the New Game+ texts are in
+         the disc's language.
+
+         "Load Game" asks for the mode (New Game or New Game+) only on
+         the title screen and in Lara's home; in a level it loads the
+         savegame of the mode you are playing. The button hints on the
+         load page no longer flicker or vanish. Lara's home has no save
+         crystal any more (a savegame made there replaced the normal
+         one). A disc built from a first release (Rev 0) saves under its
+         own name on the memory card, so it never loads a position saved
+         by Rev 1 or 2, which could crash the game. The title picture is
+         retouched and fills the whole screen on PAL discs.
+
+         The builder names the disc image after your disc, e.g. "Tomb
+         Raider III - The Lost Artefact (Germany) (Rev 1)", and locks
+         its inputs while it builds.
+
   1.0.2  Highland Fling and Reunion: the shorter view distance now
          applies to the rooms only. Enemies, items and other objects are
          drawn as far as in the original game again; in 1.0 and 1.0.1
@@ -369,7 +433,72 @@
     credit and loading pictures are finished.
 
   * Lara's head had two wrongly textured triangles.
-    Fix: they have a new skin texture in every level.
+    Fix: they have a new skin texture in every level. Lara's home (the
+    original Tomb Raider III level from your disc) had the same fault: a
+    yellow band where the nose should be. It gets the same skin texture
+    when the disc is built.
+
+  * Lara's home: its music track is "none", which did not stop the music
+    of the level played before; it played on, and came back after every
+    speech. Fix: the music stops when Lara's home starts.
+
+  * End of the game: the statistics come from Tomb Raider III and set
+    the next level to its bonus level (20) when every secret was found;
+    The Lost Artefact has none, so that savegame pointed to a level that
+    does not exist. Fix: the savegame after the credits always starts in
+    the first level. It also offered only the New Game+ savegame, so a
+    normal game last saved before Reunion could not reach Reunion when
+    loaded; the normal savegame is offered first now, with every level
+    reached.
+
+  * PAL discs: the title picture had black borders at the top and the
+    bottom, as the NTSC one. Fix: it fills the whole picture, as Tomb
+    Raider III's PAL title does (the loading pictures keep their borders,
+    as in the original).
+
+  * Title picture (all discs): the PC title it is made from has a dark
+    stripe at the right edge, a plain blue corner at the bottom left and
+    a lighter blue patch beside Lara's arm. Fix: retouched from the PC
+    picture (the frost pattern continues into the corner, the edge and the
+    patch take the colour around them).
+
+  * Load Game with both savegames on the memory card (normal and New
+    Game+): the button hints ("Select", "Go Back") flickered when the page
+    opened and were gone after the choice until another page (level
+    select, Lara's home) was opened; in the inventory "Select" was lost
+    for good after a load left with "Continue" and a second "Load Game".
+    Fix: every text the page removes before reading the memory card (the
+    hints, the page title, the item name, the heading) and the list's own
+    texts are removed right before the card is read, as the game does it
+    without the choice.
+
+  * Load Game in a level asked for the mode as well (New Game or New
+    Game+), so a wrong answer left the game mode running. Now it asks only
+    on the title screen and in Lara's home; in a level it loads the
+    savegame of the mode running.
+
+  * Savegames of a Rev 0 disc and a Rev 1 or Rev 2 disc of the same
+    language shared their name on the memory card, but a current position
+    saved by the one release does not fit the other one's memory (a US
+    Rev 2 position crashed a German NTSC disc on US Rev 0). Fix: a disc
+    run by a Rev 0 executable saves under its own name (T0 instead of TR,
+    e.g. BESLES-01683T03G); Rev 1 and Rev 2 keep theirs.
+
+  * Builder: the disc image is named after the disc it is built from, as
+    the dumps name it, so the release shows: "Tomb Raider III - The Lost
+    Artefact (Germany) (Rev 1)", "(Rev 0)" for a first release, "(NTSC
+    USA Rev 0)" for 60 Hz with the US disc's revision ("The Lost Artifact"
+    for the USA disc). The save dialog starts with that name; the inputs
+    are locked while a disc is built.
+
+  * Lara's home: the game gave Lara a save crystal there, and a savegame
+    made in the home replaced the normal one (after coming from the title
+    screen with no level reached). The home has no save crystal now.
+
+  * Level select: a later level started with whatever the game still
+    had in memory (nothing after switching on, a loaded game's things
+    after loading or saving). Fix: it starts with the pistols, 2 flares,
+    a small and a large medipack and a save crystal.
 
   * The very top of the sky dome was open in every level with a sky. On
     the Japanese discs the hole even showed in light blue.

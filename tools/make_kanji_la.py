@@ -1,5 +1,5 @@
 """Builds art/kanji/kanji_la.psx: the Japanese TR3 KANJI.PSX with 13 extra glyphs for the Lost
-Artefact translations (cells 243-255: ユ回園屋手球眠起路隠電魚鳥), drawn with MS Gothic 13 px,
+Artefact translations and the New Game+ (cells 243-256: ユ回園屋手球眠起路隠電魚鳥＋), drawn with MS Gothic 13 px,
 1 bit, 1 pixel up. KANJI.PSX = u32 data size (26624) + 256x208 4-bit sheet (low nibble first),
 16x13 cells, 16 per row; glyph code cell N is sheet cell N-1. The output ends after the image
 data like the original file (the disc-extracted source may be padded to 2048 bytes).
@@ -17,7 +17,7 @@ from PIL import Image, ImageDraw, ImageFont
 PRJ = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 OUT = os.path.join(PRJ, "art", "kanji", "kanji_la.psx")
 CELLS = os.path.join(PRJ, "tools", "tr3_japan_kanji_cells.json")
-NEW = "ユ回園屋手球眠起路隠電魚鳥"
+NEW = "ユ回園屋手球眠起路隠電魚鳥＋"
 FIRST_CELL = 243
 
 raw = bytearray(open(sys.argv[1], "rb").read())

@@ -38,7 +38,7 @@
 				<file name="INITLOAD.RAW" type="data" source="../art/loadscr/it/initload.raw"/>
 			</dir>
 			<dir name="PIXUK">
-				<file name="TITLEUK.RAW" type="data" source="../art/loadscr/uk/titleuk.raw"/>
+				<file name="TITLEUK.RAW" type="data" source="../art/loadscr/uk/titleuk_pal.raw"/>
 				<file name="LEGALUK.RAW" type="data" source="../art/loadscr/uk/legaluk.raw"/>
 			</dir>
 			<dir name="FMV">

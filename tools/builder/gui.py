@@ -33,7 +33,7 @@ import build  # noqa: E402
 import inputs  # noqa: E402
 
 TITLE = "Tomb Raider III: The Lost Artefact - PS1 Builder"
-VERSION = "1.0.2"
+VERSION = "1.0.3"
 ISSUES = "https://github.com/Snake356/tr3-lost-artefact-psx/issues/new"
 HERE = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
 
@@ -124,8 +124,11 @@ class App(tk.Tk):
         style(self)
         self.msgs = queue.Queue()
         self.ps1_info = None
+        self.auto_out = ""                              # the image name the builder suggested
+        self.us_info = None                             # the US disc for NTSC, when recognised
         self.ps1, self.pc, self.us, self.out = tk.StringVar(), tk.StringVar(), tk.StringVar(), tk.StringVar()
         self.ntsc, self.blood, self.test = tk.BooleanVar(), tk.StringVar(value="default"), tk.BooleanVar()
+        self.japan_weapons = tk.BooleanVar()
         self.step_text, self.detail_text, self.time_text = tk.StringVar(value="Ready"), tk.StringVar(), tk.StringVar()
         self.t0 = None                                  # start of the running build (time.monotonic)
 
@@ -175,11 +178,15 @@ class App(tk.Tk):
                         style="Card.TCheckbutton").grid(row=2, column=0, columnspan=4, sticky="w", padx=(22, 0), pady=(8, 0))
         self.ntsc_box = ttk.Checkbutton(opt, text="NTSC 60 Hz (European discs, needs the US disc, any revision):",
                                         variable=self.ntsc, command=self.update_state, style="Card.TCheckbutton")
-        self.ntsc_box.grid(row=3, column=0, columnspan=2, sticky="w", padx=(22, 0), pady=(6, 0))
+        self.ntsc_box.grid(row=8, column=0, columnspan=2, sticky="w", padx=(22, 0), pady=(6, 0))
         self.us_entry = ttk.Entry(opt, textvariable=self.us)
-        self.us_entry.grid(row=3, column=2, sticky="ew", padx=(8, 0), pady=(6, 0))
+        self.us_entry.grid(row=8, column=2, sticky="ew", padx=(8, 0), pady=(6, 0))
         self.us_button = ttk.Button(opt, text="Choose...", command=self.pick_us)
-        self.us_button.grid(row=3, column=3, padx=(6, 0), pady=(6, 0))
+        self.us_button.grid(row=8, column=3, padx=(6, 0), pady=(6, 0))
+        self.weapons_box = ttk.Checkbutton(opt, text="Stronger weapons as in the Japanese version (double damage; leave "
+                                           "off for a normal playthrough)",
+                                           variable=self.japan_weapons, style="Card.TCheckbutton")
+        self.weapons_box.grid(row=4, column=0, columnspan=4, sticky="w", padx=(22, 0), pady=(6, 0))
 
         save = ttk.Frame(body)
         save.grid(row=3, column=0, sticky="ew", pady=(2, 10))
@@ -240,7 +247,8 @@ class App(tk.Tk):
                  f"PS1 disc: {ps1['redump'] if ps1 else 'not chosen or not recognised'}",
                  f"PC files: {self.pc_rels or 'not chosen or not recognised'}",
                  f"Options: blood {self.blood.get()}, level select {'on' if self.test.get() else 'off'}, "
-                 f"NTSC {'on' if self.ntsc.get() else 'off'}"]
+                 f"NTSC {'on' if self.ntsc.get() else 'off'}, "
+                 f"Japanese weapons {'on' if self.japan_weapons.get() else 'off'}"]
         if error:
             msg = self.without_paths(error)[:1200]
             title = "Builder error: " + msg.splitlines()[0][:80]
@@ -275,6 +283,18 @@ class App(tk.Tk):
                                        filetypes=[("Disc images", "*.cue *.bin *.iso *.zip"), ("All files", "*.*")])
         if p:
             self.us.set(p)
+            self.recognise_us()
+
+    def recognise_us(self):
+        """Only for the image's name: the NTSC disc runs the US disc's executable, so its revision matters."""
+        self.us_info = None
+        try:
+            info = inputs.recognise_ps1(inputs.open_image(self.us.get())[0])
+        except (OSError, ValueError):
+            info = None
+        if info and info["version"] in ("us", "us10"):
+            self.us_info = info
+        self.update_state()
 
     def pick_pc(self):
         p = filedialog.askopenfilename(title="Lost Artefact PC disc image",
@@ -290,8 +310,10 @@ class App(tk.Tk):
             self.recognise_pc()
 
     def pick_out(self):
+        cur = self.out.get()                            # the dialog starts with the suggested name and folder
         p = filedialog.asksaveasfilename(title="Save disc image", defaultextension=".bin",
-                                         filetypes=[("Disc image", "*.bin")])
+                                         filetypes=[("Disc image", "*.bin")], initialfile=os.path.basename(cur),
+                                         initialdir=os.path.dirname(cur) or None)
         if p:
             self.out.set(p)
 
@@ -316,8 +338,6 @@ class App(tk.Tk):
         else:
             self.ps1_info = info
             self.mark(self.ps1_mark, self.ps1_label, True, f"Tomb Raider III {info['language']}, {info['revision']} - recognised")
-            if not self.out.get():
-                self.out.set(os.path.join(os.path.dirname(self.ps1.get()), f"tr3la_{build.LAYOUT[info['version']]}.bin"))
         self.update_state()
 
     def recognise_pc(self):
@@ -345,9 +365,32 @@ class App(tk.Tk):
         if not european:
             self.ntsc.set(False)
         self.ntsc_box.config(state="normal" if european else "disabled")
+        japanese_disc1 = bool(self.ps1_info and self.ps1_info["version"] in build.JAPAN_WEAPONS_BUILT_IN)
+        if japanese_disc1:
+            self.japan_weapons.set(True)                # the Japanese and Asian Disc 1 have it themselves
+        self.weapons_box.config(state="disabled" if japanese_disc1 else "normal")
         st = "normal" if self.ntsc.get() else "disabled"
         self.us_entry.config(state=st)
         self.us_button.config(state=st)
+        self.suggest_name()
+
+    def suggest_name(self):
+        """The image named after the disc it is built from, as the dump names it: "Tomb Raider III - The Lost
+        Artefact (Germany) (Rev 1)", "... (Rev 0)" for a first release, " (NTSC USA Rev 0)" for 60 Hz with the US
+        disc's revision (its executable runs the game). A name typed or chosen by the player stays."""
+        if not self.ps1_info or self.out.get() not in ("", self.auto_out):
+            return
+        tags = self.ps1_info["redump"].split(" - ", 1)[1]
+        tags = tags[tags.index("("):].replace(" (EDC)", "")
+        if "(Rev " not in tags and "(Disc " not in tags:
+            tags += " (Rev 0)"
+        if self.ntsc.get():
+            rev = self.us_info and (self.us_info["redump"].split("(Rev ")[1][0] if "(Rev " in self.us_info["redump"] else "0")
+            tags += f" (NTSC USA Rev {rev})" if rev else " (NTSC)"
+        title = "The Lost Artifact" if tags.startswith("(USA)") else "The Lost Artefact"
+        folder = os.path.dirname(self.out.get() or self.ps1.get())
+        self.auto_out = os.path.join(folder, f"Tomb Raider III - {title} {tags}.bin")
+        self.out.set(self.auto_out)
 
     # building
     def toggle_details(self, show=None):
@@ -411,6 +454,7 @@ class App(tk.Tk):
             self.step_text.set("Choose the PS1 disc, the PC files and where to save the disc image.")
             return
         self.build_button.config(state="disabled")
+        self.lock(True)
         self.report_button.grid_remove()
         self.progress["value"] = 0
         self.step, self.levels_done = 0, 0
@@ -421,11 +465,26 @@ class App(tk.Tk):
         self.detail_text.set("")
         args = (self.ps1.get(), self.pc.get(), self.out.get(), self.us.get() if self.ntsc.get() else None,
                 None if self.blood.get() == "default" else self.blood.get())
-        threading.Thread(target=self.run, args=args, kwargs={"test": self.test.get()}, daemon=True).start()
+        kw = {"test": self.test.get(), "japan_weapons": self.japan_weapons.get()}
+        threading.Thread(target=self.run, args=args, kwargs=kw, daemon=True).start()
 
-    def run(self, *args, test=False):
+    def lock(self, locked):
+        """The inputs cannot change while a disc is built (the build took their values at its start)."""
+        def inputs_of(w):
+            for c in w.winfo_children():
+                if c is self.prog_frame:
+                    continue
+                if isinstance(c, (ttk.Button, ttk.Entry, ttk.Checkbutton, ttk.Radiobutton)) and c is not self.build_button:
+                    yield c
+                yield from inputs_of(c)
+        for w in inputs_of(self.body):
+            w.state(["disabled"] if locked else ["!disabled"])
+        if not locked:
+            self.update_state()                         # the options that stay off for this disc
+
+    def run(self, *args, **kw):
         try:
-            build.build(*args, log=self.msgs.put, test=test)
+            build.build(*args, log=self.msgs.put, **kw)
             self.msgs.put(("done", None))
         except Exception as e:      # shown to the player, the build stops; the work folder stays for checking
             self.msgs.put(("error", f"{e}\n(The intermediate files were kept in the folder build_work next to the disc image.)"))
@@ -435,6 +494,7 @@ class App(tk.Tk):
             m = self.msgs.get()
             if isinstance(m, tuple):
                 self.build_button.config(state="normal")
+                self.lock(False)
                 took, self.t0 = clock(time.monotonic() - self.t0), None
                 self.time_text.set("")
                 if m[0] == "done":

@@ -62,7 +62,7 @@
  "kanji": {
   "base_file": "DATA/KANJI.PSX",
   "patch": "kanji_la.psx.patch",
-  "target_crc": "1a267772"
+  "target_crc": "2cc2a676"
  },
  "jptest": {
   "base_disc": "jp",

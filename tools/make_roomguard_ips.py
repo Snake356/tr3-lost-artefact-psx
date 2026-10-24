@@ -89,7 +89,7 @@ def patched(ver, path):
     exe = open(path, "rb").read()
     patch_sh = open(os.path.join(BIN, "patch.sh"), encoding="utf-8").read()
     names = [l.split('"')[1].split(",") for l in patch_sh.splitlines() if l.startswith("patches=")][0]
-    for name in [n for n in names if n != "roomguard"]:
+    for name in names[:names.index("roomguard")]:                # the patches before this one
         exe = rv.apply_ips(exe, open(os.path.join(BIN, "patches", ver, f"{name}.ips"), "rb").read())
     return exe
 

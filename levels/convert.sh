@@ -195,6 +195,16 @@ for level in ${levels}; do
 	./troi "${level}.tr2" i "./anims/${level}.dat"
 done
 
+# Adds the forward crawl exit (Lara flips out of a crawlspace; started by crawlflip.ips) as animation 313
+for level in ${levels}; do
+	py -3 "${prjdir}/../tools/add_crawl_flip.py" "${level}.tr2" || exit 1
+done
+
+# Adds the turns on the spot in the crouch (started by crouchturn.ips) as animations 314 and 315
+for level in ${levels}; do
+	py -3 "${prjdir}/../tools/add_crouch_turn.py" "${level}.tr2" || exit 1
+done
+
 # Adds savegame crystals:
 ./trmod tr3pc scotland.tr2 "replaceitem(48,180,79,8704,4608,512,0,-1,-1,3E00)" "replaceitem(117,180,6,4608,4608,256,0,-1,-1,3E00)" "replacefloordata(84,3,1:ceilingslant(2,0),trigger(trigger,0,,1F:object(118)))" "replacefloordata(84,4,1:trigger(trigger,0,,1F:object(118)))" "replacefloordata(84,5,1:ceilingslant(-2,0),trigger(trigger,0,,1F:object(118)))" "replacefloordata(36,5,1:ceilingportal(6),trifloor(\\,,1,0,1,2,0,0),trigger(trigger,0,,1F:object(21)))" "replacefloordata(36,5,2:ceilingportal(6),trigger(trigger,0,,1F:object(21)))" "replacefloordata(36,5,3:ceilingportal(6),trifloor(/,,4,0,0,0,5,1),trigger(trigger,0,,1F:object(21)))" "replacefloordata(65,10,1:monkeyswing,trigger(pickup(78),0,,1F:lookitem(77),camera(65,1536,2176,3424,4,0,once,0000)))" "additem(180,48,5632,8704,512,0,-1,-1,3E00)" "additem(180,52,3584,2560,0,0,-1,-1,3E00)" "additem(180,19,6656,7680,0,0,-1,-1,3E00)" "additem(180,126,1536,1536,256,0,-1,-1,3E00)" "additem(180,87,7680,5632,256,0,-1,-1,3E00)" "additem(180,45,1536,9728,2560,0,-1,-1,3E00)" "additem(180,112,2560,4608,0,0,-1,-1,3E00)" "additem(180,77,12800,1536,256,0,-1,-1,3E00)"
 ./trmod tr3pc willsden.tr2 "additem(180,93,5632,2560,768,0,-1,-1,3E00)" "additem(180,41,1536,2560,256,0,-1,-1,3E00)" "additem(180,101,3584,1536,0,0,-1,-1,3E00)" "additem(180,76,2560,7680,0,0,-1,-1,3E00)" "additem(180,71,4608,1536,0,0,-1,-1,3E00)" "additem(180,107,5632,2560,0,0,-1,-1,3E00)" "additem(180,64,2560,2560,0,0,-1,-1,3E00)" "additem(180,78,5632,4608,1024,0,-1,-1,3E00)"
@@ -210,6 +220,13 @@ done
 ./trmod tr3pc slinc.tr2 "removeitem(79,1)" "removeitem(71,1)" "removeitem(40,1)" "removeitem(38,1)" "removeitem(32,1)" "removeitem(29,1)" "removeitem(28,1)" "removeitem(20,1)" "removeitem(11,1)" "removeitem(4,1)"
 py -3 "${prjdir}/../tools/bake_point_light.py" slinc.tr2 78336,-6912,59904 52736,3456,53760 52736,3840,49664 80384,-6912,69120 82432,-6912,67072 81408,-6912,68096 85504,-3840,57856 86528,-3584,57856 78336,-6144,46592 77312,-6144,57856 --radius 3072 --strength 8 --tint 1.0,0.7,0.25 || exit 1
 ./trmod tr3pc slinc.tr2 "addlight(2,1536,1536,1024,FFB050,spotlight,6143,2048)" "addlight(8,5632,1536,1920,FFB050,spotlight,6143,2048)" "addlight(18,5632,1536,1536,FFB050,spotlight,6143,2048)" "addlight(23,4608,4608,1024,FFB050,spotlight,6143,2048)" "addlight(33,3072,3584,1664,FFB050,spotlight,6143,2048)" "addlight(40,4608,3584,1024,FFB050,spotlight,6143,2048)" "addlight(58,4608,10752,2304,FFB050,spotlight,6143,2048)"
+# Room 19's own point light (orange 255,63,32 at full strength, light 32 of the PSX level) did not match the
+# glow of the punks next to it: the same colour and strength as the lights above, position and range kept.
+./trmod tr3pc slinc.tr2 "replacelight(19,0,5632,1536,640,FFB050,spotlight,6143,872)"
+# Its orange-red is baked into the room's own vertex colours too (from the released level): the six
+# orange vertices get the warm yellow of the wall next to them (vertex 29), brightness kept;
+# room 21's vertex 23 shares the corner with room 19's vertex 39 and gets the same colour.
+./trmod tr3pc slinc.tr2 "replacevertex(19,33,,,,9715,9715,)" "replacevertex(19,36,,,,9715,9715,)" "replacevertex(19,37,,,,8657,8657,)" "replacevertex(19,38,,,,2181,2181,)" "replacevertex(19,39,,,,8657,8657,)" "replacevertex(19,42,,,,4296,4296,)" "replacevertex(21,23,,,,8657,8657,)"
 # Reunion rooms 20 and 21 (where enemies come in) are much darker than their neighbours 8, 18 and 19:
 # a wide soft glow in their middle (fades out over 6 blocks, so it runs evenly into the neighbouring
 # rooms without an edge; tint taken from the existing light) and a neutral room light each for the enemies.
