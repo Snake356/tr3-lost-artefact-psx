@@ -13,8 +13,9 @@ the crawl collision routine reads the input word at 'lw v1, input(gp); sw v0, 0x
   - the ceiling 256 ahead (LaraCeilingFront) leaves her standing height,
 
 turns her square to the nearest axis, puts her 225 short of the edge of her square (as the crawl to
-hang of Tomb Raider III does backwards), starts animation 313 in state AS_NULL and returns only
-"crouch held", so the rest of the routine leaves her alone.
+hang of Tomb Raider III does backwards), starts animation 313 in state AS_NULL, frees her hands (the
+crawl set the gun status busy; left so, the crouch refused the crawl afterwards until another
+animation freed them) and returns only "crouch held", so the rest of the routine leaves her alone.
 
 Found in every version: the input load, LaraCeilingFront and LaraFloorFront as the two calls with
 'addiu a2, zero, -300' behind it (crawl to hang), the standstill animations ('addiu v0, v0, -263').
@@ -61,7 +62,17 @@ def sites(exe):
     return hits[0]
 
 
-def routine(inp, floor_front, ceiling_front):
+def gun_status(exe):
+    """gp offset of Lara's gun status: the crawl sets it busy at the start of its animation 258
+    ('addiu v0, zero, 0x102; bne v1, v0; move a0, s0; addiu v0, zero, 1; sh v0, gun(gp)')."""
+    hits = [word(exe, o + 16) & 0xFFFF for o in range(0x800, len(exe) - 20, 4)
+            if word(exe, o) == 0x24020102 and word(exe, o + 4) >> 16 == 0x1462 and word(exe, o + 12) == 0x24020001
+            and word(exe, o + 16) >> 16 == 0xA782]
+    assert len(hits) == 1, f"gun status found {len(hits)} times"
+    return hits[0]
+
+
+def routine(inp, floor_front, ceiling_front, gun):
     a = p3.Asm()
     a.lw("v1", inp, "gp")
     a.addiu("sp", "sp", -24); a.sw("ra", 20, "sp"); a.sw("v1", 16, "sp")
@@ -99,6 +110,7 @@ def routine(inp, floor_front, ceiling_front):
     a.addiu("t0", "zero", FRAME_BASE); a.sh("t0", 0x16, "s0")
     a.addiu("t0", "zero", AS_NULL); a.sh("t0", 0x0E, "s0"); a.sh("t0", 0x10, "s0")
     a.sh("zero", 0x1E, "s0"); a.sh("zero", 0x20, "s0")            # speed, fall speed
+    a.sh("zero", gun, "gp")                                       # hands free again (the crawl had them busy)
     a.lui("t0", IN_DUCK >> 16); a.sw("t0", 16, "sp")              # the rest of the routine: crouch held
     a.label("out")
     a.lw("v1", 16, "sp"); a.lw("ra", 20, "sp"); a.nop()             # load delay: jr needs the new ra
@@ -125,14 +137,14 @@ def appended_after(orig, ver):
     """File offset and address of the first free bytes behind this patch's routine, and the block's end."""
     off, addr, end = appended(orig, ver)
     _, inp, floor_front, ceiling_front, _ = sites(orig)
-    n = (4 * len(routine(inp, floor_front, ceiling_front)) + 15) & ~15
+    n = (4 * len(routine(inp, floor_front, ceiling_front, gun_status(orig))) + 15) & ~15
     return off + n, addr + n, end
 
 
 def build(orig, ver):
     site, inp, floor_front, ceiling_front, _ = sites(orig)
     off, addr, end = appended(orig, ver)
-    code = routine(inp, floor_front, ceiling_front)
+    code = routine(inp, floor_front, ceiling_front, gun_status(orig))
     assert off + 4 * len(code) <= end, "no room left in the appended block"
     patches = [(off, code), (site, [rv.jal(addr)])]
     return patches, (f"input load {site + LOAD:#x} (gp+{inp:#x}) -> {addr:#x} ({4 * len(code)} bytes, "

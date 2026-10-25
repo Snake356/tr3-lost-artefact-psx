@@ -21,6 +21,11 @@
   VERSIONS
 ================================================================================
 
+  1.0.5  Hotfix: after the flip out of a crawlspace Lara could not crawl
+         again (with Duck and Up or Down held) until another animation
+         freed her hands: the crawl keeps them busy, and the flip left
+         them so. The flip frees them now.
+
   1.0.4  Hotfix: the flip out of a crawlspace (Walk + Jump at the edge)
          now works where the floor ahead is at least 2 clicks (512)
          lower; before, it needed more than 3 clicks (768).
