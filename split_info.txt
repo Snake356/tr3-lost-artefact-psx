@@ -116,7 +116,7 @@ TO DO:
       tools/add_crawl_flip.py in levels/convert.sh and the builder): a "roll jump down from crawl"
       animation (frame rate 2, effort sound 46) as Lara's
       animation 313 in every level; Walk + Jump in the crawl standstill at an edge at least 512 deep (up
-      to 1.0.3: more than 768) with standing height ahead starts it (state AS_NULL) and frees Lara's
+      to 1.0.3: more than 768) with the crawlspace's height ahead (from 1.0.6; before: standing height) starts it (state AS_NULL) and frees Lara's
       hands (gun status 0, from 1.0.5; the crawl had set it busy), Lara squared to the axis 225 short of the
       edge as in Tomb Raider III's crawl to hang. Lara's collision table does not follow the control
       table directly (13 routines for special animations lie between); duckroll.ips no longer writes
@@ -128,7 +128,7 @@ TO DO:
       table (shared with the roll, which keeps the old one) points to a routine behind the crawl
       flip's: it calls the crouch routine, starts a turn from the crouch animation (222) on Left/Right
       with Duck held or keep_ducked set (bit 0x20 of Lara's flag word, found by the crouch routine's
-      IsDucked 'ori 0x400'; the ceiling is too low to stand up, 24.10.2026), turns 273 per frame as the crawl turns, and puts Lara back into 222 (frame 6487
+      IsDucked 'ori 0x400'; the ceiling is too low to stand up, 24.10.2026) and the goal state the crouch (71, or 87 left by the climb up into a crawlspace, 25.10.2026), turns 273 per frame as the crawl turns, and puts Lara back into 222 (frame 6487
       in every level) when the side or Duck is released, Forward/Back is pressed or the goal state
       changes, so 222's state changes take over. The table holds addresses without 0x80000000; the
       game calls them through the RAM mirror at 0.

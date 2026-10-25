@@ -7,7 +7,8 @@ HOUSE.PSX, by tools/psx_lara_anims.py). The control routine of the
 crouch (state 71 of Lara's control table; the roll, 72, shares it and keeps it) becomes a routine that
 calls it first and then, with Lara as the item:
 
-  - in the crouch animation (222) with the goal state still the crouch, Duck held or the ceiling too low to
+  - in the crouch animation (222) with the goal state still the crouch (71, or 87, the climb up into a
+    crawlspace: it ends in the crouch and leaves its goal state there), Duck held or the ceiling too low to
     stand up (keep_ducked in Lara's flag word, as the game's own crouch tests), neither Forward nor Back and
     Left or Right held: starts the turn animation of that side,
   - in a turn animation: turns her 273 per frame (1.5 degrees, as the crawl turns) while its side and Duck
@@ -63,7 +64,8 @@ def routine(duck_fn, inp, flags):
     a.jal(duck_fn); a.move("s0", "a0")                            # the crouch routine (item, coll)
     a.lh("t0", 0x14, "s0"); a.lw("t1", inp, "gp"); a.lw("v1", flags, "gp")
     a.lh("t2", 0x10, "s0")
-    a.addiu("t4", "zero", 71)
+    a.addiu("t4", "zero", 87)
+    a.ori("t2", "t2", 0x10)                                       # goal 71 or 87 (the climb into it) -> 87
     a.lui("t9", IN_DUCK >> 16); a.r(0x24, "t9", "t1", "t9")      # Duck held
     a.andi("v1", "v1", KEEP_DUCKED); a.r(0x25, "t9", "t9", "v1")  # t9: or she cannot stand up (a crawlspace)
     a.addiu("t3", "zero", TURN_LEFT); a.addiu("t7", "zero", IN_LEFT)

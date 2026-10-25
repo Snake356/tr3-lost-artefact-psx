@@ -21,6 +21,12 @@
   VERSIONS
 ================================================================================
 
+  1.0.6  Hotfix: the flip out of a crawlspace works at real crawlspace
+         exits now, where the ceiling ahead is as low as the crawlspace's
+         (it needed standing height there). Turning in the crouch works
+         right after climbing up into a crawlspace (the climb left its
+         goal state, so Left and Right did nothing until Lara moved).
+
   1.0.5  Hotfix: after the flip out of a crawlspace Lara could not crawl
          again (with Duck and Up or Down held) until another animation
          freed her hands: the crawl keeps them busy, and the flip left

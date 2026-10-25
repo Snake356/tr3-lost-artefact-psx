@@ -10,7 +10,9 @@ the crawl collision routine reads the input word at 'lw v1, input(gp); sw v0, 0x
 
   - Walk and Jump are held and Lara is in a crawl standstill animation (263 or 264),
   - the floor 256 ahead (LaraFloorFront) is at least 512 lower (2 clicks; up to 1.0.3 more than 768),
-  - the ceiling 256 ahead (LaraCeilingFront) leaves her standing height,
+  - the ceiling 256 ahead (LaraCeilingFront, measured from her standing height) is at least as high as
+    the crawlspace's (512 over her feet: at most 250; up to 1.0.5 her standing height, 0, so a crawlspace
+    opening under a ceiling of its own height was refused),
 
 turns her square to the nearest axis, puts her 225 short of the edge of her square (as the crawl to
 hang of Tomb Raider III does backwards), starts animation 313 in state AS_NULL, frees her hands (the
@@ -88,8 +90,8 @@ def routine(inp, floor_front, ceiling_front, gun):
     a.move("a0", "s0"); a.lh("a1", 0x4E, "s0"); a.addiu("a3", "zero", 762)   # Japan: the height (else 762)
     a.jal(ceiling_front); a.addiu("a2", "zero", 256)
     a.addiu("t0", "zero", NO_HEIGHT)
-    a.beq("v0", "t0", "out"); a.nop()
-    a.b(0x07, "v0", "zero", "out"); a.nop()                       # bgtz: standing height ahead
+    a.beq("v0", "t0", "out"); a.slti("t1", "v0", 251)
+    a.beqz("t1", "out"); a.nop()                                  # the crawlspace's height ahead
     a.lhu("t0", 0x4E, "s0"); a.nop()                              # square to the axis: 0 N, 1 E, 2 S, 3 W
     a.addiu("t0", "t0", 0x2000); a.andi("t0", "t0", 0xFFFF)
     a.r(0x02, "t0", "zero", "t0", 14)
