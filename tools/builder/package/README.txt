@@ -123,10 +123,10 @@ Turning in the crouch
    need to be held.
 
 Flip out of a crawlspace
-   At the edge of a crawlspace with a drop ahead, press Walk + Jump (R1 +
-   square on the western discs; on the Japanese and Asian discs the
-   buttons Walk and Jump have there). Lara flips out head first and
-   falls.
+   At the edge of a crawlspace with a drop of 2 clicks or more ahead
+   (512 units), press Walk + Jump (R1 + square on the western discs; on
+   the Japanese and Asian discs the buttons Walk and Jump have there).
+   Lara flips out head first and falls.
 
 New Game+
    As in Tomb Raider II and the Remastered games. After the end credits and

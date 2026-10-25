@@ -115,7 +115,7 @@ TO DO:
     - Crawl flip (22.10.2026, crawlflip.ips, tools/make_crawlflip_ips.py; animation by
       tools/add_crawl_flip.py in levels/convert.sh and the builder): a "roll jump down from crawl"
       animation (frame rate 2, effort sound 46) as Lara's
-      animation 313 in every level; Walk + Jump in the crawl standstill at an edge more than 768 deep
+      animation 313 in every level; Walk + Jump in the crawl standstill at an edge at least 512 deep (up to 1.0.3: more than 768)
       with standing height ahead starts it (state AS_NULL), Lara squared to the axis 225 short of the
       edge as in Tomb Raider III's crawl to hang. Lara's collision table does not follow the control
       table directly (13 routines for special animations lie between); duckroll.ips no longer writes

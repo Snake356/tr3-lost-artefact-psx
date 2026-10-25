@@ -21,6 +21,10 @@
   VERSIONS
 ================================================================================
 
+  1.0.4  Hotfix: the flip out of a crawlspace (Walk + Jump at the edge)
+         now works where the floor ahead is at least 2 clicks (512)
+         lower; before, it needed more than 3 clicks (768).
+
   1.0.3  New in every disc: a forward roll out of the crouch (Sprint),
          turning on the spot in the crouch and a flip out of a crawlspace
          (Walk + Jump), New Game+ after the end credits, as in Tomb Raider

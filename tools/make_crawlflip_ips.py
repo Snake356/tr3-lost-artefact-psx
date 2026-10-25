@@ -9,7 +9,7 @@ the crawl collision routine reads the input word at 'lw v1, input(gp); sw v0, 0x
 0x2000' (s0 = Lara); that load becomes a call of a routine that returns the input word and, when
 
   - Walk and Jump are held and Lara is in a crawl standstill animation (263 or 264),
-  - the floor 256 ahead (LaraFloorFront) is more than 768 lower,
+  - the floor 256 ahead (LaraFloorFront) is at least 512 lower (2 clicks; up to 1.0.3 more than 768),
   - the ceiling 256 ahead (LaraCeilingFront) leaves her standing height,
 
 turns her square to the nearest axis, puts her 225 short of the edge of her square (as the crawl to
@@ -72,8 +72,8 @@ def routine(inp, floor_front, ceiling_front):
     a.beqz("t0", "out"); a.nop()                                  # crawl standstill
     a.move("a0", "s0"); a.lh("a1", 0x4E, "s0")
     a.jal(floor_front); a.addiu("a2", "zero", 256)
-    a.slti("t0", "v0", 769)
-    a.bnez("t0", "out"); a.nop()                                  # floor ahead more than 768 lower
+    a.slti("t0", "v0", 512)
+    a.bnez("t0", "out"); a.nop()                                  # floor ahead at least 512 lower
     a.move("a0", "s0"); a.lh("a1", 0x4E, "s0"); a.addiu("a3", "zero", 762)   # Japan: the height (else 762)
     a.jal(ceiling_front); a.addiu("a2", "zero", 256)
     a.addiu("t0", "zero", NO_HEIGHT)
