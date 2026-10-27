@@ -33,7 +33,7 @@ import build  # noqa: E402
 import inputs  # noqa: E402
 
 TITLE = "Tomb Raider III: The Lost Artefact - PS1 Builder"
-VERSION = "1.0.6"
+VERSION = "1.0.7"
 ISSUES = "https://github.com/Snake356/tr3-lost-artefact-psx/issues/new"
 HERE = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
 
@@ -125,6 +125,7 @@ class App(tk.Tk):
         self.msgs = queue.Queue()
         self.ps1_info = None
         self.auto_out = ""                              # the image name the builder suggested
+        self.pc_ok = False                              # the PC files recognised
         self.us_info = None                             # the US disc for NTSC, when recognised
         self.ps1, self.pc, self.us, self.out = tk.StringVar(), tk.StringVar(), tk.StringVar(), tk.StringVar()
         self.ntsc, self.blood, self.test = tk.BooleanVar(), tk.StringVar(value="default"), tk.BooleanVar()
@@ -196,6 +197,9 @@ class App(tk.Tk):
         ttk.Button(save, text="...", width=3, command=self.pick_out).grid(row=0, column=2, padx=(6, 10))
         self.build_button = ttk.Button(save, text="▶  Build disc image", style="Accent.TButton", command=self.start)
         self.build_button.grid(row=0, column=3)
+        self.missing_label = ttk.Label(save, text="", foreground=BAD)
+        self.missing_label.grid(row=1, column=0, columnspan=4, sticky="e", pady=(4, 0))
+        self.out.trace_add("write", lambda *_: self.update_ready())
 
         prog = ttk.Frame(body, style="Card.TFrame", padding=(12, 10))
         prog.grid(row=4, column=0, sticky="nsew")
@@ -346,8 +350,9 @@ class App(tk.Tk):
             files = inputs.pc_files_from_folder(src) if os.path.isdir(src) else inputs.pc_files_from_disc(inputs.open_image(src)[0])
             res = inputs.recognise_pc(files)
         except (OSError, ValueError) as e:
+            self.pc_ok = False
             self.mark(self.pc_mark, self.pc_label, False, str(e))
-            return
+            return self.update_ready()
         missing = [n for n, (rel, crc) in res.items() if crc is None]
         unknown = [n for n, (rel, crc) in res.items() if crc is not None and rel is None]
         if missing or unknown:
@@ -359,6 +364,8 @@ class App(tk.Tk):
             rels = sorted({rel for rel, _ in res.values()})
             self.pc_rels = ", ".join(rels)
             self.mark(self.pc_mark, self.pc_label, True, f"Lost Artefact found ({', '.join(rels)}) - recognised")
+        self.pc_ok = not (missing or unknown)
+        self.update_ready()
 
     def update_state(self):
         european = bool(self.ps1_info and self.ps1_info["version"] in build.NTSC_LANG)
@@ -373,12 +380,36 @@ class App(tk.Tk):
         self.us_entry.config(state=st)
         self.us_button.config(state=st)
         self.suggest_name()
+        self.update_ready()
+
+    def missing(self):
+        """What is still missing before a disc can be built, as shown next to the build button."""
+        out = []
+        if not self.ps1_info:
+            out.append("1: choose your PS1 disc" if not self.ps1.get() else "1: PS1 disc not recognised")
+        if not self.pc_ok:
+            out.append("2: choose the PC disc image or folder" if not self.pc.get() else "2: PC files not recognised")
+        if self.ntsc.get() and not self.us_info:
+            out.append("60 Hz: choose the US disc" if not self.us.get() else "60 Hz: US disc not recognised")
+        if not self.out.get().strip():
+            out.append("choose where to save the disc image")
+        return out
+
+    def update_ready(self):
+        """The build button works only when everything is there; until then the missing steps are shown."""
+        if self.t0 is not None:                         # a build is running
+            return
+        missing = self.missing()
+        self.build_button.config(state="disabled" if missing else "normal")
+        self.missing_label.config(text="Still missing: " + "; ".join(missing) if missing else "")
 
     def suggest_name(self):
         """The image named after the disc it is built from, as the dump names it: "Tomb Raider III - The Lost
         Artefact (Germany) (Rev 1)", "... (Rev 0)" for a first release, " (NTSC USA Rev 0)" for 60 Hz with the US
-        disc's revision (its executable runs the game). A name typed or chosen by the player stays."""
-        if not self.ps1_info or self.out.get() not in ("", self.auto_out):
+        disc's revision (its executable runs the game). A file name typed by the player stays; a folder chosen for
+        the suggested name keeps the next suggestion."""
+        cur = self.out.get()
+        if not self.ps1_info or (cur and os.path.basename(cur) != os.path.basename(self.auto_out)):
             return
         tags = self.ps1_info["redump"].split(" - ", 1)[1]
         tags = tags[tags.index("("):].replace(" (EDC)", "")
@@ -450,9 +481,8 @@ class App(tk.Tk):
         self.time_text.set(f"{clock(elapsed)} - about {clock(left)} left")
 
     def start(self):
-        if not (self.ps1.get() and self.pc.get() and self.out.get()):
-            self.step_text.set("Choose the PS1 disc, the PC files and where to save the disc image.")
-            return
+        if self.missing():
+            return self.update_ready()
         self.build_button.config(state="disabled")
         self.lock(True)
         self.report_button.grid_remove()
@@ -493,9 +523,8 @@ class App(tk.Tk):
         while not self.msgs.empty():
             m = self.msgs.get()
             if isinstance(m, tuple):
-                self.build_button.config(state="normal")
-                self.lock(False)
                 took, self.t0 = clock(time.monotonic() - self.t0), None
+                self.lock(False)                        # also frees the build button again
                 self.time_text.set("")
                 if m[0] == "done":
                     self.progress["value"] = 100

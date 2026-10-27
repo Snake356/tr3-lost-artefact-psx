@@ -449,6 +449,13 @@ SET_BACK_COLOR = [0x00042100, 0x00052900, 0x00063100, 0x48C46800, 0x48C57000, 0x
 
 
 EXTRA = 0xDE0                   # bytes taken from the end of the level memory for the routines
+EXTRA_US = 0x1000               # the US executables: no unused function left for the crawl routines
+                                # (make_crawlflip_ips.py), so the block takes it; the start-up keeps the block
+                                # above the BSS for a moment, and only they have room there for more
+
+
+def extra(ver):
+    return EXTRA_US if ver in ("us", "us10") else EXTRA
 
 
 def level_memory(exe):
@@ -512,6 +519,7 @@ def build(exe, ver, orig):
     pc0, bss_end, heap_call, init_heap = start_up(orig)
     for s in sites + [air_site, size_site, heap_call]:
         assert word(exe, s) == word(orig, s), f"{s + LOAD:#x} is changed by another patch"
+    EXTRA = extra(ver)
     assert (size - EXTRA) >> 16 == size >> 16
 
     region = buffer + size - EXTRA

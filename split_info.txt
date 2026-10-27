@@ -105,7 +105,7 @@ TO DO:
       underwater palette shift) is 0 while it draws, its time runs by wibble (the level timer stands
       still in Lara's home), NTSC is recognised by the GTE's screen centre. The code (about 1.2 KB) did
       not fit into the unused functions of every version, so the executable is extended:
-      init_game_malloc gets 0xEE0 bytes less, 0xDE0 on Japan/Asia Disc 2 (2 KB until 23.10.2026; their
+      init_game_malloc gets 0xDE0 bytes less, 0x1000 on the US executables (from 1.0.7; before 0xEE0, 0xDE0 on Japan/Asia Disc 2; 2 KB until 23.10.2026; their
       limit is the RAM above the BSS, with 1 KB kept for the stack; pickup3d.extra(ver); the executable is padded to whole
       2048-byte sectors, or the BIOS does not start it), the routines are appended to the executable (header text size),
       a routine at the new start address copies them above the BSS before the start code clears it,
@@ -115,10 +115,21 @@ TO DO:
     - Crawl flip (22.10.2026, crawlflip.ips, tools/make_crawlflip_ips.py; animation by
       tools/add_crawl_flip.py in levels/convert.sh and the builder): a "roll jump down from crawl"
       animation (frame rate 2, effort sound 46) as Lara's
-      animation 313 in every level; Walk + Jump in the crawl standstill at an edge at least 512 deep (up
-      to 1.0.3: more than 768) with the crawlspace's height ahead (from 1.0.6; before: standing height) starts it (state AS_NULL) and frees Lara's
-      hands (gun status 0, from 1.0.5; the crawl had set it busy), Lara squared to the axis 225 short of the
-      edge as in Tomb Raider III's crawl to hang. Lara's collision table does not follow the control
+      animation 313 in every level; Jump (up to 1.0.6 Walk + Jump) in the crawl standstill (263/264),
+      at the end of stopping after crawling forward (266/268, from 1.0.7, as TRX's M_CanJumpDown) or in
+      the crouch with Duck held (from 1.0.7: the goal state becomes the crawl and the required state
+      AS_NULL is kept as a wish, so one press is enough) at an edge at least 512 deep, also 256 ahead (up
+      to 1.0.3: more than 768) with the crawlspace's height ahead (from 1.0.6; before: standing height)
+      starts it (state AS_NULL) and frees Lara's hands (gun status 0, from 1.0.5; the crawl had set it
+      busy); up to 1.0.6 Lara was squared to the axis 225 short of the edge as in Tomb Raider III's crawl
+      to hang. In the roll and the flip LaraGun refuses the two-handed guns as in the crouch (from 1.0.7),
+      and the roll starts only with the hands free (duckroll.ips, from 1.0.7).
+      Picking up in the crawl (from 1.0.7): the crawl standstills change into animation 292 (TR4's crawl
+      pickup poses, 37-word frames, by tools/add_crawl_pickup.py after add_crouch_turn.py; the last pose
+      twice, so the end interpolates to it) instead of the crouch's pickup; its goal state is the crawl,
+      and the pickup camera (turned to Lara's front) stays behind her in 292. With all of 1.0.7 Highland
+      Fling keeps 2,392 bytes of level memory on the US executable (German text), measured; the 4
+      pathfinding blocks fit. Lara's collision table does not follow the control
       table directly (13 routines for special animations lie between); duckroll.ips no longer writes
       into it (it had set the collision of the ladder's top exit).
     - Crouch turns (22.10.2026, crouchturn.ips, tools/make_crouchturn_ips.py; animations by

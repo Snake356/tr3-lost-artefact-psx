@@ -16,6 +16,9 @@ calls it first and then, with Lara as the item:
     her back into the crouch animation (frame 6487 in every level), whose state changes then take over
     (crawl, roll, standing up; dying sets the goal state to the crawl).
 
+Before that it calls the crawl exit routine of make_crawlflip_ips.py (Jump with Duck held starts it from the
+crouch too, from 1.0.7).
+
 Found in every version: Lara's state tables (make_duckroll_ips.state_tables), the input word
 (make_crawlflip_ips.sites). The routine goes behind the
 crawl flip's routine into the block pickup3d.ips appends to the executable, which the start-up copies to
@@ -58,10 +61,11 @@ def lara_flags(orig, duck_fn):
     return hits[0]
 
 
-def routine(duck_fn, inp, flags):
+def routine(duck_fn, inp, flags, flip=0):
     a = p3.Asm()
     a.addiu("sp", "sp", -24); a.sw("ra", 20, "sp"); a.sw("s0", 16, "sp")
     a.jal(duck_fn); a.move("s0", "a0")                            # the crouch routine (item, coll)
+    a.jal(flip); a.nop()                                          # the crawl exit, from the crouch too
     a.lh("t0", 0x14, "s0"); a.lw("t1", inp, "gp"); a.lw("v1", flags, "gp")
     a.lh("t2", 0x10, "s0")
     a.addiu("t4", "zero", 87)
@@ -114,7 +118,7 @@ def build(orig, ver):
     duck_fn = word(orig, ctl + 4 * dr.DUCK) + 0x80000000
     _, inp, _, _, _ = cf.sites(orig)
     off, addr, end = cf.appended_after(orig, ver)
-    code = routine(duck_fn, inp, lara_flags(orig, duck_fn))
+    code = routine(duck_fn, inp, lara_flags(orig, duck_fn), cf.flip_address(orig, ver))
     assert off + 4 * len(code) <= end, "no room left in the appended block"
     patches = [(off, code), (ctl + 4 * dr.DUCK, [addr - 0x80000000])]
     return patches, (f"crouch control {ctl + 4 * dr.DUCK + LOAD:#x}: {duck_fn:#x} -> {addr:#x} "

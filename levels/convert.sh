@@ -205,6 +205,11 @@ for level in ${levels}; do
 	py -3 "${prjdir}/../tools/add_crouch_turn.py" "${level}.tr2" || exit 1
 done
 
+# Smooths the pickup in a crawlspace (animation 292) with 14 poses instead of 6
+for level in ${levels}; do
+	py -3 "${prjdir}/../tools/add_crawl_pickup.py" "${level}.tr2" || exit 1
+done
+
 # Adds savegame crystals:
 ./trmod tr3pc scotland.tr2 "replaceitem(48,180,79,8704,4608,512,0,-1,-1,3E00)" "replaceitem(117,180,6,4608,4608,256,0,-1,-1,3E00)" "replacefloordata(84,3,1:ceilingslant(2,0),trigger(trigger,0,,1F:object(118)))" "replacefloordata(84,4,1:trigger(trigger,0,,1F:object(118)))" "replacefloordata(84,5,1:ceilingslant(-2,0),trigger(trigger,0,,1F:object(118)))" "replacefloordata(36,5,1:ceilingportal(6),trifloor(\\,,1,0,1,2,0,0),trigger(trigger,0,,1F:object(21)))" "replacefloordata(36,5,2:ceilingportal(6),trigger(trigger,0,,1F:object(21)))" "replacefloordata(36,5,3:ceilingportal(6),trifloor(/,,4,0,0,0,5,1),trigger(trigger,0,,1F:object(21)))" "replacefloordata(65,10,1:monkeyswing,trigger(pickup(78),0,,1F:lookitem(77),camera(65,1536,2176,3424,4,0,once,0000)))" "additem(180,48,5632,8704,512,0,-1,-1,3E00)" "additem(180,52,3584,2560,0,0,-1,-1,3E00)" "additem(180,19,6656,7680,0,0,-1,-1,3E00)" "additem(180,126,1536,1536,256,0,-1,-1,3E00)" "additem(180,87,7680,5632,256,0,-1,-1,3E00)" "additem(180,45,1536,9728,2560,0,-1,-1,3E00)" "additem(180,112,2560,4608,0,0,-1,-1,3E00)" "additem(180,77,12800,1536,256,0,-1,-1,3E00)"
 ./trmod tr3pc willsden.tr2 "additem(180,93,5632,2560,768,0,-1,-1,3E00)" "additem(180,41,1536,2560,256,0,-1,-1,3E00)" "additem(180,101,3584,1536,0,0,-1,-1,3E00)" "additem(180,76,2560,7680,0,0,-1,-1,3E00)" "additem(180,71,4608,1536,0,0,-1,-1,3E00)" "additem(180,107,5632,2560,0,0,-1,-1,3E00)" "additem(180,64,2560,2560,0,0,-1,-1,3E00)" "additem(180,78,5632,4608,1024,0,-1,-1,3E00)"

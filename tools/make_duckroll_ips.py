@@ -28,6 +28,7 @@ import argparse
 import os
 import struct
 
+import make_crawlflip_ips as cf
 import make_reunionview_ips as rv
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -68,31 +69,39 @@ def input_site(exe, duck_fn):
     raise AssertionError("crawl input check not found in the crouch routine")
 
 
-def routine(inp, r):
-    """Sprint pressed: goal state roll, return 0 (no crawl this frame). Not pressed while rolling: goal
-    state crouch, so the roll ends in the crouch. Otherwise the input word unchanged."""
-    return [0x8F800000 | r << 16 | inp,  # lw rX, input(gp)
-            0x860B000E,                  # lh t3, 0xe(s0)       current_anim_state
-            0x3C080000 | IN_DASH >> 16,  # lui t0, IN_DASH >> 16
-            0x00084024 | r << 21,        # and t0, rX, t0
-            0x24010000 | ROLL,           # addiu at, zero, 72
-            0x11000004,                  # beqz t0, released
-            0x00000000,
-            0xA6010010,                  # sh at, 0x10(s0)      goal_anim_state = roll
-            0x03E00008,                  # jr ra
-            0x00000021 | r << 11,        # move rX, zero
-            0x15610002,                  # released: bne t3, at, done
-            0x240C0000 | DUCK,           # addiu t4, zero, 71
-            0xA60C0010,                  # sh t4, 0x10(s0)      goal_anim_state = crouch
-            0x03E00008,                  # done: jr ra
-            0x00000000]
+def routine(inp, r, gun):
+    """Sprint pressed with the hands free (gun status 0): goal state roll, return 0 (no crawl this frame).
+    Not so while rolling: goal state crouch, so the roll ends in the crouch. Otherwise the input word unchanged
+    (the goal state is left alone: the game sets standing up before this routine). With a gun drawn the roll
+    is refused, Lara has to put it away first; she may draw one while rolling, then the roll ends (from 1.0.7)."""
+    def br(op, rs, at, to):                                       # branch at word index at to word index to
+        return op << 26 | rs << 21 | (to - at - 1) & 0xFFFF
+    T1, T3, AT, T0 = 9, 11, 1, 8
+    return [0x8F800000 | r << 16 | inp,  # 0  lw rX, input(gp)
+            0x860B000E,                  # 1  lh t3, 0xe(s0)       current_anim_state
+            0x3C080000 | IN_DASH >> 16,  # 2  lui t0, IN_DASH >> 16
+            0x00084024 | r << 21,        # 3  and t0, rX, t0
+            0x87890000 | gun,            # 4  lh t1, gun(gp)       gun status
+            0x24010000 | ROLL,           # 5  addiu at, zero, 72
+            br(4, T0, 6, 13),            # 6  beqz t0, released
+            0x240C0000 | DUCK,           # 7  addiu t4, zero, 71
+            br(5, T1, 8, 13),            # 8  bnez t1, released    a gun drawn: no roll
+            0x00000000,                  # 9
+            0xA6010010,                  # 10 sh at, 0x10(s0)      goal_anim_state = roll
+            0x03E00008,                  # 11 jr ra
+            0x00000021 | r << 11,        # 12 move rX, zero
+            br(5, T3, 13, 16) | AT << 16,  # 13 released: bne t3, at, done
+            0x00000000,                  # 14
+            0xA60C0010,                  # 15 sh t4, 0x10(s0)      goal_anim_state = crouch
+            0x03E00008,                  # 16 done: jr ra
+            0x00000000]                  # 17
 
 
 def build(exe, ver):
     ctl, col = state_tables(exe)
     duck_fn = word(exe, ctl + 4 * DUCK)
     site, inp, r = input_site(exe, duck_fn)
-    code = routine(inp, r)
+    code = routine(inp, r, cf.gun_status(exe))
     free = [f for f in rv.unused_routines(rv.words(exe), ver) if f[1] - f[0] >= 4 * len(code)]
     assert free, "no unused function large enough"
     cave = min(free, key=lambda f: f[1] - f[0])[0]

@@ -1,8 +1,9 @@
-"""Adds the crawl flip (313) and the crouch turns (314, 315) to a finished Tomb Raider III PSX level, for
-Lara's home: the released HOUSE.PSX is used as it is, while our own levels get them as PC levels
-(tools/add_crawl_flip.py, tools/add_crouch_turn.py). The animation lists of a PSX level are those of
+"""Adds the crawl flip (313), the crouch turns (314, 315) and the smooth crawl pickup (292) to a finished
+Tomb Raider III PSX level, for Lara's home: the released HOUSE.PSX is used as it is, while our own levels
+get them as PC levels (tools/add_crawl_flip.py, tools/add_crouch_turn.py, tools/add_crawl_pickup.py).
+The animation lists of a PSX level are those of
 the PC level (same records, same frames); only a moveable takes 20 bytes instead of 18. The level
-grows by 3852 bytes and is padded to a multiple of 2048 again. A level that has them already is left
+grows by 4962 bytes and is padded to a multiple of 2048 again. A level that has them already is left
 as it is.
 
 Usage: psx_lara_anims.py in.psx [out.psx]   (without out.psx it changes in.psx)"""
@@ -13,6 +14,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import add_crawl_flip  # noqa: E402
+import add_crawl_pickup  # noqa: E402
 import add_crouch_turn  # noqa: E402
 import psx_inventory  # noqa: E402
 
@@ -41,7 +43,7 @@ def sections(d, path):
 def main(src, dst):
     d = open(src, "rb").read()
     n = len(d)
-    for tool in (add_crawl_flip, add_crouch_turn):
+    for tool in (add_crawl_flip, add_crouch_turn, add_crawl_pickup):
         open(dst + ".tmp", "wb").write(d)                        # psx_inventory reads a file
         out = tool.add(d, sections(d, dst + ".tmp"), MODEL)
         os.remove(dst + ".tmp")

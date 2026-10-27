@@ -21,6 +21,20 @@
   VERSIONS
 ================================================================================
 
+  1.0.7  Update: the flip out of a crawlspace needs only Jump now (Walk
+         no longer), as in TRX: at the edge in the crawl, also right
+         when Lara stops after crawling forward, or from the crouch with
+         Duck held (pressing Jump once is enough there). Picking up items
+         while crawling has its own poses (as in Tomb Raider IV) instead
+         of going through the crouch, and the camera stays behind Lara.
+         The roll out of the crouch only starts with the hands free (put
+         the gun away first); no two-handed gun can be drawn while
+         rolling or flipping out of a crawlspace (the crouch refuses them
+         too). The builder names the image after the disc again when
+         another disc is chosen, and its build button works only when
+         both discs and the place to save are set; it says what is
+         missing.
+
   1.0.6  Hotfix: the flip out of a crawlspace works at real crawlspace
          exits now, where the ceiling ahead is as low as the crawlspace's
          (it needed standing height there). Turning in the crouch works

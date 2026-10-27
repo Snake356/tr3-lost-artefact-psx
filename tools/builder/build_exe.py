@@ -18,7 +18,7 @@ NAME = "TR3 Lost Artefact PS1 Builder"
 OWN = ["assets", "levels", "texts", "covers", "known_inputs.json", "levels.json", "modules.json", "sounds.json",
        "texts.json", "pictures_from_disc.json", "icon.ico", "icon.png"]
 TOOLS = ["close_dome_tip.py", "bake_point_light.py", "optimise_floordata.py", "share_model.py", "restore_model.py",
-         "strip_unused_tail.py", "psx_inventory.py", "add_crawl_flip.py", "add_crouch_turn.py", "psx_lara_anims.py",
+         "strip_unused_tail.py", "psx_inventory.py", "add_crawl_flip.py", "add_crouch_turn.py", "add_crawl_pickup.py", "psx_lara_anims.py",
          "house_nose_fix.py"]
 # made from the player's disc (unchanged pictures, the Kanji font with texts.kanji), never bundled
 FROM_DISC = set(json.load(open(os.path.join(HERE, "pictures_from_disc.json"), encoding="utf-8"))["from_player_disc"])     | {"art/kanji/kanji_la.psx"}
