@@ -21,6 +21,13 @@
   VERSIONS
 ================================================================================
 
+  1.10   Hotfix: walls without collision. Lara could walk, climb or
+         jump through some walls that are drawn but missing in the
+         collision data (reported in the room with the save crystal in
+         Highland Fling). All levels were checked for such walls: 16
+         squares in Highland Fling and It's a Madhouse! are solid now.
+         Savegames of 1.0.8 and 1.0.9 keep working.
+
   1.0.9  Hotfix: in a crawlspace, Jump at the edge from the crouch flips
          Lara out without Duck held, as in TRX (Duck was needed even
          where the low ceiling keeps her down). The crouch roll follows
@@ -351,6 +358,14 @@
   HIGHLAND FLING
   --------------
 
+  * Some walls had no collision: Lara could walk, climb or jump into
+    them and come out in the next room (the wall between the two gates
+    in the room with the save crystal, the walls above it, a wall by the
+    bridge and two more places).
+    Fix: the squares behind these walls are solid now. Found with a
+    check of every level for walls that are drawn but missing in the
+    collision data (the original PC level has them too).
+
   * The picture broke up and froze when looking from the side path
     between rooms 2 and 3 into room 3, and the game crashed at the next
     loading screen. It could also happen, very rarely, under the bridge.
@@ -444,6 +459,10 @@
 
   IT'S A MADHOUSE!
   ----------------
+
+  * Four walls had no collision; Lara could walk through them.
+    Fix: the squares behind them are solid now (found with the same
+    check of every level).
 
   * (FTL) A vulture got stuck in a wall (as on the PC).
     Fix: it was moved a little and set lower, so it flies free.
