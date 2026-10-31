@@ -27,6 +27,9 @@ PRJ = os.path.join(sys._MEIPASS, "prj") if FROZEN else os.path.normpath(os.path.
 TOOLS = os.path.join(PRJ, "tools")
 BIN = os.path.join(PRJ, "build", "win", "bin")
 NO_WINDOW = 0x08000000 if os.name == "nt" else 0    # no console window per tool run from the builder window
+PY_TOOLS = ("bake_point_light.py", "nebel_raeume.py", "kaefig_fix.py", "passport_spine.py")   # the Python tools convert.sh calls
+sys.path.insert(0, TOOLS)
+import leer_ende                                 # noqa: E402  silenced samples that end (after tr3pcpsx)
 
 
 def tool_command(tool):
@@ -49,7 +52,7 @@ def customisation_lines(s):
     out = []
     for line in block.split("\n"):
         t = line.strip()
-        if t.startswith(("./texmod ", "./trmod ", 'py -3 "${prjdir}/../tools/bake_point_light.py"')) and "${level}" not in t:
+        if t.startswith(("./texmod ", "./trmod ", 'py -3 "${prjdir}/../tools/')) and "${level}" not in t:
             out.append(("cmd", t))
         elif t.startswith("./3texrep"):
             out.append(("loop", "textures"))
@@ -103,9 +106,10 @@ class Converter:
         """One command line from convert.sh or a geom script."""
         argv = shlex.split(line, posix=True)
         if argv[0] == "py":
-            assert argv[1] == "-3" and "bake_point_light.py" in argv[2]
+            tool = os.path.basename(argv[2])
+            assert argv[1] == "-3" and tool in PY_TOOLS, tool
             rest = [a for a in argv[3:] if a not in ("||", "exit", "1")]
-            self.py(lv, "bake_point_light.py", *rest)
+            self.py(lv, tool, *rest)
         else:
             self.run(lv, argv[0][2:], *argv[1:])
 
@@ -143,6 +147,7 @@ class Converter:
                 exe, env = "tr3pcpsx_builder", dict(os.environ, TR3PCPSX_MODULES=os.path.abspath(self.module_files[ver]))
             self.run(lv, exe, src, f"./out/{ver}/{lv}.psx", f"./outsfx/{ver}/{lv}.sfx", "-v",
                      *self.params[lv].split(), f"-{ver}", env=env)
+            leer_ende.patch(self.path(lv, "out", ver, f"{lv}.psx"))
             shutil.move(self.path(lv, "out", ver, f"{lv}.psx"), self.path("out", ver, f"{lv}.psx"))
         return lv
 
@@ -177,6 +182,14 @@ class Converter:
         self.py(lv, "add_crawl_flip.py", f"{lv}.tr2")
         self.py(lv, "add_crouch_turn.py", f"{lv}.tr2")
         self.py(lv, "add_crawl_pickup.py", f"{lv}.tr2")
+        self.py(lv, "fix_crouch_roll_arm.py", f"{lv}.tr2")
+        self.py(lv, "add_controlled_drop.py", f"{lv}.tr2")
+        self.py(lv, "add_ledge_jumps.py", f"{lv}.tr2")
+        self.py(lv, "add_corner_shimmy.py", f"{lv}.tr2")
+        self.py(lv, "add_climb_corners.py", f"{lv}.tr2")
+        self.py(lv, "strip_dead_anims.py", f"{lv}.tr2")
+        self.py(lv, "compact_frames.py", f"{lv}.tr2")
+        self.py(lv, "pack_rotations.py", f"{lv}.tr2")
 
     def step_geom(self, lv):
         for line in open(os.path.join(PRJ, "levels", "geom", f"{lv}.sh"), encoding="utf-8"):

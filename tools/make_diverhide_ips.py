@@ -1,5 +1,6 @@
 """Builds bin/patches/<version>/diverhide.ips: the animated diver in Sleeping with the Fishes Part 1
-(object 119 = FAN slot, PropellerControl) disappears when its "off" animation 436 ends.
+(object 119 = FAN slot, PropellerControl) disappears when its "off" animation ends (436 in the original level, 461 since Lara got 25
+animations more in 1.0.3-1.0.8: a new Lara animation shifts every later number, so this one has to follow).
 
 That animation ends with the KILL command; the engine only deactivates the item, so the diver
 stayed drawn in its last pose. PropellerControl then does "if not SAW: collidable = 0". There are
@@ -7,7 +8,7 @@ no saws in any Lost Artefact level, so that check is replaced by one on the dive
 
     lh    v1, 12(s0)      -> lh    v1, 20(s0)      ; anim_number
     addiu v0, zero, 105   -> lw    v0, 132(s0)     ; item flags
-    beq   v1, v0, +5      -> addiu a0, zero, 436
+    beq   v1, v0, +5      -> addiu a0, zero, 461
     addiu v1, zero, -33   -> bne   v1, a0, +2
     lw    v0, 132(s0)     -> addiu a1, zero, -33
     nop                   -> addiu v0, v0, 2       ; only the diver: status DEACTIVATED -> INVISIBLE
@@ -24,7 +25,7 @@ import sys
 BIN = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "bin")
 VERSIONS = ["us", "ukrev", "derev", "frrev", "itrev", "sprev", "jp", "jp2", "as", "as2"]
 OLD = [0x8603000C, 0x24020069, None, 0x2403FFDF, 0x8E020084, 0x00000000, 0x00431024, 0xAE020084]  # from "lh v1,12(s0)"
-NEW = [0x86030014, 0x8E020084, 0x240401B4, 0x14640002, 0x2405FFDF, 0x24420002, 0x00451024, 0xAE020084]
+NEW = [0x86030014, 0x8E020084, 0x240401CD, 0x14640002, 0x2405FFDF, 0x24420002, 0x00451024, 0xAE020084]
 
 
 def apply_ips(data, ips):

@@ -105,13 +105,15 @@ TO DO:
       underwater palette shift) is 0 while it draws, its time runs by wibble (the level timer stands
       still in Lara's home), NTSC is recognised by the GTE's screen centre. The code (about 1.2 KB) did
       not fit into the unused functions of every version, so the executable is extended:
-      init_game_malloc gets 0xDE0 bytes less, 0x1000 on the US executables (from 1.0.7; before 0xEE0, 0xDE0 on Japan/Asia Disc 2; 2 KB until 23.10.2026; their
-      limit is the RAM above the BSS, with 1 KB kept for the stack; pickup3d.extra(ver); the executable is padded to whole
-      2048-byte sectors, or the BIOS does not start it), the routines are appended to the executable (header text size),
-      a routine at the new start address copies them above the BSS before the start code clears it,
-      and a routine called instead of InitHeap copies them to the last 2 KB of the level memory (the
+      init_game_malloc gets 0x1A40 bytes less, 0x1D40 on the US executables (from 1.0.8 for the ledge jumps, the corner shimmying and the climbing round corners; 0x1980 and 0x1C80 before the climbing corners' start distance; 0x1530 and 0x1810 without the climbing; 0xDE0 and 0x1110 with the ledge jumps alone; 0x1000 in 1.0.7; before 0xEE0, 0xDE0 on Japan/Asia Disc 2; 2 KB until 23.10.2026;
+      pickup3d.extra(ver); the executable is padded to whole 2048-byte sectors, or the BIOS does not start it), the
+      routines are appended to the executable (header text size), and a routine at the new start address copies
+      them straight to the last EXTRA bytes of the level memory, clears the BSS behind the level buffer (it is not
+      the last BSS object) and jumps to the start code, whose BSS clearing now ends where the routines begin (the
       crawl flip's routine as well, crawlflip.ips: there is no unused function left for it in every
-      version).
+      version). Until 30.10.2026 the block was parked above the BSS and copied by a routine called instead of
+      InitHeap; that limited it to the RAM above the BSS less 1 KB (Japan/Asia Disc 2: 0xDE0); now only the
+      level memory limits it.
     - Crawl flip (22.10.2026, crawlflip.ips, tools/make_crawlflip_ips.py; animation by
       tools/add_crawl_flip.py in levels/convert.sh and the builder): a "roll jump down from crawl"
       animation (frame rate 2, effort sound 46) as Lara's

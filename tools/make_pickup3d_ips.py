@@ -448,10 +448,13 @@ SET_COLOR_MATRIX = [0x8C880000, 0x8C890004, 0x8C8A0008, 0x8C8B000C, 0x8C8C0010, 
 SET_BACK_COLOR = [0x00042100, 0x00052900, 0x00063100, 0x48C46800, 0x48C57000, 0x48C67800, 0x03E00008, 0]
 
 
-EXTRA = 0xDE0                   # bytes taken from the end of the level memory for the routines
-EXTRA_US = 0x1000               # the US executables: no unused function left for the crawl routines
-                                # (make_crawlflip_ips.py), so the block takes it; the start-up keeps the block
-                                # above the BSS for a moment, and only they have room there for more
+EXTRA = 0x1A40                  # bytes taken from the end of the level memory for the routines (with the
+                                # ledge jumps, make_ledgejump_ips.py, and the corner shimmying with the climbing
+                                # round corners, make_cornershimmy_ips.py)
+EXTRA_US = 0x1D40               # the US executables: no unused function left for the crawl routines
+                                # (make_crawlflip_ips.py), so the block takes them too
+BOOT_ROOM = 104                 # the unused function of the two copy routines before 30.10.2026, so the
+                                # patches after this one keep their places
 
 
 def extra(ver):
@@ -475,19 +478,19 @@ def level_memory(exe):
 
 
 def start_up(exe):
-    """The start code (pc0 of the header): BSS end (cleared from 'lui v0; addiu v0' to 'lui v1; addiu v1')
-    and the first call after the clearing (InitHeap): (pc0, bss end, file offset of the call, target)."""
+    """The start code (pc0 of the header) clears the BSS from 'lui v0; addiu v0' to 'lui v1; addiu v1' ('sw zero,
+    0(v0); addiu v0, v0, 4; sltu at, v0, v1; bnez at; nop'): (pc0, bss start, bss end), both 0x80... ."""
     pc0 = word(exe, 0x10) | 0x80000000
     o = pc0 - LOAD
-    assert word(exe, o) >> 16 == 0x3C02 and word(exe, o + 8) >> 16 == 0x3C03 and word(exe, o + 12) >> 16 == 0x2463
-    l = word(exe, o + 12) & 0xFFFF
-    bss_end = (((word(exe, o + 8) & 0xFFFF) << 16) + (l - 0x10000 if l & 0x8000 else l)) | 0x80000000
-    call = next(k for k in range(o, o + 0x100, 4) if word(exe, k) >> 26 == 3)
-    return pc0, bss_end, call, jal_target(word(exe, call))
+    w = [word(exe, o + 4 * k) for k in range(9)]
+    assert (w[0] >> 16 == 0x3C02 and w[1] >> 16 == 0x2442 and w[2] >> 16 == 0x3C03 and w[3] >> 16 == 0x2463
+            and w[4:9] == [0xAC400000, 0x24420004, 0x0043082B, 0x1420FFFC, 0]), "BSS clearing not found"
+    start, end = (((w[k] & 0xFFFF) << 16) + (w[k + 1] & 0xFFFF) - (w[k + 1] & 0x8000) * 2 for k in (0, 2))
+    return pc0, start | 0x80000000, end | 0x80000000
 
 
-def copy_routine(src, dst, n, then):
-    """Copies n bytes from src to dst word by word, then jumps to then (registers t0-t3 only)."""
+def boot_routine(src, dst, n, clear, clear_end, then):
+    """Copies n bytes from src to dst word by word, clears clear to clear_end, then jumps to then (t0-t3 only)."""
     a = Asm()
     a.lui("t0", hi(src)); a.addiu("t0", "t0", lo(src))
     a.lui("t1", hi(dst)); a.addiu("t1", "t1", lo(dst))
@@ -496,6 +499,11 @@ def copy_routine(src, dst, n, then):
     a.lw("t3", 0, "t0"); a.addiu("t0", "t0", 4)
     a.sw("t3", 0, "t1")
     a.bne("t0", "t2", "copy"); a.addiu("t1", "t1", 4)
+    a.lui("t0", hi(clear)); a.addiu("t0", "t0", lo(clear))
+    a.lui("t2", hi(clear_end)); a.addiu("t2", "t2", lo(clear_end))
+    a.label("clear")
+    a.addiu("t0", "t0", 4)
+    a.bne("t0", "t2", "clear"); a.sw("zero", -4, "t0")
     a.j(then); a.nop()
     return a.code()
 
@@ -507,17 +515,18 @@ def build(exe, ver, orig):
     RAM taken from the level memory: init_game_malloc gets EXTRA bytes less, and the routines live in the
     last EXTRA bytes of its buffer. They are appended to the executable (the header's text size grows),
     so the loader puts them behind the code, into the BSS, which the start code clears: a routine at the
-    new start address first copies them above the BSS (to the stack area, unused before the game
-    runs), then the start code clears the BSS, and a routine called instead of InitHeap copies them to
-    their place and jumps to InitHeap. Only these two copy routines go into an unused function."""
+    new start address first copies them straight to their place (the level buffer lies in the BSS, but not
+    at its end), clears the BSS behind the level buffer and jumps to the start code, whose clearing now
+    ends where the routines begin. Only this boot routine goes into an unused function."""
     sites, inv_add = pickup_calls(orig)
     air_site, air_bar = air_bar_call(orig)
     f = {**matrix_functions(orig), **object_tables(orig), **libgte(orig), "level": current_level(orig),
          "wibble": wibble(orig)}
     timer = ngp.level_timer(orig, ngp.health_bar(orig))
     size_site, size, buffer = level_memory(orig)
-    pc0, bss_end, heap_call, init_heap = start_up(orig)
-    for s in sites + [air_site, size_site, heap_call]:
+    pc0, bss_start, bss_end = start_up(orig)
+    end_site = pc0 - LOAD + 8                                    # lui v1, hi(bss end); addiu v1, v1, lo(bss end)
+    for s in sites + [air_site, size_site, end_site, end_site + 4]:
         assert word(exe, s) == word(orig, s), f"{s + LOAD:#x} is changed by another patch"
     EXTRA = extra(ver)
     assert (size - EXTRA) >> 16 == size >> 16
@@ -540,21 +549,24 @@ def build(exe, ver, orig):
     t_size = word(orig, 0x1C)
     assert len(orig) == 0x800 + t_size
     loaded = 0x80010000 + t_size                                 # where the loader puts the appended block
-    temp = (bss_end + 15) & ~15
-    assert temp + n < 0x801FFFF0 - 0x400, "no room above the BSS"
-    stub1 = copy_routine(loaded, temp, n, pc0)
-    stub2 = copy_routine(temp, region, n, init_heap)
-    free = [r for r in free_space(orig, ver) if r[1] - r[0] >= 4 * (len(stub1) + len(stub2))]
-    assert free, "no unused function for the copy routines"
+    assert bss_start < loaded and loaded + n <= region, "the appended block must lie in the BSS cleared before the routines"
+    assert buffer <= region and region + n == buffer + size <= bss_end, "the routines must end the level buffer"
+    assert region % 4 == 0 and (bss_end - region - n) % 4 == 0 and bss_end > region + n
+    target = region & 0x7FFFFFFF if word(orig, end_site) & 0x8000 == 0 else region   # the start code's segment
+    stub = boot_routine(loaded, region, n, region + n, bss_end, pc0)
+    free = [r for r in free_space(orig, ver) if r[1] - r[0] >= max(4 * len(stub), BOOT_ROOM)]
+    assert free, "no unused function for the boot routine"
     cave = free[0][0]
+    assert cave + 4 * len(stub) <= free[0][1]
     patches = [(0x10, [cave + LOAD]), (0x1C, [t_size + n + 4 * len(pad)]),   # start address, text size
-               (len(orig), blob + pad), (cave, stub1 + stub2),
-               (heap_call, [rv.jal(cave + LOAD + 4 * len(stub1))]),
+               (len(orig), blob + pad), (cave, stub),
+               (end_site, [0x3C030000 | hi(target), 0x24630000 | lo(target)]),
                (size_site, [0x34420000 | (size - EXTRA) & 0xFFFF]),
                (air_site, [rv.jal(a_at)])] + [(s, [rv.jal(region)]) for s in sites]
     desc = (f"level memory {size:#x} -> {size - EXTRA:#x} ({size_site + LOAD:#x}), routines at {region:#x} "
-            f"({n} bytes appended, copied {loaded:#x} -> {temp:#x} at {cave + LOAD:#x}, -> {region:#x} before "
-            f"InitHeap {init_heap:#x}), pickups {', '.join(hex(s + LOAD) for s in sites)} -> {inv_add:#x}, "
+            f"({n} bytes appended, copied {loaded:#x} -> {region:#x} at {cave + LOAD:#x}, BSS cleared "
+            f"{bss_start:#x}-{region:#x} and {region + n:#x}-{bss_end:#x}), "
+            f"pickups {', '.join(hex(s + LOAD) for s in sites)} -> {inv_add:#x}, "
             f"air bar {air_site + LOAD:#x} -> {air_bar:#x}, data {data:#x}, "
             + ", ".join(f"{k} {v:#x}" for k, v in f.items()))
     return patches, desc

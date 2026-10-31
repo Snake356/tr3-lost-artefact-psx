@@ -135,6 +135,18 @@ Picking up in the crawl
    Items in front of Lara are picked up in the crawl itself, with poses
    as in Tomb Raider IV; the camera stays behind her.
 
+Controlled drop, ledge jumps, corner shimmying and climbing round corners
+   As in TRX. Controlled drop: step off a high edge (about 3.7 clicks or
+   more) while holding Action with the hands free; Lara turns round and
+   catches the edge. Ledge jumps: while hanging from a ledge, press Jump
+   with Forward to jump up, or Jump with Back to push off and jump
+   backwards (this needs room above Lara and the wall to push off). Corner
+   shimmying: while hanging from a ledge, hold Action and press Left or
+   Right where the ledge ends; Lara goes round an outer or inner corner.
+   Climbing round corners: on a climbable wall, press Left or Right where
+   the wall ends; Lara goes round the corner onto the other wall. Lara's
+   home has these moves too.
+
 New Game+
    As in Tomb Raider II and the Remastered games. After the end credits and
    the statistics of a normal game the game asks twice: first for your

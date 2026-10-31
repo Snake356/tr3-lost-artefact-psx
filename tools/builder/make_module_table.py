@@ -5,7 +5,7 @@
   tools/builder/modules.json               per game version and module (index into modblobs): the
                                            original level file on the TR3 disc holding the module, its
                                            offset, length and CRC32, plus the project's byte changes
-                                           (the Reunion fusebox: CurrentLevel 7 instead of 12)
+                                           (CHANGES: the Reunion fusebox, the Highland dragon heads)
 
 The module locations are searched in the TR3 disc images given (Redump zips), one per version.
 Usage: make_module_table.py <version>=<image> [...]"""
@@ -29,6 +29,15 @@ CASES = {"FLAGS_LANGUAGE_US_11_12": ("us", "us_11"), "FLAGS_LANGUAGE_UK_REV1": (
          "FLAGS_LANGUAGE_US_10": ("us10", "us_10"), "FLAGS_LANGUAGE_UK": ("uk", "uk"),
          "FLAGS_LANGUAGE_DE": ("de", "de"), "FLAGS_LANGUAGE_FR": ("fr", "fr"), "FLAGS_LANGUAGE_IT": ("it", "it"),
          "FLAGS_LANGUAGE_SP": ("sp", "sp")}
+# the project's byte changes in modblob.h: module -> {position: (original byte, project byte)}
+CHANGES = {
+    "e3_fusebox": {360: (12, 7)},                  # the original compares CurrentLevel with 12
+    # ControlFireHead's height test takes the mouth's y (sp+0x24) instead of the item's (the Gold dragon's mouth
+    # is 1.6 blocks above its item, so Lara never burnt), -512..+768 as TRX's M_TestFireRange (from 1.0.8):
+    # 'lw v0, 0x44(s0)' -> 'lw v0, 0x24(sp)', 'addiu t2, v0, -0x400' -> -0x200, 'addiu t3, v0, 0x100' -> 0x300
+    "e1_firehead": {0x314: (0x44, 0x24), 0x316: (0x02, 0xA2), 0x317: (0x8E, 0x8F), 0x31D: (0xFC, 0xFE),
+                    0x325: (0x01, 0x03)},
+}
 ARRAY = re.compile(r"const INTU(8|16) (\w+)\[(\d+)\] = \{([^}]*)\}")
 
 
@@ -67,14 +76,15 @@ def main(images):
                 if k >= 0:
                     entry = {"file": p, "offset": k, "length": len(code), "crc32": "%08x" % zlib.crc32(code)}
                     break
-            if entry is None and name == "e3_fusebox":
+            if entry is None and name in CHANGES:
                 orig = bytearray(code)
-                orig[360] = 12                    # the original compares CurrentLevel with 12
+                for pos, (was, _) in CHANGES[name].items():
+                    orig[pos] = was
                 for p, data in files.items():
                     k = data.find(bytes(orig))
                     if k >= 0:
                         entry = {"file": p, "offset": k, "length": len(code), "crc32": "%08x" % zlib.crc32(orig),
-                                 "change": {"360": 7}}
+                                 "change": {str(pos): now for pos, (_, now) in CHANGES[name].items()}}
                         break
             if entry:
                 mods[str(i)] = dict(entry, name=name)

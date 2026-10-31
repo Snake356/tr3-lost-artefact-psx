@@ -5,8 +5,9 @@ uses for room lighting). Every room vertex within the radius of a point gets
 Costs nothing in the game (it is plain level lighting).
 
 Usage:
-    bake_point_light.py level.tr2 x,y,z [x,y,z ...] [--radius 3072] [--strength 10] [--tint 1.0,0.7,0.25]
-x, y, z in world units (as the item positions). Writes the level in place."""
+    bake_point_light.py level.tr2 x,y,z [x,y,z ...] [--radius 3072] [--strength 10] [--tint 1.0,0.7,0.25] [--above y]
+x, y, z in world units (as the item positions). --above: only vertices higher than this y (smaller y), so floors
+and platforms below stay as they are. Writes the level in place."""
 import argparse
 import math
 import struct
@@ -19,6 +20,7 @@ def main():
     ap.add_argument("--radius", type=float, default=3072)
     ap.add_argument("--strength", type=float, default=10)
     ap.add_argument("--tint", default="1.0,0.7,0.25")
+    ap.add_argument("--above", type=int, default=None)
     a = ap.parse_args()
     pts = [tuple(int(v) for v in p.split(",")) for p in a.points]
     tint = [float(v) for v in a.tint.split(",")]
@@ -41,6 +43,8 @@ def main():
         for k in range(nv):
             v = data + 2 + k * 12                     # x, y, z, lighting, attributes, colour (i16/u16)
             x, y, z = rx + i16(v), i16(v + 2), rz + i16(v + 4)
+            if a.above is not None and y >= a.above:
+                continue
             add = 0.0                                 # the strongest point counts (no sum: groups stay even)
             for px, py, pz in pts:
                 d = math.dist((x, y, z), (px, py, pz))

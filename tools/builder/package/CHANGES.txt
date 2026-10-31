@@ -21,6 +21,43 @@
   VERSIONS
 ================================================================================
 
+  1.0.8  Update: new moves in every disc, as in TRX (see EXTRAS in the
+         README). A controlled drop: step off a high edge with Action held
+         and the hands free, and Lara turns round and catches the edge.
+         Ledge jumps: while hanging, Jump with Forward jumps up, Jump with
+         Back jumps backwards. Corner shimmying: while hanging from a ledge,
+         Left or Right where the ledge ends takes Lara round an outer or an
+         inner corner. Climbing round corners: on a climbable wall, Left or
+         Right where the wall ends does the same. Lara's home has the new
+         moves too. The new moves use the sounds TRX gives them.
+
+         More level memory is free: Lara's animations are stored more
+         compactly. Highland Fling has about 33.9 KB free now (1.0.7: about
+         2.4 KB). The code of all the extras takes 6.5 KB of the level memory
+         (7.3 KB on the US discs).
+
+         IMPORTANT: savegames from 1.0.7 and older do not work with 1.0.8,
+         because Lara's animations are numbered differently now. Start the
+         level again from the level select, or start a new game.
+
+         Fixes: the mist of Highland Fling and Willard's Lair no longer
+         disappears under the floor it lies on, and the green mist of
+         Reunion and It's a Madhouse! no longer shows steps at its edges
+         (floor and walls were drawn over it). Crawlspaces and steep
+         slopes no longer block Lara wrongly in the crawl and crouch. The
+         end of a speech no longer stops the picture. Sprinting up a step
+         keeps the sprint. A killed orca, diver or alligator stays gone.
+         The final statistics play track 14. The game speed is even again.
+         The crouch roll checks the floor ahead, and Lara's right arm no
+         longer jumps at its end. Under water Draw takes the harpoon gun.
+         The diver in Sleeping with the Fishes disappears again after its
+         animation. A far looping sound (the helicopter in Highland Fling)
+         no longer goes on until the inventory is opened. Statues and
+         other objects are copied to the neighbouring rooms as TRX does,
+         so fewer of them are cut off. The passport's spine has its
+         colour in every level, and the footsteps on 16 floor squares of
+         It's a Madhouse! are right.
+
   1.0.7  Update: the flip out of a crawlspace needs only Jump now (Walk
          no longer), as in TRX: at the edge in the crawl, also right
          when Lara stops after crawling forward, or from the crouch with
@@ -202,17 +239,19 @@
   The Lost Artefact levels have more sounds than fit, so a few that are
   rarely heard or have other variants are silent. Most of this was already
   done in b122251's conversion; it was checked again for this release.
+  A silent sound is now a short real silence; before, an empty sample could
+  loop and take up a sound channel.
 
-  * Shakespeare Cliff: the bazooka shot, the quad bike hitting a wall from
-    the side or from the front and landing after a jump, the push switch,
-    the Uzi stop and shotgun shell sounds, the reservoir flush, a small
-    fan, the attack of the winged mutant, two of the generator and two of
-    the squeak variants, and four of Lara's wet-feet steps and her wading.
-    -> A test with the bazooka shot back worked, but the level then used
-       505 KB of sound memory, more than any original Tomb Raider III
-       level. As that is right at the limit, the shot stays silent for
-       safety. The quad bike's engine and
-       all its other sounds are there.
+  * Shakespeare Cliff: the push switch, the Uzi stop and shotgun shell
+    sounds, the reservoir flush, a small fan, the attack of the winged
+    mutant, two of the generator and two of the squeak variants, four of
+    Lara's wet-feet steps and her wading, a monkey roll and the prisoner's
+    sounds.
+    -> The bazooka shot and the quad bike hitting a wall or landing after
+       a jump can be heard again; the level now uses about 490 KB of sound
+       memory. The quad bike's engine and all its other sounds are there.
+       The monkey roll and the prisoner's sounds are silent instead: the
+       level never uses them (there is no prisoner in it).
 
   * Willard's Lair: the crocodile's attack and death, the blowpipe, metal
     shutters breaking, a wooden gate, the portcullis going up and down,
@@ -222,8 +261,9 @@
 
   * Sleeping with the Fishes (both parts): a jet flying by, a generic
     swoosh, a light water sound, Lara's death on spikes, metal shutters
-    breaking, one mud footstep variant, and four of Lara's wet-feet steps
-    and her wading.
+    breaking, one mud footstep variant, four of Lara's wet-feet steps and
+    her wading, and the security guard's sounds (there is no guard in
+    these levels).
 
   * It's a Madhouse!: Lara using a key, the portcullis going up and down,
     a trapdoor closing and small metal shutters.
@@ -329,6 +369,14 @@
     drawn up to 20 blocks as in the original game. Reunion (12 blocks)
     is set the same way.
 
+  * The mist of the rooms disappeared under the floor it lay on.
+    Fix: the mist is drawn nearer, so it stays visible over that floor.
+    Its strength is set per room (the same fix is in WILLARD'S LAIR).
+
+  * The helicopter, a far looping sound, could keep playing until the
+    inventory was opened.
+    Fix: a sound that takes over a busy voice really restarts it.
+
   * You could walk into the stone pillar in room 49, and reach into it
     from the room above (room 20).
     Why: on the PC these two spots belong to a third room (room 21) in
@@ -346,6 +394,10 @@
   * (FTL) When the Cairn Key was inserted, the camera looked at the wrong
     place.
     Fix: the camera now shows the right spot.
+
+  * The mist disappeared under the floor it lay on.
+    Fix: as in HIGHLAND FLING, the mist is drawn nearer and its strength
+    is set per room.
 
 
   SLEEPING WITH THE FISHES
@@ -375,6 +427,13 @@
     Fix: the jump goes to the right frame, and the diver disappears when
     his animation is over instead of lying there.
 
+  * The diver lay frozen again after his animation. Since 1.0.3 the new
+    Lara animations had shifted his animation number.
+    Fix: his animation number is set again, so he disappears at the end.
+
+  * A cage in Part 2 was faulty and the area around it was dark.
+    Fix: the cage is repaired and the area gets a cool light.
+
 
   IT'S A MADHOUSE!
   ----------------
@@ -401,6 +460,14 @@
   * Two wall faces in room 97 showed the wrong texture.
     Fix: they now have the right one (the Japanese version already had
     it).
+
+  * Sixteen floor squares gave the wrong footstep sound.
+    Fix: they give the footstep sound of their material.
+
+  * The green mist showed steps at its edges, where floor and walls were
+    drawn over it.
+    Fix: the mist is drawn a little nearer (the same fix as in HIGHLAND
+    FLING, at the lowest strength).
 
 
   REUNION
@@ -439,12 +506,60 @@
     bodies".
     Fix: removed, so that nothing of the other level is left in Reunion.
 
+  * The punks' glow and their room light were in the wrong colour.
+    Fix: both take the colour of the light nearest to them in each room.
+
+  * The green mist showed steps at its edges, where floor and walls were
+    drawn over it.
+    Fix: the mist is drawn a little nearer (the same fix as in HIGHLAND
+    FLING, at the lowest strength).
+
   * (FTL) A save crystal was added in the room with the lever just before
     Sophia (later moved, see "All levels").
 
 
   ALL LEVELS
   ----------
+
+  * Crawl and crouch: a crawlspace under an opening counted as a wall, and
+    a steep slope ahead blocked Lara even above her feet.
+    Fix: the front check starts in Lara's own room, and a steep slope is a
+    wall only above her feet, as in TR4 and TR5.
+
+  * The end of a speech stopped the picture for a third of a second.
+    Fix: it no longer does; the first speech of a level costs no frame.
+
+  * Sprinting up a step stopped the sprint.
+    Fix: the sprint is kept, as in TRX.
+
+  * A diver killed by a rocket stayed visible, and dead divers and
+    alligators stayed in view while the other bodies disappear.
+    Fix: a killed orca, diver or alligator stays gone, and dead divers and
+    alligators disappear out of sight like the other bodies.
+
+  * The final statistics played the wrong music.
+    Fix: track 14, as in TRX.
+
+  * The game speed was uneven (the frame counter was cleared at the end of
+    each frame). Fix: the speed is even.
+
+  * The crouch roll could run into a wall, up a high step or over an edge,
+    and Lara's right arm jumped at its end.
+    Fix: the roll checks the floor ahead, as in TRX, and the arm leads
+    smoothly into the crouch.
+
+  * Under water Draw took the wrong gun.
+    Fix: it takes the harpoon gun, and out of the water the gun used
+    before, as in TRX.
+
+  * Statues and other static objects were cut off more often than
+    needed at the edge of their room.
+    Fix: they are copied to the neighbouring rooms in the way TRX does;
+    those that vanish with a room change are not copied. Depending on
+    the view some are still cut off, as in the original game.
+
+  * The passport's spine in the inventory ring was black in some levels.
+    Fix: it has its colour in every level.
 
   * Save crystals: (FTL) added crystals in Sleeping with the Fishes Part 2
     and It's a Madhouse!. Later crystals were placed in all levels, then
