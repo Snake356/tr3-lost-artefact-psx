@@ -21,6 +21,14 @@
   VERSIONS
 ================================================================================
 
+  1.11   Update: a new builder option, save crystals as in the Japanese
+         version: a crystal in a level heals Lara, and saving does not
+         use up the crystal in the inventory (the Japanese and Asian
+         Disc 1 always have it). Climbing round an outer corner to the
+         right now has Lara's grip and effort sounds too, as to the left
+         (they were missing in the animation from TRX).
+         Savegames of 1.0.8 to 1.10 keep working.
+
   1.10   Hotfix: walls without collision. Lara could walk, climb or
          jump through some walls that are drawn but missing in the
          collision data (reported in the room with the save crystal in

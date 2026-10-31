@@ -10,7 +10,8 @@ tools/add_corner_shimmy.py, which has to run first), so they have the same numbe
 behind them and every reference to them move up by eight. Their frames and commands are added at the end of their
 lists. State AS_LARATEST1 (62, unused by the game), no state changes: the executable switches to them; each turn
 goes on with its end, the end with the climbing stance (164, its first frame), and the executable moves Lara
-round the corner when the end is reached. The sounds (0, 1 and 5) as in TRX. Frame numbers CLIMB_BASE to
+round the corner when the end is reached. The sounds (0, 1 and 5) as in TRX; the right outer turn gets the
+grip at 56 and the effort at 66 of the left one too (TRX has only its grip at 94, the effort missing). Frame numbers CLIMB_BASE to
 CLIMB_BASE + 479 (below the other added animations: frame numbers are signed 16 bits in the game). A level that
 has them already is left as it is.
 
@@ -30,7 +31,7 @@ FRAME_SIZE = 39
 STANCE, AS_STANCE, AS_CORNER = 164, 56, 62
 BASES = [CLIMB_BASE + sum(FRAMES[:k]) for k in range(len(FRAMES))]
 COMMANDS = [[5, BASES[0] + 56, 0x4000, 5, BASES[0] + 92, 0x4000, 5, BASES[0] + 66, 0x4001],    # sounds
-            [5, BASES[2] + 94, 0x4000],
+            [5, BASES[2] + 56, 0x4000, 5, BASES[2] + 94, 0x4000, 5, BASES[2] + 66, 0x4001],
             [5, BASES[4] + 87, 0x4000, 5, BASES[4] + 99, 0x4005],
             [5, BASES[6] + 87, 0x4000, 5, BASES[6] + 100, 0x4005]]
 DATA = bytes.fromhex(

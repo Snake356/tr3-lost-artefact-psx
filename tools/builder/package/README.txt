@@ -99,6 +99,14 @@ Stronger weapons as in the Japanese version
    Only the weapons change, not the levels. Leave it off for a normal
    playthrough.
 
+Save crystals as in the Japanese version
+   As on the Japanese and Asian Disc 1 (which always have it; there the
+   box is ticked and cannot be changed): a save crystal in a level heals
+   Lara to full health and cures poison instead of going into the
+   inventory, and saving from the crystal in the inventory does not use it
+   up, so you can save as often as you like (Lara starts the game with
+   one crystal). Leave it off for a normal playthrough.
+
 NTSC 60 Hz (European discs only)
    Turns a German, French, Italian, Spanish or English (Europe) disc into
    an NTSC disc with your language's speech and texts. This needs the US

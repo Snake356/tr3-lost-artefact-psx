@@ -12,6 +12,9 @@ Options:
                       which get a save crystal at every level start instead); also --test
   --japan-weapons     Lara's weapons as strong as in the Japanese Disc 1: double damage, stronger rocket
                       and grenade explosions (japanweapons.ips; the Japanese and Asian Disc 1 have it)
+  --japan-crystals    save crystals as in the Japanese Disc 1: a crystal in a level heals Lara, saving from the
+                      crystal in the inventory does not use it up (japancrystals.ips; the Japanese and Asian
+                      Disc 1 have it)
 
 Steps: disc files from the image (disc_files.py), input levels (pc_levels.py), sounds (sounds.py), code
 modules (modules.py), level conversion (convert.py with assets.py's hooks), executable (the IPS patches
@@ -20,7 +23,7 @@ originals from the disc), the licence sectors of the disc, then mkpsxiso with di
 (covers/: PAL, USA or Japan by the disc's region) goes next to the disc image with the same name.
 
 Usage: build.py <TR3 PS1 image> <Lost Artefact PC files> <out .bin> [--ntsc <US image>] [--blood red|purple] [--test]
-                [--japan-weapons]"""
+                [--japan-weapons] [--japan-crystals]"""
 import argparse
 import json
 import os
@@ -57,7 +60,7 @@ PICTURES = json.load(open(os.path.join(HERE, "pictures_from_disc.json"), encodin
 JAPAN_WEAPONS_BUILT_IN = ("jp", "as")                 # the Japanese and Asian Disc 1 have it themselves
 
 
-def patched_exe(disc, info, blood=None, japan_weapons=False, ntsc_lang=None):
+def patched_exe(disc, info, blood=None, japan_weapons=False, ntsc_lang=None, japan_crystals=False):
     """japan_weapons: Lara's weapons as strong as in the Japanese Disc 1 (japanweapons.ips); ntsc_lang: the
     US executable of a European NTSC disc gets the savegame title and the New Game+ texts in that language
     (savename_<lang>.ips, ngpchoice_<lang>.ips)."""
@@ -71,6 +74,8 @@ def patched_exe(disc, info, blood=None, japan_weapons=False, ntsc_lang=None):
         exe = apply_ips(exe, open(os.path.join(PRJ, "bin", "patches", info["version"], f"blood{blood}.ips"), "rb").read())
     if japan_weapons and info["version"] not in JAPAN_WEAPONS_BUILT_IN:
         exe = apply_ips(exe, open(os.path.join(PRJ, "bin", "patches", info["version"], "japanweapons.ips"), "rb").read())
+    if japan_crystals and info["version"] not in JAPAN_WEAPONS_BUILT_IN:
+        exe = apply_ips(exe, open(os.path.join(PRJ, "bin", "patches", info["version"], "japancrystals.ips"), "rb").read())
     return exe
 
 
@@ -131,15 +136,17 @@ def licence(disc):
 
 
 def build(ps1_image, pc_source, out_bin, ntsc_image=None, blood=None, work=None, log=print, test=False, keep_work=False,
-          japan_weapons=False):
+          japan_weapons=False, japan_crystals=False):
     """The work folder (intermediate files, about 1 GB) is removed after a successful build unless keep_work."""
     try:
-        return _build(ps1_image, pc_source, out_bin, ntsc_image, blood, work, log, test, keep_work, japan_weapons)
+        return _build(ps1_image, pc_source, out_bin, ntsc_image, blood, work, log, test, keep_work, japan_weapons,
+                      japan_crystals)
     finally:
         inputs.close_unpacked()
 
 
-def _build(ps1_image, pc_source, out_bin, ntsc_image, blood, work, log, test, keep_work, japan_weapons=False):
+def _build(ps1_image, pc_source, out_bin, ntsc_image, blood, work, log, test, keep_work, japan_weapons=False,
+           japan_crystals=False):
     work = os.path.abspath(work or os.path.join(os.path.dirname(os.path.abspath(out_bin)), "build_work"))
     if os.path.exists(work):
         shutil.rmtree(work)
@@ -191,7 +198,8 @@ def _build(ps1_image, pc_source, out_bin, ntsc_image, blood, work, log, test, ke
     c.convert()
 
     log("executable, texts, pictures")
-    exe = patched_exe(main_disc, main_info, blood, japan_weapons, NTSC_LANG[info["version"]] if ntsc_image else None)
+    exe = patched_exe(main_disc, main_info, blood, japan_weapons, NTSC_LANG[info["version"]] if ntsc_image else None,
+                      japan_crystals)
     dat = bytearray(texts.tombpsx(layout, disc, test))
     if ntsc_image:
         exe = make_ntsc_exe.make(exe, patched_exe(disc, info), NTSC_LANG[info["version"]])
@@ -269,9 +277,10 @@ def main(argv=None):
     ap.add_argument("--level-select", "--test", dest="test", action="store_true")
     ap.add_argument("--keep-work", action="store_true", help="keep the intermediate files")
     ap.add_argument("--japan-weapons", action="store_true", help="weapons as strong as in the Japanese Disc 1")
+    ap.add_argument("--japan-crystals", action="store_true", help="save crystals as in the Japanese Disc 1")
     a = ap.parse_args(argv)
     build(a.ps1_image, a.pc_files, a.out_bin, a.ntsc, a.blood, a.work, test=a.test, keep_work=a.keep_work,
-          japan_weapons=a.japan_weapons)
+          japan_weapons=a.japan_weapons, japan_crystals=a.japan_crystals)
 
 
 if __name__ == "__main__":

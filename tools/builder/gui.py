@@ -33,7 +33,7 @@ import build  # noqa: E402
 import inputs  # noqa: E402
 
 TITLE = "Tomb Raider III: The Lost Artefact - PS1 Builder"
-VERSION = "1.10"
+VERSION = "1.11"
 ISSUES = "https://github.com/Snake356/tr3-lost-artefact-psx/issues/new"
 HERE = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
 
@@ -129,7 +129,7 @@ class App(tk.Tk):
         self.us_info = None                             # the US disc for NTSC, when recognised
         self.ps1, self.pc, self.us, self.out = tk.StringVar(), tk.StringVar(), tk.StringVar(), tk.StringVar()
         self.ntsc, self.blood, self.test = tk.BooleanVar(), tk.StringVar(value="default"), tk.BooleanVar()
-        self.japan_weapons = tk.BooleanVar()
+        self.japan_weapons, self.japan_crystals = tk.BooleanVar(), tk.BooleanVar()
         self.step_text, self.detail_text, self.time_text = tk.StringVar(value="Ready"), tk.StringVar(), tk.StringVar()
         self.t0 = None                                  # start of the running build (time.monotonic)
 
@@ -188,6 +188,10 @@ class App(tk.Tk):
                                            "off for a normal playthrough)",
                                            variable=self.japan_weapons, style="Card.TCheckbutton")
         self.weapons_box.grid(row=4, column=0, columnspan=4, sticky="w", padx=(22, 0), pady=(6, 0))
+        self.crystals_box = ttk.Checkbutton(opt, text="Save crystals as in the Japanese version (a crystal heals Lara, "
+                                            "saving does not use one up; leave off for a normal playthrough)",
+                                            variable=self.japan_crystals, style="Card.TCheckbutton")
+        self.crystals_box.grid(row=5, column=0, columnspan=4, sticky="w", padx=(22, 0), pady=(6, 0))
 
         save = ttk.Frame(body)
         save.grid(row=3, column=0, sticky="ew", pady=(2, 10))
@@ -252,7 +256,8 @@ class App(tk.Tk):
                  f"PC files: {self.pc_rels or 'not chosen or not recognised'}",
                  f"Options: blood {self.blood.get()}, level select {'on' if self.test.get() else 'off'}, "
                  f"NTSC {'on' if self.ntsc.get() else 'off'}, "
-                 f"Japanese weapons {'on' if self.japan_weapons.get() else 'off'}"]
+                 f"Japanese weapons {'on' if self.japan_weapons.get() else 'off'}, "
+                 f"Japanese crystals {'on' if self.japan_crystals.get() else 'off'}"]
         if error:
             msg = self.without_paths(error)[:1200]
             title = "Builder error: " + msg.splitlines()[0][:80]
@@ -375,7 +380,9 @@ class App(tk.Tk):
         japanese_disc1 = bool(self.ps1_info and self.ps1_info["version"] in build.JAPAN_WEAPONS_BUILT_IN)
         if japanese_disc1:
             self.japan_weapons.set(True)                # the Japanese and Asian Disc 1 have it themselves
+            self.japan_crystals.set(True)
         self.weapons_box.config(state="disabled" if japanese_disc1 else "normal")
+        self.crystals_box.config(state="disabled" if japanese_disc1 else "normal")
         st = "normal" if self.ntsc.get() else "disabled"
         self.us_entry.config(state=st)
         self.us_button.config(state=st)
@@ -495,7 +502,7 @@ class App(tk.Tk):
         self.detail_text.set("")
         args = (self.ps1.get(), self.pc.get(), self.out.get(), self.us.get() if self.ntsc.get() else None,
                 None if self.blood.get() == "default" else self.blood.get())
-        kw = {"test": self.test.get(), "japan_weapons": self.japan_weapons.get()}
+        kw = {"test": self.test.get(), "japan_weapons": self.japan_weapons.get(), "japan_crystals": self.japan_crystals.get()}
         threading.Thread(target=self.run, args=args, kwargs=kw, daemon=True).start()
 
     def lock(self, locked):
