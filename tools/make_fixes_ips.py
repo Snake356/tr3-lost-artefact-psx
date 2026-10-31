@@ -17,6 +17,8 @@
   endmusic     the final statistics play track 14 (as TRX); GameStats stops the CD before going back to the title
   pacing       the frame counter is no longer cleared at the end of a frame (even game speed)
   rollcheck    the crouch roll (duckroll.ips) checks the floor ahead as TRX's M_CanCrouchRoll
+               (and, as TRX, no roll with Draw held or in a swamp room, flag 0x80; Sprint in the crawl standstill
+               263/264 goes into the crouch the crawl's own way, as Draw does, so the roll starts from there)
   harpoon      under water Draw takes the harpoon gun when Lara has it, out of the water the gun used before
                (TRX's enable_underwater_auto_draw)
   voicesteal   a voice taken from the quietest sound when all 24 are busy is not keyed off before the new sound
@@ -37,6 +39,7 @@ from collections import Counter
 import keystone
 
 import make_crawlflip_ips as cf
+import make_pickup3d_ips as p3
 import make_duckroll_ips as dr
 import make_reunionview_ips as rv
 
@@ -47,6 +50,10 @@ NAMES = ("debugspace", "collision", "mistsort", "cdpause", "sprintstep", "killed
          "pacing", "rollcheck", "harpoon", "voicesteal", "controlleddrop")
 DEBUG_TEXT = b"        Loading '%s'...\n\x00\x00\x00\x00Allocating m"
 DEBUG_SIZE = 968
+VER = None                                  # the version being built (unused functions)
+GF_TEXT = b"GF:	Could not allocate memory for strings"   # the gameflow's error messages (printed only when the
+GF_SPACE, GF_SIZE = 0x400, 0x1D8                           # script cannot be read): crawl roll there, behind the
+                                                           # test discs' fly and fps code (US 0x80098E64..)
 PRINTF_CALLS = 33
 HARPOON_ITEM = 164
 TRACK = 14
@@ -395,8 +402,20 @@ ROLL = """
     and   $t0, $R, $t0
     lh    $t1, GUN($gp)
     beqz  $t0, released
-    nop
+    andi  $t5, $R, 0x20
     bnez  $t1, released
+    nop
+    bnez  $t5, released
+    lh    $t5, 0x18($s0)
+    lw    $t6, ROOMS($gp)
+    sll   $t7, $t5, 2
+    addu  $t7, $t7, $t5
+    sll   $t7, $t7, 4
+    addu  $t7, $t7, $t6
+    lhu   $t7, 0x4e($t7)
+    nop
+    andi  $t7, $t7, 0x80
+    bnez  $t7, released
     nop
     addiu $sp, $sp, -16
     sw    $ra, 12($sp)
@@ -436,6 +455,68 @@ done:
 """
 
 
+CRAWLROLL = """
+    addiu $sp, $sp, -24
+    sw    $ra, 20($sp)
+    jal   CRAWLFLIP
+    nop
+    sw    $v1, 16($sp)
+    lh    $t0, 0x14($s0)
+    lui   $t1, 0x4000
+    and   $t1, $v1, $t1
+    beqz  $t1, cr_out
+    addiu $t0, $t0, -263
+    sltiu $t0, $t0, 2
+    beqz  $t0, cr_out
+    lh    $t5, 0x18($s0)
+    lw    $t6, ROOMS($gp)
+    sll   $t7, $t5, 2
+    addu  $t7, $t7, $t5
+    sll   $t7, $t7, 4
+    addu  $t7, $t7, $t6
+    lhu   $t7, 0x4e($t7)
+    nop
+    andi  $t7, $t7, 0x80
+    bnez  $t7, cr_out
+    move  $a0, $s0
+    lh    $a1, 0x4e($s0)
+    jal   FLOOR_FRONT
+    addiu $a2, $zero, 256
+    slti  $t0, $v0, -384
+    bnez  $t0, cr_out
+    move  $a0, $s0
+    lh    $a1, 0x4e($s0)
+    jal   FLOOR_FRONT
+    addiu $a2, $zero, 512
+    slti  $t0, $v0, 384
+    beqz  $t0, cr_out
+    lw    $v1, 16($sp)
+    nop
+    ori   $v1, $v1, 0x20
+    sh    $zero, GUN($gp)
+    sw    $v1, 16($sp)
+cr_out:
+    lw    $ra, 20($sp)
+    lw    $v1, 16($sp)
+    jr    $ra
+    addiu $sp, $sp, 24
+"""
+
+
+def rooms_offset(us, exe):
+    """gp offset of the room list in this executable: the US 'lw x, 0x3860(gp)' places found again once by their
+    window (16 words around them); at least five, and they all agree."""
+    offs = []
+    for a in range(0x80010000, 0x80020000, 4):
+        if us.w(a) >> 21 == (0x23 << 5 | 28) and us.w(a) & 0xFFFF == 0x3860:
+            try:
+                offs.append(exe.w(exe.window(us, a, 8, 8)) & 0xFFFF)
+            except AssertionError:
+                pass
+    assert len(offs) >= 5 and len(set(offs)) == 1, f"room list: {offs}"
+    return offs[0]
+
+
 def rollcheck(us, exe, orig, at):
     """duckroll.ips' call in the crouch routine goes to this routine instead: no roll when the floor 256 ahead is
     more than 384 higher (or a wall) or the floor 512 ahead 384 or more lower (an edge); a roll under way then
@@ -445,13 +526,42 @@ def rollcheck(us, exe, orig, at):
     site += LOAD
     assert exe.w(site) >> 26 == 3 and exe.w(site + 4) == 0, "duckroll.ips not applied"
     floor_front = cf.sites(orig)[2]
+    rooms = rooms_offset(us, exe)
+    crawl = cf.sites(orig)[0] + LOAD
+    assert exe.w(crawl) >> 26 == 3, "crawlflip.ips not applied"
+    # both routines go into the gameflow's error messages (the debug text space is full); the Japanese and
+    # Asian executables have none: there each goes into an unused function no other patch writes to
+    k = exe.d.find(GF_TEXT)
+    if k > 0:
+        assert exe.d.find(GF_TEXT, k + 1) < 0, "gameflow error messages"
+        gf = (k + GF_SPACE + LOAD + 3) & ~3
+        assert all(b < 0x80 for b in exe.d[gf - LOAD:gf - LOAD + GF_SIZE]), "gameflow error messages: not text"
+        at2 = None
+    else:
+        free = [(a, b) for a, b in p3.free_space(orig, VER) if exe.d[a:b] == orig[a:b] and b - a >= 172]
+        assert len(free) >= 2, f"unused functions for the roll: {free}"
+        gf, at2 = free[-1][0] + LOAD, free[-2][0] + LOAD
     src = (ROLL.replace("$R", "$" + {2: "v0", 4: "a0"}[r]).replace("INPUT", hex(inp))
-           .replace("GUN", hex(cf.gun_status(orig))).replace("FLOOR_FRONT", hex(floor_front)))
-    code = asm(src, at)
+           .replace("GUN", hex(cf.gun_status(orig))).replace("FLOOR_FRONT", hex(floor_front)).replace("ROOMS", hex(rooms)))
+    code = asm(src, gf)
     p = Patch()
-    p.put(at, code)
-    p.put(site, [jal(at)])
-    return p, len(code)
+    p.put(gf, code)
+    p.put(site, [jal(gf)])
+    # the crawl standstill: Sprint goes into the crouch the crawl's own way (as Draw does), where the roll starts
+    if at2 is None:
+        at2 = gf + len(code)
+    else:
+        assert len(code) <= free[-1][1] - free[-1][0], "roll routine too large"
+    src = (CRAWLROLL.replace("CRAWLFLIP", hex(target(exe.w(crawl)))).replace("GUN", hex(cf.gun_status(orig)))
+           .replace("FLOOR_FRONT", hex(floor_front)).replace("ROOMS", hex(rooms)))
+    code2 = asm(src, at2)
+    if k > 0:
+        assert len(code) + len(code2) <= GF_SIZE, f"{len(code) + len(code2)} bytes in the gameflow messages"
+    else:
+        assert len(code2) <= free[-2][1] - free[-2][0], "crawl roll routine too large"
+    p.put(at2, code2)
+    p.put(crawl, [jal(at2)])
+    return p, 0
 
 
 HARPOON = """
@@ -700,6 +810,7 @@ if __name__ == "__main__":
     us = Exe(base(os.path.join(BIN, "orig", "us.exe"), "us")[1])
     for ver, path in paths.items():
         orig, data = base(path, ver)
+        VER = ver
         patches, used = build(us, orig, data)
         print(f"{ver}: {used} of {DEBUG_SIZE} bytes; " + ", ".join(
             f"{n} {min(a for a, _ in p.parts):#x}" for n, p in patches.items()))

@@ -115,8 +115,9 @@ NTSC 60 Hz (European discs only)
 Forward roll out of the crouch
    While crouching, press Sprint (R2 on the western discs; on the Japanese
    and Asian discs the button Sprint has there). Lara rolls forward and
-   ends in the crouch again; keep Sprint held to keep rolling. With a gun
-   drawn she does not roll: put it away first.
+   ends in the crouch again; keep Sprint held to keep rolling. Sprint in
+   the crawl works too: Lara goes into the crouch and rolls. With a gun
+   drawn, with Draw held or in a swamp she does not roll.
 
 Turning in the crouch
    While crouching, press Left or Right: Lara turns on the spot. Where
@@ -127,8 +128,9 @@ Flip out of a crawlspace
    (512 units), press Jump (square on the western discs; on the Japanese
    and Asian discs the button Jump has there). Lara flips out head first
    and falls. It works in the crawl and right when Lara stops after
-   crawling forward; from the crouch, hold Duck and press Jump once:
-   Lara goes into the crawl and flips out.
+   crawling forward; from the crouch, press Jump once (hold Duck where
+   the ceiling is high enough to stand up): Lara goes into the crawl and
+   flips out.
 
 Picking up in the crawl
    Items in front of Lara are picked up in the crawl itself, with poses

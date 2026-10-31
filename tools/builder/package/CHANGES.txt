@@ -21,6 +21,13 @@
   VERSIONS
 ================================================================================
 
+  1.0.9  Hotfix: in a crawlspace, Jump at the edge from the crouch flips
+         Lara out without Duck held, as in TRX (Duck was needed even
+         where the low ceiling keeps her down). The crouch roll follows
+         TRX too: Sprint in the crawl takes Lara into the crouch and she
+         rolls, and there is no roll with Draw held or in a swamp.
+         Savegames of 1.0.8 keep working.
+
   1.0.8  Update: new moves in every disc, as in TRX (see EXTRAS in the
          README). A controlled drop: step off a high edge with Action held
          and the hands free, and Lara turns round and catches the edge.

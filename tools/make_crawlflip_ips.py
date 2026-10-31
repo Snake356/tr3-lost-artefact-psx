@@ -13,7 +13,8 @@ make_crouchturn_ips.py calls it as well) that returns the input word and, when
 
   - Jump is held and Lara is in a crawl standstill animation (263 or 264, or 266 or 268, the ends of stopping
     after crawling forward, as TRX takes them; from 1.0.7), or in the crouch animation (222)
-    with Duck held and the gun status 0,
+    with Duck held or kept down by a low ceiling (lara.keep_ducked, as TRX's keep_crouched; from 1.0.9) and the
+    gun status 0,
   - the floor 768 ahead (LaraFloorFront) is at least 512 lower, and 256 ahead as well (she is at the edge:
     the animation takes her 620 forward, from further back it began in the crawlspace),
   - the ceiling 768 ahead (LaraCeilingFront, measured from her standing height) is at least as high as the
@@ -72,6 +73,7 @@ LOAD = rv.LOAD
 ANIM, FRAME_BASE, AS_NULL = 313, 32000, 19          # tools/add_crawl_flip.py
 IN_JUMP = 0x10
 IN_DUCK = 0x20000000
+LARA_FLAGS, KEEP_DUCKED = 0x32, 0x20          # lara.flags behind the gun status (gp), keep_ducked: a low ceiling
 NO_HEIGHT = -32512
 CRAWL_PICKUP = 292                                  # Lara's pickup animation in the crawl
 CROUCH_TO_CRAWL = (258, 273)                        # the crouch's way into the crawl (then 264, 263)
@@ -269,7 +271,10 @@ def routine(inp, floor_front, ceiling_front, gun, los, sincos, wish=0):
     a.beqz("t1", "ahead"); a.addiu("t1", "t0", -222)            # the end of stopping (266, 268)
     a.bnez("t1", "out"); a.lui("t2", IN_DUCK >> 16)              # or the crouch
     a.r(0x24, "t2", "v1", "t2")
-    a.beqz("t2", "out"); a.lh("t3", gun, "gp")                   # with Duck held
+    a.lw("t3", gun + LARA_FLAGS, "gp"); a.nop()
+    a.andi("t3", "t3", KEEP_DUCKED)
+    a.r(0x25, "t2", "t2", "t3")
+    a.beqz("t2", "out"); a.lh("t3", gun, "gp")                   # with Duck held or kept down by the ceiling
     a.nop()
     a.bnez("t3", "out"); a.nop()                                  # and the hands free
     a.label("ahead")
