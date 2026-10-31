@@ -36,7 +36,7 @@ Download the **disc builder** from the [Releases](https://github.com/Snake356/tr
 - your **Tomb Raider III PS1 disc image** (.bin/.cue, .iso or .zip); your disc decides the language;
 - your **Lost Artefact PC files**: the Tomb Raider III Gold / Lost Artefact CD (any language, as a disc image or installed) or Tomb Raider I-III Remastered.
 
-Every disc also has a forward roll out of the crouch, turning on the spot in the crouch and a flip out of a crawlspace, New Game+ after the end credits (as in Tomb Raider II and the Remastered games, with a savegame of its own) and 3D pickups in the corner (as in Tomb Raider IV).
+Every disc also has a forward roll out of the crouch, turning on the spot in the crouch and a flip out of a crawlspace, New Game+ after the end credits (as in Tomb Raider II and the Remastered games, with a savegame of its own) and 3D pickups in the corner.
 
 Options: blood colour, level select on New Game, weapons as strong as in the Japanese version, and NTSC (60 Hz) for the European discs (with the US disc as well, any revision: Rev 0, 1 or 2). The players' readme (`tools/builder/package/README.txt`) explains everything; `tools/builder/package/CHANGES.txt` lists what differs from the PC version and why, the known issues and every fixed bug.
 
@@ -75,6 +75,7 @@ What is allowed is written in [LICENSE](LICENSE): you may use the disc builder f
 - **b122251** made the PS1 port and published the whole project at https://gitlab.com/b122251/tr3gpsx with the request to finish it (his original readme and farewell are there). The end credits close with the farewell message he left for the Tomb Raider community.
 - **FindingTheLost** (April to September 2025) carried it on: he found that Sleeping with the Fishes was too big for the PS1's 2 MB of memory once several enemies became active and split it into two parts, and he fixed a camera in Willard's Lair, the secret counts, save crystals and the loading screens.
 - **XeNoN3560** (from September 2026) continued from FindingTheLost's work and finished it: Reunion playable (the acid and Sophia's fuse box), the Japanese and Asian discs with easier Disc 1 levels made by hand and Japanese texts, the remaining level fixes, the start-up and end credits like the original game, and the disc builder.
+- **The TRX team** (https://github.com/LostArtefacts/TRX): the animations of the controlled drop, the ledge jumps and the corner moves come from TRX; the PS1 code that plays them was written for this port.
 
 `split_info.txt` is the full development log, `tools/builder/package/CHANGES.txt` the player-facing list of changes.
 

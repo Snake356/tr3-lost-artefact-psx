@@ -119,26 +119,25 @@ Forward roll out of the crouch
    drawn she does not roll: put it away first.
 
 Turning in the crouch
-   While crouching, press Left or Right: Lara turns on the spot, as in
-   Tomb Raider IV. Where the ceiling is too low to stand up, Duck does not
-   need to be held.
+   While crouching, press Left or Right: Lara turns on the spot. Where
+   the ceiling is too low to stand up, Duck does not need to be held.
 
 Flip out of a crawlspace
    At the edge of a crawlspace with a drop of 2 clicks or more ahead
    (512 units), press Jump (square on the western discs; on the Japanese
    and Asian discs the button Jump has there). Lara flips out head first
    and falls. It works in the crawl and right when Lara stops after
-   crawling forward, as in TRX; from the crouch, hold Duck and press Jump
-   once: Lara goes into the crawl and flips out.
+   crawling forward; from the crouch, hold Duck and press Jump once:
+   Lara goes into the crawl and flips out.
 
 Picking up in the crawl
    Items in front of Lara are picked up in the crawl itself, with poses
-   as in Tomb Raider IV; the camera stays behind her.
+   of their own; the camera stays behind her.
 
 Controlled drop, ledge jumps, corner shimmying and climbing round corners
-   As in TRX. Controlled drop: step off a high edge (about 3.7 clicks or
-   more) while holding Action with the hands free; Lara turns round and
-   catches the edge. Ledge jumps: while hanging from a ledge, press Jump
+   Controlled drop: step off a high edge (about 3.7 clicks or more)
+   while holding Action with the hands free; Lara turns round and catches
+   the edge. Ledge jumps: while hanging from a ledge, press Jump
    with Forward to jump up, or Jump with Back to push off and jump
    backwards (this needs room above Lara and the wall to push off). Corner
    shimmying: while hanging from a ledge, hold Action and press Left or
@@ -193,7 +192,7 @@ New Game+
 
 3D pickups
    A picked up item slides into the bottom right corner as a turning 3D
-   model, as in Tomb Raider IV, and slides out again after about three
+   model, and slides out again after about three
    seconds. Several items picked up in one place are shown side by side.
    It stands still while the game is paused or the inventory is open.
 
@@ -265,6 +264,10 @@ Continued and finished by  XeNoN3560
 Japanese/Asian Disc 1      XeNoN3560 - the easier levels
 PS1 disc builder           XeNoN3560
 Covers and icon            XeNoN3560
+Animations of the new      the TRX team (github.com/LostArtefacts/TRX) -
+moves                      controlled drop, ledge jumps and the corner
+                           moves; the PS1 code that plays them was written
+                           for this port
 
 Claude (Anthropic) was used as an AI assistant to help finish the project.
 
