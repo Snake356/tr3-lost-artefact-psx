@@ -14,7 +14,7 @@ versions="us,ukrev,derev,frrev,itrev,sprev,jp,jp2,as,as2"
 convparams="scotland:-wr -mo;willsden:-nm;chunnel:-nm;undersea:-wc==50A3F8 -nm;underse2:-wc==50A3F8 -nm;zoo:-nm;slinc:-nm"
 
 # Definition of SFX-samples to be removed for each level
-nosfx="scotland:;willsden:117,334,081,082,237,218,047,217,084,083,329,269,021,022,023,024,025,061;chunnel:021,022,023,024,025,031,047,052,095,166,223,274,275,276,277,278,279,280,331,334,335,341,342;undersea:021,022,023,024,025,068,072,117,144,218,281,308,309;underse2:021,022,023,024,025,068,072,117,144,218,281,308,309;zoo:043,083,084,165,220;slinc:"
+nosfx="scotland:;willsden:117,081,082,237,218,217,083,329,269;chunnel:022,023,024,031,223,274,275,276,277,278,279,280,331,341,342,061,090,125,150,164,165,283,284,291,292,293;undersea:144,218,308,309;underse2:144,218,308,309;zoo:083,084,220;slinc:"
 
 # Length of the shell command buffer
 shellbuffer=8000
@@ -351,6 +351,21 @@ py -3 "${prjdir}/../tools/passport_spine.py" undersea.tr2 || exit 1
 py -3 "${prjdir}/../tools/passport_spine.py" underse2.tr2 || exit 1
 py -3 "${prjdir}/../tools/passport_spine.py" zoo.tr2 || exit 1
 py -3 "${prjdir}/../tools/passport_spine.py" slinc.tr2 || exit 1
+py -3 "${prjdir}/../tools/add_sound.py" chunnel.tr2 || exit 1
+py -3 "${prjdir}/../tools/sound_volumes.py" scotland.tr2 || exit 1
+py -3 "${prjdir}/../tools/sound_volumes.py" willsden.tr2 || exit 1
+py -3 "${prjdir}/../tools/sound_volumes.py" chunnel.tr2 || exit 1
+py -3 "${prjdir}/../tools/sound_volumes.py" undersea.tr2 || exit 1
+py -3 "${prjdir}/../tools/sound_volumes.py" underse2.tr2 || exit 1
+py -3 "${prjdir}/../tools/sound_volumes.py" zoo.tr2 || exit 1
+py -3 "${prjdir}/../tools/sound_volumes.py" slinc.tr2 || exit 1
+py -3 "${prjdir}/../tools/lara_anim_sounds.py" scotland.tr2 || exit 1
+py -3 "${prjdir}/../tools/lara_anim_sounds.py" willsden.tr2 || exit 1
+py -3 "${prjdir}/../tools/lara_anim_sounds.py" chunnel.tr2 || exit 1
+py -3 "${prjdir}/../tools/lara_anim_sounds.py" undersea.tr2 || exit 1
+py -3 "${prjdir}/../tools/lara_anim_sounds.py" underse2.tr2 || exit 1
+py -3 "${prjdir}/../tools/lara_anim_sounds.py" zoo.tr2 || exit 1
+py -3 "${prjdir}/../tools/lara_anim_sounds.py" slinc.tr2 || exit 1
 ### JAPAN / ASIA DISC 1 ###
 
 # The Japanese and Asian Disc 1 (jp, as) get easier levels like the original Japanese TR3 Disc 1:

@@ -21,6 +21,20 @@
   VERSIONS
 ================================================================================
 
+  1.12   Update: sounds. Every level was checked for which sounds it
+         really plays: sounds that were silenced to save sound memory
+         but are heard in the level are back (in Willard's Lair,
+         Shakespeare Cliff, Sleeping with the Fishes and It's a
+         Madhouse!), and sounds the level never plays were silenced
+         instead. As in TRX: doors, trapdoors and submarines under
+         water can be heard when Lara dives (and from above the water),
+         the drill in Shakespeare Cliff turns and drills as it comes
+         down, the alarm there sounds, Lara's steps splash when she
+         runs in shallow water and she grips the ledge audibly when
+         shimmying, also round inner corners. The swoosh of a thrown
+         flare and the grip are louder, they were hardly heard on the
+         PS1. Savegames of 1.0.8 to 1.11 keep working.
+
   1.11   Update: a new builder option, save crystals as in the Japanese
          version: a crystal in a level heals Lara, and saving does not
          use up the crystal in the inventory (the Japanese and Asian
@@ -258,37 +272,34 @@
 
   The PS1 keeps all sounds of a level in its own 512 KB of sound memory.
   The original Tomb Raider III levels use between 439 and 499 KB of it.
-  The Lost Artefact levels have more sounds than fit, so a few that are
-  rarely heard or have other variants are silent. Most of this was already
-  done in b122251's conversion; it was checked again for this release.
-  A silent sound is now a short real silence; before, an empty sample could
-  loop and take up a sound channel.
+  The Lost Artefact levels have more sounds than fit. Since 1.12 every
+  level was checked against what it really plays (its objects, triggers,
+  sound sources, floor types and the game's code, compared with TRX): only
+  sounds the level never plays are silent, except where noted. A silent
+  sound is a short real silence, so it cannot loop and take up a channel.
 
-  * Shakespeare Cliff: the push switch, the Uzi stop and shotgun shell
-    sounds, the reservoir flush, a small fan, the attack of the winged
-    mutant, two of the generator and two of the squeak variants, four of
-    Lara's wet-feet steps and her wading, a monkey roll and the prisoner's
-    sounds.
-    -> The bazooka shot and the quad bike hitting a wall or landing after
-       a jump can be heard again; the level now uses about 490 KB of sound
-       memory. The quad bike's engine and all its other sounds are there.
-       The monkey roll and the prisoner's sounds are silent instead: the
-       level never uses them (there is no prisoner in it).
+  * Shakespeare Cliff: the level uses 498,192 of the 501,680 bytes the
+    sounds can have. Lara's wet-feet steps use one of their four variants.
+    Its strobe light now sounds its alarm (the level lacked the sound, as in
+    TRX). Silent, as never played there: the prisoner, the monkey roll, a
+    small fan, a squeak, a trapdoor (its model has no sounds), a water
+    loop, the soldier gun of another enemy, a gate, the quad bike's unused
+    accelerate sound, the push switch (there is none) and ice and snow
+    steps.
 
-  * Willard's Lair: the crocodile's attack and death, the blowpipe, metal
-    shutters breaking, a wooden gate, the portcullis going up and down,
-    the wall blades, a small subway door, a light water sound, a water
-    loop, one generator variant, the Uzi stop, and four of Lara's
-    wet-feet steps and her wading.
+  * Willard's Lair, Sleeping with the Fishes, It's a Madhouse!: every sound
+    the level plays is there. Silent, as never played there: the crocodile
+    (Willard's Lair), the blowpipe, metal shutters breaking, a wooden gate,
+    the portcullis going up, the wall blades, a small subway door and a light
+    water sound in Willard's Lair; metal shutters breaking, Lara's death on
+    spikes and the security guard in Sleeping with the Fishes; the
+    portcullis and small metal shutters in It's a Madhouse!.
 
-  * Sleeping with the Fishes (both parts): a jet flying by, a generic
-    swoosh, a light water sound, Lara's death on spikes, metal shutters
-    breaking, one mud footstep variant, four of Lara's wet-feet steps and
-    her wading, and the security guard's sounds (there is no guard in
-    these levels).
-
-  * It's a Madhouse!: Lara using a key, the portcullis going up and down,
-    a trapdoor closing and small metal shutters.
+  * Left as in the PC version (TRX alike): Lara's pick-up, body slam and
+    bubble sounds are in no level; the jet at the end of Sleeping with the
+    Fishes is too far from the camera to be heard; the divers that jump
+    in and the objects that rush at Lara in Sleeping with the Fishes and
+    It's a Madhouse! (Tomb Raider III's subway train) have no sounds.
 
   * Highland Fling and Reunion: nothing silent.
 

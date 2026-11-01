@@ -27,7 +27,8 @@ PRJ = os.path.join(sys._MEIPASS, "prj") if FROZEN else os.path.normpath(os.path.
 TOOLS = os.path.join(PRJ, "tools")
 BIN = os.path.join(PRJ, "build", "win", "bin")
 NO_WINDOW = 0x08000000 if os.name == "nt" else 0    # no console window per tool run from the builder window
-PY_TOOLS = ("bake_point_light.py", "nebel_raeume.py", "kaefig_fix.py", "passport_spine.py")   # the Python tools convert.sh calls
+PY_TOOLS = ("bake_point_light.py", "nebel_raeume.py", "kaefig_fix.py", "passport_spine.py", "add_sound.py",
+            "sound_volumes.py", "lara_anim_sounds.py")   # the Python tools convert.sh calls
 sys.path.insert(0, TOOLS)
 import leer_ende                                 # noqa: E402  silenced samples that end (after tr3pcpsx)
 

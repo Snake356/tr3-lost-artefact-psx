@@ -8,7 +8,9 @@ Artefact layouts (disc/<layout>.xml) take, in the same folder structure as the r
   files/data/<data>/fmv.mod, title.psx  as on the disc
   files/data/<data>/house.psx           with the sky dome tip closed (tools/close_dome_tip.py), the
                                         crawl flip and crouch turns added (tools/psx_lara_anims.py) and
-                                        Lara's nose textured (tools/house_nose_fix.py)
+                                        Lara's nose textured (tools/house_nose_fix.py), two quiet sounds
+                                        louder (tools/sound_volumes.py) and Lara's animation sounds as
+                                        TRX has them (tools/lara_anim_sounds.py)
   files/fmv/common/logo.fmv             the Eidos logo video
   exe/<version>.exe                     the original executable (patched later)
 
@@ -54,7 +56,7 @@ def build(src, version, out):
     house = os.path.join(out, f"files/data/{data}/house.psx")
     subprocess.run(convert.tool_command("close_dome_tip.py") + [os.path.join(src, "DATA/HOUSE.PSX"), house],
                    check=True, stdout=subprocess.DEVNULL, creationflags=convert.NO_WINDOW)
-    for tool in ("psx_lara_anims.py", "house_nose_fix.py"):
+    for tool in ("psx_lara_anims.py", "house_nose_fix.py", "sound_volumes.py", "lara_anim_sounds.py"):
         subprocess.run(convert.tool_command(tool) + [house], check=True, stdout=subprocess.DEVNULL,
                        creationflags=convert.NO_WINDOW)
     put("files/fmv/common/logo.fmv", rd("FMV/LOGO.FMV"))
