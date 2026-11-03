@@ -56,7 +56,9 @@ issues and the fixed bugs.
   HOW TO USE
 --------------------------------------------------------------------------------
 
-1. Start "TR3 Lost Artefact PS1 Builder.exe".
+1. Unpack the whole ZIP into one folder and start "TR3 Lost Artefact PS1
+   Builder.exe". Keep the files together: the builder needs data.pak, the
+   tools folder and the Visual C++ runtime files (*.dll) next to it.
 2. Step 1: choose your Tomb Raider III PS1 disc image.
 3. Step 2: choose your Lost Artefact files (a disc image or a folder).
    Both steps show a green tick when the files were recognised.
@@ -286,9 +288,10 @@ published for others to finish:
 
    https://gitlab.com/b122251/tr3gpsx
 
-The disc image is written with mkpsxiso by Lameguy64 (GNU GPL version 2,
-see licenses/mkpsxiso-GPL-2.0.txt). The source code of the project and of
-all tools is at:
+The conversion programs in the tools folder (tr3pcpsx, trmod, troi, trsfx,
+tr3mesh, texmod, 3texex, 3texrep) are b122251's tools, under the GNU GPL
+version 3 (see licenses/GPL-3.0.txt). The source code of the project and
+of all tools is at:
 
    https://github.com/Snake356/tr3-lost-artefact-psx
 

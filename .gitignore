@@ -5,3 +5,4 @@ __pycache__/
 backups/
 ergebnisse/
 build/
+!tools/builder-cpp/src/build/

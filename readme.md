@@ -90,7 +90,8 @@ Tools used for the continuation: TRForge Level Editor (level fixes) and mkpsxiso
 | `levels/` | `convert.sh` (the level conversion), `geom/` (per-level geometry fixes), `japan/` (the Japan/Asia Disc 1 changes), `mesh/`, `anims/`, `textures/` |
 | `tools/src/` | the sources of the converter and tools (`tr3pcpsx`, `trmod`, `texmod`, `tric`, `mkpsxiso`, ...) |
 | `tools/` | Python helpers (Japanese texts and Kanji, NTSC executable, sky dome tip, model and room tools) |
-| `tools/builder/` | the disc builder (`gui.py` window, `build.py` command line) and its data |
+| `tools/builder-cpp/` | the disc builder in C++ (the download): window, build, level tools and disc writer; see its README |
+| `tools/builder/` | the builder's data (`make_data.py`), the players' readme and changes (`package/`), and the first builder in Python (`gui.py`, `build.py`), kept as the reference the C++ builder is checked against |
 | `bin/patches/` | IPS patches for the game executable of every release (`bin/patch.sh` lists the applied ones) |
 | `disc/` | the disc layouts for mkpsxiso, one per release |
 | `tombpsx/` | the game texts and gameflow (TOMBPSX.DAT) |
@@ -115,6 +116,7 @@ It compiles all tools from `tools/src` into `build/win/bin`, runs `levels/conver
 The builder ships no game data: the project's levels, textures, animations, meshes and texts are stored as differences to the player's own files. After changing any of them, rebuild `levels/out` as above, then
 
     python tools/builder/make_data.py <sources.json>
-    python tools/builder/build_exe.py <out folder>
+    powershell -File tools/builder-cpp/build.ps1
+    powershell -File tools/builder-cpp/dist.ps1
 
-`make_data.py` renews the difference files from the original PC and PS1 files listed in `sources.json` (`{"pc": [...], "ps1": [...]}`, kept outside the repository) and checks that the builder gives exactly `levels/in`, the texts and all of `levels/out`. `build_exe.py` makes the single Windows EXE (PyInstaller) and the download folder.
+`make_data.py` renews the difference files from the original PC and PS1 files listed in `sources.json` (`{"pc": [...], "ps1": [...]}`, kept outside the repository) and checks that the builder gives exactly `levels/in`, the texts and all of `levels/out`. The download is the C++ builder: `tools/builder-cpp/build.ps1` (Visual Studio 2026) packs the data into `data.pak` and builds the EXE and the conversion programs, `tools/builder-cpp/dist.ps1` makes the ZIP; its `scripts/compare_builders.py` checks that it builds the same discs as the Python builder.
