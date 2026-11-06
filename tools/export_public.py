@@ -23,7 +23,7 @@ INCLUDE = ["readme.md", "LICENSE", ".github/*", "split_info.txt", ".gitattribute
            "tombpsx/convert.sh"]
 EXCLUDE = ["tools/bin/*", "tools/src/gameflow/*", "*/modblob.h", "tools/src/mkpsxiso/bin_nix/*",
            "tools/src/mkpsxiso/CMakeFiles/*", "*/CMakeCache.txt", "*.o", "*.res", "guides/trrs.html"]
-GITIGNORE = "Thumbs.db\n.DS_Store\n*.tmp\n__pycache__/\nbackups/\nergebnisse/\nbuild/\n"
+GITIGNORE = "Thumbs.db\n.DS_Store\n*.tmp\n__pycache__/\nbackups/\nergebnisse/\nbuild/\n!tools/builder-cpp/src/build/\n"
 NOTE = """> **No game data is included in this repository.** The levels, sounds, speech, videos, executables
 > and texts of Tomb Raider III and The Lost Artefact belong to their rights holders. To play, build the
 > disc image from your own games with the disc builder (see "Playing it" below).
