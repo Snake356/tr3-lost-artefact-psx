@@ -21,6 +21,15 @@
   VERSIONS
 ================================================================================
 
+  1.13   Update: on the Japanese and Asian Disc 1, Lara says her own
+         Japanese "dame da wa" instead of the English "no" in every
+         level, as in the original Japanese Tomb Raider III. The
+         builder takes it from the player's own disc (the PC files only
+         have the English one) and plays it a little louder, the
+         recording is quieter than the English one. Nothing else
+         changes; the other discs are built as in 1.12.
+         Savegames of 1.0.8 to 1.12 keep working.
+
   1.12   Update: sounds. Every level was checked for which sounds it
          really plays: sounds that were silenced to save sound memory
          but are heard in the level are back (in Willard's Lair,

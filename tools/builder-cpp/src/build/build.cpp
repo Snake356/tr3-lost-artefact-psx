@@ -26,6 +26,59 @@ const std::map<std::string, std::string> NTSC_LANG = {
 bool japan_built_in(const std::string &v) { return v == "jp" || v == "as"; }     // the Japanese/Asian Disc 1 have it
 bool first_release(const std::string &v) { return v == "de" || v == "fr" || v == "it" || v == "sp" || v == "uk" || v == "us10"; }
 
+// Lara's "no" (SFX_LARA_NO -> sample 5). The Japanese/Asian Disc 1 has its own recording ("dame da wa", twice as
+// long and quieter); the converted levels get the PC one. Sample 5 of a level's sound bank (i32 version, u32 n,
+// u32 offsets[n], u32 total, sample data) is replaced by that of the disc's own HOUSE.PSX, and the sound's details
+// entry (sample 5, volume 91, radius 13, flags 4) plays at full volume, in Lara's home too.
+constexpr size_t NO_SAMPLE = 5;
+constexpr uint8_t NO_VOLUME = 127;
+constexpr uint32_t SOUND_MEMORY = 501680;          // SPU bytes from 0x1010 to the reverb area
+const Bytes NO_DETAILS = from_hex("05005b0d00000400");
+
+Bytes bank_sample(const Bytes &level, size_t i) {
+    uint32_t n = u32(level, 4);
+    if (i + 1 >= n) throw Error("sound bank: sample " + std::to_string(i) + " missing");
+    size_t base = 12 + 4 * size_t(n);
+    return slice(level, base + u32(level, 8 + 4 * i), u32(level, 12 + 4 * i) - u32(level, 8 + 4 * i));
+}
+
+Bytes replace_bank_sample(const Bytes &level, size_t i, const Bytes &sample) {
+    uint32_t n = u32(level, 4);
+    size_t base = 12 + 4 * size_t(n);
+    uint32_t start = u32(level, 8 + 4 * i), old_size = u32(level, 12 + 4 * i) - start;
+    int64_t d = int64_t(sample.size()) - int64_t(old_size);
+    Bytes out = slice(level, 0, base);
+    for (size_t k = i + 1; k < n; k++) put32(out, 8 + 4 * k, uint32_t(int64_t(u32(out, 8 + 4 * k)) + d));
+    put32(out, 8 + 4 * size_t(n), uint32_t(int64_t(u32(out, 8 + 4 * size_t(n))) + d));
+    out.insert(out.end(), level.begin() + base, level.begin() + base + start);
+    out.insert(out.end(), sample.begin(), sample.end());
+    out.insert(out.end(), level.begin() + base + start + old_size, level.end());
+    return out;
+}
+
+Bytes louder_no(Bytes level, const std::string &name) {
+    size_t at = find_bytes(level, NO_DETAILS);
+    if (at == size_t(-1) || find_bytes(level, NO_DETAILS, at + 1) != size_t(-1))
+        throw Error(name + ": the sound details of Lara's \"no\" not found once");
+    put8(level, at + 2, NO_VOLUME);
+    return level;
+}
+
+void japanese_no(const fs::path &house_psx, const fs::path &levels, const Log &log) {
+    Bytes house = read_file(house_psx);
+    Bytes no = bank_sample(house, NO_SAMPLE);
+    write_file(house_psx, louder_no(house, "HOUSE.PSX"));
+    for (auto &e : fs::directory_iterator(levels)) {
+        if (e.path().extension() != ".psx") continue;
+        Bytes level = louder_no(replace_bank_sample(read_file(e.path()), NO_SAMPLE, no), path_str(e.path().filename()));
+        if (bank_sample(level, NO_SAMPLE) != no) throw Error(path_str(e.path().filename()) + ": sample not replaced");
+        if (u32(level, 8 + 4 * size_t(u32(level, 4))) > SOUND_MEMORY)
+            throw Error(path_str(e.path().filename()) + ": sound memory full");
+        write_file(e.path(), level);
+    }
+    log("  Lara's Japanese \"no\" from the disc (" + std::to_string(no.size()) + " bytes)");
+}
+
 Bytes ips(const std::string &version, const std::string &name) {
     return data_file("prj/bin/patches/" + version + "/" + name + ".ips");
 }
@@ -141,6 +194,9 @@ fs::path build_disc(const BuildOptions &o, const std::function<void(const std::s
     log("converting the levels");
     convert_levels({work / "conv", work / "in", work / "sfx", work / "modules.bin", conv_version,
                     [&](const std::string &m) { log("  " + m); }});
+    if (japan_built_in(conv_version))
+        japanese_no(work / "disc" / "files" / "data" / u8path(layout) / "house.psx",
+                    work / "conv" / "out" / u8path(conv_version), log);
 
     log("executable, texts, pictures");
     std::string ntsc_lang = us_disc ? NTSC_LANG.at(info->version) : "";

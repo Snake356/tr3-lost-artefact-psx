@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
-project(TR3LostArtefactPS1Builder VERSION 1.12.0 LANGUAGES C CXX)   # the one place of the version (EXE, manifest, ZIP)
+project(TR3LostArtefactPS1Builder VERSION 1.13.0 LANGUAGES C CXX)   # the one place of the version (EXE, manifest, ZIP)
 set(BUILDER_NAME "TR3 Lost Artefact PS1 Builder")
 set(BUILDER_VERSION_TWEAK 0)
 set(BUILDER_VERSION_FULL "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}.${BUILDER_VERSION_TWEAK}")
