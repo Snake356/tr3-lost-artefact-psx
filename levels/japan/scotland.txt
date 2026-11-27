@@ -1,7 +1,7 @@
 # Japan/Asia Disc 1 changes, made by tools/make_japan_commands.py from 1 - Highland Fling scotland japan.tr2
 # 1 items removed, 0 changed, 35 added, 28 sectors, 0 room faces
 removeitem(109,1)
-additem(178,106,6656,3584,1536,0,-1,-1,0000)
+additem(178,106,6656,3584,512,0,-1,-1,0000)
 additem(171,0,9728,1536,512,0,-1,-1,0000)
 additem(180,0,5632,1536,1024,0,-1,-1,3E00)
 additem(173,0,14848,1536,512,0,-1,-1,0000)

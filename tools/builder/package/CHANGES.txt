@@ -28,6 +28,9 @@
          have the English one) and plays it a little louder, the
          recording is quieter than the English one. Nothing else
          changes; the other discs are built as in 1.12.
+         Hotfix (27 November): on the Japanese and Asian Disc 1, a
+         flare pickup in Highland Fling was in the wrong place; it now
+         lies under the crate.
          Savegames of 1.0.8 to 1.12 keep working.
 
   1.12   Update: sounds. Every level was checked for which sounds it
